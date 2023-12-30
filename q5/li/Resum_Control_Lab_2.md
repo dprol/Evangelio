@@ -1,5 +1,3 @@
-# Resum del segon Control de Laboratori
-
 ## SAT amb costos
 
 La idea de **SAT** amb costos es definir un predicat que donat un cost, escrigui les **clausules** necessàries per a que es compleixi. Després, iterarem de manera **descendent en cost** per a trobar la solució amb menys cost possible. Així, generem solucions del nostre problema de cost **n-1** en cada iteració fins que *kissat* retorni que és insatisfactible el model proposat.
@@ -90,7 +88,6 @@ noAdjacentNodesWithSameColor(_).
 
 % Here the sort predicate is used to remove repeated elements of the list:
 costOfThisSolution(M,Cost):- findall(C,member(x(_,C),M),L), sort(L,L1), length(L1,Cost), !.
-
 ```
 
 Com podem veure, es tracta del problema de **min coloring**, en el que volem pintar els nodes de un graf sense que n'hi hagi dos adjacents del mateix color. Definim el **cost** de una solució com el nombre de colors necessaris diferents que necessitem per a complir les restriccions del problema. Aquí té molt sentit la existència del cost, ja que si no ens interesés la solució del problema podria ser sempre utilitzar un color diferent per a cada node.
@@ -206,7 +203,3 @@ costOfThisSolution(M,Cost):- findall(End, ( member(start(T,H),M), duration(T,D),
 El que fem es trobar totes del hores de inici de les tasques i guardar aquest valor sumat de la seva duració. Després, el cost es definit per el màxim de tots els elements trobats. De la mateixa manera que en el **min coloring**, el programa *main* iterarà en **cost descendent** fins a trobar model **SAT** insatisfactible, i retornarà la última solució factible.
 
 ## Prolog avançat
-
-
-
-

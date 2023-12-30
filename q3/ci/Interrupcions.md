@@ -1,6 +1,4 @@
-## Interrupcions
 
----
 
 #### Per que volem interrupcions?
 

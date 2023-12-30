@@ -1,6 +1,4 @@
-# Bloc A
-
-## Probabilitat condicionada
+# ## Probabilitat condicionada
 
 La probabilitat del succés A un cop s'ha donar B pot variar de la probabilitat de B si A i B són successos **dependents.**
 

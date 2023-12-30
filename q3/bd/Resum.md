@@ -1,5 +1,3 @@
-# Resum BD
-
 ## Algebra relacional
 
 #### Unió
