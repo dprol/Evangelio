@@ -12,8 +12,15 @@
         <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
         {% include head-custom.html %}
         <style>
+            body {
+                background: linear-gradient(to bottom, #c1e1e1, #ffffff); /* Updated gradient */
+            }
+            
             .main-content {
-                background: linear-gradient(to bottom, #c1e1e1, #ffffff);
+                width: 90%; /* Adjusted width */
+                margin: 0 auto;
+                background: linear-gradient(to bottom, #c1e1e1, #ffffff); /* Added gradient */
+                padding: 20px;
             }
         </style>
     </head>
