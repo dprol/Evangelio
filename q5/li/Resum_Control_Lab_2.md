@@ -90,7 +90,6 @@ noAdjacentNodesWithSameColor(_).
 
 % Here the sort predicate is used to remove repeated elements of the list:
 costOfThisSolution(M,Cost):- findall(C,member(x(_,C),M),L), sort(L,L1), length(L1,Cost), !.
-
 ```
 
 Com podem veure, es tracta del problema de **min coloring**, en el que volem pintar els nodes de un graf sense que n'hi hagi dos adjacents del mateix color. Definim el **cost** de una solució com el nombre de colors necessaris diferents que necessitem per a complir les restriccions del problema. Aquí té molt sentit la existència del cost, ja que si no ens interesés la solució del problema podria ser sempre utilitzar un color diferent per a cada node.
@@ -205,8 +204,97 @@ costOfThisSolution(M,Cost):- findall(End, ( member(start(T,H),M), duration(T,D),
 
 El que fem es trobar totes del hores de inici de les tasques i guardar aquest valor sumat de la seva duració. Després, el cost es definit per el màxim de tots els elements trobats. De la mateixa manera que en el **min coloring**, el programa *main* iterarà en **cost descendent** fins a trobar model **SAT** insatisfactible, i retornarà la última solució factible.
 
+---
+
 ## Prolog avançat
 
+Un dels problemes típics que trobarem serà el de trobar solucions a enunciats que segueixin la següent estructura, tenim:
 
++ un **Estat Inicial**, 
 
++ un **Estat Final** al que volem arribar
 
++ i un seguit de **pasos** que porten d'un estat a un altre, i que tenen un **cost**
+
+L'objectiu es trobar un **camí**, o **conjunt de pasos**, que ens portin del **Estat Inicial** al **Estat Final**, amb el menor **cost** possible.
+
+### Problema dels ponts
+
+```prolog
+% Trata de averiguar la manera más rápida que tienen cuatro personas (P1, P2, P5 y P8)
+% para cruzar de noche un puente que solo aguanta el peso de dos. Tienen una única e
+% imprescindible linterna y cada Pi tarda i minutos en cruzar. Dos juntos tardan como
+% el más lento de los dos.
+
+main :- EstadoInicial = [[1, 2, 5, 8], [], 0], EstadoFinal = [[], [1, 2, 5, 8], 1],
+	between(1, 1000, CosteMax), % Buscamos soluci ́on de coste 0; si no, de 1, etc.
+	camino( CosteMax, EstadoInicial, EstadoFinal, [EstadoInicial], Camino ),
+	reverse(Camino, Camino1), write(Camino1), write(' con coste '), write(CosteMax), nl, halt.
+
+camino( 0, [[], _, _], _, C,C ).
+
+camino( CosteMax, EstadoActual, EstadoFinal, CaminoHastaAhora, CaminoTotal ) :-
+	CosteMax > 0,
+	unPaso( CostePaso, EstadoActual, EstadoSiguiente ), % En B.1 y B.2, CostePaso es 1.
+	\+ member( EstadoSiguiente, CaminoHastaAhora ),
+	CosteMax1 is CosteMax-CostePaso,
+	camino(CosteMax1, EstadoSiguiente, EstadoFinal, [EstadoSiguiente|CaminoHastaAhora], CaminoTotal).
+
+maxim(X, Y, R) :-
+    X > Y,
+    R is X.
+maxim(X, Y, R) :-
+    X =< Y,
+    R is Y.
+
+% creuar el pont de esquerra a dreta, dues persones
+unPaso(Tiempo, [E0, D0, 0], [E1, D1, 1]) :-
+    select(P1, E0, RestaE0),
+    select(P2, RestaE0, E1),    % agafem dos persones de la esquerra i E1 val el que hi queda l'esquerra
+    union(D0, [P1,P2], D1),
+    maxim(P1, P2, Tiempo).
+
+% creuar el pont de dreta a esquerra
+unPaso(Tiempo, [E0, D0, 1], [E1, D1, 0]) :-
+    select(P1, D0, D1),   % torna algu [[],[2,5,8,1],1]]amb la llinterna
+    union(E0, [P1], E1),
+    Tiempo is P1.
+```
+
+En aquest problema, 4 persones necessiten creuar un pont amb les següents restriccions:
+
++ Només poden creuar si van amb la llanterna (només n'hi ha una)
+
++ Poden creuar com a màxim dos a la vegada
+
++ Cadascun te un temps de creuada, i si dos creuen junts, el temps es el del mes lent
+
+El problema esta en quina es la manera mes rapida en que poden creuar tots el pont.
+
+Com veiem en el codi, el *main*, que ens ve definit al examen, implementa la lògica per trobar el seguit de pasos amb menys cost, i nosaltres hem de implementar:
+
++ l' **Estat Inicial**: en aquest cas definim una llista de llistes on s'indica `[ llista_id_persones_esq_pont, llista_id_persones_drt_pont, posicio_lliterna(0->esq, 1->drt) ]`. Al principi, tant les persones com la llanterna estan a la banda esquerra del pont, o sigui que encara no ha creuat: `[ [1, 2, 4, 8], [], 0 ]`.
+
++ l' **Estat Final**: el nostre estat final serà aquell on tothom hagi creuat, i, per lògica, la llanterna estigui a la banda dreta del pont: `[ [], [1, 2, 4, 8], 1 ]`.
+
+> Hem de veure que per motius de eficiència el `id_persona` es també el temps que tarden a creuar el pont: `1, 2, 4, 8`
+
+Ara, només ens falta definir el predicat `unPaso` que pren tres àtoms:
+
++ **Tiempo**: expressa el cost d'aquell pas
+
++ **Estat Anterior**: Estat abans de aplicar el pas
+
++ **Estat Posterior**: Estat posterior
+
+Basicament, el que estem dient es: anar d´aquest estat a aquest altre es un pas i te aquest cost si... i formules les condicions per a que o siguin. En l'exemple proposat, el pas de creuar el pont d'esquerra a dreta es compleix i te cost **Tiempo** si:
+
++ Han creuat **una** o **dues** persones com a molt.
+
++ La llanterna estava a l'esquerra i ara a la dreta (**0 => 1**). *Hem de veure que això ve donat en els estats en la definició del pas*.
+
++ **Tiempo** ha de ser el màxim dels `id_persona` que hagin creuat.
+
+Si això es compleix, el que ha passat entre un estat i l'altre es un **pas**, i pot formar part de la **solució**.
+
+> Per acabar, el pas de creuar de dreta esquerra es el mateix que d'esquerra a dreta, però no contempla la possibilitat de que creuïn dues persones ja que no te gaire sentit i mai serà part de la solució. També canvia que la llanterna ha de estar a la dreta en  el primer estat i a l'esquerra en el segon (**1 => 0**).
