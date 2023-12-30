@@ -11,13 +11,6 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
         <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
         {% include head-custom.html %}
-        <style>
-            .main-content {
-                width: 90%; /* Adjusted width */
-                margin: 0 auto;
-                padding: 20px;
-            }
-        </style>
     </head>
     <body>
         <a id="skip-to-content" href="#content">Skip to the content.</a>
@@ -27,7 +20,7 @@
                 <h2>{{ page.title }}</h2>
         </header>
 
-        <main id="content" class="main-content" role="main">
+        <main id="content" class="main-content" role="main" style="width: 80%;">
             {{ content }}
         </main>
 
