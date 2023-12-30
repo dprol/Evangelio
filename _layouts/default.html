@@ -11,6 +11,11 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
         <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
         {% include head-custom.html %}
+        <style>
+            .main-content {
+                width: 80%;
+            }
+        </style>
     </head>
     <body>
         <a id="skip-to-content" href="#content">Skip to the content.</a>
@@ -20,11 +25,12 @@
                 <h2>{{ page.title }}</h2>
         </header>
 
-        <main id="content" class="main-content" role="main" style="width: 80%;">
+        <main id="content" class="main-content" role="main">
             {{ content }}
         </main>
 
         <footer class="footer" role="contentinfo" style="text-align: center;">
+            <hr>
             <div class="container">
                 <p>Apunts del Grau en Ingenyieria Informatica per <strong>Marc Nafria</strong> | <a href="https://github.com/marc-nafria">GitHub</a></p>
             </div>
