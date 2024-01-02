@@ -425,5 +425,3 @@ La primera restricció es la de `all_distinct(Vars)` que imposa que cap variable
 3. **Fem el `label`**
 
 4. **Imprimim el resultat**
-
----
