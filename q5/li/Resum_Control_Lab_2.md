@@ -4,7 +4,7 @@
 
 La idea de **SAT** amb costos es definir un predicat que donat un cost, escrigui les **clausules** necessàries per a que es compleixi. Després, iterarem de manera **descendent en cost** per a trobar la solució amb menys cost possible. Així, generem solucions del nostre problema de cost **n-1** en cada iteració fins que *kissat* retorni que és insatisfactible el model proposat.
 
-### Exemple: Min coloring:
+### Exemple: Min coloring
 
 ```prolog
 %%%%%%% =======================================================================================
@@ -98,7 +98,7 @@ La línea `costOfThisSolution(M,Cost):- findall(C,member(x(_,C),M),L), sort(L,L1
 
 El **main**, que no esta aquí, busca solucions de cost descendent fins que el problema es torna insatisfactible, i retorna la ultima solució factible.
 
-### Exemple: Factory:
+### Exemple: Factory
 
 ```prolog
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
