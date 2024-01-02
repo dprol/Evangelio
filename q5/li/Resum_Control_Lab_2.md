@@ -4,7 +4,7 @@
 
 La idea de **SAT** amb costos es definir un predicat que donat un cost, escrigui les **clausules** necessàries per a que es compleixi. Després, iterarem de manera **descendent en cost** per a trobar la solució amb menys cost possible. Així, generem solucions del nostre problema de cost **n-1** en cada iteració fins que *kissat* retorni que és insatisfactible el model proposat.
 
-### Min coloring:
+### Exemple: Min coloring:
 
 ```prolog
 %%%%%%% =======================================================================================
@@ -98,7 +98,7 @@ La línea `costOfThisSolution(M,Cost):- findall(C,member(x(_,C),M),L), sort(L,L1
 
 El **main**, que no esta aquí, busca solucions de cost descendent fins que el problema es torna insatisfactible, i retorna la ultima solució factible.
 
-### Factory:
+### Exemple: Factory:
 
 ```prolog
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -218,7 +218,7 @@ Un dels problemes típics que trobarem serà el de trobar solucions a enunciats 
 
 L'objectiu es trobar un **camí**, o **conjunt de pasos**, que ens portin del **Estat Inicial** al **Estat Final**, amb el menor **cost** possible.
 
-### Problema dels ponts
+### Exemple: Problema dels ponts
 
 ```prolog
 % Trata de averiguar la manera más rápida que tienen cuatro personas (P1, P2, P5 y P8)
@@ -227,18 +227,18 @@ L'objectiu es trobar un **camí**, o **conjunt de pasos**, que ens portin del **
 % el más lento de los dos.
 
 main :- EstadoInicial = [[1, 2, 5, 8], [], 0], EstadoFinal = [[], [1, 2, 5, 8], 1],
-	between(1, 1000, CosteMax), % Buscamos soluci ́on de coste 0; si no, de 1, etc.
-	camino( CosteMax, EstadoInicial, EstadoFinal, [EstadoInicial], Camino ),
-	reverse(Camino, Camino1), write(Camino1), write(' con coste '), write(CosteMax), nl, halt.
+    between(1, 1000, CosteMax), % Buscamos soluci ́on de coste 0; si no, de 1, etc.
+    camino( CosteMax, EstadoInicial, EstadoFinal, [EstadoInicial], Camino ),
+    reverse(Camino, Camino1), write(Camino1), write(' con coste '), write(CosteMax), nl, halt.
 
 camino( 0, [[], _, _], _, C,C ).
 
 camino( CosteMax, EstadoActual, EstadoFinal, CaminoHastaAhora, CaminoTotal ) :-
-	CosteMax > 0,
-	unPaso( CostePaso, EstadoActual, EstadoSiguiente ), % En B.1 y B.2, CostePaso es 1.
-	\+ member( EstadoSiguiente, CaminoHastaAhora ),
-	CosteMax1 is CosteMax-CostePaso,
-	camino(CosteMax1, EstadoSiguiente, EstadoFinal, [EstadoSiguiente|CaminoHastaAhora], CaminoTotal).
+    CosteMax > 0,
+    unPaso( CostePaso, EstadoActual, EstadoSiguiente ), % En B.1 y B.2, CostePaso es 1.
+    \+ member( EstadoSiguiente, CaminoHastaAhora ),
+    CosteMax1 is CosteMax-CostePaso,
+    camino(CosteMax1, EstadoSiguiente, EstadoFinal, [EstadoSiguiente|CaminoHastaAhora], CaminoTotal).
 
 maxim(X, Y, R) :-
     X > Y,
@@ -287,7 +287,7 @@ Ara, només ens falta definir el predicat `unPaso` que pren tres àtoms:
 
 + **Estat Posterior**: Estat posterior
 
-Basicament, el que estem dient es: anar d´aquest estat a aquest altre es un pas i te aquest cost si... i formules les condicions per a que o siguin. En l'exemple proposat, el pas de creuar el pont d'esquerra a dreta es compleix i te cost **Tiempo** si:
+Bàsicament, el que estem dient es: anar d´aquest estat a aquest altre es un pas i te aquest cost si... i formules les condicions per a que o siguin. En l'exemple proposat, el pas de creuar el pont d'esquerra a dreta es compleix i te cost **Tiempo** si:
 
 + Han creuat **una** o **dues** persones com a molt.
 
@@ -298,3 +298,132 @@ Basicament, el que estem dient es: anar d´aquest estat a aquest altre es un pas
 Si això es compleix, el que ha passat entre un estat i l'altre es un **pas**, i pot formar part de la **solució**.
 
 > Per acabar, el pas de creuar de dreta esquerra es el mateix que d'esquerra a dreta, però no contempla la possibilitat de que creuïn dues persones ja que no te gaire sentit i mai serà part de la solució. També canvia que la llanterna ha de estar a la dreta en  el primer estat i a l'esquerra en el segon (**1 => 0**).
+
+---
+
+## CLP
+
+Tenim un conjunt de **restriccions** , **variables** i **un domini per a cada variable**. **L'objectiu** es trobar valors per a les variables, cada un del domini corresponent, tal que es satisfacin les **restriccions**.
+
+> SAT es un *Contraint Problem*, on les variables tenen totes el domini \{0,1\} i les restriccions son les clausules.
+
+**Com s'han de resoldre?**
+
+- :no_entry_sign: Generació i després test
+
+- :white_check_mark: Entrellaçar la **generació** i el **test**
+
+Per a millor la eficiència, podem provocar un efecte de **propagació**, **eliminant elements dels dominis de les variables** que sabem segur que no poden ser part de cap solució.
+
+| Variables      | Constriccions |
+| -------------- | ------------- |
+| x in \{1..10\} | x < y         |
+| y in \{1..8\}  | z = x + y + 1 |
+| z in \{1..8\}  |               |
+
+**Propagació inicial:**
+
+- **x**: **1 2 3 4 5** ~~6 7 8 9 10~~
+
+- **y**: ~~1~~ **2 3 4 5 6** ~~7 8~~
+
+- **z**: ~~1 2 3~~ **4 5 6 7 8**
+
+```prolog
+:- use_module( library(clpfd) ).
+
+
+P :- x in 1..10,                    % 1. Definim els dominis de les variables        
+    [y, z] ins 1..8,                %
+
+    x #< y,                         % 2. Definim les constriccions
+    z #= x + y + 1,                 % 
+
+    label ( [x, y, z]),             % 3. Resolem amb backtracking
+
+    write ([x, y, z)), ln, halt.    % 4. Escriure la solucio
+```
+
+### Exemple: Magic
+
+```prolog
+:- use_module(library(clpfd)).
+
+% Complete the following program p(N) that writes a (kind of) magic
+% square: an NxN matrix with ALL the numbers 1..N^2, such that the
+% sum of every row and every column is equal.
+% More precisely, this sum is (N + N^3) / 2.
+% Note: don't worry if your program is (too) slow when N >= 6.
+
+%% Example:  (this solution is not unique):
+%%
+%%    1   2  13  24  25
+%%    3   8  18  17  19
+%%   16  14  15   9  11
+%%   22  20   7  10   6
+%%   23  21  12   5   4
+
+main:- p(5), nl, halt.
+
+p(N):-
+
+% 1.
+    NSquare is N*N,
+    length( Vars, NSquare ),
+
+    Vars ins 1..NSquare,
+
+% 2. 
+    all_distinct(Vars),
+    squareByRows(N,Vars,SquareByRows),
+    transpose( SquareByRows, SquareByCols ),  % transpose already exists: no need to implement it
+
+    Sum is (N + N*N*N) // 2, 
+    constraintsSum( Sum, SquareByRows),
+    constraintsSum( Sum, SquareByCols),
+
+% 3.
+    label(Vars),
+
+% 4.
+    writeSquare(SquareByRows),nl,!.
+
+
+squareByRows(_,[],[]):-!.
+squareByRows(N,Vars,[Row|SquareByRows]):- append(Row,Vars1,Vars), length(Row,N), squareByRows(N,Vars1,SquareByRows),!.
+
+writeSquare(Square):- member(Row,Square), nl, member(N,Row), write4(N), fail.
+writeSquare(_).
+
+write4(N):- N<10,   write('   '), write(N),!.
+write4(N):- N<100,  write('  ' ), write(N),!.
+write4(N):-         write(' '  ), write(N),!.
+
+exprSuma([X], X).
+exprSuma([X|L], X + Expr) :- exprSuma(L, Expr).
+
+constraintsSum( _, []).
+constraintsSum( Sum, [CR | CRL]) :- exprSuma(CR, Suma), Suma #= Sum, constraintsSum(Sum, CRL).
+```
+
+En aquest problema hem de posar tots el nombres entre **1** i **N^2** en un quadrat de **N x N** complint les següents restriccions:
+
++ han de estar tots els nombres, i no hi pot haver repetits òbviament,
+
++ cada fila i columna ha de sumar la mateixa quantitat que és: **(N + N\*N\*N) / 2**.
+
+Per a fer-ho seguim la següent estructura:
+
+1. **Definim el domini de les variables**
+
+Ho fem en la línea: `Vars ins 1..NSquare` 
+
+2. **Definim les constriccions**
+
+La primera restricció es la de `all_distinct(Vars)` que imposa que cap variable pugui tenir el mateix valor, i elimina els valor dels dominis en cas que sigui possible. Després, ens ajudem dels predicats `squareByRows` i `transpose` per obtenim la matriu en llistes de llistes, les quals recorrem amb el predicat `contraintsSum` i imposem que l'expressió que suma tots els elements de cada fila i columna sigui igual (`#=`) a el valor que ens diu l'enunciat. `exprSuma` retorna una expressió que representa la suma dels valors d'una llista.
+
+3. **Fem el `label`**
+
+4. **Imprimim el resultat**
+
+---
