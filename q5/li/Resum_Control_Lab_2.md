@@ -414,14 +414,71 @@ En aquest problema hem de posar tots el nombres entre **1** i **N^2** en un quad
 
 Per a fer-ho seguim la següent estructura:
 
-1. **Definim el domini de les variables**
+1. **Definim el domini de les variables**: Ho fem en la línea: `Vars ins 1..NSquare` 
 
-Ho fem en la línea: `Vars ins 1..NSquare` 
-
-2. **Definim les constriccions**
-
-La primera restricció es la de `all_distinct(Vars)` que imposa que cap variable pugui tenir el mateix valor, i elimina els valor dels dominis en cas que sigui possible. Després, ens ajudem dels predicats `squareByRows` i `transpose` per obtenim la matriu en llistes de llistes, les quals recorrem amb el predicat `contraintsSum` i imposem que l'expressió que suma tots els elements de cada fila i columna sigui igual (`#=`) a el valor que ens diu l'enunciat. `exprSuma` retorna una expressió que representa la suma dels valors d'una llista.
+2. **Definim les constriccions**: La primera restricció es la de `all_distinct(Vars)` que imposa que cap variable pugui tenir el mateix valor, i elimina els valor dels dominis en cas que sigui possible. Després, ens ajudem dels predicats `squareByRows` i `transpose` per obtenim la matriu en llistes de llistes, les quals recorrem amb el predicat `contraintsSum` i imposem que l'expressió que suma tots els elements de cada fila i columna sigui igual (`#=`) a el valor que ens diu l'enunciat. `exprSuma` retorna una expressió que representa la suma dels valors d'una llista.
 
 3. **Fem el `label`**
 
 4. **Imprimim el resultat**
+
+---
+
+## Altres exercicis d'examens passats
+
+**politician.pl**
+
+```prolog
+%% Elections are coming!  A politician wants to do a road trip starting and finishing at city 1, driving in
+%% total at most MaxKm kilometers, and visiting at least N cities (city 1 and N-1 different other ones),
+%% without passing twice through the same city!  Complete the following predicate politician(N,MaxKm,Trip),
+
+
+% road(A-B,K) means there is a road from A to B (or vice versa) of length K km.
+road( 1-3, 3  ).
+road( 1-6, 25 ).
+road( 2-3, 41 ).
+road( 2-4, 31 ).
+road( 2-5, 7  ).
+road( 2-6, 7  ).
+road( 3-4, 32 ).
+road( 4-7, 14 ).
+road( 4-8, 29 ).
+road( 5-6, 36 ).
+road( 5-7, 45 ).
+road( 5-8, 22 ).
+road( 6-8, 11 ).
+road( 7-8, 44 ).
+
+road1(A-B,K):- road(A-B,K).
+road1(B-A,K):- road(A-B,K).
+
+
+politician(N,MaxKm,Trip):-     path(N, MaxKm, 1, [], Trip).
+
+% path( NumCitiesRemainingToBeVisited, RemainingKm, CurrentCity, CitiesAlreadyVisited, Path )
+
+path( 0, _, 1, _, [] ):- !.
+path( NumCitiesRemainingToBeVisited, RemainingKm, CurrentCity, CitiesAlreadyVisited, [CurrentCity1|Path] ):-
+    road1( CurrentCity-CurrentCity1, K ),
+    \+ member(CurrentCity1, CitiesAlreadyVisited),
+    NewN is NumCitiesRemainingToBeVisited - 1,
+    NewRmKm is RemainingKm - K,
+    NewRmKm >= 0,
+    path( NewN, NewRmKm, CurrentCity1, [CurrentCity1|CitiesAlreadyVisited], Path).
+
+%% Examples: this main writes the six trips below (in some order):
+
+main:- politician(5,100,Trip),   write([1|Trip]), nl, fail.
+main:- politician(6,120,Trip),   write([1|Trip]), nl, fail.
+main:- halt.
+
+%% [1,3,4,8,6,1]
+%% [1,3,4,2,6,1]
+%% [1,6,8,4,3,1]
+%% [1,6,2,4,3,1]
+%% [1,3,2,5,8,6,1]
+%% [1,6,8,5,2,3,1]
+```
+
+> :warning: **És molt important en *PROLOG* no oblidar mai que no estem programant imperativament, sino que estem definint predicats, i que ha de passar per a que siguin certs**
