@@ -1,3 +1,4 @@
 # Q5
 
-+ [li](li/index_li)
++ [**LI** (Logica Informàtica](li/index_li)
++ [**LP** (Llenguatges de programació)](lp/index_lp)

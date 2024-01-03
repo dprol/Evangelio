@@ -46,10 +46,31 @@ La **LPOI** és una lògica que deriva de la *LPO*, on existeix un predicat bina
 
 - **Unificació:**
   
-  - La unificació és un procés que busca una substitució comuna que faci coincidir dos termes o expressions.
+  - La unificació és un procés que busca una substitució comuna que faci coincidir dos termes o expressions. 
   - Útil en la resolució de problemes lògics i en la simplificació de expressions, trobant assignacions de variables que facin iguals dos termes.
 
-- **Factorització**
+- **Factorització** 
   
   - **Funció:** Simplificar demostracions o proves en Lògica de Primer Ordre.
   - **Objectiu:** Fusionar passos similars o idèntics en una única línia.
+
+## Exercicis resolts
+
+Aquest és un exercici que demostra la relació de satisfacció entre dues fórmules lògiques en Lògica de Primer Ordre (FOL). Comencem amb les fórmules donades:
+
+F=∀x p(a,x) ∧ ∃y ¬q(y)
+
+G = ∃z ∃u ( ¬q(u) ∧ p(z,a) )
+
+Volem demostrar si F implica lògicament G (simbolitzat com F⊨G). La demostració es realitza a través de la resolució de Clausal Form. La forma clausal de F i −G és la següent:
+
+1. p(a,x)
+2. ¬ q(b) (on b és una constant de *Skolem* [c_y​])
+3. q(w) ∨ ¬p(v,a)
+
+S'aplica la resolució de **Clausal Form**, on es busquen resolvents que permetin derivar una clàusula buida ( [ ] ), indicant que **F implica lògicament G**. Aquí hi ha els passos d'aquest procés:
+
+1. S'apliquen els literals 2 i 3 amb un *MGU* (l'Unificador Més General) de x=b. Això genera −p(v,a).
+2. S'apliquen els literals 1 i A amb un *MGU* de v=a,x=a. Això genera una clàusula buida, indicant que hem demostrat F⊨G.
+
+---
