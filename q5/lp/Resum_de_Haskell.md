@@ -2,6 +2,8 @@
 
 **Transaparències de laboratori**: https://www.cs.upc.edu/~jpetit/Haskell/#1
 
+---
+
 ## LAB 1: Recursivitat
 
 **Exercisis proposats:**
@@ -9,6 +11,8 @@
 + [P77907](https://replit.com/@MarcNafria/Problems-in-Haskell#LAB01/P77907.hs) :white_check_mark:
 + [P25054](https://replit.com/@MarcNafria/Problems-in-Haskell#LAB01/P25054.hs) :white_check_mark:
 + [P29040](https://replit.com/@MarcNafria/Problems-in-Haskell#LAB01/P29040.hs) :white_check_mark:
+
+---
 
 ## LAB 2: Funcions de ordre superior
 
@@ -19,16 +23,12 @@ map (*2) [1..4]
 -- [2, 4, 6, 8]
 ```
 
----
-
 `zipWith` combina dues llistes en una mitjançant una operació desitjada
 
 ```haskell\
 -- funcio que combina dues llistes amb la suma dels seus respectius elements
 a = zipWith (+) x y
 ```
-
----
 
 `foldl` i `foldr` defineixen operadors, ja sigui per la dreta o per l'esquerra, que s'apliquen entre cada element de les llistes, ja sigui de dreta a esquerra o viceversa, i que dona com a resultat un element.
 
@@ -38,16 +38,12 @@ flatten :: [[Int]] -> [Int]
 flatten = foldr (++) []
 ```
 
----
-
 `filter` retorna una llista amb els element que compleixen un predicat concret.
 
 ```haskell
 -- aquesta funció retorna una llista de tots els elements parells de a
 filter (\x -> mod x 2 == 0) a
 ```
-
----
 
 `iterate` genera una llista infinita de elements. `iterate f x = [x, f(x), f(f(x)), ...]`
 
@@ -57,12 +53,9 @@ powersOf2 :: [Int]
 powersOf2 = iterate (* 2) 1
 ```
 
----
-
 ### Exercisis proposats:
 
-<details>
-    <summary>P93632.hs</summary>
+#### P93632.hs
 
 ```haskell
 -- 1. Implement a function eql :: [Int] -> [Int] -> Bool that tells wether two lists of integers are equal.
@@ -92,7 +85,7 @@ scalarProduct :: [Float] -> [Float] -> Float
 scalarProduct a b = sum $ zipWith (*) a b
 ```
 
-</details>
+---
 
 ## LAB 3: Llistes per comprensio i avaluacio mandrosa
 
@@ -108,8 +101,7 @@ Les llistes per comprensio s'assemblen al llenguatge matematic, i es creen amb d
 
 ### Exercicis proposats
 
-<details>
-    <summary>P98957.hs</summary>
+#### P98957.hs
 
 ```haskell
 -- Generate the sequence of ones [1,1,1,1,1,1,1,1,…].
@@ -155,7 +147,7 @@ primes :: [Integer]
 primes = filter isPrime (drop 2 nats)
 ```
 
-</details>
+---
 
 ## LAB 5: Functor, Applicative i Monad
 
@@ -184,8 +176,7 @@ primes = filter isPrime (drop 2 nats)
 
 ### Exercicis Proposats:
 
-<details>
-  <summary>P87082.hs - Body mass index</summary>
+#### P87082.hs
 
 ```haskell
 -- implementacio llegint per linea
@@ -217,7 +208,7 @@ imcAvaluarResultat x
     | otherwise = "severely obese"
 ```
 
-</details>
+---
 
 ## LAB 6: Entrada i sortida
 
@@ -268,9 +259,7 @@ main = do
 
 ### Exercicis proposats:
 
-<details>
-
-    <summary>P87974.hs</summary>
+#### P87974.hs
 
 ```haskell
 main :: IO ()
@@ -287,9 +276,7 @@ saludaAdeu (x : _)
   | otherwise = "Bye!"
 ```
 
-</details>
-<details>
-    <summary>P87082.hs</summary>
+#### P87082.hs
 
 ```haskell
 -- implementacio llegint per linea
@@ -321,12 +308,11 @@ imcAvaluarResultat x
     | otherwise = "severely obese"
 ```
 
-</details>
+---
 
 ## Examens passats resolts
 
-<details> 
-    <summary>P48366</summary>
+### P48366
 
 **1. Evaluació d'expressions postfix (eval1 i eval1')**
 
@@ -453,10 +439,6 @@ arbreCalkin a b = Node ra l r
 ```
 
 En aquesta part, es crea una llista de racionals `racionals` utilitzant l'arbre `arbreCalkin`. Aquest arbre és una representació de la seqüència de racionals de Calkin, que es construeix mitjançant fraccions reduïdes. La funció `recXnivells` s'aplica a l'arbre per obtenir una llista dels racionals en ordre.
-
-Si tens alguna pregunta o vols més detalls sobre alguna part específica del codi, no dubtis a preguntar.
-
-</details>
 
 ### P91910.hs
 
