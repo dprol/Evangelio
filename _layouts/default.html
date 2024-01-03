@@ -13,14 +13,21 @@
         {% include head-custom.html %}
         <style>
             .dark-mode {
-                background-color: #333;
-                color: #fff;
+                background-color: #000402e8;
+                color: #FEFFFE;
+                transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Added color property to the transition */
+            }
+            .light-mode {
+                background-color: #FEFFFE;
+                color: #000402e8;
+                transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Added color property to the transition */
             }
         </style>
         <script>
             function toggleDarkMode() {
                 var body = document.body;
                 body.classList.toggle("dark-mode");
+                body.classList.toggle("light-mode"); // Added toggle for light mode
             }
         </script>
     </head>
@@ -30,7 +37,9 @@
         <header class="page-header" role="banner">
             <h1><a href="https://marc-nafria.github.io" style="color: rgb(255, 255, 255);">{{ site.title | default: site.github.repository_name }}</a></h1>
             <p>{{ site.description | default: site.github.project_tagline }}</p>
-            <button onclick="toggleDarkMode()">Toggle Dark Mode</button> <!-- Added button to toggle dark mode -->
+            <button onclick="toggleDarkMode()" style="font-size: 24px; background-color: transparent; border: none; cursor: pointer;">
+                <span id="modeIcon" style="display: inline-block;">🌞</span> <!-- Sun emoji -->
+            </button>
         </header>
 
         <main id="content" class="main-content" role="main">
