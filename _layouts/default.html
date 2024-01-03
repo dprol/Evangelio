@@ -31,10 +31,12 @@
             function toggleDarkMode() {
                 var body = document.body;
                 body.classList.toggle("dark-mode");
+                body.classList.toggle("light-mode"); // Added toggle for light mode
             }
             function toggleLightMode() {
                 var body = document.body;
                 body.classList.toggle("light-mode");
+                body.classList.toggle("dark-mode"); // Added toggle for dark mode
             }
         </script>
         
