@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
         {% include head-custom.html %}
     </head>
-    <body>
+    <body class="light-mode">
         <a id="skip-to-content" href="#content">Skip to the content.</a>
 
         <style>
@@ -31,12 +31,10 @@
             function toggleDarkMode() {
                 var body = document.body;
                 body.classList.toggle("dark-mode");
-                body.classList.toggle("light-mode"); // Added toggle for light mode
             }
             function toggleLightMode() {
                 var body = document.body;
                 body.classList.toggle("light-mode");
-                body.classList.toggle("dark-mode"); // Added toggle for dark mode
             }
         </script>
         
