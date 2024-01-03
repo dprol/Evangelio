@@ -8,11 +8,15 @@ Un **compilador** és un programa que tradueix programes escrits en un *LP* d'
 
 <img title="" src="./images/compiladors1.png" alt="image" width="545">
 
+---
+
 ## Intèrprets
 
 Un **intèrpret** és un programa que executa directament instruccions escrites en un *LP*.
 
-<img title="" src="./images/interprets1.png" alt="" width="593">
+<img title="" src="./images/interprets1.png" alt="" width="593" data-align="center">
+
+---
 
 ## Interpèts de *bycode*
 
@@ -22,7 +26,9 @@ Variant entre els compiladors i els intèrprets.
 - Augmenta la portabilitat i seguretat i facilita la interpretació.
 - Una **màquina virtual** interpreta programes en *bytecode*.
 
-<img title="" src="./images/interprets2.png" alt="" width="593">
+<img title="" src="./images/interprets2.png" alt="" width="593" data-align="center">
+
+---
 
 ## Compiladors *Just-in-time*
 
@@ -30,7 +36,9 @@ La compilació ***just-in-time*** compila fragments del programa durant la seva
 
 Un analitzador inspecciona el codi executat per veure quan val la pena compilar-lo.
 
-<img title="" src="./images/compiladors2.png" alt="image" width="545">
+<img title="" src="./images/compiladors2.png" alt="image" width="545" data-align="center">
+
+---
 
 ## Preprocessadors
 
@@ -40,6 +48,8 @@ Un **preprocessador** prepara el codi font d'un programa abans que el compilad
 - Inclusió de fitxers
 - Compilació condicional
 - Extensions de llenguatge
+
+---
 
 ## Sintaxi
 
@@ -56,6 +66,8 @@ expr → NUM
      | expr '/' expr
 NUM  → [0-9]+ ( '.' [0-9]+ )
 ```
+
+---
 
 ## Semàntica
 
@@ -77,6 +89,8 @@ Hi ha bàsicament dues maneres d'especificar formalment la semàntica:
 
 La majoria de definicions de semàntica per a *LPs* utilitzen una semàntica operacional descrita informalment en llenguatge natural.
 
+---
+
 ## Flux de compilació
 
 **Etapes:**
@@ -96,6 +110,8 @@ La majoria de definicions de semàntica per a *LPs* utilitzen una semàntica ope
 - ***Back end*** :arrow_right: tradueix i optimitza el codi de tres adreces a l'arquitectura desitjada
   - generador de codi específic
   - optimitzador de codi específic
+
+---
 
 ## Eines
 
