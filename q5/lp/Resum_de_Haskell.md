@@ -1,6 +1,6 @@
 # Resum de Haskell
 
-**Transaparències de laboratori**: https://www.cs.upc.edu/~jpetit/Haskell/#1
+**Transparències de laboratori**: https://www.cs.upc.edu/~jpetit/Haskell/#1
 
 ---
 
