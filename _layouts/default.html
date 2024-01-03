@@ -11,6 +11,10 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
         <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
         {% include head-custom.html %}
+    </head>
+    <body>
+        <a id="skip-to-content" href="#content">Skip to the content.</a>
+
         <style>
             .dark-mode {
                 background-color: #000402e8;
@@ -29,18 +33,25 @@
                 body.classList.toggle("dark-mode");
                 body.classList.toggle("light-mode"); // Added toggle for light mode
             }
+            function toggleLightMode() {
+                var body = document.body;
+                body.classList.toggle("light-mode");
+                body.classList.toggle("dark-mode"); // Added toggle for dark mode
+            }
         </script>
-    </head>
-    <body>
-        <a id="skip-to-content" href="#content">Skip to the content.</a>
-
+        
         <header class="page-header" role="banner">
             <h1><a href="https://marc-nafria.github.io" style="color: rgb(255, 255, 255);">{{ site.title | default: site.github.repository_name }}</a></h1>
             <p>{{ site.description | default: site.github.project_tagline }}</p>
-            <button onclick="toggleDarkMode()" style="font-size: 24px; background-color: transparent; border: none; cursor: pointer;">
-                <span id="modeIcon" style="display: inline-block;">🌞</span> <!-- Sun emoji -->
-            </button>
-        </header>
+            <div style="display: flex;">
+                <button onclick="toggleDarkMode()" style="font-size: 24px; background-color: transparent; border: none; cursor: pointer;">
+                    <span id="modeIcon" style="display: inline-block;">🌞</span> <!-- Sun emoji -->
+                </button>
+                <p>|</p>
+                <button onclick="toggleLightMode()" style="font-size: 24px; background-color: transparent; border: none; cursor: pointer;">
+                    <span id="modeIcon" style="display: inline-block;">🌛</span> <!-- Moon emoji -->
+                </button>
+            </div>
 
         <main id="content" class="main-content" role="main">
             {{ content }}
