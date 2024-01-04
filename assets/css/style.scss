@@ -2,135 +2,104 @@
 ---
 @import "{{ site.theme }}";
 
-$color-primary: #159957;
-$color-secondary: #155799;
-$color-dark: #12171a;
-$color-light: #FEFFFE;
+:root {
+    --color-primary: #159957;
+    --color-secondary: #155799;
+    --color-dark: #12171a;
+    --color-light: #FEFFFE;
+}
 
-.dark {
+/* Common styles for both themes */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
 
-    .header a {
-        color: $color-dark;
-        text-decoration: none;
-    }
+.header a {
+    text-decoration: none;
+}
 
-    .header p {
-        color: $color-dark;
-    }
+blockquote {
+    background: var(--color-primary + '1a');
+    border-color: var(--color-primary + '94');
+}
 
-    background-color: $color-dark;
-    color: $color-light;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1rem;
+}
 
+a {
+    text-decoration: underline;
+    color: var(--color-dark);
 
-    blockquote {
-        background: #1599571a;
-        border-color: #15995794;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-        color: $color-primary;
-        font-weight: bold;
-        margin-bottom: 1rem;
-    }
-
-    p {
-        color: $color-light;
-        margin-bottom: 1rem;
-    }
-
-    a {
-        color: $color-light;
-        text-decoration: underline;
-
-        &:hover {
-            color: #159957;
-        }
-    }
-
-    strong {
-        font-weight: bold;
-    }
-
-    em {
-        font-style: italic;
-    }
-
-    code {
-        background-color: $color-light;
-        color: $color-dark;
-        padding: 2px 4px;
-        font-family: monospace;
-    }
-
-    pre {
-        background-color: $color-light;
-        color: $color-dark;
-        padding: 10px;
-        font-family: monospace;
-        overflow: auto;
+    &:hover {
+        color: var(--color-primary);
     }
 }
 
+strong {
+    font-weight: bold;
+}
+
+em {
+    font-style: italic;
+}
+
+/* Dark theme */
+.dark {
+    --bg-color: var(--color-dark);
+    --text-color: var(--color-light);
+    --header-color: var(--color-dark);
+    --code-bg: var(--color-light);
+    --code-color: var(--color-dark);
+}
+
+.dark .header {
+    color: var(--header-color);
+}
+
+.dark a {
+    color: var(--text-color);
+
+    &:hover {
+        color: var(--color-primary);
+    }
+}
+
+.dark pre, .dark code {
+    background-color: var(--code-bg);
+    color: var(--code-color);
+}
+
+/* Light theme */
 .light {
-    .header a{
-        color: $color-light;
-        text-decoration: none;
-    }
+    --bg-color: var(--color-light);
+    --text-color: var(--color-dark);
+    --header-color: var(--color-light);
+    --code-bg: var(--color-dark);
+    --code-color: var(--color-light);
+}
 
-    .header p {
-        color: $color-light;
-    }
+.light .header {
+    color: var(--header-color);
+}
 
-    background-color: $color-light;
-    color: $color-dark;
+.light a {
+    color: var(--text-color);
+
+    &:hover {
+        color: var(--color-primary);
+    }
+}
+
+.light pre, .light code {
+    background-color: var(--code-bg);
+    color: var(--code-color);
+}
+
+/* Theme switcher */
+.light, .dark {
+    background-color: var(--bg-color);
+    color: var(--text-color);
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-
-    blockquote {
-        background: #1599571a;
-        border-color: #15995794;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-        color: $color-primary;
-        font-weight: bold;
-        margin-bottom: 1rem;
-    }
-
-    p {
-        color: $color-dark;
-        margin-bottom: 1rem;
-    }
-
-    a {
-        color: $color-dark;
-        text-decoration: underline;
-
-        &:hover {
-            color: #159957;
-        }
-    }
-
-    strong {
-        font-weight: bold;
-    }
-
-    em {
-        font-style: italic;
-    }
-
-    code {
-        background-color: $color-light;
-        color: $color-dark;
-        padding: 2px 4px;
-        font-family: monospace;
-    }
-
-    pre {
-        background-color: $color-light;
-        color: $color-dark;
-        padding: 10px;
-        font-family: monospace;
-        overflow: auto;
-    }
 }
