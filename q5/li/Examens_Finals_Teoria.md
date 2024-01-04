@@ -1,6 +1,28 @@
 # Examens finals resolts
 
-## 1.
+## Index:
+
++ [Exercici 1](id1)
+
++ [Exercici 2](#id2)
+
++ [Exercici 3](#id3)
+
++ [Exercici 4](#id4)
+
++ [Exercici 5](#id5)
+
++ [Exercici 6](#id6)
+
++ [Exercici 7](#id7)
+
++ [Exercici 8](#id8)
+
++ 
+
+---
+
+## 1. <a name="id1"></a>
 
 > Let f be a binary function symbol. Consider the two first-order interpretations **I1** and **I2**:
 > 
@@ -26,7 +48,7 @@ Ens demanen el mateix però ara domini de la primera interpretació son els **ra
 
 ---
 
-## 2.
+## 2. <a name="id2"></a>
 
 > Is the following formula satisfiable? Answer YES or NO and prove it.
 > `Ax -p(x,x) & AxAyAz( p(x,y)&p(y,z) -> p(x,z) ) & AxEy p(x,y) & ExAy -p(y,x)`
@@ -51,7 +73,7 @@ Tindrem que mai es complirà `p(x,x)` ja que un nombre no es mes gran que ell ma
 
 ---
 
-## 3.
+## 3. <a name="id3"></a>
 
 > Formalize and prove by resolution that sentence F is a logical consequence of the first five.
 > 
@@ -121,7 +143,7 @@ Com podem veure, a base de crear noves clàusules agrupant clàusules amb termes
 
 ---
 
-## 4.
+## 4. <a name="id4"></a>
 
 > John has written a C++ program P that takes as input an arbitrary first-order formula F. He says that, if F is a tautology, P always outputs "yes" after a finite amount of time, and if F is NOT a tautology, P outputs "no" or it does not terminate. Is this possible? If this is not possible, explain why. If it is possible, explain how and why P would work.
 
@@ -133,7 +155,7 @@ Sí, és possible. Aquest problema (**Taulogia en LPO**) és semi-decidible. Com
 
 ---
 
-## 5.
+## 5. <a name="id5"></a>
 
 > Is the formula `Ax Ey ( p(f(x),y) & -p(x,y) )` satisfiable? Prove it.
 
@@ -181,7 +203,7 @@ Bàsicament ens aprofitem de que en la fòrmula G tenim una `v` i per tant es po
 
 ---
 
-## 6.
+## 6. <a name="id6"></a>
 
 > Formalise the following sentences in first-order logic and prove by resolution that the last one (g) is a logical consequence of the others `a & b & c & d & e & f`.
 > 
@@ -242,4 +264,58 @@ Així, hem provat que `a & b & c & d & e & f` és insatifactible, i per tant, qu
 
 ---
 
+## 7. <a name="id7"></a>
 
+>  Write a satisfiable first-order formula F , using only a binary predicate p, such that all models I of F have an infinite domain DI .
+
+En aquest exercici ens demanen un fòrmula de **LPO** que sigui satisfactible, que tingui només un predicat binari, i que imposi que tot model de la fòrmula tingui un domini infinit. Per a fer-ho, donarem una formula bàsica que expressi la idea de ordre estricte:
+
+**`F: Ax -p(x, x) & AxAyAz p(x,y) & p(y,z) -> p(x,z) & AxEy p(x,y)`**, es a dir, **p** no pot ser rflexiu, és transitiu, i per tot element n'hi ha un altre que ha de complir p. Això imposa que el domini ha de ser infinit.
+
+> Write a satisfiable formula F of first-order logic with equality, using only a unary predicate p, such that F expresses that there is a single element satisfying p, that is, all models I of F have a single (unique) element e in its domain DI such that pI (e) = 1.
+
+Ara ens demanen una fòrmula de **LPOI** que utilitzant un sol predicat unitari **p** que expressi que només hi ha un element al domini (**x**) pel que **p(x) = 1**. Ho fem així:
+
+**`F: Ex (p(x) & Ay p(y) -> eq(x,y)) `**, es a dir, existeix un element al domini tal que `p(x)  = 1` i si qualsevol altre element del domini també ho compleix és per que son el mateix.
+
+> Let F be the first-order formula `∃x∀y∃z ( p(z, y) ∧ ¬p(x, y) )`. Give a model I of F with DI = {a, b, c}.
+
+Aquí demanen una interpretació del predicat binari **p**, donat ja el domini {a, b, c}. A continuació tenim una proposta del predicat **p** per la qual la interpretació és model de F.
+
+- p(a,a) = 0
+
+- p(a,b) = 0
+
+- p(a,c) = 0
+
+- p(b,a) = 1
+
+- p(b,b) = 1
+
+- p(b,c) = 1
+
+- p(c,c) = No importa
+
+- p(c,b) = No importa
+
+- p(c,c) = No importa
+
+La idea es definir el predicat **p** per a tots el casos possibles fins que garantim la fòrmula. En aquest cas, existeix l'element **a** que fa fals el predicat combinat amb qualsevol altre element, i, a la vegada, per tot element del domini (**x**) existeix un element, el **b**, tal que `p(b, x)` sigui cert sempre. 
+
+---
+
+## 8. <a name="id8"></a>
+
+> Formalize and prove by resolution that sentence F is a logical consequence of the first five:
+> 
+> - A: All people that have electric cars are ecologists.
+> 
+> - B: If someone has a grandmother, then that someone has a mother whose mother is that grandmother.
+> 
+> - C: A person is an ecologist if his/her mother is an ecologist[^1].
+> 
+> - D: Mary is John’s grandmother.
+> 
+> - E: Mary has an electric car.
+> 
+> - F: John is an ecologist.
