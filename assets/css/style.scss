@@ -6,7 +6,7 @@
     --color-primary: #159957;
     --color-secondary: #155799;
     --color-dark: #12171a;
-    --color-light: #FEFFFE;
+    --color-light: #fefffed0;
 }
 
 /* Common styles for both themes */
@@ -17,6 +17,7 @@ body {
 
 .header a {
     text-decoration: none;
+    color: var(--color-dark);
 }
 
 blockquote {
@@ -26,14 +27,16 @@ blockquote {
 
 h1, h2, h3, h4, h5, h6 {
     margin-bottom: 1rem;
+    color: var(--color-primary);
 }
 
 a {
     text-decoration: underline;
-    color: var(--color-dark);
+    color: var(--color-primary);
+    transition: color 0.3s ease-in-out;
 
     &:hover {
-        color: var(--color-primary);
+        color: var(--color-secondary);
     }
 }
 
@@ -50,8 +53,8 @@ em {
     --bg-color: var(--color-dark);
     --text-color: var(--color-light);
     --header-color: var(--color-dark);
-    --code-bg: var(--color-light);
-    --code-color: var(--color-dark);
+    --code-bg: var(--color-dark);
+    --code-color: var(--color-light);
 }
 
 .dark .header {
@@ -59,10 +62,10 @@ em {
 }
 
 .dark a {
-    color: var(--text-color);
+    color: var(--color-primary);
 
     &:hover {
-        color: var(--color-primary);
+        color: var(--color-secondary);
     }
 }
 
@@ -76,8 +79,8 @@ em {
     --bg-color: var(--color-light);
     --text-color: var(--color-dark);
     --header-color: var(--color-light);
-    --code-bg: var(--color-dark);
-    --code-color: var(--color-light);
+    --code-bg: var(--color-light);
+    --code-color: var(--color-dark);
 }
 
 .light .header {
@@ -85,10 +88,10 @@ em {
 }
 
 .light a {
-    color: var(--text-color);
+    color: var(--color-primary);
 
     &:hover {
-        color: var(--color-primary);
+        color: var(--color-secondary);
     }
 }
 
