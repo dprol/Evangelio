@@ -1,12 +1,28 @@
 ---
 ---
 
-@import "{{ site.theme }}";
+.dark {
+    background-color: #12171a;
+    color: #FEFFFE;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Added color property to the transition */
+}
 
-.main-content blockquote {
-    padding: 10px 10px 10px 10px;
-    margin-left: 0px;
-    border-left: 0.2rem solid #15995794;
-    border-bottom: 0.2rem solid #15995794 dashed;
-    background: #1599571a;
+.light {
+    background-color: #FEFFFE;
+    color: #12171a;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Added color property to the transition */
+}
+
+.markdown-body.dark {
+    .main-content blockquote {
+        background: #1599571a;
+        border-color: #15995794;
+    }
+}
+
+.markdown-body.light {
+    .main-content blockquote {
+        background: #1599571a;
+        border-color: #15995794;
+    }
 }

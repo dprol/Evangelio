@@ -14,34 +14,15 @@
     </head>
     <body class="light-mode">
         <a id="skip-to-content" href="#content">Skip to the content.</a>
-
-        <style>
-            .dark-mode {
-                background-color: #12171a;
-                color: #FEFFFE;
-                transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Added color property to the transition */
-            }
-            .light-mode {
-                background-color: #FEFFFE;
-                color: #000402e8;
-                transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Added color property to the transition */
-            }
-            .dark-mode .page-header h1 p {
-                color: #FEFFFE; /* Set header color in dark mode */
-            }
-            .light-mode .page-header h1 p {
-                color: #12171a; /* Set header color in light mode */
-            }
-        </style>
         <script>
             function toggleDarkMode() {
                 var body = document.body;
-                body.classList.toggle("dark-mode");
-                body.classList.toggle("light-mode"); // Added toggle for light mode
+                body.classList.toggle("dark");
+                body.classList.toggle("light"); // Added toggle for light mode
             }
         </script>
 
-        <header class="page-header light-mode" role="banner">
+        <header class="page-header" role="banner">
             <h1><a href="https://marc-nafria.github.io" style="color: rgb(255, 255, 255);">{{ site.title | default: site.github.repository_name }}</a></h1>
             <p>{{ site.description | default: site.github.project_tagline }}</p>
             <button onclick="toggleDarkMode()" style="font-size: 24px; background-color: transparent; border: none; cursor: pointer;">
