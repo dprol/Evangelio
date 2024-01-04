@@ -7,6 +7,10 @@
     color: #FEFFFE;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 
+    .header .h1 a p {
+        color: #12171a;
+    }
+
     blockquote {
         background: #1599571a;
         border-color: #15995794;
@@ -60,6 +64,10 @@
     background-color: #FEFFFE;
     color: #12171a;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
+    .header .h1 a p {
+        color: #FEFFFE;
+    }
 
     blockquote {
         background: #1599571a;
