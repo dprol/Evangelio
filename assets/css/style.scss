@@ -49,7 +49,7 @@ em {
     --code-bg: #a5a5a5; /* Darker background for code */
 }
 
-.dark .header {
+.dark .header h1, .dark .header p{
     color: var(--header-color);
 }
 
@@ -73,7 +73,7 @@ em {
     --code-bg: #969696; /* Lighter background for code */
 }
 
-.light .header {
+.light .header h1, .light .header p{
     color: var(--header-color);
 }
 
