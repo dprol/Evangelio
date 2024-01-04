@@ -1,6 +1,5 @@
 # Q3
 
-- [bd](bd/index_bd)
-- [ci](ci/index_ci)
-- [pe](pe/index_pe)
-- [so](so/index_so)
+- [Bases de Dades (BD)](bd/index_bd)
+- [Interfícies de Computadors (CI)](ci/index_ci)
+- [Sistemes Operatius (SO)](so/index_so)

@@ -1,4 +1,4 @@
 # Q4
 
-+ [idi](idi/index_idi)
-+ [ac](ac/index_ac)
++ [Interacció i disseny d'interfícies (IDI)](idi/index_idi)
++ [Arquitectura de Computadors (AC)](ac/index_ac)
