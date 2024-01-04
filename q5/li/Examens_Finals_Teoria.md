@@ -123,4 +123,131 @@ I ara resoldrem fins a obtenir la clàusula buida:
 
 Com podem veure, a base de crear noves clàusules agrupant clàusules amb termes que signifiquen el mateix, hem arribat a la clàusula que condiciona que es compleixin dos coses oposades. Per tant, sabem que **A & B & C & D & E & -F** no té cap model, i això demostra el que voliem des de un principi: **A & B & C & D & E => F**, F es conseqüència lògica de les anteriors.
 
+---
+
+## 4.
+
+> John has written a C++ program P that takes as input an arbitrary first-order formula F. He says that, if F is a tautology, P always outputs "yes" after a finite amount of time, and if F is NOT a tautology, P outputs "no" or it does not terminate. Is this possible? If this is not possible, explain why. If it is possible, explain how and why P would work.
+
+Sí, és possible. Aquest problema (**Taulogia en LPO**) és semi-decidible. Com funciona?
+
++ Si F és una tautologia, el procediment semi-decisiu del programa pot calcular S (forma clausal de F) i després començar a calcular els conjunts S0, S1, S2, ... la unió dels quals és ResFact(S). Si F és una tautologia, el programa acabarà sempre (amb la sortida "sí"), perquè llavors [] pertany a S.
+
++ Si F no és una tautologia, [] mai apareixerà, i el programa només acabarà (amb "no") si ResFact(S) és **finit**.
+
+---
+
+## 5.
+
+**a)**
+
+> Is the formula `Ax Ey ( p(f(x),y) & -p(x,y) )` satisfiable? Prove it.
+
+Per veure si existeix alguna interpretació que satisfagui la fòrmula veurem primer que ens diu aquesta. Veiem que donat qualsevol element del domini (**x**) n'ha d'existir un altre (**y**) per al qual es compleix un predicat **p** amb el resultat de `f(x)` pero no amb **x**. Podem trobar la interpretació següent:
+
++ **D_I** = Naturals
+
++ **f_I(x)** = x + 1
+
++ **p_I(x, y)** = x == y, predicat de igualtat
+
+Així estariem dient que per tot natural hi ha un nombre que es el següent (creixentment) i que no es ell mateix.
+
+També podem fer un domini inventat suficientment gran per complir la formula:
+
++ **D_I** = {a, b}
+
++ **f_I(a)** = b
+
++ **f_I(b)** = a
+
++ **p_I(a, a)** = 1
+
++ **p_I(a, b)** = 0
+
++ **p_I(b, a)** = 0
+
++ **p_I(b, b)** = 1
+
+**b)**
+
+>  Are the following two formulas F and G logically equivalent? Prove it a simply as you can.
+> 
+> + F: `Ax Ey ( p(f(x),y) & -p(x,y) )`
+> 
+> + G: `Ey Ax ( p(f(x),y) v -p(x,y) )`
+
+Demostrarem que no ho son amb un contra exemple. Veiem una interpretació que es model de **G** però no ho és de **F**.
+
++ **D_I** = {a}
+
++ **p_I(a, a)** = 1
+
++ **f(a)** = a
+
+Bàsicament ens aprofitem de que en la fòrmula G tenim una `v` i per tant es pot no complir `Ax Ey p(x, y)` sempre i quan mantinguem `Ax Ey p(f(x), y`.
+
+---
+
+## 6.
+
+> Formalise the following sentences in first-order logic and prove by resolution that the last one (g) is a logical consequence of the others `a & b & c & d & e & f`.
+> 
+> + a: If a king is magic then he steals from all his citizens.
+> 
+> + b: A king is magic if he is the son of a magic king.
+> 
+> + c: Johnny is a magic king.
+> 
+> + d: Phil is the son of Johnny.
+> 
+> + e: Mary is a citizen of Phil.
+> - f: Phil does not steal from Mary.
+> 
+> - g: This year FC Barcelona will win the League.
+
+En aquest exercici hem de veure que la sentència **g** no té res a veure amb les altres, i per tant, per mantenir la conseqüència lògica, hem de provar que `a & b & c & d & e & f` és insatisfactible.
+
+Comencem formalitzant en **LPO** les anteriors afirmacions:
+
++ **a:** `Ax Ay -magic(x) v -citizen(y, x) v steals(x, y)`
+
++ **b:** `Ax Ay -magic(x) v -son(y, x) v magic(y)`
+
++ **c:** `magic(Johnny)`
+
++ **d:** `son(Phil, Johnny)`
+
++ **e:** `citizen(Mary, Phil)`
+
++ **f:** `-steals(Phil, Mary)`
+
+Ara les passarem totes a la seva forma clausal, fent us de la **Skolemització** quan sigui necessari:
+
++ **a:** `-magic(x) v -citizen(y, x) v steals(x, y)`
+
++ **b:** `-magic(x) v -son(y, x) v magic(y)`
+
++ **c:** `magic(Johnny)`
+
++ **d:** `son(Phil, Johnny)`
+
++ **e:** `citizen(Mary, Phil)`
+
++ **f:** `-steals(Phil, Mary)`
+
+I ara farem les deduccions que facin falta per a que aparegui la clàusula buida:
+
+| N   | Clàusula | MGU           | Nova Clàusula                         |
+| --- | -------- | ------------- | ------------------------------------- |
+| 1   | c, b     | `{x = Jonny}` | `-son(y, Johnny) v magic(y)`          |
+| 2   | d, 1     | `{y = Phil}`  | `magic(Phil)`                         |
+| 3   | a, 2     | `{x=Phil}`    | `-citizen(y, Phil) v steals(Phil, y)` |
+| 4   | e, 3     | `y = Mary`    | `steals(Phil, Mary)`                  |
+| 5   | f, 4     | `{}`          | `[]` , clàusula buida                 |
+
+Així, hem provat que `a & b & c & d & e & f` és insatifactible, i per tant, qualsevol fòrmula es conseqüència lògica seva, inclosa la **f**.
+
+---a & b & c & d & e & f
+
 
