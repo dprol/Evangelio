@@ -57,4 +57,70 @@ Tindrem que mai es complirà `p(x,x)` ja que un nombre no es mes gran que ell ma
 
 ## 3.
 
+> Formalize and prove by resolution that sentence F is a logical consequence of the first five.
+> 
+> + A. If someone uses a gun he can kill anyone else.
+> 
+> + B. Pete is John's son.
+> 
+> + C. If someone has something, then he/she uses it.
+> 
+> + D. John has a gun.
+> 
+> + E. If a father has something, then his sons also have it.
+> 
+> + F. Pete can kill John.
+> 
+>  Use constant symbols Gun, John and Pete, and predicate symbols:
+> 
+> + has(x,y) meaning "x has y"
+> 
+> + uses(x,y) meaning "x uses y"
+> 
+> + son(x,y) meaning "x is the son of y"
+> 
+> + canKill(x,y) meaning "x can kill y".
+
+En aquest exercici hem de demostrar que les sentencia F es conseqüència lògica de A, B, C, D, E. Això es el mateix que demostrar que la formula resultant de totes elles mes la negació de F es insatisfactible: `A & B & C & D & E & -F |= []`.
+
+Per fer-ho comencem formalitzant totes les sentencies:
+
++ **A:** `AxAy uses(x, Gun) -> canKill(x, y)`
+
++ **B:** `son(Pete, John)`
+
++ **C:** `AxAy has(x, y) -> uses(x, y)`
+
++ **D:** `has(John, Gun)`
+
++ **E:** `AxAyAz has(x, y) & son (z, x) -> has(z, y)`
+
++ **-F:** `-canKill(Pete, John)`
+
+Ara, passarem aquesta formalització a un conjunt de clausules (utilitzant Skolemització si és necessari)
+
++ **A:** `-uses(x, Gun) v canKill(x, y)`
+
++ **B:** `son(Pete, John)`
+
++ **C:** `-has(x, y) v -uses(x, y)`
+
++ **D:** `has(John, Gun)`
+
++ **E:** `-has(x, y) v - son(z, y) v has(z, y)`
+
++ **-F:** `-canKill(Pete, John)`
+
+I ara resoldrem fins a obtenir la clàusula buida:
+
+| N   | Clàusules | MGU                | Nova Clàusula                                    |
+| --- | --------- | ------------------ | ------------------------------------------------ |
+| 1   | B, E      | `{Pete=z, John=x}` | `-has(John, y) v has(Pete, y)`                   |
+| 2   | D, 1      | `{y = Gun}`        | `has(Pete, Gun)`                                 |
+| 3   | C, 2      | `{x=Pete, y=Gun}`  | `uses(Pete, Gun)`                                |
+| 4   | A, 3      | `{x = Pete}`       | `canKill(Pete, y)`                               |
+| 5   | F, 4      | `{y=John}`         | `canKill(Pete, John) & canKill(Pete, John) = []` |
+
+Com podem veure, a base de crear noves clàusules agrupant clàusules amb termes que signifiquen el mateix, hem arribat a la clàusula que condiciona que es compleixin dos coses oposades. Per tant, sabem que **A & B & C & D & E & -F** no té cap model, i això demostra el que voliem des de un principi: **A & B & C & D & E => F**, F es conseqüència lògica de les anteriors.
+
 
