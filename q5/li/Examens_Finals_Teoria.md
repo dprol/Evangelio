@@ -248,6 +248,8 @@ I ara farem les deduccions que facin falta per a que aparegui la clàusula buida
 
 Així, hem provat que `a & b & c & d & e & f` és insatifactible, i per tant, qualsevol fòrmula es conseqüència lògica seva, inclosa la **f**.
 
----a & b & c & d & e & f
+---
+
+
 
 
