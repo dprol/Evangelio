@@ -2,6 +2,13 @@
 ---
 @import "{{ site.theme }}";
 
+:root {
+    --color-primary: #159957;
+    --color-secondary: #155799;
+    --color-dark: #12171a;
+    --color-light: #fefffed0;
+}
+
 /* Common styles for both themes */
 body {
     margin: 0;
@@ -46,7 +53,7 @@ em {
     --bg-color: var(--color-dark);
     --text-color: var(--color-light);
     --header-color: var(--color-dark);
-    --code-bg: #a5a5a5; /* Darker background for code */
+    --code-bg: #8d8d8d; /* Darker background for code */
 }
 
 .dark .header h1, .dark .header p{
@@ -63,6 +70,7 @@ em {
 
 .dark code {
     background-color: var(--bg-color);
+    color: var(--color-light);
 }
 
 /* Light theme */
@@ -87,6 +95,7 @@ em {
 
 .light code {
     background-color: var(--code-bg);
+    color: var(--color-dark);
 }
 
 /* Theme switcher */
