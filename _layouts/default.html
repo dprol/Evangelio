@@ -14,6 +14,19 @@
     </head>
     <body class="light-mode">
         <a id="skip-to-content" href="#content">Skip to the content.</a>
+
+        <style>
+            .dark-mode {
+                background-color: #12171a;
+                color: #FEFFFE;
+                transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Added color property to the transition */
+            }
+            .light-mode {
+                background-color: #FEFFFE;
+                color: #000402e8;
+                transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Added color property to the transition */
+            }
+        </style>
         <script>
             function toggleDarkMode() {
                 var body = document.body;
