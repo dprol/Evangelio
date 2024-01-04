@@ -120,3 +120,9 @@ Per construir un compilador no es parteix de zero. Hi ha moltes eines que donen 
 - **ANTLR**: donades les especificacions lèxiques i sintàctiques del *LP*, construeix automàticament **l’escàner**, **l’analitzador** i **l'AST**.
 
 - **LLVM**: ofereix una col·lecció d'eines modulars reutilitzables pels backends dels compiladors.
+
+---
+
+## Joan
+
+El **joan** es un *nen* molt divertit

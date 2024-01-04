@@ -2,13 +2,6 @@
 ---
 @import "{{ site.theme }}";
 
-:root {
-    --color-primary: #159957;
-    --color-secondary: #155799;
-    --color-dark: #12171a;
-    --color-light: #fefffed0;
-}
-
 /* Common styles for both themes */
 body {
     margin: 0;
@@ -53,8 +46,7 @@ em {
     --bg-color: var(--color-dark);
     --text-color: var(--color-light);
     --header-color: var(--color-dark);
-    --code-bg: var(--color-dark);
-    --code-color: var(--color-light);
+    --code-bg: #a5a5a5; /* Darker background for code */
 }
 
 .dark .header {
@@ -69,14 +61,8 @@ em {
     }
 }
 
-.dark pre {
-    background-color: var(--code-bg);
-    color: var(--code-color);
-}
-
 .dark code {
-    background-color: var(--code-color);
-    color: var(--code-bg);
+    background-color: var(--bg-color);
 }
 
 /* Light theme */
@@ -84,8 +70,7 @@ em {
     --bg-color: var(--color-light);
     --text-color: var(--color-dark);
     --header-color: var(--color-light);
-    --code-bg: var(--color-light);
-    --code-color: var(--color-dark);
+    --code-bg: #969696; /* Lighter background for code */
 }
 
 .light .header {
@@ -100,14 +85,8 @@ em {
     }
 }
 
-.light pre {
-    background-color: var(--code-bg);
-    color: var(--code-color);
-}
-
 .light code {
-    background-color: var(--code-color);
-    color: var(--code-bg);
+    background-color: var(--code-bg);
 }
 
 /* Theme switcher */
