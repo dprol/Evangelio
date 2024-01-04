@@ -3,13 +3,15 @@
 @import "{{ site.theme }}";
 
 .dark {
+
+    .header {
+        color: #12171a;
+    }
+    
     background-color: #12171a;
     color: #FEFFFE;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 
-    .header .h1 a p {
-        color: #12171a;
-    }
 
     blockquote {
         background: #1599571a;
@@ -61,13 +63,13 @@
 }
 
 .light {
+    .header {
+        color: #FEFFFE;
+    }
+
     background-color: #FEFFFE;
     color: #12171a;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-
-    .header .h1 a p {
-        color: #FEFFFE;
-    }
 
     blockquote {
         background: #1599571a;
