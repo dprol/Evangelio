@@ -2,8 +2,6 @@
 
 ## 1.
 
-**a)**
-
 > Let f be a binary function symbol. Consider the two first-order interpretations **I1** and **I2**:
 > 
 > + **D_I1** = N (the natural numbers), **f_I1(n,m)** = n\*m
@@ -15,8 +13,6 @@
 En aquest exercici demanen donar una formula **F**, en **LPOI**, per la qual sigui certa en una interpretació i falsa en l'altre. El domini de la primera son els **naturals**, i en la segona els **enters**. En ambdues, **f** representa la **multiplicació** de dos nombres. Ens donen un **pista**: que expressem la propietat de que en el **enters** (on tenim **negatius**), per tots aquells diferents de 0, sempre hi ha nombres que tenen el mateix quadrat, es a dir, l'arrel positiva i la negativa (-1\*-1 = 1\*1). Ho fem expressant que per tot element que quan multipliquem per qualsevol altre dona un nombre diferent de si mateix (es a dir tots el nombres excepte el zero), això implica que n'ha d'existir un altre que té el mateix quadrat. Això s'escriu de la següent manera:
 
 **`F:    Ax ( Ez f(x,z)!=x --> Ey ( x!=y & f(x,x)=f(y,y) ) )`**
-
-**b)**
 
 > Answer the same question, but now:
 > 
@@ -139,8 +135,6 @@ Sí, és possible. Aquest problema (**Taulogia en LPO**) és semi-decidible. Com
 
 ## 5.
 
-**a)**
-
 > Is the formula `Ax Ey ( p(f(x),y) & -p(x,y) )` satisfiable? Prove it.
 
 Per veure si existeix alguna interpretació que satisfagui la fòrmula veurem primer que ens diu aquesta. Veiem que donat qualsevol element del domini (**x**) n'ha d'existir un altre (**y**) per al qual es compleix un predicat **p** amb el resultat de `f(x)` pero no amb **x**. Podem trobar la interpretació següent:
@@ -168,8 +162,6 @@ També podem fer un domini inventat suficientment gran per complir la formula:
 + **p_I(b, a)** = 0
 
 + **p_I(b, b)** = 1
-
-**b)**
 
 >  Are the following two formulas F and G logically equivalent? Prove it a simply as you can.
 > 
@@ -249,7 +241,5 @@ I ara farem les deduccions que facin falta per a que aparegui la clàusula buida
 Així, hem provat que `a & b & c & d & e & f` és insatifactible, i per tant, qualsevol fòrmula es conseqüència lògica seva, inclosa la **f**.
 
 ---
-
-
 
 
