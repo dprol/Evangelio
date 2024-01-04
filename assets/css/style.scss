@@ -2,14 +2,24 @@
 ---
 @import "{{ site.theme }}";
 
+$color-primary: #159957;
+$color-secondary: #155799;
+$color-dark: #12171a;
+$color-light: #FEFFFE;
+
 .dark {
 
-    .header {
-        color: #12171a;
+    .header a {
+        color: $color-dark;
+        text-decoration: none;
     }
-    
-    background-color: #12171a;
-    color: #FEFFFE;
+
+    .header p {
+        color: $color-dark;
+    }
+
+    background-color: $color-dark;
+    color: $color-light;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 
 
@@ -19,18 +29,18 @@
     }
 
     h1, h2, h3, h4, h5, h6 {
-        color: #FEFFFE;
+        color: $color-primary;
         font-weight: bold;
         margin-bottom: 1rem;
     }
 
     p {
-        color: #FEFFFE;
+        color: $color-light;
         margin-bottom: 1rem;
     }
 
     a {
-        color: #FEFFFE;
+        color: $color-light;
         text-decoration: underline;
 
         &:hover {
@@ -47,15 +57,15 @@
     }
 
     code {
-        background-color: #FEFFFE;
-        color: #12171a;
+        background-color: $color-light;
+        color: $color-dark;
         padding: 2px 4px;
         font-family: monospace;
     }
 
     pre {
-        background-color: #FEFFFE;
-        color: #12171a;
+        background-color: $color-light;
+        color: $color-dark;
         padding: 10px;
         font-family: monospace;
         overflow: auto;
@@ -63,12 +73,17 @@
 }
 
 .light {
-    .header {
-        color: #FEFFFE;
+    .header a{
+        color: $color-light;
+        text-decoration: none;
     }
 
-    background-color: #FEFFFE;
-    color: #12171a;
+    .header p {
+        color: $color-light;
+    }
+
+    background-color: $color-light;
+    color: $color-dark;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 
     blockquote {
@@ -77,18 +92,18 @@
     }
 
     h1, h2, h3, h4, h5, h6 {
-        color: #12171a;
+        color: $color-primary;
         font-weight: bold;
         margin-bottom: 1rem;
     }
 
     p {
-        color: #12171a;
+        color: $color-dark;
         margin-bottom: 1rem;
     }
 
     a {
-        color: #12171a;
+        color: $color-dark;
         text-decoration: underline;
 
         &:hover {
@@ -105,15 +120,15 @@
     }
 
     code {
-        background-color: #FEFFFE;
-        color: #12171a;
+        background-color: $color-light;
+        color: $color-dark;
         padding: 2px 4px;
         font-family: monospace;
     }
 
     pre {
-        background-color: #FEFFFE;
-        color: #12171a;
+        background-color: $color-light;
+        color: $color-dark;
         padding: 10px;
         font-family: monospace;
         overflow: auto;
