@@ -1,6 +1,4 @@
-# Examens finals resolts
-
-# 
+# Exercicis d'examens finals
 
 + [Exercici 1](#id1)
 
