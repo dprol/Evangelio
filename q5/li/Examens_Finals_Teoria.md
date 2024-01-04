@@ -1,8 +1,8 @@
 # Examens finals resolts
 
-## Index:
+# 
 
-+ [Exercici 1](id1)
++ [Exercici 1](#id1)
 
 + [Exercici 2](#id2)
 
@@ -17,8 +17,6 @@
 + [Exercici 7](#id7)
 
 + [Exercici 8](#id8)
-
-+ 
 
 ---
 
