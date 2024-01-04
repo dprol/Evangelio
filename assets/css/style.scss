@@ -7,6 +7,7 @@
     --color-secondary: #155799;
     --color-dark: #12171a;
     --color-light: #fefffed0;
+    --code-bg: #969696; /* Lighter background for code */
 }
 
 /* Common styles for both themes */
@@ -15,9 +16,11 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.header a {
-    text-decoration: none;
+.header .dark {
     color: var(--color-dark);
+}
+.header ligth {
+    color: var(--color-light);
 }
 
 blockquote {
@@ -53,7 +56,6 @@ em {
     --bg-color: var(--color-dark);
     --text-color: var(--color-light);
     --header-color: var(--color-dark);
-    --code-bg: #8d8d8d; /* Darker background for code */
 }
 
 .dark .header h1, .dark .header p{
@@ -78,7 +80,6 @@ em {
     --bg-color: var(--color-light);
     --text-color: var(--color-dark);
     --header-color: var(--color-light);
-    --code-bg: #969696; /* Lighter background for code */
 }
 
 .light .header h1, .light .header p{
