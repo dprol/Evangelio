@@ -12,28 +12,12 @@
         <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
         {% include head-custom.html %}
     </head>
-    <body class="light">
+    <body>
         <a id="skip-to-content" href="#content">Skip to the content.</a>
-        <script>
-            function toggleDarkMode() {
-                var body = document.body;
-                body.classList.toggle("dark");
-                body.classList.toggle("light"); 
-                var modeIcon = document.getElementById("modeIcon");
-                    if (modeIcon.innerHTML === "🌞") {
-                        modeIcon.innerHTML = "🌙"; // Moon emoji
-                    } else {
-                        modeIcon.innerHTML = "🌞"; // Sun emoji
-                    }
-            }
-        </script>
 
         <header class="page-header" role="banner">
             <h1>{{ site.title | default: site.github.repository_name }}</h1>
             <p>{{ site.description | default: site.github.project_tagline }}</p>
-            <button onclick="toggleDarkMode()" style="font-size: 24px; background-color: transparent; border: none; cursor: pointer; position: fixed; top: 10px; right: 10px;">
-                <span id="modeIcon" style="display: inline-block;">🌞</span> <!-- Sun emoji -->
-            </button>
         </header>
         <main id="content" class="main-content" role="main">
             {{ content }}
