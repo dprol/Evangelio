@@ -256,7 +256,7 @@ I ara farem les deduccions que facin falta per a que aparegui la clàusula buida
 | 4   | e, 3     | `y = Mary`    | `steals(Phil, Mary)`                  |
 | 5   | f, 4     | `{}`          | `[]` , clàusula buida                 |
 
-Així, hem provat que `a & b & c & d & e & f` és insatifactible, i per tant, qualsevol fòrmula es conseqüència lògica seva, inclosa la **f**.
+Així, hem provat que `a & b & c & d & e & f` és insatisfactible, i per tant, qualsevol fòrmula es conseqüència lògica seva, inclosa la **f**.
 
 ---
 
@@ -315,3 +315,62 @@ La idea es definir el predicat **p** per a tots el casos possibles fins que gara
 > - E: Mary has an electric car.
 > 
 > - F: John is an ecologist.
+
+Per provar que **F** es conseqüència lògica de les anteriors veurem que tenir `A & B & C & D & E & -F` es insatisfactible. Comencem formalitzant les afirmacions anteriors amb els següents predicats:
+
++ `grandmother(x,y)` La avia de `x` es `y`
+
++ `mother(x,y)`La mare de`x`es`y`
+
++ **A:** `Ax hasElectric(x) -> ecologist(x)`
+
++ **B:** `Ax Ay grandmother(x,y) -> Ez mother(x,z) & mother(z,y)`
+
++ **C:** `Ax Ay ecologist(y) & mother(x,y) -> ecologist(x)`
+
++ **D:** `grandmother(John, Mary)`
+
++ **E:** `hasElectric(Mary)`
+
++ **-F:** `-ecologist(John)`
+
+Ara passarem les formalitzacions a la seva forma clausal, utilitzant skolemització quan faci falta.
+
++ **A:** `-hasElectric(x) v ecologist(x)`
+
+Per resoldre la **B** fem el següent procés:
+
++ `Ax Ay -grandmother(x,y) v (Ez mother(x,z) & mother(z,y))`
+
++ `Ax Ay -grandmother(x,y) v (mother(x, f(x,y)) & mother(f(x,y),y)` [utilitzem **skolemització** i definim la funció `f(x,y)` i ho substituïm per la `z`, eliminant així el quantificador `Ez`]
+
++ `Ax Ay -granmother(x,y) v mother(x, f(x,y)) & -grandmother(x,y) v mother(f(x,y),y)` [aplicant distributivitat]
+
+Amb l'operador `&` se'ns generen dues clausules:
+
++ **B1:** `-grandmother(x,y) v mother(x, f(x,y))`
+
++ **B2:** `-grandmother(x,y) v mother(f(x,y),y)`
+
++ **C:** `-ecologist(y) v -mother(x,y) v ecologist(x)`
+
++ **D:** `grandmother(John, Mary)`
+
++ **E:** `hasElectric(Mary)`
+
++ **-F:** `-ecologist(John)`
+
+I ara ja podem començar a resoldre les clausules per aconseguir la clàusula buida:
+
+| N   | Clàusules | MGU                           | Nova Clàusula                                 |
+| --- | --------- | ----------------------------- | --------------------------------------------- |
+| 1   | A, E      | `{Mary=x}`                    | `ecologist(Mary)`                             |
+| 2   | B1, D     | `{x = John, y=Mary}`          | `mother(John, f(John, Mary)`                  |
+| 3   | B2, D     | `{x = John, y=Mary}`          | `mother(f(John, Mary), Mary)`                 |
+| 4   | 2, C      | `{x = John, y=f(John, Mary)}` | `-ecologist(f(John, Mary)) v ecologist(John)` |
+| 5   | -F, 4     | `{}`                          | `-ecologist(f(John, Mary)`                    |
+| 6   | 3, C      | `{x=f(john, Mary), y - Mary}` | `-ecologist(Mary) v ecologist(f(John, Mary)`  |
+| 7   | 5, 6      | `{}`                          | `-ecologist(Mary)`                            |
+| 8   | 1, 7      | `{}`                          | `[]`                                          |
+
+---

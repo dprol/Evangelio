@@ -60,4 +60,4 @@ La **LPOI** és una lògica que deriva de la *LPO*, on existeix un predicat bina
 - **Factorització** 
   
   - **Funció:** Simplificar demostracions o proves en Lògica de Primer Ordre.
-  - **Objectiu:** Fusionar passos similars o idèntics en una única línia.
+  - **Objectiu:** Fusionar passos similars o idèntics en una única línia.other(y,
