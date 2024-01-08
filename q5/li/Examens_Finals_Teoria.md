@@ -16,6 +16,8 @@
 
 + [Exercici 8](#id8)
 
++ [Exercici 9](#id9)
+
 ---
 
 ## 1. <a name="id1"></a>
@@ -374,3 +376,9 @@ I ara ja podem començar a resoldre les clausules per aconseguir la clàusula bu
 | 8   | 1, 7      | `{}`                          | `[]`                                          |
 
 ---
+
+## 9. <a name="id9"></a>
+
+$$
+\frac{2^3*\log_{10}{20}}{\sqrt{4}}
+$$
