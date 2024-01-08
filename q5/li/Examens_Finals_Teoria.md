@@ -18,9 +18,11 @@
 
 + [Exercici 9](#id9)
 
++ [Exercici 10](#id10)
+
 ---
 
-## 1. <a name="id1"></a>
+## Exercici 1. <a name="id1"></a>
 
 > Let f be a binary function symbol. Consider the two first-order interpretations **I1** and **I2**:
 > 
@@ -46,7 +48,7 @@ Ens demanen el mateix però ara domini de la primera interpretació son els **ra
 
 ---
 
-## 2. <a name="id2"></a>
+## Exercici 2. <a name="id2"></a>
 
 > Is the following formula satisfiable? Answer YES or NO and prove it.
 > `Ax -p(x,x) & AxAyAz( p(x,y)&p(y,z) -> p(x,z) ) & AxEy p(x,y) & ExAy -p(y,x)`
@@ -71,7 +73,7 @@ Tindrem que mai es complirà `p(x,x)` ja que un nombre no es mes gran que ell ma
 
 ---
 
-## 3. <a name="id3"></a>
+## Exercici 3. <a name="id3"></a>
 
 > Formalize and prove by resolution that sentence F is a logical consequence of the first five.
 > 
@@ -141,7 +143,7 @@ Com podem veure, a base de crear noves clàusules agrupant clàusules amb termes
 
 ---
 
-## 4. <a name="id4"></a>
+## Exercici 4. <a name="id4"></a>
 
 > John has written a C++ program P that takes as input an arbitrary first-order formula F. He says that, if F is a tautology, P always outputs "yes" after a finite amount of time, and if F is NOT a tautology, P outputs "no" or it does not terminate. Is this possible? If this is not possible, explain why. If it is possible, explain how and why P would work.
 
@@ -201,7 +203,7 @@ Bàsicament ens aprofitem de que en la fòrmula G tenim una `v` i per tant es po
 
 ---
 
-## 6. <a name="id6"></a>
+## Exercici 6. <a name="id6"></a>
 
 > Formalise the following sentences in first-order logic and prove by resolution that the last one (g) is a logical consequence of the others `a & b & c & d & e & f`.
 > 
@@ -262,7 +264,7 @@ Així, hem provat que `a & b & c & d & e & f` és insatisfactible, i per tant, q
 
 ---
 
-## 7. <a name="id7"></a>
+## Exercici 7. <a name="id7"></a>
 
 >  Write a satisfiable first-order formula F , using only a binary predicate p, such that all models I of F have an infinite domain DI .
 
@@ -302,7 +304,7 @@ La idea es definir el predicat **p** per a tots el casos possibles fins que gara
 
 ---
 
-## 8. <a name="id8"></a>
+## Exercici 8. <a name="id8"></a>
 
 > Formalize and prove by resolution that sentence F is a logical consequence of the first five:
 > 
@@ -377,8 +379,63 @@ I ara ja podem començar a resoldre les clausules per aconseguir la clàusula bu
 
 ---
 
-## 9. <a name="id9"></a>
+## Exercici 9. <a name="id9"></a>
 
-$$
-\frac{2^3*\log_{10}{20}}{\sqrt{4}}
-$$
+> Let F be the FOLE formula: `Ez p(z) & Ax (p(x) -> Ey (-p(y) & x=f(y,y)))`. Let I be the interpretation with domain **D_I = R** (the real numbers), and **p_I(x) = 1 iff x > 0**, **f_I(x,y) = x·y** (the product in R)
+> 
+> Do we have I |= F? Prove it informally
+
+Aquí ens estan dient si es cert que existeix un nombre real major estricte que 0 i que per tot nombre que sigui més gran que 0 existeixi un negatiu o 0 que mutiplicat per si mateix dongui aquell nombre. Aixo sabem que es cert, ja que existeix algun real més gran que 0, per exemple el 1, i sabem que tot real té un nombre que mutiplicat per ell mateix dona el nombre, la seva arrel negativa.
+
+> If I' |= F, how many elements has at least I'? Prove it. 
+
+Ara ens pergunten quin és el minim d'elements que ha de tenir el domini de **I'** per a que es pugui complir la formula.
+
+Veiem que amb un sol element no en tenim prou, ja que ha de haver-hi un element que compleixi **p(x)** i un que no. Amb dos elements si que en tenim prou. Definim el domini així:
+
++ **D_I' = {a, b}**
+
++ **p(a)** = 1
+
++ **p(b)** = 0
+
++ **f(a, b)** = Indiferent
+
++ **f(a,b)** = Indiferent
+
++ **f(b,a)** = Indiferent
+
++ **f(b,b)** = **a**
+
+> Let F and G be the FOL formulas:
+> 
+> + `F = Ax p(a,x) & Ey -q(y)`
+> 
+> + `G = Ez Eu (-q(u) & p(z,a))`
+> 
+> Do we have F |= G? Prove it.
+
+Provem que la fòrmula `F & - G` és insatisfactible. Formalitzem `-G`:
+
++ **-G:** `Av Aw -(-q(w) & p(v,a)`
+
++ **-G:** `Av Aw q(w) v -p(v,a)`
+
+Ara passem les dues a la seva forma clausal, (tenint en compte que `a` es una constant)
+
++ **F1:** `p(a, x)`
+
++ **F2:** `-q(c_y)` on `c_y` es una constant de *Skolem*
+
++ **-G:** `q(w) v -p(v, a)`
+
+Resolem:
+
+| N   | Clàusules | MGU              | Nova Clàusula |
+| --- | --------- | ---------------- | ------------- |
+| 1   | F2, G     | `{w = c_y}`      | `-p(v, a)`    |
+| 2   | F1, 1     | `{a = v, x = a}` | `[]`          |
+
+---
+
+## Exercici 10. <a name="id10"></a>
