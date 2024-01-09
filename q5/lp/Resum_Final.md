@@ -1,24 +1,146 @@
 # Resum Final
 
-Aquest resum es basa en les transparències de l'assignatura.
+Aquest resum es basa en les transparències de l'assignatura de LP de Jordi Petit.
 
-## Compiladors
+---
+
+## **1. λ-càlcul**
+
+Afegir les fotos
+
+---
+
+## 2. Raonament equacional
+
+Afegir les fotos
+
+---
+
+## 3. Elements de la Programació Funcional en C++
+
+Afegir les fotos
+
+---
+
+## 4. Llenguatges de *scripting*
+
++ Un llenguatge de *scripting* (de guions) és un llenguatge de programació destinat a escriure programes que s'integrin i es comuniquin amb altres programes.
+
++ ### LSs *vs* LPs tradicionals:
+  
+     - Els LS estan pensats per crear aplicacions combinant components.
+  
+     - Desenvolupar amb LSs és de 5 a 10 vegades més ràpid.
+  
+     - Executar amb LSs és de 10 a 20 vegades més lent.
+  
+     - Els LS són normalment interpretats, amb compilació *just-in-time* o les dues.
+  
+     - Molts LSs són feblement tipats (Excepció: Python).
+  
+     - Molts LS tenen tipat dinàmic (Excepció: RPG).
+- ### Compilació *just-in-time
+  
+     - Es compila el codi en temps d'execució (a codi màquina o a algun tipus de bytecode).
+  
+     - Pot aplicar **optimizacions** que depenen del context d'execució.
+       
+          - :white_check_mark: el codi resultant pot ser molt més eficient.
+       
+          - :x: la compilació en execució és ineficient.
+  
+     - Es pot aplicar parcialment: només en certes construcions
+       
+       Per exemple: expressions regulars (matching).
+  
+     - Pot combinar-se amb la compilació (estàtica) a **bytecode**:
+       
+          - Primer es compila el llenguatge a bytecode.
+          - S'aplica JIT al bytecode per obtenir codi màquina més eficient.
+
+- ### Característiques principals del LSs
+  
+     - Permeten tant ús en batch com interactiu.
+  
+     - La majoria tracten l'entrada línia a línia.
+       
+       > :exclamation: Perl és dels pocs que usen un compilador just-in-time que requereix llegir tot el programa abans de tractar-lo.
+  
+     - Altres accepten instruccions per línia de comandes (ex: Rexx, Python, Tcl i Ruby).
+       
+          + Han de poder ser interpretats (sense compilació just-in-time).
+       
+          + Python, Tcl i Ruby admeten les dues possibilitats.
+  
+     - Absència de declaracions. Regles simples d'establiment d'àmbit (*scoping*).
+  
+     - Declaracions:
+       
+          - En molts LS no hi ha declaracions.
+            
+               - Per exemple, l'assignació dóna el tipus.
+       
+          - Àmbit:
+            
+               - En alguns tot és global per defecte (Perl).
+               - En alguns tot és local per defecte (PHP, Tcl).
+               - Pot haver-hi regles com ara que l'assignació defineix la localitat.
+  
+     - **Tipat dinàmic flexible**: Relacionat amb l'absència de declaracions, la majoria dels LS són tipats dinàmicament.
+       
+          - En alguns, el tipus d'una variable es comprova just abans de ser usada. Ex: PHP, Python, Ruby.
+       
+          - En altres es pot interpretar diferent en diferents àmbits. Ex: Rexx, Perl, Tcl.
+  
+     - **Fàcil comunicació amb altres programes**: Donen moltes opcions predefinides per executar programes o operacions directament sobre el SO.
+  
+     - Pattern matching i manipulació de strings sofisticada:
+       
+          - Tendeixen a tenir facilitats molt riques per fer pattern matching, cerca i manipulació de strings.
+  
+     - Tipus de dades d'alt nivell
+       
+          - S'inclouen com predefinits tipus d'alt nivell com ara: sets, bags, maps, lists, tuples,...
+       
+          - No es troben en llibreries, sinó que fan part del llenguatge.
+       
+          - Per exemple, és habitual tenir arrays indexats per strings com part del llenguatge (que s'implementen amb taules de hash).
+       
+          - S'utilitzen *garbagge collectors* per gestionar l'espai.
+
+- ### Dominis d'aplicació
+  
+     - Llenguatges de comandes shell: (bash, ...)
+  
+     - Processament de textos i generació d'informes: (sed, awk, Perl, ...)
+  
+     - Matemàtiques i estadística: (Matlab, R, ...)
+  
+     - Scripting de propòsit general: (Perl, Tcl, Python, Ruby)
+  
+     - Llenguatges d'extensió: són llenguatges de scripting que permeten fer scripts per una determinada aplicació: (Visual Basic, Apple Script, ...)
+  
+     - Web scripting: (Perl, PHP, Python, JavaScript, Cold Fusion, ...)
+
+---
+
+## 5. Introducció a la compilació
+
+### Processadors de llenguatges
+
+#### Compiladors
 
 Un **compilador** és un programa que tradueix programes escrits en un *LP* d'alt nivell a codi màquina (o, en general, a codi de baix nivell).
 
 <img title="" src="./images/compiladors1.png" alt="image" width="545">
 
----
-
-## Intèrprets
+#### Intèrprets
 
 Un **intèrpret** és un programa que executa directament instruccions escrites en un *LP*.
 
 <img title="" src="./images/interprets1.png" alt="" width="593" data-align="center">
 
----
-
-## Interpèts de *bycode*
+#### Intèrprets de *bycode*
 
 Variant entre els compiladors i els intèrprets.
 
@@ -28,9 +150,7 @@ Variant entre els compiladors i els intèrprets.
 
 <img title="" src="./images/interprets2.png" alt="" width="593" data-align="center">
 
----
-
-## Compiladors *Just-in-time*
+#### Compiladors *just-in-time*
 
 La compilació ***just-in-time*** compila fragments del programa durant la seva execució.
 
@@ -38,9 +158,7 @@ Un analitzador inspecciona el codi executat per veure quan val la pena compilar-
 
 <img title="" src="./images/compiladors2.png" alt="image" width="545" data-align="center">
 
----
-
-## Preprocessadors
+#### Preprocessadors
 
 Un **preprocessador** prepara el codi font d'un programa abans que el compilador el vegi.
 
@@ -51,7 +169,7 @@ Un **preprocessador** prepara el codi font d'un programa abans que el compilad
 
 ---
 
-## Sintaxi
+### Sintaxi
 
 La **sintaxi** d'un llenguatge de programació és el conjunt de regles que defineixen les combinacions de símbols que es consideren construccions correctament estructurades. Sovint s'especifica la sintaxi utilitzant una **gramàtica lliure de context** (*context-free grammar*).
 
@@ -96,20 +214,20 @@ La majoria de definicions de semàntica per a *LPs* utilitzen una semàntica ope
 **Etapes:**
 
 - ***Front end*:**
-  - **Preprocessador**
-  - L'**analitzador lèxic** (**escàner**) agrupa els caràcters en "paraules" (*tokens*) i elimina blancs i comentaris.
-  - L'**analitzador sintàctic** (**parser**) construeix un **arbre de sintaxi abstracta** (***AST***) a partir de la seqüència de *tokens* i les regles sintàctiques.
-  - L'**analitzador semàntic** recorre l'*AST* i:
-    - crea la **taula de símbols**,
-    - assigna memòria a les variables,
-    - comprova errors de tipus,
-    - resol ambigüitats.
+     - **Preprocessador**
+     - L'**analitzador lèxic** (**escàner**) agrupa els caràcters en "paraules" (*tokens*) i elimina blancs i comentaris.
+     - L'**analitzador sintàctic** (**parser**) construeix un **arbre de sintaxi abstracta** (***AST***) a partir de la seqüència de *tokens* i les regles sintàctiques.
+     - L'**analitzador semàntic** recorre l'*AST* i:
+          - crea la **taula de símbols**,
+          - assigna memòria a les variables,
+          - comprova errors de tipus,
+          - resol ambigüitats.
 - ***Middle end*** :arrow_right: tradueix el programa a **codi de tres adreces** (ensamblador idealitzat amb infinitat de registres).
-  - analitzador de codi intermedi
-  - optimitzador de codi intermedi
-- ***Back end*** :arrow_right: tradueix i optimitza el codi de tres adreces a l'arquitectura desitjada
-  - generador de codi específic
-  - optimitzador de codi específic
+     - analitzador de codi intermedi
+     - optimitzador de codi intermedi
+- ***Back end*** :arrow_right: tradueix i optimitza el codi de tres adreces a l'**arquitectura desitjada**
+     - generador de codi específic
+     - optimitzador de codi específic
 
 ---
 
@@ -122,7 +240,3 @@ Per construir un compilador no es parteix de zero. Hi ha moltes eines que donen 
 - **LLVM**: ofereix una col·lecció d'eines modulars reutilitzables pels backends dels compiladors.
 
 ---
-
-## Joan
-
-El **joan** es un *nen* molt divertit
