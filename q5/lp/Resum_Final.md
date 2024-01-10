@@ -167,8 +167,6 @@ Un **preprocessador** prepara el codi font d'un programa abans que el compilad
 - Compilació condicional
 - Extensions de llenguatge
 
----
-
 ### Sintaxi
 
 La **sintaxi** d'un llenguatge de programació és el conjunt de regles que defineixen les combinacions de símbols que es consideren construccions correctament estructurades. Sovint s'especifica la sintaxi utilitzant una **gramàtica lliure de context** (*context-free grammar*).
@@ -185,9 +183,7 @@ expr → NUM
 NUM  → [0-9]+ ( '.' [0-9]+ )
 ```
 
----
-
-## Semàntica
+### Semàntica
 
 La **semàntica** d'un *LP* descriu què significa un programa ben construït. A vegades, les construccions sintàcticament correctes poden ser semànticament incorrectes.
 
@@ -207,9 +203,7 @@ Hi ha bàsicament dues maneres d'especificar formalment la semàntica:
 
 La majoria de definicions de semàntica per a *LPs* utilitzen una semàntica operacional descrita informalment en llenguatge natural.
 
----
-
-## Flux de compilació
+### Flux de compilació
 
 **Etapes:**
 
@@ -229,9 +223,7 @@ La majoria de definicions de semàntica per a *LPs* utilitzen una semàntica ope
      - generador de codi específic
      - optimitzador de codi específic
 
----
-
-## Eines
+### Eines
 
 Per construir un compilador no es parteix de zero. Hi ha moltes eines que donen suport:
 
@@ -240,3 +232,41 @@ Per construir un compilador no es parteix de zero. Hi ha moltes eines que donen 
 - **LLVM**: ofereix una col·lecció d'eines modulars reutilitzables pels backends dels compiladors.
 
 ---
+
+## 6. Inferència de tipus
+
+> La **inferència de tipus** és la detecció automàtica dels tipus de les expressions en un llenguatge de programació.
+
+### **Algorisme de *Milner*:**
+
+> Permet computar el tipus més general en temps lineal.
+
++ Generem **arbre de sintaxi.**
+
++ Etiquetem nodes amb un tipus (si es conegut) o amb una variable.
+
++ Generem les **restriccions** amb les variables i tipus.
+
++ Solucionem les equacions.
+
++ **Formula de l'abstracció**: 
+
+<img title="" src="./images/abstraccio.png" alt="image" width="121" data-align="inline"> `a = b -> c`
+
++ **Formula de l'aplicació**: 
+
+<img title="" src="./images/aplicacio.png" alt="image" width="139" data-align="inline"> `b = c -> a`
+
+### Definicions
+
+> Podem entendre una definició com una funció que, aplicada als paràmetres, torna la part dreta de la definició
+
+```haskell
+map f l = if null l then [] else f (head l) : map f (tail l)
+```
+
+Aquesta definició de `map` és una funció que quan s'aplica sobre `f` i `l` retorna la funció:
+
+```haskell
+\f -> \l -> if null l then [] else f (head l) : map f (tail l)
+```
