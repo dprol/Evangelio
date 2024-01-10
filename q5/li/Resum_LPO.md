@@ -2,27 +2,41 @@
 marp: true
 author: Marc Nafria
 footer: '[Apunts GEI](https://marc-nafria.github.io/) - Apunts del Grau en Engenyeria Informàtica de la FIB'
-theme: default
 header: 'Resum de LPO - **LI**'
 title: Resum de LPO - LI
 transition: wipe
 style: |
      {
-          color: #ffffffcc
+          color: #ffffffcc;
      }
      h1 {
-          color: lightgreen
+          color: lightgreen;
+          text-align: center;
      }
+     h2 {
+          color: lightgreen;
+          padding: 0px 0px 10px 0px;
+          border-bottom: 0.1rem solid lightgreen;
+          text-align: top;
+     }
+     blockquote {
+          padding: 0px 0px 0px 20px;
+          background: #ffffff10;
+          text-align: top;
+     }
+     pre {
+          line-height: 1.5;
+          border-radius: 10px;
+          font-size: 20px;
+     }
+class: invert
 ---
 
-<!-- class: invert -->
-
-# LI - Resum de LPO :one:
-> Marc Nafría Rovira
+# LI - Resum de LPO
 
 ---
 
-# Concepte General :brain:
+## Concepte General :brain:
 
 + La **Lògica de Primer Ordre** (LPO) és un sistema lògic que amplia la lògica proposicional permetent quantificar sobre variables i expressar propietats específiques dels objectes.
 
@@ -30,14 +44,14 @@ style: |
 
 ---
 
-# Característiques Clau :warning:
+## Característiques Clau :warning:
 
 - Introdueix quantificadors com "per a tot" `∀` i "existeix" `∃` per expressar relacions entre conjunts d'objectes.
 
 - Utilitza **símbols lògics**, **predicats** i **variables** per a la seva formulació.
 
 ---
-# Característiques Clau :warning:
+## Característiques Clau :warning:
 
 - Una **interpretació** consisteix del següent:
      - un **Domini**,
@@ -46,7 +60,7 @@ style: |
 
 ---
 
-# *SAT* (Satisfactibilitat Booleana) :question:
+## *SAT* (Satisfactibilitat Booleana) :question:
 
 - El problema *SAT* es refereix a determinar si una fórmula booleana pot ser avaluada com a certa mitjançant certes assignacions de valors a les variables.
 
@@ -57,20 +71,18 @@ style: |
 
 ---
 
-# LPO :arrow_right: SAT
+## LPO :arrow_right: SAT
 
-> Passos a seguir per a conseguir la formula clausal de una fòrmula en LPO:
 1. Negacions cap a dins
 
 2. Eliminació de conflictes de nom de variable
 
 3. Moure quantificadors cap a dins
 
+> Passos a seguir per a conseguir la formula clausal de una fòrmula en LPO:
 
 ---
-# LPO :arrow_right: SAT
-
-> Passos a seguir per a conseguir la formula clausal de una fòrmula en LPO:
+## LPO :arrow_right: SAT
 
 4. **Skolemització**
    
@@ -82,9 +94,10 @@ style: |
 
 6. Distributivitat
 
+> Passos a seguir per a conseguir la formula clausal de una fòrmula en LPO:
 ---
 
-# Regles de deducció :mag_right:
+## Regles de deducció :mag:
 
 - **Unificació:**
   
@@ -95,3 +108,25 @@ style: |
   
      - **Funció:** Simplificar demostracions o proves en Lògica de Primer Ordre.
      - **Objectiu:** Fusionar passos similars o idèntics en una única línia.
+
+---
+
+## Prova de codi
+
+Aqui podem veure una prova de codi:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main () {
+     int a, b;
+     
+     cin >> a >> b;
+
+     int suma = a + b;
+
+     cout << "La suma es: " << suma << endl;
+}
+
+```
