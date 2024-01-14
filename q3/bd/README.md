@@ -1,3 +1,0 @@
-# BD
-
-+ [Resum assignatura](Resum)
