@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap');
+@import "{{ site.theme }}";
 
 :root {
     --background-color: #f2f2f2;
     --text-color: #333;
+    --text-color-rgb: 51, 51, 51;
     --header-background-color: #f2f2f2;
     --header-border-color: #ddd;
     --sidebar-background-color: #f2f2f2;
@@ -14,8 +16,23 @@
     --code-text-color: #333;
 }
 
+body.dark {
+    --background-color: #0d1117;
+    --text-color: #c9d1d9;
+    --text-color-rgb: 201, 209, 217;
+    --header-background-color: #161b22;
+    --header-border-color: #0d1117;
+    --sidebar-background-color: #161b22;
+    --sidebar-text-color: #8b949e;
+    --main-content-background-color: #0d1117;
+    --link-color: #58a6ff;
+    --link-hover-color: #539bf5;
+    --code-background-color: #2d2d2e;
+    --code-text-color: #c9d1d9;
+}
+
 body {
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Sans Pro';
     background-color: var(--background-color);
     color: var(--text-color);
     overflow: hidden;
@@ -37,7 +54,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 10px rgba(var(--text-color-rgb), 0.1);
 }
 
 .page-header h1 {
@@ -74,7 +91,7 @@ body {
     color: var(--sidebar-text-color);
     padding: 20px;
     transition: width 0.3s;
-    border-right: 1px solid var(--header-border-color);
+    border-right: 2px solid var(--header-border-color);
 }
 
 .main-content {
@@ -85,7 +102,6 @@ body {
     padding-left: 20%; /* Adjust this to your preference */
     padding-right: 20%; /* Adjust this to your preference */
     background-color: var(--main-content-background-color);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
 }
 
 #table-of-contents a {
