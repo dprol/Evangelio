@@ -1,0 +1,753 @@
+<head>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <header class="page-header" role="banner">
+        <div class="page-header-left">
+          <h1 class="page-header-left">Marc Nafria</h1>
+      </div>
+        </div>
+        <div class="page-header-right">
+            <a href="../index.html">Home</a>
+            <a href="../about.html">About</a>
+            <a href="../contact.html">Contact</a>
+        </div>
+    </header>
+    <div class="container">
+      <div id="table-of-contents" class="sidebar">
+              <!-- Table of contents will be generated here -->
+        </div>
+      <main id="content" class="main-content" role="main">
+        <h1 id="resum-c2-ac">Resum C2 AC</h1>
+
+        <h2 id="1-problemes-de-cache">1. Problemes de cache</h2>
+        
+        <h3 id="1-1-write-through--write-no-allocate">1. 1. Write-through &amp; write-no-allocate</h3>
+        
+        <p>Si tenim aquesta cache es normal que ens donguin les seguents dades:</p>
+        
+        <ul>
+          <li>
+            <p><strong>tsa</strong>: temps en cas d’encert</p>
+          </li>
+          <li>
+            <p><strong>m</strong>: <em>miss rate</em></p>
+          </li>
+          <li>
+            <p>temps que tardem a escriure una <strong>paraula</strong> a MP</p>
+          </li>
+          <li>
+            <p>temps que tardem a llegir/escriure un <strong>bloc</strong> a MP</p>
+          </li>
+          <li>
+            <p>percentatge <strong>escriptures/lectures</strong></p>
+          </li>
+        </ul>
+        
+        <p>Per calcular el <strong>tma</strong> (temps mig d’accés) hem de tenir en compte que quan tenim penalització només quan tenim un fallo de lectura. En les escriptures, escribim una <strong>paraula</strong>, per això en donen dos temps. Llavors sabem que:</p>
+        
+        <p><code class="language-plaintext highlighter-rouge">tma = tsa + percentatge_escriptures*temps_MP_paraula + m*percentatge_lectures*temps_MP_bloc</code></p>
+        
+        <p>Es a dir, el <strong>tsa</strong> base d’accedir a la cache, el percentatge d’escritures que tenim mutiplicat per el temps que ens costa fer una escriptura. A més, en cas de <strong>fallo de lectura</strong>, mutipliquem per el temps que ens costa resoldre-la (llegir el bloc de MP).</p>
+        
+        <h3 id="1-2-copy-back--write-allocate">1. 2. Copy back &amp; write allocate</h3>
+        
+        <p>Si tenim aquesta cache es normal que ens donguin les seguents dades:</p>
+        
+        <ul>
+          <li>
+            <p><strong>tsa</strong>: temps en cas d’encert</p>
+          </li>
+          <li>
+            <p><strong>m</strong>: <em>miss rate</em></p>
+          </li>
+          <li>
+            <p>temps que tardem a llegir/escriure un <strong>bloc</strong> a MP</p>
+          </li>
+          <li>
+            <p>percentatge de <strong>blocs modificats</strong></p>
+          </li>
+        </ul>
+        
+        <p>Per calcular el <strong>tma</strong> (temps mig d’accés) hem de tenir en compte que en cas de fallo de cache, independentment de escritura o lectura, <strong>llegirem de MP</strong> i, en cas de haber de substituir un bloc modificat, <strong>escriurem a MP</strong>.</p>
+        
+        <p><code class="language-plaintext highlighter-rouge">tma = tsa + m * (temps_MP_bloc + percentatge_blocs_modificats * temps_MP_bloc)</code></p>
+        
+        <hr />
+        
+        <h2 id="2-problemes-de-dram-ddr">2. Problemes de DRAM (DDR)</h2>
+        
+        <p>En aquests problemes que ens demanen normalment cronogrames de accessos secuencials a memoria principal (DRAM) solem tenir les seguents dades:</p>
+        
+        <ul>
+          <li>
+            <p>Latencia fila (suposem 2 cicles)</p>
+          </li>
+          <li>
+            <p>Latència columna (suposem 3 cicles)</p>
+          </li>
+          <li>
+            <p>Latència de <em>precharge</em> (suposem 2 cicle)</p>
+          </li>
+        </ul>
+        
+        <p>Suposem blocs de memoria principals de <strong>32 bytes</strong> i <strong>8 chips de 1 byte</strong>. Per tant, amb <strong>DDR</strong> (Double Data Rate), tardarem <strong>2 cicles</strong> a llegir un bloc de MP.</p>
+        
+        <blockquote>
+          <p>Si tenim DDR vol dir que podem enviar dos dades en un mateix temps de cicle, si no en tenim simplement tardarem el doble</p>
+        </blockquote>
+        
+        <h3 id="2-1-mateix-banc-mateixa-pàgina">2. 1. Mateix banc mateixa pàgina</h3>
+        
+        <p>Si accedim a dos blocs de memoria que es troben en el mateix banc i mateixa pàgina hem de saber que això vol dir “baixar” una sola fila del mateix banc. Això significa que no poden ser en paralel, pero només necessitarem fer un <em>precharge</em>. Imaginem que accedim a dos blocs consecutius de memoria (D[0] -&gt; D[7]). Per tant, farem:</p>
+        
+        <table>
+          <thead>
+            <tr>
+              <th>0</th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+              <th>6</th>
+              <th>7</th>
+              <th>8</th>
+              <th>9</th>
+              <th>10</th>
+              <th>11</th>
+              <th>12</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ACT</td>
+              <td>–</td>
+              <td>RD</td>
+              <td>–</td>
+              <td>–</td>
+              <td>RD</td>
+              <td>–</td>
+              <td>–</td>
+              <td> </td>
+              <td> </td>
+              <td>PRE</td>
+              <td>–</td>
+              <td> </td>
+            </tr>
+            <tr>
+              <td>@Fil</td>
+              <td> </td>
+              <td>@Col</td>
+              <td> </td>
+              <td> </td>
+              <td>@Col</td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+            </tr>
+            <tr>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td>D[0], D[1]</td>
+              <td>D[2], D[3]</td>
+              <td> </td>
+              <td>D[4], D[5]</td>
+              <td>D[6], D[7]</td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <h3 id="2-2-mateix-banc-diferent-pagina">2. 2. Mateix banc diferent pagina</h3>
+        
+        <p>Si accedim a dos blocs de memoria que es troben en el mateix banc i en diferents pàgines hem de saber que això vol dir “baixar” dues files del mateix banc, cosa que suposa no poder-ho fer en paralel, i que entre mig dels dos accessos haurem de fer <em>precharge</em> de l primera fila que baixem. Per tant farem</p>
+        
+        <table>
+          <thead>
+            <tr>
+              <th>0</th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+              <th>6</th>
+              <th>7</th>
+              <th>8</th>
+              <th>9</th>
+              <th>10</th>
+              <th>11</th>
+              <th>12</th>
+              <th>13</th>
+              <th>14</th>
+              <th>15</th>
+              <th>16</th>
+              <th>17</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ACT</td>
+              <td>–</td>
+              <td>RD</td>
+              <td>–</td>
+              <td>–</td>
+              <td> </td>
+              <td> </td>
+              <td>PRE</td>
+              <td>–</td>
+              <td>ACT</td>
+              <td>–</td>
+              <td>RD</td>
+              <td>–</td>
+              <td>–</td>
+              <td> </td>
+              <td> </td>
+              <td>PRE</td>
+              <td>–</td>
+            </tr>
+            <tr>
+              <td>@FIL</td>
+              <td> </td>
+              <td>@COL</td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td>@FIL</td>
+              <td> </td>
+              <td>@COL</td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+            </tr>
+            <tr>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td>D[0], D[1]</td>
+              <td>D[2], D[3]</td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td>D[8], D[9]</td>
+              <td>D[10], D[11]</td>
+              <td> </td>
+              <td> </td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <h3 id="2-3-diferent-banc-mateixadiferent-pagina">2. 3. Diferent banc (mateixa/diferent pagina)</h3>
+        
+        <p>Si accedim a dos blocs de memoria que es troben en diferents bancs hem de saber que estem “baixant” dues files de diferents bancs, que ho podem fer en paralel i que haurem de fer <em>precharge</em> de les dues. La ventaja es que podem aprofitar millor el temps, enviant les senyals perque el temps quadri i sigui el menor possible. Hem de tenir en compte que mentre i hagi latencia no podem enviar cap més senyal, i que el bus de dades es compartit, es a dir, no podem enviar dades de diferents bancs a la vegada.</p>
+        
+        <table>
+          <thead>
+            <tr>
+              <th>0</th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+              <th>6</th>
+              <th>7</th>
+              <th>8</th>
+              <th>9</th>
+              <th>10</th>
+              <th>11</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ACT</td>
+              <td>–</td>
+              <td>RD</td>
+              <td>ACT</td>
+              <td>–</td>
+              <td>@RD</td>
+              <td>–</td>
+              <td>–</td>
+              <td>PRE</td>
+              <td>–</td>
+              <td>PRE</td>
+              <td>–</td>
+            </tr>
+            <tr>
+              <td>@FIL</td>
+              <td> </td>
+              <td>@COL</td>
+              <td>@FIL</td>
+              <td> </td>
+              <td>@COL</td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+            </tr>
+            <tr>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td>D[0], D[1]</td>
+              <td>D[2], D[3]</td>
+              <td> </td>
+              <td>D[128], D[129]</td>
+              <td>D[130], D[131]</td>
+              <td> </td>
+              <td> </td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <hr />
+        
+        <h2 id="3-tlb">3. TLB</h2>
+        
+        <p>En els problemes de TLB, ens solen posar un bucle (codi màquina o c++) i hem de dir cantitat d’encerts i fallos que ha tingut. Ens interesens diferents dades:</p>
+        
+        <ul>
+          <li>
+            <p><strong>tamany pagina</strong>: amb això sabrem quants elements caben en una pàgina</p>
+          </li>
+          <li>
+            <p><strong>tamany TLB</strong>: interessa per que a vegades el que sembla un encert ja no ho és perque s’ha sobrescrit la entrada per una altra</p>
+          </li>
+          <li>
+            <p><strong>algorisme reemplaçament TLB</strong>: sol ser LRU (Least Recently Used), el que porta més temps sense ser accedit el substituim</p>
+          </li>
+        </ul>
+        
+        <p>Normalment resoldrem el problema observant només que fa el codi en en les primeres iteracions del bucle. Hem de buscar factors com:</p>
+        
+        <ul>
+          <li>
+            <p>frequència en que cada accés solicita una nova pàgina</p>
+          </li>
+          <li>
+            <p>substitucions en la TLB, que permeten saber el nombre de cops que fallarà la TLB.</p>
+          </li>
+        </ul>
+        
+        <p>Normalment el comportament és <strong>cíclic</strong>, i podem saber el nombre de fallades de la seguent manera.</p>
+        
+        <p><code class="language-plaintext highlighter-rouge">sumatori_de_fallades_primers_cicles + (nombre_cicles - primers_cicles) * fallades_per_cicle</code></p>
+        
+        <blockquote>
+          <p>Hem de tenir en compte que si ens donen el tamany de pàgina en una unitat i la volem convertir a una altra, al estar tractant en temes de memoria, hem de utilitzar la conversió per 1024. (<strong>1KByte = 1024 bytes</strong>, per exemple).</p>
+        
+          <p>Normalment no hem de tenir en compte una entrada de la TLB per la pàgina on estan les instruccions, ni que aquestes puguin canviar de pàgina a meitat del bucle. Si no ens diuen res ho podem obviar.</p>
+        </blockquote>
+        
+        <hr />
+        
+        <h2 id="4-teoria-de-cache">4. Teoria de cache</h2>
+        
+        <h3 id="4-1-directa">4. 1. Directa</h3>
+        
+        <p>La cache directa és aquella que cada bloc de MP té associat una única línea de la memoria cache on hi pot anar. Suposem les seguents dades:</p>
+        
+        <ul>
+          <li>
+            <p><strong>tamany cache</strong> = 8 Kbytes</p>
+          </li>
+          <li>
+            <p><strong>tamany bloc cache</strong> = 32 bytes</p>
+          </li>
+          <li>
+            <p><strong>direccions de 16 bits</strong></p>
+          </li>
+        </ul>
+        
+        <p>Aixo vol dir que si tenim 8Kbytes a repartir entre linees de 32 bytes tindrem:</p>
+        
+        <p><code class="language-plaintext highlighter-rouge">num_linees = tamany_cache / tamany_bloc_cache</code></p>
+        
+        <blockquote>
+          <p>Tenim en compte que 8KBytes son 8*1024 bytes.</p>
+        </blockquote>
+        
+        <p>Llavors sabem que tenim <strong>256 linees</strong>. Per saber a quina linea va cada bloc de MP necessitem <code class="language-plaintext highlighter-rouge">log_2 (256) =  8 bits</code>. A més, com que cada linea té 32 bytes, necessitarem <code class="language-plaintext highlighter-rouge">log_2(32) = 5 bits</code>. Per tant ens resten <code class="language-plaintext highlighter-rouge">32 - 8 - 5 = 19 bits TAG</code>. La distribució del bits de l’adreça quedaria així.</p>
+        
+        <table>
+          <thead>
+            <tr>
+              <th>TAG</th>
+              <th>#linea</th>
+              <th>Byte</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>19 bits</td>
+              <td>8 bits</td>
+              <td>5 bits</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <p>Al accedir a la MC, és mira a quina linea hauria de estar el bloc (8 bits de linea), es compara el TAG amb el TAG al que volem accedir, i, si coincideix, seleccionem el byte que volem (5 bits de byte).</p>
+        
+        <h3 id="4-2-n-associativa-2-associativa">4. 2. n-Associativa (2-Associativa)</h3>
+        
+        <p>La cache n-Associativa és com la directa amb una diferència: un cop sabem a quina linea, ara li direm <strong>conjunt</strong>, de la memoria cache va un bloc de MP, tenim més de una <strong>via</strong> on el podem deixar. Suposem les seguents dades:</p>
+        
+        <ul>
+          <li>
+            <p><strong>tamany cache</strong> = 8 KBytes</p>
+          </li>
+          <li>
+            <p><strong>tamany bloc cache</strong> = 32 Bytes</p>
+          </li>
+          <li>
+            <p><strong>direccions de 32 bits</strong></p>
+          </li>
+          <li>
+            <p><strong>2-Associativa</strong></p>
+          </li>
+        </ul>
+        
+        <p>Per saber el nombre de <strong>conjunts</strong> que tindrà la MC hem de pensar que els 8 KBytes estaràn repartits en <strong>n</strong> conjunts, i cada conjunt tindrà <strong>dos bloc de 32 Bytes</strong>.</p>
+        
+        <p><code class="language-plaintext highlighter-rouge">numero_conjunts = tamany_cache / (32 Bytes/bloc * 2 blocs/conjunt) = 8*1024 / (32 * 2) = 128 conjunts</code></p>
+        
+        <blockquote>
+          <p>Fixem-nos que si l’associativitat és una altra només hem de canviar: <code class="language-plaintext highlighter-rouge">n blocs/conjunt</code></p>
+        </blockquote>
+        
+        <p>Per a especificar el conjunt necessitem <code class="language-plaintext highlighter-rouge">log_2(128) = 7 bits</code>. Per seleccionar el byte necessitem <code class="language-plaintext highlighter-rouge">log_2(32) = 5 bits</code></p>
+        
+        <table>
+          <thead>
+            <tr>
+              <th>TAG</th>
+              <th>#conjunt</th>
+              <th>Byte</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>20 bits</td>
+              <td>7 bits</td>
+              <td>5 bits</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <p>Quan accedim a la cache, mirem primer a quin conjunt hauriem de trobar l’adreça (7 bytes #conjunut), i després comprovem les 2 TAG de les 2 vies per a veure si tenim el bloc a la cache (o n si tenim una altra associativitat). Després seleccionem el byte (5 bits menor pes).</p>
+        
+        <blockquote>
+          <p>Hem de tenir en compte el algorisme de reemlaçament, es a dir, si un bloc va a un conjunt on les dues vies son plenes, a on el posem? L’algorisme LRU (<em>Least Recently Used</em>) surt bastant i substitueix aquell bloc al que fa més estona que no s’accedeix.</p>
+        </blockquote>
+        
+        <h4 id="4-2-1-predictor-de-via">4. 2. 1. Predictor de via</h4>
+        
+        <p>El predictor de via és un dispositiu (hardware) que preedeix la via a la que accedirem, es a dir, només comprovem una TAG (la de la via que predeix). En cas que no trobem el bloc mirem les altres vies. Això millora el <strong>tma</strong> de la cache. Per a calcular-lo soler tenir les seguents dades:</p>
+        
+        <ul>
+          <li>
+            <p><strong>percentage d’encerts predictor</strong></p>
+          </li>
+          <li>
+            <p><strong>cost d’accés a una via</strong></p>
+          </li>
+        </ul>
+        
+        <p>Si tenim una 2-associativa tenim que el <strong>tma</strong> es veu reduit en <code class="language-plaintext highlighter-rouge">percentatge_encerts_predictor * cost_acces_via</code>, ja que en cas que el predictor encerti ja no fem accés a l’altre via.</p>
+        
+        <blockquote>
+          <p>En cas que ens parlin de <strong>energia</strong> hem de tenir en compte que també ens estalvia energia, ja que no accedim a l’altre via. Per tant l’energia estalviada és: <code class="language-plaintext highlighter-rouge">percentatge_encerts_predictor * energia_acces_via</code></p>
+        </blockquote>
+        
+        <h3 id="4-3-completament-associativa">4. 3. Completament associativa</h3>
+        
+        <p>La cache completament associativa és aquella en que un bloc de memoria pot anar a qualsevol línea de la cache. Per tant, tenim que el nombre de linees ve donat per: <code class="language-plaintext highlighter-rouge">num_linees = tamany_cache / tamany_bloc</code></p>
+        
+        <p>Només necessitem <code class="language-plaintext highlighter-rouge">log_n(tamany_bloc)</code> bits per a codificar el byte que volem seleccionar, i els demés bits són de TAG.</p>
+        
+        <hr />
+        
+        <h2 id="5-raids">5. RAIDS</h2>
+        
+        <p>Suposem que:</p>
+        
+        <ul>
+          <li>
+            <p>n = nombre de discos</p>
+          </li>
+          <li>
+            <p>banda = ample de banda de 1 disc</p>
+          </li>
+        </ul>
+        
+        <table>
+          <thead>
+            <tr>
+              <th> </th>
+              <th>% mem. útil</th>
+              <th>fallos permesos</th>
+              <th>descripció</th>
+              <th>Banda escriptura aleatoria</th>
+              <th>Banda escriptura sequencial</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>RAID 0</strong></td>
+              <td>100 %</td>
+              <td>Cap</td>
+              <td>Es tracta de separar les dades en discos repartint els bytes</td>
+              <td><code class="language-plaintext highlighter-rouge">n * banda</code></td>
+              <td><code class="language-plaintext highlighter-rouge">n * banda</code></td>
+            </tr>
+            <tr>
+              <td><strong>RAID 1</strong></td>
+              <td>50 %</td>
+              <td>1</td>
+              <td>Es tracta de tenir dos discos amb la mateixa informació</td>
+              <td><code class="language-plaintext highlighter-rouge">(n/2) * banda</code>, hem de escriure als dos discos el mateix</td>
+              <td><code class="language-plaintext highlighter-rouge">n/2 * banda</code></td>
+            </tr>
+            <tr>
+              <td><strong>RAID 3</strong></td>
+              <td><code class="language-plaintext highlighter-rouge">(n-1)/n</code></td>
+              <td>1</td>
+              <td>Es tracta de tenir un disc de paritat. Entrellaçat a nivell de byte. Coll d’ampolla disc de paritat.</td>
+              <td><code class="language-plaintext highlighter-rouge">n * banda</code>, s’ha de escriure a paritat</td>
+              <td><code class="language-plaintext highlighter-rouge">(n - 1) * banda</code></td>
+            </tr>
+            <tr>
+              <td><strong>RAID 4</strong></td>
+              <td><code class="language-plaintext highlighter-rouge">(n-1)/n</code></td>
+              <td>1</td>
+              <td>Es tracta de tenir un disc de paritat. Entrellaçat a nivell de tira. Coll d’amplolla disc de paritat.</td>
+              <td><code class="language-plaintext highlighter-rouge">n * banda</code>, s’ha de escriure a paritat</td>
+              <td><code class="language-plaintext highlighter-rouge">(n - 1) * banda</code></td>
+            </tr>
+            <tr>
+              <td><strong>RAID 5</strong></td>
+              <td><code class="language-plaintext highlighter-rouge">(n-1)/n</code></td>
+              <td>1</td>
+              <td>Es tracta de repartir la paritat de cada tira en un disc diferent, així que ja no hi ha coll d’ampolla.</td>
+              <td><code class="language-plaintext highlighter-rouge">n * bEsc / 4</code></td>
+              <td><code class="language-plaintext highlighter-rouge">(n-1) * banda</code></td>
+            </tr>
+            <tr>
+              <td><strong>RAID 6</strong></td>
+              <td><code class="language-plaintext highlighter-rouge">(n-2)/n</code></td>
+              <td>2</td>
+              <td>Es tracta de tenir dos paritats per cada tira, repartides entre els discos (les paritats esta en un disc diferent en funció de la tira)</td>
+              <td><code class="language-plaintext highlighter-rouge">n * bEsc / 6</code></td>
+              <td><code class="language-plaintext highlighter-rouge">(n-2) * banda</code></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <h4 id="5-1-multi-raid">5. 1. Multi-RAID</h4>
+        
+        <p>Els sistemes multi-RAID son uns discos lògics que utilitzen més d’un tipus de raid. Tenen la forma <strong>RAID xy</strong>, i es composen de discos organitzats en <strong>RAID x</strong>, que son vistos com discos físics per un <strong>RAID y</strong>. N’hi ha principalment 6 (que entrin als examens):</p>
+        
+        <ul>
+          <li>
+            <p>RAID 01 i RAID 10</p>
+          </li>
+          <li>
+            <p>RAID 50 i RAID 05</p>
+          </li>
+          <li>
+            <p>RAID 15 i RAID 51</p>
+          </li>
+        </ul>
+        
+        <h3 id="5-2-exemple-problema-de-raids">5. 2 Exemple problema de RAIDs</h3>
+        
+        <blockquote>
+          <p><em>Disponemos de 60 discos físicos de 300 Gbytes de capacidad por disco, que ofrecen un ancho de banda efectivo de 100 Mbytes/s por disco. Con estos discos deseamos montar un disco lógico en donde consideramos las siguientes 4 opciones:</em></p>
+        
+          <ul>
+            <li>
+              <p><em>RAID 6</em></p>
+            </li>
+            <li>
+              <p><em>RAID 10 (mirror doble con 30 grupos de 2 discos)</em></p>
+            </li>
+            <li>
+              <p><em>RAID 50 (con 6 grupos de 10 discos)</em></p>
+            </li>
+            <li>
+              <p><em>RAID 51 (mirror doble con 2 grupos de 30 discos)</em></p>
+            </li>
+          </ul>
+        
+          <p><strong>Calcular la cantidad de información útil que puede almacenar cada uno de los RAIDS considerados i el ancho de banda efectivo si hacemos lecturas sequenciales o aleatorias</strong></p>
+        </blockquote>
+        
+        <h6 id="raid-6">RAID 6:</h6>
+        
+        <p>La cantitat de memòria útil d’un RAID 6 ve donada per <code class="language-plaintext highlighter-rouge">(n-2) / n</code> ja que dels <em>n</em> discos que té sabem que dos aniran destinats a paritat (no dos discos sencers, sino el tamany de dos discos repartits en diferents discos en funció de la tira). Per tant tindrà una memòria útil del <code class="language-plaintext highlighter-rouge">58/60 * 100 = 96.7%</code> i en tamany serà <code class="language-plaintext highlighter-rouge">60 discos * 300 GBytes/disc * 96.7% = 17.406 Gbytes útils</code>.</p>
+        
+        <ul>
+          <li>
+            <p>lectures sequencials: si son sequencials llegim tires senceres. Per tant: <code class="language-plaintext highlighter-rouge">banda_lectura = n * 100Mbytes/s = 6000MBytes/s</code></p>
+          </li>
+          <li>
+            <p>lectures aleatories: L’ ample de banda de lectura, serà de <code class="language-plaintext highlighter-rouge">n * bLec</code>, ja que podem llegir en paral·lel de tots els discos , per tant: <code class="language-plaintext highlighter-rouge">banda_lectura = n * 100MBytes/s = 60 * 100 = 6.000 MBytes/s</code>.</p>
+          </li>
+          <li>
+            <p>escriptures sequencials: si escribim sequencial, escribim dades en els <em>n-2</em> discos que pertoqui i la paritat de les noves dades als dos altres discos. Per tant: <code class="language-plaintext highlighter-rouge">ample_escriptura = (n-2) * 100Mbytes/s = 5800Mbytes/s</code></p>
+          </li>
+          <li>
+            <p>escriptures aleatories: si en canvi son aleatories, per cada dada que escribim, n’hem de llegir la antiga i les dos paritats de la tira, i escriure la nova dada i les dos paritats. Es a dir, fem 3 lectures i 3 escripture, cosa que redueix l’ample de banda en 6. Per tant: <code class="language-plaintext highlighter-rouge">ample_escriptura = n * (100Mbytes/s / 6) = 1000Mbytes/s</code></p>
+          </li>
+        </ul>
+        
+        <h6 id="raid-10-mirror-doble-con-30-grupos-de-2-discos">RAID 10 (mirror doble con 30 grupos de 2 discos):</h6>
+        
+        <p>El RAID 10 està format per discos logics estructurats en RAID 1, es a dir 30 grups de 2 discos. Com que cada grup d’ aquests té un memòria útil del 50%, ja que estan repetides les dades, podem veure que el tamany útil serà: <code class="language-plaintext highlighter-rouge">tamany_util = 60 * 300Gbytes/disc * 50% = 9000Gbytes</code>.</p>
+        
+        <ul>
+          <li>
+            <p>lectures sequencials: quan llegim sequencialment, el RAID 0 buscara cada part de la tira en un grup de RAID 1 diferent, on podrem llegir de qualsevol dels dos, pero no el doble de rapid. Per tant, cada grup tindrà un ample de banda de lectura de <code class="language-plaintext highlighter-rouge">100Mbytes/s</code>. Pero, hem de tenir en compte que l’enunciat ens diu que sempre tenim peticions pendents, per tant podrem resoltdre en paralel dues lectures sequencials, distribuint-les en els dos discos de cada RAID 1. El total serà de <code class="language-plaintext highlighter-rouge">200Mbytes/grup * 30grups = 6000Mbytes/s</code></p>
+          </li>
+          <li>
+            <p>lectures aleatories: si son aleatories, podem llegir dos trosos de informació que estiguin al mateix grup, i llegir un del primer disc i l’altre de la seva copia. Per aixo el ample de banda de lectura de cada grup es de <code class="language-plaintext highlighter-rouge">100Mbytes/s * 2discos = 200Mbytes/s</code>, i el total serà de <code class="language-plaintext highlighter-rouge">200 Mbytes/s * 30 = 6000Mbytes/s</code></p>
+          </li>
+          <li>
+            <p>escriptures sequencials: quan escribim sequencialment, per a cada grup hem de escriure dos cops, per tant l’ ample de banda del grup és el de un disc <code class="language-plaintext highlighter-rouge">100Mbytes/s</code>, iel total de <code class="language-plaintext highlighter-rouge">100Mbytes/s * 30 = 3000Mbytes/s</code></p>
+          </li>
+          <li>
+            <p>escriptures aleatories: és igual que les sequencials, ja que sempre haurem de escriure la dada als dos discos d’un mateix grup de RAID 1</p>
+          </li>
+        </ul>
+        
+        <h6 id="raid-50-con-6-grupos-de-10-discos">RAID 50 (con 6 grupos de 10 discos):</h6>
+        
+        <p>Aquest RAID 50, está format per 6 grups de RAIDs 5 amb 10 discos cada un. Això vol dir que per cada tros d’informació que el RAID 0 emmagatzema a un grup, aquest es distribueix en 9 dels discos del grup, i en el altre es guarden les paritats (en diferents discos en funció de la tira). Per tant, la memoria útil serà de <code class="language-plaintext highlighter-rouge">59/60 * 100 = 98.4%</code>. El tamany útil serà de <code class="language-plaintext highlighter-rouge">60discos * 300Gbytes/disc * 98.4% =  17.700GBytes</code></p>
+        
+        <ul>
+          <li>
+            <p>lectures sequencials: si les lectures son sequencials, es buscara un tros de la informació a cada grup de RAID 5. Cada grup té una velocitat de lectura de tira de <code class="language-plaintext highlighter-rouge">10*100Mbytes/s = 1000Mbytes/s</code>. Per tant, el total es de <code class="language-plaintext highlighter-rouge">1000Mbytes/s * 6 grups = 6000Mbytes/s</code></p>
+          </li>
+          <li>
+            <p>lectures aleatories: si son aleatories podem llegir dades de tots els discos a la vegada, ja que distribuim les peticions de lectura per a que no intentem llegir dades de la mateixa tira: <code class="language-plaintext highlighter-rouge">ample_banda_lectura = 60 * 100Mbytes/ = 6000Mbytes/s</code></p>
+          </li>
+          <li>
+            <p>escriptures sequencials: per a cada grup hem de escriure dades als 9 discos i al de paritat (distribuit en funció de la tira), per tant tenim un ample de banda efectiu de <code class="language-plaintext highlighter-rouge">9 * 100Mbytes/s = 900Mbytes/s</code>. En total: <code class="language-plaintext highlighter-rouge">900Mbytes/s * 6 grups = 5400Mbytes/s</code></p>
+          </li>
+          <li>
+            <p>escriptures aleatories: si son aleatories, per escriure cada dada hem de llegir al partitat de la tira i la dada entiga i encriure la nova dada i la nova paritat, es a dir, 2 lectures i 2 escritures. Per tant l’ample de banda es redueix en 4: <code class="language-plaintext highlighter-rouge">ample banda = 60 * (100Mbytes/s / 4) = 1500Mbytes/s</code></p>
+          </li>
+        </ul>
+        
+        <h6 id="raid-51-mirror-doble-con-2-grupos-de-30-discos">RAID 51 (mirror doble con 2 grupos de 30 discos):</h6>
+        
+        <p>Aquest RAID 51, està format per 2 RAIDs 5 idèntics, on les dades estàn duplicades. En cada RAID 5 tenim 30 dicos, dels quals 29 estaran dedicats a dades i l’altre a paritat (distribuit entre discos). Per tant la memòria ùtil de cada RAID 5 serà: <code class="language-plaintext highlighter-rouge">29/30 * 100 = 0.97%</code>. La memòria útil del RAID 1 serà del <code class="language-plaintext highlighter-rouge">50%</code> ja que les dades estan duplicades. Mutiplicant aquests percentatges trobem la memòria útil total: <code class="language-plaintext highlighter-rouge">97% * 50% = 48%</code>. Per tant el tamany serà de <code class="language-plaintext highlighter-rouge">60 discos * 300Gbytes/dis * 48% = 8700Gbytes</code>.</p>
+        
+        <ul>
+          <li>
+            <p>lectures sequencials: si les lectures son sequencials, només aprofitem un dels grups, ja que hem de llegir les mateixes dades (mateixa tira), i ens serveix llegir le qualsevol dels dos grups de RAID 5, ja que estan duplicats. Cada grup de RAID te un ample de banda sequencial de <code class="language-plaintext highlighter-rouge">30*100Mbytes/s = 3000Mbytes/s</code>. Per tant l’ ample de banda de lectura es el de un grup: <code class="language-plaintext highlighter-rouge">3000Mbytes/s</code>. Com que sempre tenim peticions pendents de resoldre, podem resoldre una a el primer de RAID 5, i l’altre a el segon grup. Per tant: <code class="language-plaintext highlighter-rouge">ample_banda = 3000Mbytes/s * 2 = 6000Mbytes</code></p>
+          </li>
+          <li>
+            <p>lectures aleatories: si les lectures son aleatories, les podem distribuir entre els dos grups de RAID 5 aquests entre els diferents discos. Per tant: <code class="language-plaintext highlighter-rouge">ample_banda = 60 * 100Mbytes/s = 6000Mbytes/s</code>.</p>
+          </li>
+          <li>
+            <p>escriptures sequencial: hem de tenir en compte que l’ample de banda serà el de un grup de RAID 5, ja que en haurem de escriure en en els dos. Per escriure en un RAID 5 hem de fer 29 escritures de dades i una de paritat, per tant escribim dades a <code class="language-plaintext highlighter-rouge">29 * 100Mbytes/s = 29000Mbytes/s</code></p>
+          </li>
+          <li>
+            <p>escriptures aleatories: si son aleatories, per cada dada que escribim hem de llegir la paritat antiga i la dada antiga i escriure la nova paritat i la nova dada. Es a dir 2 lectures i 2 escriptures. I, a més fer el mateix a l’altre disc. Per tant: <code class="language-plaintext highlighter-rouge">ample_banda_escriptura = 30 * 100Mbytes/s / 4 = 750Mbytes/s</code></p>
+          </li>
+        </ul>
+        
+        <h2 id="-formules">. Formules:</h2>
+        
+        <p><code class="language-plaintext highlighter-rouge">potencia_dinamica = Carga_Capacitiva(F) * Voltatge^2(V) * Frequència(Hz)</code></p>
+        
+        <p><code class="language-plaintext highlighter-rouge">potencia_estàtica = Voltage(V) * Intesitat_Fuga(A)</code></p>
+        
+                </main>
+        
+    </div>
+    <script>
+        // Select all headers within the main content
+        var headers = document.querySelectorAll('.main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6');
+
+        // Select the table of contents
+        var tableOfContents = document.getElementById('table-of-contents');
+
+        // Initialize the previous header level to 6 (the highest possible header level)
+        var previousHeaderLevel = 6;
+
+        // Regular expression to match a number at the start of the header text
+        var numberRegex = /\d+\./g;
+
+        // Loop through each header
+        for (var i = 0; i < headers.length; i++) {
+          // Get the current header level
+          var currentHeaderLevel = parseInt(headers[i].tagName.substring(1));
+
+          // Get the text of the header
+          var headerText = headers[i].textContent;
+          headerText = headerText.replace(numberRegex, function(match) {
+            return '<strong>' + match + '</strong>';
+          });
+
+          // Create a new anchor element
+          var anchor = document.createElement('a');
+
+          // Set the href attribute to the ID of the corresponding header
+          anchor.href = '#' + headers[i].id;
+
+          // Create a new paragraph element
+          var paragraph = document.createElement('p');
+
+          // Set the class of the paragraph element based on the header level
+          paragraph.className = 'sidebar-item-' + headers[i].tagName.toLowerCase();
+
+          // Set the HTML of the paragraph element to the header text
+          paragraph.innerHTML = headerText;
+
+          // Append the paragraph element to the anchor element
+          anchor.appendChild(paragraph);
+
+          // Append the anchor element to the table of contents
+          tableOfContents.appendChild(anchor);
+
+          // Add click event listener to scroll to the corresponding header
+          anchor.addEventListener('click', function(event) {
+            event.preventDefault();
+            var targetId = this.getAttribute('href').substring(1);
+            var targetElement = document.getElementById(targetId);
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+          });
+
+          // Update the previous header level
+          previousHeaderLevel = currentHeaderLevel;
+        }
+    </script>
+</body>
