@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ñ</title>
+        <link rel="stylesheet" href="styles.css" />
+        <link rel="stylesheet" href="portada.css" />
+        <link rel="stylesheet" href="jaume.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Anton&family=Dosis:wght@200..800&family=Oswald:wght@200..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Anton&family=Dosis:wght@200..800&family=MedievalSharp&family=Oswald:wght@200..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body class="llibre">
+        <div class="header">
+            
+            
+            <div class="mini-book">
+                <img
+                    id="mini-portada"
+                    src="portada_bck.jpg"
+                    class="mini-book-page cover"
+                    alt="Book Cover"
+                />
+                <img
+                    id="mini-p1"
+                    src="01_Jaume_Complete.png"
+                    class="mini-book-page page1"
+                    alt="Page 1"
+                />
+                <img
+                    id="mini-p2"
+                    src="Luis_Final.PNG"
+                    class="mini-book-page page2"
+                    alt="Page 2"
+                />
+                <img
+                    id="mini-p3"
+                    src="AdanYEsteban.PNG"
+                    class="mini-book-page page3"
+                    alt="Page 3"
+                />
+                <img
+                    id="mini-p4"
+                    src="ToroOle.PNG"
+                    class="mini-book-page page4"
+                    alt="Page 4"
+                />
+            
+            </div>
+
+            
+        </div>
+
+        <div class="pagina portada">
+                <div class="links-media">
+                    <button class="spotify-button">
+                        <i class="fab fa-spotify spotify-icon"></i>
+                        <span class="text">eschucar en <strong>Spotify</strong></span>
+                    </button>
+                </div>
+        </div>
+
+        <div class="pagina jaume">
+            <h1>Mi bisabuelo Jaume</h1>
+            <p>Mi bisabuelo Jaume</p>
+            <p>Fue a la gurra civil</p>
+            <p>y no empuño ni arma</p>
+            <p>a nadie quiso herir</p>
+        </div>
+
+        <div class="pagina jaume">
+            <h1>Luis se fuerte</h1>
+        </div>
+
+        <div class="pagina jaume">
+            <h1>Adan y esteban</h1>
+        </div>
+
+        <div class="pagina jaume">
+            <h1>El toro ole</h1>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const pages = document.querySelectorAll(".pagina");
+                const miniBookImages =
+                    document.querySelectorAll(".mini-book img");
+
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                const pageIndex = Array.from(pages).indexOf(
+                                    entry.target
+                                );
+
+                                miniBookImages.forEach((img, index) => {
+                                    if (index < pageIndex) {
+                                        // Rotate and move pages back as you scroll past them
+                                        img.style.transform = `rotateY(-140deg)`;
+                                        img.style.opacity = "0";
+                                        img.style.transition =
+                                        "transform 1s ease, opacity 0s ease 1s";
+                                    } else {
+                                        // Reset rotation for the current and future pages
+                                        img.style.transform = `rotateY(0deg) translateZ(-${
+                                            index * 10
+                                        }px)`;
+                                        img.style.opacity = "1";
+                                        img.style.transition =
+                                        "transform 1s ease, opacity 0s";
+                                    }
+
+                                    
+                                });
+                            }
+                        });
+                    },
+                    {
+                        root: null, // Use the viewport as the root
+                        threshold: 0.3, // Trigger when 30% of the element is in view
+                        rootMargin: "0px", // No margin around the root
+                    }
+                );
+
+                pages.forEach((page) => {
+                    observer.observe(page);
+                });
+            });
+        </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const pages = document.querySelectorAll(".pagina");
+
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add("visible");
+                            }
+                        });
+                    },
+                    {
+                        root: null, // Use the viewport as the root
+                        threshold: 0.3, // Trigger when 30% of the element is in view
+                        rootMargin: "0px", // No margin around the root
+                    }
+                );
+
+                pages.forEach((page) => {
+                    observer.observe(page);
+                });
+            });
+        </script>
+    </body>
+</html>

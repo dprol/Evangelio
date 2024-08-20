@@ -1,0 +1,162 @@
+/* Define gradient backgrounds */
+
+.pagina.portada {
+    max-height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevent scrollbars */
+    
+    background-blend-mode: multiply; /* Blend the gradient and the base color */
+}
+
+
+.pagina.portada.visible {
+    opacity: 1;
+}
+
+.pagina.portada h2 {
+    font-size: clamp(2vh, 2vw, 3vh); /* Responsive font size */
+    width: 80%;
+    text-wrap: wrap;
+    line-height: 1.2em;
+    color: var(--silver);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    text-align: center;
+
+    transition: opacity 2s ease-out, transform 2s ease-out,
+        filter 2s ease-out;
+
+    z-index: 1;
+
+}
+
+.pagina.portada .miquel {
+    background: radial-gradient(ellipse at bottom, #ffe44cb4, var(--bronze), var(--silver));   
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    transform: translateY(-100%);
+    text-align: center;
+
+    font-weight: 100;
+}
+
+.pagina.portada .hero {
+    background: radial-gradient(ellipse at top, #ffe44cb4, var(--bronze), var(--silver));   
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    transform: translateY(-100%);
+    text-align: center;
+
+    font-weight: 100;
+}
+
+.pagina.portada.visible .miquel {
+    transform: translateY(0);
+    opacity: 1; /* Visible state */
+    filter: blur(0);
+    
+}
+
+.pagina.portada.visible .hero {
+    transform: translateY(0);
+    opacity: 0.8; /* Visible state */
+    filter: blur(0);
+}
+.pagina.portada.visible .footer {
+    opacity: 1;
+}
+
+@keyframes scroll-right {
+    0% {
+        transform: translateX(-5vw);
+    }
+    50% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-5vw);
+    }
+}
+
+/* Container for media links */
+.links-media {
+    display: flex;
+    flex-direction: column; /* Arrange buttons horizontally */
+    justify-content: center; /* Center buttons horizontally */
+    gap: 1em; /* Space between buttons */
+    position: relative;
+    align-items: center;
+}
+/* Button styling */
+.spotify-button {
+    position: relative; /* Position relative to use pseudo-elements */
+    display: flex;
+    align-items: center;
+    padding: 10px 20px; /* Padding for the button */
+    background-color: transparent;
+    color: white;
+    border: 2px solid #1DB954; /* Default border color */
+    border-radius: 1em;
+    cursor: pointer;
+    font-family: 'Dosis', sans-serif; /* Adjust the font as needed */
+    transition: background-color 0.3s, color 0.3s;
+    text-align: left; /* Align text to the left */
+    width: auto; /* Allow button to adjust width based on content */
+    height: 60px; /* Adjusted height for better appearance */
+    gap: 1em;
+    padding: 12px 24px; /* Adjust padding to make button larger */
+}
+
+/* Icon styling */
+.spotify-icon {
+    font-size: 2.5em; /* Adjust icon size */
+    color: white; /* Icon color */
+    margin-right: 10px; /* Space between icon and text */
+}
+
+/* Text styling */
+.text {
+    display: flex;
+    flex-direction: column; /* Stack text vertically */
+    font-size: 1em; /* Adjust font size */
+}
+
+/* Text styling for "Listen on" */
+.listen-on {
+    font-size: 0.8em; /* Smaller font size for "Listen on" */
+}
+
+/* Text styling for "Spotify" */
+.spotify-text {
+    font-weight: bold; /* Make "Spotify" bold */
+    font-size: 1em; /* Adjust font size */
+}
+
+/* Add the pseudo-element for the fill effect */
+.spotify-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1DB954; /* Green background */
+    border-radius: 0.5em; /* Same border-radius as the button */
+    border: 1px solid transparent;
+    transform: scaleX(0); /* Initially hidden */
+    transform-origin: left;
+    transition: transform 0.5s ease; /* Smooth scaling transition */
+    z-index: -1; /* Behind the text and icon */
+}
+
+/* Hover effect */
+.spotify-button:hover::before {
+    transform: scaleX(1); /* Fill background on hover */
+}
+
+.spotify-button:hover {
+    color: #000; /* Black text color on hover */
+    border-color: #1DB954; /* Maintain green border color on hover */
+}
