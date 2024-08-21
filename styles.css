@@ -13,6 +13,7 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden; /* Hide default llbars */
+    font-size: min(4vw, 2vh); /* Responsive font size */
 }
 
 :root {
@@ -22,7 +23,7 @@ body {
     --silver: #c0c0c0;
     --gold: #ffe44c;
     --red: #ff0000;
-    --silver-half: #c0c0c050;
+    --silver-half: #c0c0c0c0;
     --white: #ffffff;
 }
 
@@ -70,7 +71,6 @@ transition: background-image 2s ease-in-out;
     scroll-snap-align: start;
     display: flex;
     flex-direction: column;
-    padding: 0;
     margin: 0;
     border: none;
     flex-shrink: 0; /* Prevent shrinking */
@@ -97,8 +97,7 @@ transition: background-image 2s ease-in-out;
     position: absolute;
     top: calc(clamp(20vh, 80vw, 30vh) + 10vh);
     width: 80vw; /* El borde ocupa el 50% del ancho */
-    border-top: 1px solid var(--bronze); /* Color del borde */
-    height: 10vh;
+    border-top: 2px solid var(--bronze); /* Color del borde */
 }
 
 .contingut-pagina {
@@ -106,8 +105,8 @@ transition: background-image 2s ease-in-out;
     margin-top: calc(clamp(20vh, 80vw, 30vh) + 10vh);
 
 
-    padding-top: 1vh;
-    gap: 2vh;
+    padding: 1vh 10vw;
+    gap: 1vh;
     width: 100%;
     overflow-y: auto; /* Enables vertical scrolling */
     overflow-x: hidden;
@@ -253,6 +252,18 @@ transition: background-image 2s ease-in-out;
 
 
 .icono-contingut {
-    width: min(30vw, 30vh);
+    width: min(20vw, 20vh);
     height: auto;
+}
+
+
+.separator {
+    width: 80%;
+    border: 1px solid var(--silver-half);
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--silver);
+    text-decoration: underline var(--bronze);
 }
