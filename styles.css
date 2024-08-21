@@ -96,7 +96,7 @@ transition: background-image 2s ease-in-out;
     content: '';
     position: absolute;
     top: calc(clamp(15vh, 60vw, 25vh) + 10vh);
-    width: 80vw; /* El borde ocupa el 50% del ancho */
+    width: 90vw; /* El borde ocupa el 50% del ancho */
     border-top: 2px solid var(--bronze); /* Color del borde */
 }
 
@@ -105,7 +105,7 @@ transition: background-image 2s ease-in-out;
     margin-top: calc(clamp(15vh, 60vw, 25vh) + 10vh);
 
 
-    padding: 1vh 10vw;
+    padding: 1vh 5vw;
     padding-bottom: 10vh;
     gap: 1vh;
     width: 100%;
