@@ -24,7 +24,9 @@
     max-width: 80%; /* Adjusted for better alignment */
     margin-bottom: 1em;
     font-size: 8vw; /* Responsive font size */
-    text-wrap: wrap;
+    word-wrap: break-word; /* Break long words */
+    overflow-wrap: break-word; /* Break long words (modern standard) */
+    white-space: normal; /* Ensure text wraps normally */
 }
 
 .pagina.jaume p {
@@ -32,7 +34,9 @@
     color: white;
     margin: 0.5em 0; /* Add vertical margin for spacing */
     max-width: 80%; /* Adjusted for better alignment */
-    text-wrap: wrap;
+    word-wrap: break-word; /* Break long words */
+    overflow-wrap: break-word; /* Break long words (modern standard) */
+    white-space: normal; /* Ensure text wraps normally */
 }
 
 /* Adjust styling for the "see more" button */

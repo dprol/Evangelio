@@ -97,6 +97,7 @@ transition: background-image 2s ease-in-out;
     height: calc(100vh - calc(clamp(20vh, 80vw, 40vh) + 10vh)); /* Adjust height to fit within pagina */
     width: 100%;
     overflow-y: auto; /* Enables vertical scrolling */
+    overflow-x: hidden;
     padding: 20px; /* Optional: add padding for better readability */
     box-sizing: border-box; /* Ensure padding is included in the width and height */
     z-index: 1;
