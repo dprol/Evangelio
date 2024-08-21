@@ -24,6 +24,7 @@
             href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
             rel="stylesheet"
         />
+
     </head>
     <body class="llibre">
         <div class="header">
@@ -62,19 +63,31 @@
         </div>
 
         <div class="pagina portada">
-            <div class="links-media">
-                <button class="spotify-button">
-                    <i class="fab fa-spotify spotify-icon"></i>
-                    <span class="text"
-                        >eschucar en <strong>Spotify</strong></span
-                    >
-                </button>
+            <div class="contingut-pagina">
+                <div class="links-media">
+                    <button class="spotify-button">
+                        <i class="fab fa-spotify spotify-icon"></i>
+                        <span class="text"
+                            >eschucar en <strong>Spotify</strong></span
+                        >
+                    </button>
+                </div>
             </div>
+            
         </div>
 
         <div class="pagina jaume">
             <div class="contingut-pagina">
                 <h1>Mi bisabuelo Jaume</h1>
+                    <div class="player-container">
+                        <button class="play-button" id="playButton"><i class="fa-solid fa-play"></i></button>
+                        <div class="spectrum">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                    </div>
+                <audio id="audioPlayer" src="jaumesong.mp3" preload="auto"></audio>
                 <p>Fusce viverra cras varius eros nam leo, vel nascetur quisque euismod rhoncus aliquet. Praesent tellus mi sed bibendum faucibus est placerat. Magnis vulputate maecenas feugiat enim quis amet platea suscipit auctor vehicula nam taciti. Sit quisque auctor leo iaculis urna diam sagittis consequat blandit amet erat. Neque etiam condimentum phasellus, torquent sagittis ullamcorper ultricies tortor inceptos. Diam leo dapibus posuere, magnis felis metus amet ipsum nam gravida.</p>
                 <p>Fusce viverra cras varius eros nam leo, vel nascetur quisque euismod rhoncus aliquet. Praesent tellus mi sed bibendum faucibus est placerat. Magnis vulputate maecenas feugiat enim quis amet platea suscipit auctor vehicula nam taciti. Sit quisque auctor leo iaculis urna diam sagittis consequat blandit amet erat. Neque etiam condimentum phasellus, torquent sagittis ullamcorper ultricies tortor inceptos. Diam leo dapibus posuere, magnis felis metus amet ipsum nam gravida.</p>
                 <p>Fusce viverra cras varius eros nam leo, vel nascetur quisque euismod rhoncus aliquet. Praesent tellus mi sed bibendum faucibus est placerat. Magnis vulputate maecenas feugiat enim quis amet platea suscipit auctor vehicula nam taciti. Sit quisque auctor leo iaculis urna diam sagittis consequat blandit amet erat. Neque etiam condimentum phasellus, torquent sagittis ullamcorper ultricies tortor inceptos. Diam leo dapibus posuere, magnis felis metus amet ipsum nam gravida.</p>    
@@ -83,15 +96,21 @@
         </div>
 
         <div class="pagina jaume">
+            <div class="contingut-pagina">
             <h1>Luis se fuerte</h1>
+            </div>
         </div>
 
         <div class="pagina jaume">
+            <div class="contingut-pagina">
             <h1>Adan y esteban</h1>
+            </div>
         </div>
 
         <div class="pagina jaume">
+            <div class="contingut-pagina">
             <h1>El toro ole</h1>
+            </div>
         </div>
 
      <script>document.addEventListener("DOMContentLoaded", () => {
@@ -159,5 +178,35 @@
                 });
             });
         </script>
+
+    <script>document.getElementById('playButton').addEventListener('click', function() {
+        const audio = document.getElementById('audioPlayer');
+        const playButton = this;
+    
+        if (audio.paused) {
+            audio.play();
+            playButton.querySelector('i').classList.remove('fa-play');
+            playButton.querySelector('i').classList.add('fa-pause');
+            document.querySelectorAll('.bar').forEach(bar => {
+                bar.style.animationPlayState = 'running';
+            });
+        } else {
+            audio.pause();
+            playButton.querySelector('i').classList.remove('fa-pause');
+            playButton.querySelector('i').classList.add('fa-play');
+            document.querySelectorAll('.bar').forEach(bar => {
+                bar.style.animationPlayState = 'paused';
+            });
+        }
+    });
+    
+    document.getElementById('audioPlayer').addEventListener('ended', function() {
+        const playButton = document.getElementById('playButton');
+        playButton.querySelector('i').classList.remove('fa-pause');
+        playButton.querySelector('i').classList.add('fa-play');
+        document.querySelectorAll('.bar').forEach(bar => {
+            bar.style.animationPlayState = 'paused';
+        });
+    });</script>
     </body>
 </html>
