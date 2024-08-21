@@ -24,17 +24,15 @@
     max-width: 80%; /* Adjusted for better alignment */
     margin-bottom: 1em;
     font-size: 8vw; /* Responsive font size */
-    text-wrap: stable;
+    text-wrap: wrap;
 }
 
 .pagina.jaume p {
-    font-family: Anton, Helvetica, sans-serif;
-    background: transparent;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 1px white;
+    font-family:  sans-serif;
+    color: white;
     margin: 0.5em 0; /* Add vertical margin for spacing */
     max-width: 80%; /* Adjusted for better alignment */
+    text-wrap: wrap;
 }
 
 /* Adjust styling for the "see more" button */

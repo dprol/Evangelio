@@ -97,8 +97,8 @@
     padding: 10px 20px; /* Padding for the button */
     background-color: transparent;
     color: white;
-    border: 2px solid #1DB954; /* Default border color */
-    border-radius: 1em;
+    border: 1px solid #1DB954; /* Default border color */
+    border-radius: 0.5em;
     cursor: pointer;
     font-family: 'Dosis', sans-serif; /* Adjust the font as needed */
     transition: background-color 0.3s, color 0.3s;
@@ -112,7 +112,7 @@
 /* Icon styling */
 .spotify-icon {
     font-size: 2.5em; /* Adjust icon size */
-    color: white; /* Icon color */
+    color: #1DB954; /* Icon color */
     margin-right: 10px; /* Space between icon and text */
 }
 
@@ -159,4 +159,9 @@
 .spotify-button:hover {
     color: #000; /* Black text color on hover */
     border-color: #1DB954; /* Maintain green border color on hover */
+
+    .spotify-icon {
+        color: white; /* Icon color */
+        transition: color 0.5s ease;
+    }
 }

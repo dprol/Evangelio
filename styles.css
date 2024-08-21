@@ -38,7 +38,6 @@ body {
     padding: 0;
     margin: 0;
     border: none;
-
     background: linear-gradient(
         to bottom right,
         #3b2d2a,
@@ -65,18 +64,57 @@ transition: background-image 2s ease-in-out;
 }
 
 .pagina {
+    position: relative;
     width: 100vw; /* Full viewport width */
     height: 100vh;
     scroll-snap-align: start;
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
     padding: 0;
     margin: 0;
     border: none;
     flex-shrink: 0; /* Prevent shrinking */
     z-index: 0;
-    padding-top: 50vh;
+    padding-top: calc(clamp(20vh, 80vw, 40vh) + 10vh); /* 10vh sota el header(mini-book) */
+}
+
+.pagina {
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Hide overflow on pagina itself */
+    padding: 0;
+    margin: 0;
+    border: none;
+    flex-shrink: 0; /* Prevent shrinking */
+    z-index: 0;
+    padding-top: calc(clamp(20vh, 80vw, 40vh) + 10vh);
+}
+
+.contingut-pagina {
+    height: calc(100vh - calc(clamp(20vh, 80vw, 40vh) + 10vh)); /* Adjust height to fit within pagina */
+    width: 100%;
+    overflow-y: auto; /* Enables vertical scrolling */
+    padding: 20px; /* Optional: add padding for better readability */
+    box-sizing: border-box; /* Ensure padding is included in the width and height */
+    z-index: 1;
+    flex-shrink: 0; /* Prevent shrinking */
+    scroll-behavior: smooth;
+    
+    /* Hide scrollbar in WebKit-based browsers */
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar in Internet Explorer and Edge */
+
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contingut-pagina::-webkit-scrollbar {
+    display: none; /* Hide scrollbar in WebKit-based browsers (Chrome, Safari) */
 }
 
 * {
@@ -86,7 +124,8 @@ transition: background-image 2s ease-in-out;
 .header {
     display: flex;
     flex-direction: row;
-    height: 50vh; /* Adjust as needed */
+    margin-top: 5vh;
+    height: auto; /* Adjust as needed */
     width: 100vw; /* Full width */
     justify-content: center;
     align-items: center;
@@ -104,8 +143,8 @@ transition: background-image 2s ease-in-out;
 
 .mini-book {
     position: relative; /* Establishes positioning context for child elements */
-    width: min(45vh, 45vw); /* Set width of mini book */
-    height: min(45vh, 45vw); /* Set height of mini book */
+    width: clamp(20vh, 80vw, 40vh); /* Set width of mini book */
+    height: clamp(20vh, 80vw, 40vh); /* Set height of mini book */
     transform-style: preserve-3d; /* Maintain 3D context for children */
     transition: transform 1s ease; /* Smooth transition for 3D effect */
     transform: rotateY(15deg) rotateX(10deg); /* Slight inclination */
