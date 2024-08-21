@@ -6,11 +6,10 @@
     justify-content: start; /* Center content vertically */
     align-items: center; /* Center content horizontally */
     text-align: center; /* Center-align text */
-    background: none; /* Set a background color for contrast */
     height: 100vh; /* Full viewport height */
     width: 100vw; /* Full viewport width */
-    padding-top: 30vh;;
     overflow: hidden; /* Hide overflow */
+    background: linear-gradient(to right, 20% transparent, #1DB95410, 80% transparent);
 }
 
 .pagina.jaume h1 {
@@ -24,11 +23,16 @@
     border-bottom: 1px solid var(--bronze);
     max-width: 80%; /* Adjusted for better alignment */
     margin-bottom: 1em;
+    font-size: 8vw; /* Responsive font size */
+    text-wrap: stable;
 }
 
 .pagina.jaume p {
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--silver);
+    font-family: Anton, Helvetica, sans-serif;
+    background: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 1px white;
     margin: 0.5em 0; /* Add vertical margin for spacing */
     max-width: 80%; /* Adjusted for better alignment */
 }

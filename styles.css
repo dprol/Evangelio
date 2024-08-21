@@ -50,10 +50,14 @@ body {
     /* Add a textured effect using gradients and blending modes */
     background-image: radial-gradient(
         circle at top,
-        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 250, 92, 0.1) 0%,
         rgba(0, 0, 0, 0.1) 50%,
         rgba(0, 0, 0, 0.2) 100%
     );
+
+    -webkit-transition: background-image 2s ease-in-out;
+transition: background-image 2s ease-in-out;
+
 }
 
 .llibre::-webkit-scrollbar {
@@ -72,7 +76,7 @@ body {
     border: none;
     flex-shrink: 0; /* Prevent shrinking */
     z-index: 0;
-    padding-top: 30vh;
+    padding-top: 50vh;
 }
 
 * {
@@ -82,7 +86,7 @@ body {
 .header {
     display: flex;
     flex-direction: row;
-    height: 30vh; /* Adjust as needed */
+    height: 50vh; /* Adjust as needed */
     width: 100vw; /* Full width */
     justify-content: center;
     align-items: center;
@@ -92,14 +96,16 @@ body {
     left: 0;
     background: transparent; /* Ensure background contrast */
     z-index: 10; /* Make sure it is above other content */
+
+    pointer-events: none;
 }
 
 
 
 .mini-book {
     position: relative; /* Establishes positioning context for child elements */
-    width: 20vh; /* Set width of mini book */
-    height: 20vh; /* Set height of mini book */
+    width: min(45vh, 45vw); /* Set width of mini book */
+    height: min(45vh, 45vw); /* Set height of mini book */
     transform-style: preserve-3d; /* Maintain 3D context for children */
     transition: transform 1s ease; /* Smooth transition for 3D effect */
     transform: rotateY(15deg) rotateX(10deg); /* Slight inclination */
