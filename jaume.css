@@ -13,30 +13,73 @@
 }
 
 .pagina.jaume h1 {
+    padding-top: 5px;
     background: radial-gradient(ellipse at top, #ffe44cb4, var(--bronze), var(--silver));   
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
     font-weight: bold;
     margin: 0;
-    padding: 0.5em 0; /* Add vertical padding for spacing */
-    border-bottom: 1px solid var(--bronze);
-    max-width: 80%; /* Adjusted for better alignment */
-    font-size: 8vw; /* Responsive font size */
-    word-wrap: break-word; /* Break long words */
-    overflow-wrap: break-word; /* Break long words (modern standard) */
-    white-space: normal; /* Ensure text wraps normally */
+    max-width: 80%;
+    font-size: clamp(2rem, 8vw, 5rem); /* Min 2rem, flexible 8vw, Max 5rem */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.pagina.jaume h2 {
+    font-family: sans-serif;
+    background: radial-gradient(ellipse at top, var(--silver), var(--bronze));   
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    margin: 0;
+    max-width: 80%;
+    font-size: clamp(1.5rem, 6vw, 4rem); /* Min 1.5rem, flexible 6vw, Max 4rem */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    text-align: center;
+}
+
+.pagina.jaume h3 {
+    font-family: sans-serif;
+    background: radial-gradient(ellipse at top, var(--silver), var(--white));   
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    font-weight: 100;
+    margin: 0;
+    max-width: 80%;
+    font-size: clamp(1rem, 4vw, 3rem); /* Min 1rem, flexible 4vw, Max 3rem */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    text-align: center;
 }
 
 .pagina.jaume p {
-    font-family:  sans-serif;
-    color: white;
-    margin: 0.5em 0; /* Add vertical margin for spacing */
-    max-width: 80%; /* Adjusted for better alignment */
-    word-wrap: break-word; /* Break long words */
-    overflow-wrap: break-word; /* Break long words (modern standard) */
-    white-space: normal; /* Ensure text wraps normally */
+    font-family: sans-serif;
+    color: var(--silver);
+    margin: 0.5em 0;
+    max-width: 80%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    font-size: clamp(1rem, 3.5vw, 2rem); /* Min 1rem, flexible 3.5vw, Max 2rem */
+    line-height: clamp(1.5rem, 5vw, 3rem); /* Min 1.5rem, flexible 5vw, Max 3rem */
+    text-align: justify;
 }
+
+.pagina.jaume p .colored {
+    background: radial-gradient(ellipse at bottom, #ffe44cb4, var(--bronze), var(--silver));   
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+    
+
 
 /* Adjust styling for the "see more" button */
 .see-more-button {

@@ -7,12 +7,12 @@
 
 html,
 body {
-    font-family: "MedievalSharp", sans-serif; /* Apply the custom font */
+    font-family: sans-serif; /* Apply the custom font */
     background-color: var(--black-dark);
     border: none;
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Hide default scrollbars */
+    overflow: hidden; /* Hide default llbars */
 }
 
 :root {
@@ -75,7 +75,6 @@ transition: background-image 2s ease-in-out;
     border: none;
     flex-shrink: 0; /* Prevent shrinking */
     z-index: 0;
-    padding-top: calc(clamp(20vh, 80vw, 40vh) + 10vh); /* 10vh sota el header(mini-book) */
 }
 
 .pagina {
@@ -93,10 +92,22 @@ transition: background-image 2s ease-in-out;
     
 }
 
-.contingut-pagina {
-    height: 100vh; /* Adjust height to fit within pagina */
-    padding-top: calc(clamp(20vh, 80vw, 40vh) + 10vh);
+.contingut-pagina::before {
+    content: '';
+    position: absolute;
+    top: calc(clamp(20vh, 80vw, 30vh) + 10vh);
+    width: 80vw; /* El borde ocupa el 50% del ancho */
+    border-top: 1px solid var(--bronze); /* Color del borde */
+    height: 10vh;
+}
 
+.contingut-pagina {
+    height: calc(100vh - (clamp(20vh, 80vw, 30vh) + 10vh)); /* Adjust height to fit within pagina */
+    margin-top: calc(clamp(20vh, 80vw, 30vh) + 10vh);
+
+
+    padding-top: 1vh;
+    gap: 2vh;
     width: 100%;
     overflow-y: auto; /* Enables vertical scrolling */
     overflow-x: hidden;
@@ -115,6 +126,16 @@ transition: background-image 2s ease-in-out;
     align-items: center;
 
     box-sizing: border-box;
+
+
+
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(20px); /* Move down slightly when disappearing */
+    pointer-events: none; /* Make it unclickable */
 }
 
 .contingut-pagina::-webkit-scrollbar {
@@ -127,8 +148,9 @@ transition: background-image 2s ease-in-out;
 
 .header {
     display: flex;
-    flex-direction: row;
-    margin-top: 5vh;
+    flex-direction: column;
+    margin: 0;
+    padding-top: 5vh;
     height: auto; /* Adjust as needed */
     width: 100vw; /* Full width */
     justify-content: center;
@@ -136,24 +158,24 @@ transition: background-image 2s ease-in-out;
     position: fixed; /* Keep it fixed at the top */
     top: 0;
     justify-content: space-evenly;
-    left: 0;
     background: transparent; /* Ensure background contrast */
     z-index: 10; /* Make sure it is above other content */
 
     pointer-events: none;
-}
 
+    z-index: 1;
+
+}
 
 
 .mini-book {
     position: relative; /* Establishes positioning context for child elements */
-    width: clamp(20vh, 80vw, 40vh); /* Set width of mini book */
-    height: clamp(20vh, 80vw, 40vh); /* Set height of mini book */
+    width: clamp(20vh, 80vw, 30vh); /* Set width of mini book */
+    height: clamp(20vh, 80vw, 30vh); /* Set height of mini book */
     transform-style: preserve-3d; /* Maintain 3D context for children */
     transition: transform 1s ease; /* Smooth transition for 3D effect */
     transform: rotateY(15deg) rotateX(10deg); /* Slight inclination */
     transform-origin: center; /* Center rotation */
-    box-shadow: -10px 10px 20px rgba(0, 0, 0, 0.5); /* Shadow effect */
 }
 
 /* Ensure images are correctly positioned */
@@ -176,7 +198,6 @@ transition: background-image 2s ease-in-out;
     align-items: center;
     gap: 2vw;
     height: 5vh;
-    margin: 4vh 0;
 }
 
 .spectrum {
@@ -187,7 +208,7 @@ transition: background-image 2s ease-in-out;
 
 .bar {
     width: 5px;
-    background-color: white;
+    background-color: var(--silver);
     border-radius: 5px;
 
     animation: bounce 1s infinite paused;
@@ -214,7 +235,7 @@ transition: background-image 2s ease-in-out;
 .play-button {
     border: none;
     background: transparent;
-    color: white;
+    color: var(--silver);
     padding: 10px;
     font-size: 20px;
     border-radius: 50%;
@@ -223,4 +244,15 @@ transition: background-image 2s ease-in-out;
     align-items: center;
     justify-content: center;
     transition: background-color 0.3s;
+}
+
+
+.pagina.portada.visible .header.player-container {
+    opacity: 0;
+}
+
+
+.icono-contingut {
+    width: min(30vw, 30vh);
+    height: auto;
 }
