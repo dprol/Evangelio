@@ -279,4 +279,31 @@ a {
     background-color: transparent;
     color: var(--silver);
     border-radius: 50%;
+    border: none;
+}
+
+#scroll-left {
+    animation: slide1 2s infinite;
+}
+
+@keyframes slide1 {
+    0%, 100% {
+        transform: translateX(10%);
+    }
+    50% {
+        transform: translateX(-10%);
+    }
+}
+
+#scroll-right {
+    animation: slide2 2s infinite;
+}
+
+@keyframes slide2 {
+    0%, 100% {
+        transform: translateX(-10%);
+    }
+    50% {
+        transform: translateX(10%);
+    }
 }
