@@ -95,18 +95,18 @@ transition: background-image 2s ease-in-out;
 .contingut-pagina::before {
     content: '';
     position: absolute;
-    top: calc(clamp(20vh, 80vw, 30vh) + 10vh);
+    top: calc(clamp(15vh, 60vw, 25vh) + 10vh);
     width: 80vw; /* El borde ocupa el 50% del ancho */
     border-top: 2px solid var(--bronze); /* Color del borde */
 }
 
 .contingut-pagina {
-    height: calc(100vh - (clamp(20vh, 80vw, 30vh) + 10vh)); /* Adjust height to fit within pagina */
-    margin-top: calc(clamp(20vh, 80vw, 30vh) + 10vh);
+    height: calc(100vh - (clamp(15vh, 60vw, 25vh) + 10vh)); /* Adjust height to fit within pagina */
+    margin-top: calc(clamp(15vh, 60vw, 25vh) + 10vh);
 
 
     padding: 1vh 10vw;
-    padding-bottom: 30vh;
+    padding-bottom: 10vh;
     gap: 1vh;
     width: 100%;
     overflow-y: auto; /* Enables vertical scrolling */
@@ -148,7 +148,8 @@ transition: background-image 2s ease-in-out;
 
 .header {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-evenly;
     margin: 0;
     padding-top: 5vh;
     height: auto; /* Adjust as needed */
@@ -161,7 +162,6 @@ transition: background-image 2s ease-in-out;
     background: transparent; /* Ensure background contrast */
     z-index: 10; /* Make sure it is above other content */
 
-    pointer-events: none;
 
     z-index: 1;
 
@@ -170,12 +170,15 @@ transition: background-image 2s ease-in-out;
 
 .mini-book {
     position: relative; /* Establishes positioning context for child elements */
-    width: clamp(20vh, 80vw, 30vh); /* Set width of mini book */
-    height: clamp(20vh, 80vw, 30vh); /* Set height of mini book */
+    width: clamp(15vh, 60vw, 25vh); /* Set width of mini book */
+    height: clamp(15vh, 60vw, 25vh); /* Set height of mini book */
     transform-style: preserve-3d; /* Maintain 3D context for children */
     transition: transform 1s ease; /* Smooth transition for 3D effect */
     transform: rotateY(15deg) rotateX(10deg); /* Slight inclination */
     transform-origin: center; /* Center rotation */
+
+
+    pointer-events: none;
 }
 
 /* Ensure images are correctly positioned */
@@ -267,4 +270,13 @@ transition: background-image 2s ease-in-out;
 a {
     color: var(--silver);
     text-decoration: underline var(--bronze);
+}
+
+.scroll-button {
+    height: min(10vh, 10vw);
+    width: min(10vh, 10vw);
+    font-size: 1rem;
+    background-color: transparent;
+    color: var(--silver);
+    border-radius: 50%;
 }

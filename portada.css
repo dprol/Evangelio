@@ -164,4 +164,64 @@
     background-color: #FF0000;
 }
 
+.signature {
+    justify-content: end;
+    display: flex;
+    align-items: center; /* Center items vertically */
+    gap: 1rem; /* Space between text and icon */
+}
 
+.signature-link {
+    text-decoration: underline; /* Remove underline from links */
+    color: inherit; /* Inherit text color */
+}
+
+.miquel-icon {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+/* General styling for the scroll indicator */
+.scroll-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    padding: 10px 20px;
+    border-radius: 0.5em;
+    width: fit-content;
+    
+    animation: move 2s infinite; /* Pulse animation for the entire indicator */
+    
+    cursor: pointer; /* Indicate that the element is interactive */
+}
+
+/* Text styling */
+.scroll-text {
+    font-size: 1em;
+    margin-right: 1em; /* Space between text and icon */
+    color: var(--silver-half);
+    overflow-wrap: break-word;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+
+/* Icon styling */
+.scroll-icon {
+    font-size: 2em;
+    color: var(--silver-half); /* Adjust to match your design */
+}
+
+
+/* Pulse animation for the entire indicator */
+@keyframes move {
+    0%, 100% {
+        transform: translateX(-5%);
+    }
+    50% {
+        transform: translateX(5%);
+    }
+}
