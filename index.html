@@ -83,20 +83,23 @@
             <div class="pagina">
                 <div class="contingut-pagina">
                     <h1>
-                        " Una mirada crítica y divertida a la história de España "
+                        " Una mirada crítica y divertida a la história de España
+                        "
                     </h1>
                     <h2>Bienvenido lector,</h2>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                        do eiusmod tempor incididunt ut labore et dolore magna
-                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                        ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo consequat.
                     </p>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                        do eiusmod tempor incididunt ut labore et dolore magna
-                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                        ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo consequat.
                     </p>
                     <p class="signature">
                         Atentamente,
@@ -119,14 +122,16 @@
                             />
                         </a>
                     </p>
-    
+
                     <div class="links-media">
                         <a
                             href="https://open.spotify.com/album/4yGHShZVKwkbmRkLTvGDfz?si=4ISAbXV-Tf2OOSPfc3njBw"
                             target="_blank"
                             class="media-button spotify-button"
                         >
-                            <i class="fab fa-spotify media-icon spotify-icon"></i>
+                            <i
+                                class="fab fa-spotify media-icon spotify-icon"
+                            ></i>
                             <span class="text">
                                 escuchar en
                                 <strong class="button-text">Spotify</strong>
@@ -137,9 +142,12 @@
                             target="_blank"
                             class="media-button youtube-button"
                         >
-                            <i class="fab fa-youtube media-icon youtube-icon"></i>
+                            <i
+                                class="fab fa-youtube media-icon youtube-icon"
+                            ></i>
                             <span class="text">
-                                ver en <strong class="button-text">YouTube</strong>
+                                ver en
+                                <strong class="button-text">YouTube</strong>
                             </span>
                         </a>
                     </div>
@@ -153,7 +161,7 @@
                     </div> -->
                 </div>
             </div>
-    
+
             <div class="pagina">
                 <div class="contingut-pagina">
                     <h1>Mi bisabuelo Jaume</h1>
@@ -161,15 +169,24 @@
                         <button class="play-button" id="playButton">
                             <i class="fa-solid fa-play"></i>
                         </button>
+                        <input
+                            type="range"
+                            id="seekBar"
+                            value="0"
+                            min="0"
+                            max="100"
+                            step="1"
+                        />
                         <div class="spectrum">
                             <div class="bar"></div>
                             <div class="bar"></div>
                             <div class="bar"></div>
                         </div>
+                        <!-- New seek bar -->
                     </div>
-                    <button id="toggle-fullscreen-jaume" class="fullscreen-button">
-                        Letra y acordes
-                    </button>
+
+                    <audio id="audioPlayer" src="jaumesong.mp3"></audio>
+
                     <audio
                         id="audioPlayer"
                         src="jaumesong.mp3"
@@ -180,61 +197,47 @@
                         <span class="colored">quisque</span> euismod rhoncus
                         aliquet. Praesent tellus mi sed bibendum faucibus est
                         placerat. Magnis vulputate
-                        <span class="colored">maecenas</span> feugiat enim quis amet
-                        platea suscipit auctor vehicula nam taciti. Sit quisque
-                        auctor leo iaculis urna diam sagittis consequat blandit amet
-                        erat. Neque etiam condimentum phasellus, torquent sagittis
-                        ullamcorper ultricies tortor inceptos. Diam leo dapibus
-                        posuere, magnis felis metus amet ipsum nam gravida.
+                        <span class="colored">maecenas</span> feugiat enim quis
+                        amet platea suscipit auctor vehicula nam taciti. Sit
+                        quisque auctor leo iaculis urna diam sagittis consequat
+                        blandit amet erat. Neque etiam condimentum phasellus,
+                        torquent sagittis ullamcorper ultricies tortor inceptos.
+                        Diam leo dapibus posuere, magnis felis metus amet ipsum
+                        nam gravida.
                     </p>
                     <img src="Marco_Creu.PNG" class="icono-contingut" />
                     <p>
-                        Fusce viverra cras varius eros nam leo, vel nascetur quisque
-                        euismod rhoncus aliquet. Praesent tellus mi sed bibendum
-                        faucibus est placerat. Magnis vulputate maecenas feugiat
-                        enim quis amet platea suscipit auctor vehicula nam taciti.
-                        Sit quisque auctor leo iaculis urna diam sagittis consequat
-                        blandit amet erat. Neque etiam condimentum phasellus,
-                        torquent sagittis ullamcorper ultricies tortor inceptos.
-                        Diam leo dapibus posuere, magnis felis metus amet ipsum nam
-                        gravida.
+                        Fusce viverra cras varius eros nam leo, vel nascetur
+                        quisque euismod rhoncus aliquet. Praesent tellus mi sed
+                        bibendum faucibus est placerat. Magnis vulputate
+                        maecenas feugiat enim quis amet platea suscipit auctor
+                        vehicula nam taciti. Sit quisque auctor leo iaculis urna
+                        diam sagittis consequat blandit amet erat. Neque etiam
+                        condimentum phasellus, torquent sagittis ullamcorper
+                        ultricies tortor inceptos. Diam leo dapibus posuere,
+                        magnis felis metus amet ipsum nam gravida.
                     </p>
+                    <h3>Letra y acordes:</h3>
+                    <div id="lyrics-jaume" class="lyrics-container"></div>
                 </div>
-                
             </div>
-    
+
             <div class="pagina jaume">
                 <div class="contingut-pagina">
                     <h1>Luis se fuerte</h1>
                 </div>
             </div>
-    
+
             <div class="pagina jaume">
                 <div class="contingut-pagina">
                     <h1>Adan y esteban</h1>
                 </div>
             </div>
-    
+
             <div class="pagina jaume">
                 <div class="contingut-pagina">
                     <h1>El toro ole</h1>
                 </div>
-            </div>
-        </div>
-        <div id="fullscreen-container-jaume" class="fullscreen-container">
-            <button id="close-fullscreen-jaume" class="close-button">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="separator-lyrics"></div>
-            <div id="lyrics-jaume" class="lyrics-container">
-            </div>
-        </div>
-        <div id="fullscreen-container-luis" class="fullscreen-container">
-            <button id="close-fullscreen" class="close-button">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="separator-lyrics"></div>
-            <div id="lyrics-luis" class="lyrics-container">
             </div>
         </div>
 
@@ -324,6 +327,22 @@
                         bar.style.animationPlayState = "paused";
                     });
                 });
+
+            const audio = document.getElementById("audioPlayer");
+            const seekBar = document.getElementById("seekBar");
+
+            // Update seek bar as the audio plays
+            audio.addEventListener("timeupdate", function () {
+                const currentTime = audio.currentTime;
+                const duration = audio.duration;
+                seekBar.value = (currentTime / duration) * 100;
+            });
+
+            // Seek to a new time in the audio when the seek bar changes
+            seekBar.addEventListener("input", function () {
+                const duration = audio.duration;
+                audio.currentTime = (seekBar.value / 100) * duration;
+            });
         </script>
 
         <script>
@@ -518,11 +537,13 @@
 
         <script>
             document.addEventListener("DOMContentLoaded", () => {
-                const fullscreenButton =
-                    document.getElementById("toggle-fullscreen-jaume");
+                const fullscreenButton = document.getElementById(
+                    "toggle-fullscreen-jaume"
+                );
 
-                const closeButton =
-                    document.getElementById("close-fullscreen-jaume");
+                const closeButton = document.getElementById(
+                    "close-fullscreen-jaume"
+                );
                 const fullscreenContainer = document.getElementById(
                     "fullscreen-container-jaume"
                 );
