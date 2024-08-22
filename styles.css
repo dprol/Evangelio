@@ -5,16 +5,29 @@
     font-style: normal; /* Optional: Define font styles */
 }
 
-html,
+
 body {
     position: relative;
+    display: flex;
+    flex-direction: column;
     font-family: "Schibsted Grotesk", sans-serif;
     background-color: var(--black-dark);
     border: none;
     margin: 0;
     padding: 0;
+    height: 100vh;
+    width: 100vw;
     overflow: hidden; /* Hide default llbars */
     font-size: min(5vw, 3vh); /* Responsive font size */
+    align-items: center;
+
+    /* Add a textured effect using gradients and blending modes */
+    background-image: radial-gradient(
+        circle at top,
+        rgba(255, 250, 92, 0.05) 0%,
+        rgba(0, 0, 0, 0.1) 50%,
+        rgba(0, 0, 0, 0.2) 100%
+    );
 }
 
 :root {
@@ -26,13 +39,19 @@ body {
     --red: #ff0000;
     --silver-half: #c0c0c0c0;
     --white: #ffffff;
+
+    --altura-header: clamp(10vh, 60vw, 15vh);
+    --altura-llibre: calc(100vh - var(--altura-header));
 }
 
 .llibre {
+    height: var(--altura-llibre);
+    width: 100vw;
+
+    position: relative;
     display: flex;
     flex-direction: row;
-    height: 100vh;
-    width: 100vw;
+
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
@@ -40,14 +59,6 @@ body {
     padding: 0;
     margin: 0;
     border: none;
-
-    /* Add a textured effect using gradients and blending modes */
-    background-image: radial-gradient(
-        circle at top,
-        rgba(255, 250, 92, 0.05) 0%,
-        rgba(0, 0, 0, 0.1) 50%,
-        rgba(0, 0, 0, 0.2) 100%
-    );
 
     -webkit-transition: background-image 2s ease-in-out;
 transition: background-image 2s ease-in-out;
@@ -61,7 +72,8 @@ transition: background-image 2s ease-in-out;
 .pagina {
     position: relative;
     width: 100vw; /* Full viewport width */
-    height: 100vh; /* Full viewport height */
+    height: var(--altura-llibre); /* Full viewport height */
+    background: none; /* Ensure background contrast */
     scroll-snap-align: start;
     display: flex;
     flex-direction: column;
@@ -71,25 +83,14 @@ transition: background-image 2s ease-in-out;
     border: none;
     flex-shrink: 0; /* Prevent shrinking */
     z-index: 0;
+
 }
 
-
-.contingut-pagina::before {
-    position: fixed; /* Fixes position to viewport */
-    content: '';
-    top: calc(clamp(10vh, 60vw, 15vh) + 5vh);
-    left: 5vw; /* Ensure the line starts from the left edge */
-    width: 90vw; /* Make sure it spans the full width of the viewport */
-    height: 2px; /* Make it a thin line */
-    background-color: var(--bronze); /* Use background-color instead of border */
-    z-index: 5; /* Ensure it is below .contingut-pagina */
-}
 
 /* Main styles for .contingut-pagina */
 .contingut-pagina {
     position: absolute; /* Keeps it fixed relative to the containing block */
-    top: calc(clamp(10vh, 60vw, 15vh) + 5vh); /* Align below the line */
-    height: calc(100vh - (clamp(10vh, 60vw, 15vh) + 5vh)); /* Adjust height */
+    height: 100%;
     width: 100%; /* Full width */
     padding: 1vh 5vw;
     padding-bottom: 10vh;
@@ -101,6 +102,7 @@ transition: background-image 2s ease-in-out;
     flex-shrink: 0; /* Prevent shrinking */
     scroll-behavior: smooth;
 
+    background: none;
     /* Hide scrollbar in WebKit-based browsers */
     scrollbar-width: none; /* Hide scrollbar in Firefox */
     -ms-overflow-style: none; /* Hide scrollbar in Internet Explorer and Edge */
@@ -120,18 +122,19 @@ transition: background-image 2s ease-in-out;
     user-select: none; /* Standard syntax */
 }
 .header {
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     margin: 0;
-    padding-top: 2vh;
+    padding: 2vh;
     height: auto; /* Adjust as needed */
     width: 100vw; /* Full width */
     align-items: center;
-    position: fixed; /* Keep it fixed at the top */
     top: 0;
     background: transparent; /* Ensure background contrast */
     z-index: 10; /* Make sure it is above other content */
+    box-sizing: border-box;
 }
 
 .mini-book {
@@ -221,9 +224,13 @@ transition: background-image 2s ease-in-out;
 
 
 .separator {
-    width: 80%;
-    border: 1px solid var(--silver-half);
-    margin-bottom: 1rem;
+    width: 90vw;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.separator-lyrics {
+    width: 70vw;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 a {
@@ -239,6 +246,11 @@ a {
     color: var(--silver-half);
     border-radius: 50%;
     border: none;
+}
+
+.scroll-button:hover {
+    background-color: var(--bronze);
+    color: var(--black);
 }
 
 #scroll-left {

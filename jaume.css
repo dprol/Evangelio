@@ -104,21 +104,40 @@ p.visible {
 
 /* Fullscreen container styling */
 .fullscreen-container {
+    box-sizing: border-box;
+    padding: 2vh 0;
     position: fixed;
-    top: calc(0px + var(--header-height)); /* Start from below the header */
-    left: 0vw;
     width: 100vw; /* Full width */
-    max-height: 0; /* Start with a height of 0 */
-    overflow-y: scroll; /* Hide overflow to ensure smooth transition */
+    height: 0;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    overflow: hidden; /* Hide overflow to ensure smooth transition */
     background-color: var(--black-dark);
-    display: block; /* Always display to allow transitioning */
+    display: flex; /* Always display to allow transitioning */
+    flex-direction: column;
+    align-items: center;
     z-index: 999; /* High z-index to be above other content */
-    transition: max-height 0.3s ease; /* Smooth transitions */
+    transition: opacity 1s ease-in-out; /* Smooth transitions */
+
+    /* Add a textured effect using gradients and blending modes */
+    background-image: radial-gradient(
+        circle at top,
+        rgba(255, 250, 92, 0.05) 0%,
+        rgba(0, 0, 0, 0.1) 50%,
+        rgba(0, 0, 0, 0.2) 100%
+    );
+
+}
+
+.lyrics-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar in WebKit-based browsers */
 }
 
 /* When active, set max-height to a large value to show the container */
 .fullscreen-container.active {
-    max-height: 100vh; /* Full height */
+    height: 100vh;
+    opacity: 1;
 }
 
 
@@ -132,8 +151,9 @@ p.visible {
     scroll-behavior: smooth;
     box-sizing: border-box;
     background-color: transparent;
-    padding: 20px; /* Optional: Add padding for content spacing */
-    color: #fff; /* Ensure text is readable on dark background */
+
+    display: flex;
+    flex-direction: column;
 }
 
 .fullscreen-button {
@@ -158,9 +178,7 @@ p.visible {
 
 
 .close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    position: relative;
     padding: 0.5rem;
 
     background: radial-gradient(
@@ -169,6 +187,7 @@ p.visible {
         var(--bronze),
         var(--silver)
     );
+
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
@@ -201,10 +220,9 @@ p.visible {
 
 /* Style for chords */
 .chord {
-    font-size: 0.6rem;
     font-weight: bold;
     height: 1rem;
-    font-size: 0.7em;
+    font-size: 0.8rem;
     flex-shrink: 0; /* Prevent shrinking */
     position: relative;
     border-radius: 5%;
