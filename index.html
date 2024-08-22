@@ -519,14 +519,12 @@
 
                 fullscreenButton.addEventListener("click", () => {
                     fullscreenContainer.classList.add("active");
-                    header.style.opacity = "0";
-                    header.style.pointerEvents = "none";
+                    header.style.display = "none";
                 });
 
                 closeButton.addEventListener("click", () => {
                     fullscreenContainer.classList.remove("active");
-                    header.style.opacity = "1";
-                    header.style.pointerEvents = "auto";
+                    header.style.display = "flex";
                 });
             });
         </script>

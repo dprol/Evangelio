@@ -72,40 +72,43 @@ transition: background-image 2s ease-in-out;
     flex-shrink: 0; /* Prevent shrinking */
     z-index: 0;
 }
+
+
 .contingut-pagina::before {
-    position: fixed; /* Make sure it's positioned correctly */
+    position: fixed; /* Fixes position to viewport */
     content: '';
     top: calc(clamp(10vh, 60vw, 15vh) + 5vh);
-    width: 90vw; /* El borde ocupa el 50% del ancho */
-    border-top: 2px solid var(--bronze); /* Color del borde */
-    z-index: 9; /* Ensure it's below .contingut-pagina */
+    left: 5vw; /* Ensure the line starts from the left edge */
+    width: 90vw; /* Make sure it spans the full width of the viewport */
+    height: 2px; /* Make it a thin line */
+    background-color: var(--bronze); /* Use background-color instead of border */
+    z-index: 9; /* Ensure it is below .contingut-pagina */
 }
 
 /* Main styles for .contingut-pagina */
 .contingut-pagina {
-    position: absolute; /* Keep it fixed at the top */
-    height: calc(100vh - (clamp(10vh, 60vw, 15vh) + 5vh)); /* Adjust height to fit within the viewport */
-    margin-top: calc(clamp(10vh, 60vw, 15vh) + 5vh); /* Positioning below the border */
-    
+    position: absolute; /* Keeps it fixed relative to the containing block */
+    top: calc(clamp(10vh, 60vw, 15vh) + 5vh); /* Align below the line */
+    height: calc(100vh - (clamp(10vh, 60vw, 15vh) + 5vh)); /* Adjust height */
+    width: 100%; /* Full width */
     padding: 1vh 5vw;
     padding-bottom: 10vh;
     gap: 1rem;
-    width: 100%;
     overflow-y: auto; /* Enable vertical scrolling */
     overflow-x: hidden; /* Prevent horizontal scrolling */
     box-sizing: border-box; /* Include padding in width/height calculations */
     z-index: 1;
     flex-shrink: 0; /* Prevent shrinking */
     scroll-behavior: smooth;
-    
+
     /* Hide scrollbar in WebKit-based browsers */
     scrollbar-width: none; /* Hide scrollbar in Firefox */
     -ms-overflow-style: none; /* Hide scrollbar in Internet Explorer and Edge */
-    
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 
 
 
@@ -116,7 +119,6 @@ transition: background-image 2s ease-in-out;
 * {
     user-select: none; /* Standard syntax */
 }
-
 .header {
     display: flex;
     flex-direction: row;
@@ -125,15 +127,12 @@ transition: background-image 2s ease-in-out;
     padding-top: 2vh;
     height: auto; /* Adjust as needed */
     width: 100vw; /* Full width */
-    justify-content: center;
     align-items: center;
     position: fixed; /* Keep it fixed at the top */
     top: 0;
-    justify-content: space-evenly;
     background: transparent; /* Ensure background contrast */
     z-index: 10; /* Make sure it is above other content */
 }
-
 
 .mini-book {
     position: relative; /* Establishes positioning context for child elements */
