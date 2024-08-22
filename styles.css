@@ -7,13 +7,13 @@
 
 html,
 body {
-    font-family: sans-serif; /* Apply the custom font */
+    font-family: "Schibsted Grotesk", sans-serif;
     background-color: var(--black-dark);
     border: none;
     margin: 0;
     padding: 0;
     overflow: hidden; /* Hide default llbars */
-    font-size: min(4vw, 2vh); /* Responsive font size */
+    font-size: min(5vw, 3vh); /* Responsive font size */
 }
 
 :root {
@@ -39,18 +39,11 @@ body {
     padding: 0;
     margin: 0;
     border: none;
-    background: linear-gradient(
-        to bottom right,
-        #3b2d2a,
-        #1f1d1d
-    ); /* Base gradient for a dark, rich feel */
-    background-size: cover;
-    background-position: center center;
 
     /* Add a textured effect using gradients and blending modes */
     background-image: radial-gradient(
         circle at top,
-        rgba(255, 250, 92, 0.1) 0%,
+        rgba(255, 250, 92, 0.05) 0%,
         rgba(0, 0, 0, 0.1) 50%,
         rgba(0, 0, 0, 0.2) 100%
     );
@@ -67,18 +60,6 @@ transition: background-image 2s ease-in-out;
 .pagina {
     position: relative;
     width: 100vw; /* Full viewport width */
-    height: 100vh;
-    scroll-snap-align: start;
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    border: none;
-    flex-shrink: 0; /* Prevent shrinking */
-    z-index: 0;
-}
-
-.pagina {
-    width: 100vw; /* Full viewport width */
     height: 100vh; /* Full viewport height */
     scroll-snap-align: start;
     display: flex;
@@ -89,25 +70,25 @@ transition: background-image 2s ease-in-out;
     border: none;
     flex-shrink: 0; /* Prevent shrinking */
     z-index: 0;
-    
 }
 
 .contingut-pagina::before {
+    position: fixed;
     content: '';
-    position: absolute;
-    top: calc(clamp(15vh, 60vw, 25vh) + 10vh);
+    top: calc(clamp(10vh, 60vw, 15vh) + 5vh);
     width: 90vw; /* El borde ocupa el 50% del ancho */
     border-top: 2px solid var(--bronze); /* Color del borde */
 }
 
 .contingut-pagina {
-    height: calc(100vh - (clamp(15vh, 60vw, 25vh) + 10vh)); /* Adjust height to fit within pagina */
-    margin-top: calc(clamp(15vh, 60vw, 25vh) + 10vh);
+    position: relative;
+    height: calc(100vh - (clamp(10vh, 60vw, 15vh) + 5vh)); /* Adjust height to fit within pagina */
+    margin-top: calc(clamp(10vh, 60vw, 15vh) + 5vh);
 
 
     padding: 1vh 5vw;
     padding-bottom: 10vh;
-    gap: 1vh;
+    gap: 1rem;
     width: 100%;
     overflow-y: auto; /* Enables vertical scrolling */
     overflow-x: hidden;
@@ -126,17 +107,8 @@ transition: background-image 2s ease-in-out;
     align-items: center;
 
     box-sizing: border-box;
-
-
-
-    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.hidden {
-    opacity: 0;
-    transform: translateY(20px); /* Move down slightly when disappearing */
-    pointer-events: none; /* Make it unclickable */
-}
 
 .contingut-pagina::-webkit-scrollbar {
     display: none; /* Hide scrollbar in WebKit-based browsers (Chrome, Safari) */
@@ -151,7 +123,7 @@ transition: background-image 2s ease-in-out;
     flex-direction: row;
     justify-content: space-evenly;
     margin: 0;
-    padding-top: 5vh;
+    padding-top: 2vh;
     height: auto; /* Adjust as needed */
     width: 100vw; /* Full width */
     justify-content: center;
@@ -170,8 +142,8 @@ transition: background-image 2s ease-in-out;
 
 .mini-book {
     position: relative; /* Establishes positioning context for child elements */
-    width: clamp(15vh, 60vw, 25vh); /* Set width of mini book */
-    height: clamp(15vh, 60vw, 25vh); /* Set height of mini book */
+    width: clamp(10vh, 60vw, 15vh); /* Set width of mini book */
+    height: clamp(10vh, 60vw, 15vh); /* Set height of mini book */
     transform-style: preserve-3d; /* Maintain 3D context for children */
     transition: transform 1s ease; /* Smooth transition for 3D effect */
     transform: rotateY(15deg) rotateX(10deg); /* Slight inclination */
@@ -192,9 +164,6 @@ transition: background-image 2s ease-in-out;
     backface-visibility: hidden; /* Hide back face during rotation */
     transform-origin: left;
 }
-
-
-
 
 .player-container {
     display: flex;
@@ -255,11 +224,6 @@ transition: background-image 2s ease-in-out;
 }
 
 
-.icono-contingut {
-    width: min(20vw, 20vh);
-    height: auto;
-}
-
 
 .separator {
     width: 80%;
@@ -277,7 +241,7 @@ a {
     width: min(10vh, 10vw);
     font-size: 1rem;
     background-color: transparent;
-    color: var(--silver);
+    color: var(--silver-half);
     border-radius: 50%;
     border: none;
 }

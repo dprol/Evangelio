@@ -1,68 +1,12 @@
 /* Define gradient backgrounds */
 
-
-.pagina.portada.visible {
-    opacity: 1;
-}
-
-.pagina.portada .miquel {
-    background: radial-gradient(ellipse at bottom, #ffe44cb4, var(--bronze), var(--silver));   
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
-    font-weight: bold;
-    transform: translateY(-100%);
-    text-align: center;
-
-    font-weight: 100;
-}
-
-.pagina.portada .hero {
-    background: radial-gradient(ellipse at top, #ffe44cb4, var(--bronze), var(--silver));   
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
-    font-weight: bold;
-    transform: translateY(-100%);
-    text-align: center;
-
-    font-weight: 100;
-}
-
-.pagina.portada.visible .miquel {
-    transform: translateY(0);
-    opacity: 1; /* Visible state */
-    filter: blur(0);
-    
-}
-
-.pagina.portada.visible .hero {
-    transform: translateY(0);
-    opacity: 0.8; /* Visible state */
-    filter: blur(0);
-}
-.pagina.portada.visible .footer {
-    opacity: 1;
-}
-
-@keyframes scroll-right {
-    0% {
-        transform: translateX(-5vw);
-    }
-    50% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-5vw);
-    }
-}
-
 /* Container for media links */
 .links-media {
     display: flex;
-    flex-direction: row;
+    columns: 1fr 1fr; /* Two columns */
+    flex-wrap: wrap;
     justify-content: center; /* Center buttons horizontally */
-    gap: 2rem; /* Space between buttons */
+    gap: 1rem; /* Space between buttons */
     align-items: center;
     height: auto;
 }
@@ -123,19 +67,6 @@
     transform-origin: left;
     transition: transform 0.5s ease;
     z-index: -1;
-}
-
-/* Hover Effect */
-.media-button:hover::before {
-    transform: scaleX(1);
-}
-
-.media-button:hover {
-    color: #000; /* Text color on hover */
-
-    .youtube-icon, .spotify-icon {
-        color: white;
-    }
 }
 
 /* Spotify Button Specific Styling */
