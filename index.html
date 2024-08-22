@@ -36,7 +36,7 @@
         />
     </head>
     <body class="llibre">
-        <div class="header">
+        <div id="header" class="header">
             <button
                 id="scroll-left"
                 class="fas fa-chevron-left scroll-button"
@@ -150,8 +150,6 @@
                     <i class="fas fa-chevron-right scroll-icon"></i>
                    
                 </div> -->
-                
-            </div>
             </div>
         </div>
 
@@ -168,6 +166,9 @@
                         <div class="bar"></div>
                     </div>
                 </div>
+                <button id="toggle-fullscreen" class="fullscreen-button">
+                    Letra y acordes
+                </button>
                 <audio
                     id="audioPlayer"
                     src="jaumesong.mp3"
@@ -197,18 +198,16 @@
                     Diam leo dapibus posuere, magnis felis metus amet ipsum nam
                     gravida.
                 </p>
-                <h2>Letra:</h2>
-                <p>
-                    Fusce viverra cras varius eros nam leo, vel nascetur quisque
-                    euismod rhoncus aliquet. Praesent tellus mi sed bibendum
-                    faucibus est placerat. Magnis vulputate maecenas feugiat
-                    enim quis amet platea suscipit auctor vehicula nam taciti.
-                    Sit quisque auctor leo iaculis urna diam sagittis consequat
-                    blandit amet erat. Neque etiam condimentum phasellus,
-                    torquent sagittis ullamcorper ultricies tortor inceptos.
-                    Diam leo dapibus posuere, magnis felis metus amet ipsum nam
-                    gravida.
-                </p>
+
+                <div id="fullscreen-container" class="fullscreen-container">
+                    <button id="close-fullscreen" class="close-button">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <div id="lyrics-jaume" class="lyrics-container">
+                        <!-- Your lyrics content -->
+                        <p>Here are the lyrics of the song...</p>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -346,32 +345,190 @@
             });
         </script>
 
-        <script>document.addEventListener("DOMContentLoaded", () => {
-            const pageContents = document.querySelectorAll(".contingut-pagina");
-        
-            pageContents.forEach((content) => {
-                const childElements = content.children;
-        
-                const observer = new IntersectionObserver(
-                    (entries) => {
-                        entries.forEach((entry) => {
-                            if (entry.isIntersecting) {
-                                entry.target.classList.add("visible");
-                            }
-                        });
-                    },
-                    {
-                        root: null, // Use the viewport as the root
-                        threshold: 0.3, // Trigger when 30% of the element is in view
-                    }
-                );
-        
-                Array.from(childElements).forEach((element) => {
-                    observer.observe(element);
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const pageContents =
+                    document.querySelectorAll(".contingut-pagina");
+
+                pageContents.forEach((content) => {
+                    const childElements = content.children;
+
+                    const observer = new IntersectionObserver(
+                        (entries) => {
+                            entries.forEach((entry) => {
+                                if (entry.isIntersecting) {
+                                    entry.target.classList.add("visible");
+                                }
+                            });
+                        },
+                        {
+                            root: null, // Use the viewport as the root
+                            threshold: 0.3, // Trigger when 30% of the element is in view
+                        }
+                    );
+
+                    Array.from(childElements).forEach((element) => {
+                        observer.observe(element);
+                    });
                 });
             });
-        });
-        
+        </script>
+
+        <script>
+            // Example data structure
+            const data = [
+                {
+                    paragraph: [
+                        [{ text: "Mi bisabuelo Jaume", chord: "E" }],
+                        [
+                            { text: "fue a la guerra", chord: "" },
+                            { text: "civil", chord: "Fm#" },
+                        ],
+                        [
+                            { text: "y no empuño ni un", chord: "" },
+                            { text: "arma", chord: "B7" },
+                        ],
+                        [
+                            { text: "a nadie quiso", chord: "" },
+                            { text: "herir", chord: "E" },
+                        ],
+                    ],
+                },
+                {
+                    paragraph: [
+                        [{ text: "Sirvió de camillero", chord: "E" }],
+                        [
+                            { text: "y balas", chord: "" },
+                            { text: "empuño unas mil", chord: "Fm#" },
+                        ],
+                        [
+                            { text: "sirviendo a los", chord: "" },
+                            { text: "maltrechos", chord: "B7" },
+                        ],
+                        [{ text: "en la batalla del ebro", chord: "" }],
+                        [
+                            { text: "la mas cruel y la mas", chord: "" },
+                            { text: "vil.", chord: "E" },
+                        ],
+                    ],
+                },
+                {
+                    paragraph: [
+                        [{ text: "Sirvió de camillero", chord: "E" }],
+                        [
+                            { text: "y balas", chord: "" },
+                            { text: "empuño unas mil", chord: "Fm#" },
+                        ],
+                        [
+                            { text: "sirviendo a los", chord: "" },
+                            { text: "maltrechos", chord: "B7" },
+                        ],
+                        [{ text: "en la batalla del ebro", chord: "" }],
+                        [
+                            { text: "la mas cruel y la mas", chord: "" },
+                            { text: "vil.", chord: "E" },
+                        ],
+                    ],
+                },
+                {
+                    paragraph: [
+                        [{ text: "Sirvió de camillero", chord: "E" }],
+                        [
+                            { text: "y balas", chord: "" },
+                            { text: "empuño unas mil", chord: "Fm#" },
+                        ],
+                        [
+                            { text: "sirviendo a los", chord: "" },
+                            { text: "maltrechos", chord: "B7" },
+                        ],
+                        [{ text: "en la batalla del ebro", chord: "" }],
+                        [
+                            { text: "la mas cruel y la mas", chord: "" },
+                            { text: "vil.", chord: "E" },
+                        ],
+                    ],
+                },
+            ];
+
+            // Function to create HTML elements
+            function createLyricsHTML(data) {
+                const container = document.getElementById("lyrics-jaume");
+                container.innerHTML = ""; // Clear any existing content
+
+                data.forEach((paragraphData) => {
+                    // Create a new paragraph container
+                    const paragraph = document.createElement("div");
+                    paragraph.classList.add("paragraph");
+
+                    paragraphData.paragraph.forEach((lineData) => {
+                        // Create a new line container
+                        const line = document.createElement("div");
+                        line.classList.add("line");
+
+                        let previousChord = ""; // Track the previous chord
+
+                        lineData.forEach((item) => {
+                            const textWithChord = document.createElement("div");
+                            textWithChord.classList.add("text-with-chord");
+
+                            const chord = document.createElement("div");
+                            chord.classList.add("chord");
+                            chord.textContent = item.chord;
+
+                            const text = document.createElement("div");
+                            text.classList.add("text");
+                            text.textContent = item.text;
+
+                            // Check if chord is empty or same as previous chord
+                            if (
+                                item.chord === "" ||
+                                item.chord === previousChord
+                            ) {
+                                chord.classList.add("empty");
+                            } else {
+                                chord.classList.remove("empty");
+                            }
+
+                            textWithChord.appendChild(chord);
+                            textWithChord.appendChild(text);
+                            line.appendChild(textWithChord);
+
+                            previousChord = item.chord; // Update the previous chord
+                        });
+
+                        paragraph.appendChild(line);
+                    });
+
+                    container.appendChild(paragraph);
+                });
+            }
+
+            // Create the HTML from the data
+            createLyricsHTML(data);
+        </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const fullscreenButton =
+                    document.getElementById("toggle-fullscreen");
+                const closeButton = document.getElementById("close-fullscreen");
+                const fullscreenContainer = document.getElementById(
+                    "fullscreen-container"
+                );
+                const header = document.getElementById("header");
+
+                fullscreenButton.addEventListener("click", () => {
+                    fullscreenContainer.classList.add("active");
+                    header.style.opacity = "0";
+                    header.style.pointerEvents = "none";
+                });
+
+                closeButton.addEventListener("click", () => {
+                    fullscreenContainer.classList.remove("active");
+                    header.style.opacity = "1";
+                    header.style.pointerEvents = "auto";
+                });
+            });
         </script>
     </body>
 </html>
