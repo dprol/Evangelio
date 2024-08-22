@@ -118,7 +118,6 @@ p.visible {
     display: flex; /* Always display to allow transitioning */
     flex-direction: column;
     align-items: center;
-    transition: max-height 0.5s ease-out; /* Smooth transitions */
     z-index: 999;
     /* Add a textured effect using gradients and blending modes */
 }
