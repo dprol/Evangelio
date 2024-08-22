@@ -120,6 +120,7 @@ p.visible {
     align-items: center;
     z-index: 999;
     /* Add a textured effect using gradients and blending modes */
+    transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
 }
 
 .lyrics-container::-webkit-scrollbar {
@@ -143,7 +144,8 @@ p.visible {
     overflow-y: scroll;
     scroll-behavior: smooth;
     box-sizing: border-box;
-    background-color: transparent;
+
+    background-color: var(--black-dark); /* Black background */
 
     display: flex;
     flex-direction: column;
