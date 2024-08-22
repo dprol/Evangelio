@@ -105,28 +105,23 @@ p.visible {
 /* Fullscreen container styling */
 .fullscreen-container {
     box-sizing: border-box;
-    padding: 2vh 0;
+    padding: 0;
     position: fixed;
     width: 100vw; /* Full width */
-    height: 0;
-    top: 0;
+    height: 100vh;
+    max-height: 0px;
+    bottom: 0;
     left: 0;
-    opacity: 0;
+    opacity: 1;
     overflow: hidden; /* Hide overflow to ensure smooth transition */
-    background-color: var(--black-dark);
+    background: var(--black-dark); /* Black background */
     display: flex; /* Always display to allow transitioning */
     flex-direction: column;
     align-items: center;
-    z-index: 999; /* High z-index to be above other content */
-    transition: opacity 1s ease-in-out; /* Smooth transitions */
-
+    transition: max-height 0.5s ease-out; /* Smooth transitions */
+    z-index: 999;
     /* Add a textured effect using gradients and blending modes */
-    background-image: radial-gradient(
-        circle at top,
-        rgba(255, 250, 92, 0.05) 0%,
-        rgba(0, 0, 0, 0.1) 50%,
-        rgba(0, 0, 0, 0.2) 100%
-    );
+    
 
 }
 
@@ -136,8 +131,9 @@ p.visible {
 
 /* When active, set max-height to a large value to show the container */
 .fullscreen-container.active {
-    height: 100vh;
-    opacity: 1;
+    padding: 2vh 0;
+
+    max-height: 100vh;
 }
 
 
