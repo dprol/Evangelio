@@ -72,17 +72,17 @@ transition: background-image 2s ease-in-out;
     z-index: 0;
 }
 .contingut-pagina::before {
-    position: fixed;
+    position: fixed; /* Make sure it's positioned correctly */
     content: '';
     top: calc(clamp(10vh, 60vw, 15vh) + 5vh);
-    width: 90vw; /* Width of the border line */
-    border-top: 2px solid var(--bronze); /* Color of the border */
-    left: 5vw; /* Center the border horizontally */
+    width: 90vw; /* El borde ocupa el 50% del ancho */
+    border-top: 2px solid var(--bronze); /* Color del borde */
+    z-index: 9; /* Ensure it's below .contingut-pagina */
 }
 
 /* Main styles for .contingut-pagina */
 .contingut-pagina {
-    position: absolute;
+    position: fixed; /* Keep it fixed at the top */
     height: calc(100vh - (clamp(10vh, 60vw, 15vh) + 5vh)); /* Adjust height to fit within the viewport */
     margin-top: calc(clamp(10vh, 60vw, 15vh) + 5vh); /* Positioning below the border */
     
