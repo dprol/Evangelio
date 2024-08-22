@@ -71,28 +71,28 @@ transition: background-image 2s ease-in-out;
     flex-shrink: 0; /* Prevent shrinking */
     z-index: 0;
 }
-
 .contingut-pagina::before {
     position: fixed;
     content: '';
     top: calc(clamp(10vh, 60vw, 15vh) + 5vh);
-    width: 90vw; /* El borde ocupa el 50% del ancho */
-    border-top: 2px solid var(--bronze); /* Color del borde */
+    width: 90vw; /* Width of the border line */
+    border-top: 2px solid var(--bronze); /* Color of the border */
+    left: 5vw; /* Center the border horizontally */
 }
 
+/* Main styles for .contingut-pagina */
 .contingut-pagina {
-    position: relative;
-    height: calc(100vh - (clamp(10vh, 60vw, 15vh) + 5vh)); /* Adjust height to fit within pagina */
-    margin-top: calc(clamp(10vh, 60vw, 15vh) + 5vh);
-
-
+    position: absolute;
+    height: calc(100vh - (clamp(10vh, 60vw, 15vh) + 5vh)); /* Adjust height to fit within the viewport */
+    margin-top: calc(clamp(10vh, 60vw, 15vh) + 5vh); /* Positioning below the border */
+    
     padding: 1vh 5vw;
     padding-bottom: 10vh;
     gap: 1rem;
     width: 100%;
-    overflow-y: auto; /* Enables vertical scrolling */
-    overflow-x: hidden;
-    box-sizing: border-box; /* Ensure padding is included in the width and height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    box-sizing: border-box; /* Include padding in width/height calculations */
     z-index: 1;
     flex-shrink: 0; /* Prevent shrinking */
     scroll-behavior: smooth;
@@ -100,14 +100,12 @@ transition: background-image 2s ease-in-out;
     /* Hide scrollbar in WebKit-based browsers */
     scrollbar-width: none; /* Hide scrollbar in Firefox */
     -ms-overflow-style: none; /* Hide scrollbar in Internet Explorer and Edge */
-
-
+    
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    box-sizing: border-box;
 }
+
 
 
 .contingut-pagina::-webkit-scrollbar {
