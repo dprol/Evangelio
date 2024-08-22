@@ -102,28 +102,25 @@ p.visible {
 
 
 
+/* Fullscreen container styling */
 .fullscreen-container {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: none; /* Hide by default */
-    z-index: 999;
-
-    /* Add a textured effect using gradients and blending modes */
+    top: calc(0px + var(--header-height)); /* Start from below the header */
+    left: 0vw;
+    width: 100vw; /* Full width */
+    max-height: 0; /* Start with a height of 0 */
+    overflow-y: scroll; /* Hide overflow to ensure smooth transition */
     background-color: var(--black-dark);
-    background-image: radial-gradient(
-        circle at top,
-        rgba(255, 250, 92, 0.05) 0%,
-        rgba(0, 0, 0, 0.1) 50%,
-        rgba(0, 0, 0, 0.2) 100%
-    );
+    display: block; /* Always display to allow transitioning */
+    z-index: 999; /* High z-index to be above other content */
+    transition: max-height 0.3s ease; /* Smooth transitions */
 }
 
+/* When active, set max-height to a large value to show the container */
 .fullscreen-container.active {
-    display: block; /* Show when active */
+    max-height: 100vh; /* Full height */
 }
+
 
 .lyrics-container {
     position: relative;

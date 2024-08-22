@@ -82,7 +82,7 @@ transition: background-image 2s ease-in-out;
     width: 90vw; /* Make sure it spans the full width of the viewport */
     height: 2px; /* Make it a thin line */
     background-color: var(--bronze); /* Use background-color instead of border */
-    z-index: 9; /* Ensure it is below .contingut-pagina */
+    z-index: 5; /* Ensure it is below .contingut-pagina */
 }
 
 /* Main styles for .contingut-pagina */
