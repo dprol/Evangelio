@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+export function inici_navegacio() {
     const miniBook = document.querySelector('.mini-book');
     const scrollLeftButton = document.getElementById('scroll-left');
     const scrollRightButton = document.getElementById('scroll-right');
@@ -9,14 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const scrollAmount = 100;
 
-    // Add the 'visible' class to the mini-book
-    header.classList.add('visible');
-
-    // Delay adding the 'visible' class by 2 seconds
-    setTimeout(function() {
-        header.classList.remove('max-zoomed');
-        header.style.animationPlayState = "running";
-    }, 3000); // 2000 milliseconds = 2 seconds
+    header.classList.remove('max-zoomed');
+    header.style.animationPlayState = "running";
 
     // Function to toggle the zoomed class based on scroll direction
     function toggleZoom(direction) {
@@ -128,4 +122,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Scroll buttons functionality
     scrollLeftButton.addEventListener('click', scrollLeft);
     scrollRightButton.addEventListener('click', scrollRight);
-});
+};
+
+

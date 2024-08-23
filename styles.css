@@ -184,8 +184,8 @@ transition: background-image 2s ease-in-out;
 
 
 .mini-book {
-    height: min(65vw, var(--altura-header), 80vh);
-    width: min(65vw, var(--altura-header), 80vh);
+    height: min(60vw, var(--altura-header), 60vh);
+    width: min(60vw, var(--altura-header), 60vh);
 
     box-sizing: border-box;
 
@@ -221,7 +221,7 @@ transition: background-image 2s ease-in-out;
     transform-origin: left;
     z-index: 12;
     transform: rotateY(-120deg);
-    opacity: 0;;
+    opacity: 0;
     box-shadow: -10px 10px 50px rgba(0, 0, 0, 0.4);
 
     transform-style: preserve-3d;
@@ -390,3 +390,15 @@ a {
         transform: translateX(10%);
     }
 }
+
+
+
+  #loading-progress-bar {
+    position: fixed;
+    top: 50%;
+    width: 50vw;
+    background-color: #4caf50;
+    text-align: center;
+    color: white;
+    line-height: 30px; /* Centra el texto verticalmente */
+  }
