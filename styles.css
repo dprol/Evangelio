@@ -18,9 +18,9 @@ body {
     height: 100vh;
     width: 100vw;
     overflow: hidden; /* Hide default llbars */
-    font-size: min(5vw, 3vh); /* Responsive font size */
     align-items: center;
-
+    user-select: none;
+    
     /* Add a textured effect using gradients and blending modes */
     background-image: radial-gradient(
         circle at top,
@@ -31,17 +31,25 @@ body {
 }
 
 :root {
+    --black-dark-dark: #000306;
     --black-dark: #000a14;
     --black: #001021;
     --bronze: #665d47;
     --silver: #c0c0c0;
     --gold: #ebe11fb4;
     --red: #ff0000;
-    --silver-half: #c0c0c0c0;
+    --silver-half: #c0c0c081;
+    --silver-25: #c0c0c033;
+
     --white: #ffffff;
 
-    --altura-header: min(60vw, 20vh);
+    --altura-header: min(60vw, 15vh);
+    --max-altura-header: min(60vw, 50vh);
+
     --altura-llibre: calc(100vh - var(--altura-header));
+
+
+    font-size: min(3vh, 6vw); /* Responsive font size */
 }
 
 .llibre {
@@ -72,7 +80,7 @@ transition: background-image 2s ease-in-out;
 .pagina {
     position: relative;
     width: 100vw; /* Full viewport width */
-    height: var(--altura-llibre); /* Full viewport height */
+    height: var(--altura-   ); /* Full viewport height */
     background: none; /* Ensure background contrast */
     scroll-snap-align: start;
     display: flex;
@@ -93,7 +101,7 @@ transition: background-image 2s ease-in-out;
     height: 100%;
     width: 100%; /* Full width */
     padding: 1vh 5vw;
-    padding-bottom: 10vh;
+    padding-bottom: 20vh;
     gap: 1rem;
     overflow-y: auto; /* Enable vertical scrolling */
     overflow-x: hidden; /* Prevent horizontal scrolling */
@@ -113,7 +121,11 @@ transition: background-image 2s ease-in-out;
     touch-action: pan-x pan-y; /* Permite un solo desplazamiento a la vez */
 }
 
-
+@media (min-width: 1024px) {
+    .contingut-pagina {
+        padding: 1vh 15vw;
+    }
+}
 
 
 .contingut-pagina::-webkit-scrollbar {
@@ -137,19 +149,46 @@ transition: background-image 2s ease-in-out;
     background: transparent; /* Ensure background contrast */
     z-index: 10; /* Make sure it is above other content */
     box-sizing: border-box;
+    
 }
+
 
 .mini-book {
     position: relative; /* Establishes positioning context for child elements */
-    width: clamp(10vh, 60vw, 15vh); /* Set width of mini book */
-    height: clamp(10vh, 60vw, 15vh); /* Set height of mini book */
+    width: var(--max-altura-header); /* Set width of mini book */
+    height: var(--max-altura-header);
+    max-height: var(--max-altura-header);
+    max-width: var(--max-altura-header);
     transform-style: preserve-3d; /* Maintain 3D context for children */
     transition: transform 1s ease; /* Smooth transition for 3D effect */
     transform: rotateY(15deg) rotateX(10deg); /* Slight inclination */
     transform-origin: center; /* Center rotation */
 
     z-index: 11;
-    pointer-events: none;
+
+    transition: max-height 1s ease, max-width 1s ease;
+}
+
+.mini-book.visible {
+    max-height: var(--altura-header); /* Set height of mini book */
+    max-width: var(--altura-header); /* Set height of mini book */
+}
+
+/* Zoomed-in state */
+.mini-book.zoomed {
+    animation-play-state: paused;
+    position: relative; /* Fix the position relative to the viewport */
+    max-height: var(--max-altura-header);
+    max-width: var(--max-altura-header);
+}
+
+@keyframes movement {
+    0%, 100% {
+        transform: rotateY(15deg) rotateX(20deg) translateY(-5%);
+    }
+    50% {
+        transform: rotateY(25deg) rotateX(10deg) translateY(5%);
+    }
 }
 
 /* Ensure images are correctly positioned */
@@ -163,8 +202,8 @@ transition: background-image 2s ease-in-out;
     backface-visibility: hidden; /* Hide back face during rotation */
     transform-origin: left;
     z-index: 12;
-}
 
+}
 
 
 
@@ -271,9 +310,9 @@ transition: background-image 2s ease-in-out;
 
 
 .separator {
-    width: 90vw;
+    width: 100vw;
     min-height: 1px;
-    background: linear-gradient(to right, transparent, var(--silver), transparent);
+    background: linear-gradient(to right, transparent, var(--bronze), transparent);
 }
 
 .separator-lyrics {
@@ -296,13 +335,8 @@ a {
     border: none;
 }
 
-.scroll-button:hover {
-    background-color: var(--bronze);
-    color: var(--black);
-}
-
 #scroll-left {
-    animation: slide1 2s infinite;
+    animation: slide1 3s infinite;
 }
 
 @keyframes slide1 {
@@ -315,7 +349,7 @@ a {
 }
 
 #scroll-right {
-    animation: slide2 2s infinite;
+    animation: slide2 3s infinite;
 }
 
 @keyframes slide2 {
