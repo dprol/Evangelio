@@ -1,6 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     const miniBook = document.querySelector('.mini-book');
-    let startY, isZoomed = false;
+    const scrollLeftButton = document.getElementById('scroll-left');
+    const scrollRightButton = document.getElementById('scroll-right');
+    const llibre = document.querySelector('.llibre');
+    const header = document.querySelector('.header');
+
+    let startY, startX, isZoomed = false;
+
+    const scrollAmount = 100;
 
     // Delay adding the 'visible' class by 2 seconds
     setTimeout(function() {
@@ -13,24 +20,13 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!isZoomed) {
                 miniBook.classList.add('zoomed');
                 isZoomed = true;
+                header.classList.add('no-zoom'); // Disable zoom on header
             }
         } else {
             if (isZoomed) {
                 miniBook.classList.remove('zoomed');
                 isZoomed = false;
-            }
-        }
-    }
-
-    // Function to detect scroll intent direction
-    function detectScrollIntent(event) {
-        const deltaY = event.clientY - startY;
-
-        if (Math.abs(deltaY) > 10) { // Change threshold if needed
-            if (deltaY > 0) { // Scrolling down
-                toggleZoom('down');
-            } else { // Scrolling up
-                toggleZoom('up');
+                header.classList.remove('no-zoom'); // Re-enable zoom on header
             }
         }
     }
@@ -40,24 +36,63 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isZoomed) {
             miniBook.classList.remove('zoomed');
             isZoomed = false;
+            header.classList.remove('no-zoom'); // Re-enable zoom on header
         } else {
             miniBook.classList.add('zoomed');
             isZoomed = true;
+            header.classList.add('no-zoom'); // Disable zoom on header
         }
     }
 
-    // Track touch events for mobile devices
+    // Function to detect scroll intent direction
+    function detectScrollIntent(event) {
+        const deltaY = event.clientY - startY;
+        const deltaX = event.clientX - startX;
+
+        // Vertical scrolls in mini-book have no effect
+        if (Math.abs(deltaX) > Math.abs(deltaY)) {
+            if (Math.abs(deltaX) > 10) { // Change threshold if needed
+                if (deltaX > 0) { // Scrolling right
+                    scrollLeft();
+                } else { // Scrolling left
+                    scrollRight();
+                }
+            }
+        } else {
+            // Vertical scrolls do nothing in mini-book
+        }
+    }
+
+    // Scroll to the left
+    function scrollLeft() {
+        llibre.scrollBy({
+            left: -scrollAmount,
+            behavior: "smooth",
+        });
+    }
+
+    // Scroll to the right
+    function scrollRight() {
+        llibre.scrollBy({
+            left: scrollAmount,
+            behavior: "smooth",
+        });
+    }
+
+    // Handle touch events for mobile devices
     miniBook.addEventListener('touchstart', function(event) {
         startY = event.touches[0].clientY;
+        startX = event.touches[0].clientX;
     });
 
     miniBook.addEventListener('touchmove', function(event) {
         detectScrollIntent(event.changedTouches[0]);
     });
 
-    // Track mouse events for desktop devices
+    // Handle mouse events for desktop devices
     miniBook.addEventListener('mousedown', function(event) {
         startY = event.clientY;
+        startX = event.clientX;
     });
 
     miniBook.addEventListener('mousemove', function(event) {
@@ -75,6 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (isZoomed) {
                 miniBook.classList.remove('zoomed');
                 isZoomed = false;
+                header.classList.remove('no-zoom'); // Re-enable zoom on header
             }
         }
     });
@@ -87,4 +123,8 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('mouseup', function() {
         // If you want to handle any specific logic here, you can
     });
+
+    // Scroll buttons functionality
+    scrollLeftButton.addEventListener('click', scrollLeft);
+    scrollRightButton.addEventListener('click', scrollRight);
 });

@@ -23,12 +23,13 @@ document.addEventListener("DOMContentLoaded", () => {
                         } else {
                             // Reset rotation for the current and future pages
                             img.style.transform = `rotateY(0deg) translateZ(-${
-                                index * 5
+                                index * 0
                             }px)`;
                             img.style.opacity = "1";
                             img.style.transition =
                                 "transform 1s ease, opacity 0s";
                         }
+                        img.style.zIndex = `${10-index}`;
                     });
                 }
             });

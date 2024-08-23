@@ -149,6 +149,8 @@ transition: background-image 2s ease-in-out;
     background: transparent; /* Ensure background contrast */
     z-index: 10; /* Make sure it is above other content */
     box-sizing: border-box;
+
+    perspective: 1000px; /* Ajusta el valor según sea necesario */
     
 }
 
@@ -161,12 +163,15 @@ transition: background-image 2s ease-in-out;
     max-width: var(--max-altura-header);
     transform-style: preserve-3d; /* Maintain 3D context for children */
     transition: transform 1s ease; /* Smooth transition for 3D effect */
-    transform: rotateY(15deg) rotateX(10deg); /* Slight inclination */
     transform-origin: center; /* Center rotation */
+
 
     z-index: 11;
 
     transition: max-height 1s ease, max-width 1s ease;
+
+    animation: movement 5s infinite;
+
 }
 
 .mini-book.visible {
@@ -176,7 +181,6 @@ transition: background-image 2s ease-in-out;
 
 /* Zoomed-in state */
 .mini-book.zoomed {
-    animation-play-state: paused;
     position: relative; /* Fix the position relative to the viewport */
     max-height: var(--max-altura-header);
     max-width: var(--max-altura-header);
@@ -184,12 +188,13 @@ transition: background-image 2s ease-in-out;
 
 @keyframes movement {
     0%, 100% {
-        transform: rotateY(15deg) rotateX(20deg) translateY(-5%);
+        transform: rotateY(15deg) rotateX(20deg) translateY(-2%);
     }
     50% {
-        transform: rotateY(25deg) rotateX(10deg) translateY(5%);
+        transform: rotateY(20deg) rotateX(15deg) translateY(2%);
     }
 }
+
 
 /* Ensure images are correctly positioned */
 .mini-book-page {
@@ -203,6 +208,9 @@ transition: background-image 2s ease-in-out;
     transform-origin: left;
     z-index: 12;
 
+    
+    box-shadow: -10px 10px 50px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 
@@ -227,8 +235,8 @@ transition: background-image 2s ease-in-out;
     border: none;
     background: transparent;
     color: var(--silver);
-    padding: 10px;
-    font-size: 20px;
+    font-weight: 600;
+    font-size: 1rem;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
@@ -242,10 +250,11 @@ transition: background-image 2s ease-in-out;
     display: flex;
     align-items: center;
     gap: clamp(5px, 2vw, 10px);
+    padding: 1rem;
 }
 
 .bar {
-    width: 5px;
+    width: 3px;
     background-color: var(--silver);
     border-radius: 5px;
     animation: bounce 1s infinite paused;
