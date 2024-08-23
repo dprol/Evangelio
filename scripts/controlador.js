@@ -10,7 +10,7 @@ function animarEntrada() {
 
         pages.forEach((img, index) => {
             // Calculate delay based on the index (e.g., 0.2s delay per index)
-            const duration = 3 / pages.length; // Total duration divided by the number of pages
+            const duration = 9 / pages.length; // Total duration divided by the number of pages
             const delay = (pages.length - index) * 0.5; // Increase delay for each page
 
             // Apply the transform and delay to each page
@@ -23,7 +23,7 @@ function animarEntrada() {
         setTimeout(() => { 
             inici_passar_pagines();
             inici_navegacio();
-        }, 3000);
+        }, 5000);
 
 };
 // Funcion para esperar a que todas las imagenes se hayan cargado

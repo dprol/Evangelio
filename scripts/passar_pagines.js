@@ -14,12 +14,12 @@ export function inici_passar_pagines() {
                             miniBookImages.forEach((img, index) => {
                                 if (index < pageIndex) {
                                     // Rotate and move pages back as you scroll past them
-                                    img.style.transform = `rotateY(-140deg) translateZ(-${index * 10}px)`; // 10px is the distance between pages
+                                    img.style.transform = `rotateY(-140deg) translateZ(-${index * 0}px)`; // 10px is the distance between pages
                                     img.style.opacity = "0";
                                     img.style.transition = `transform 1s ease, opacity 0s ease 3s`; // 3s delay before opacity transition ends
                                 } else {
                                     // Reset rotation for the current and future pages
-                                    img.style.transform = `rotateY(0deg) translateZ(-${index * 10}px)`;
+                                    img.style.transform = `rotateY(0deg) translateZ(-${index * 0}px)`;
                                     img.style.opacity = "1";
                                     img.style.transition = `transform 1s ease, opacity 0s ease`; // No delay for opacity transition
                                 }
