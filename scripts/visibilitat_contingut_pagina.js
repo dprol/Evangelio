@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const pageContents =
+
+       
+
+    setTimeout(() => {
+        const pageContents =
         document.querySelectorAll(".contingut-pagina");
 
     pageContents.forEach((content) => {
@@ -23,4 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
             observer.observe(element);
         });
     });
+    }, 2000);
+    
 });

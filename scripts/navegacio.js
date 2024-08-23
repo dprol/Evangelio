@@ -9,22 +9,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const scrollAmount = 100;
 
+    // Add the 'visible' class to the mini-book
+    header.classList.add('visible');
+
     // Delay adding the 'visible' class by 2 seconds
     setTimeout(function() {
-        miniBook.classList.add('visible');
-    }, 2000); // 2000 milliseconds = 2 seconds
+        header.classList.remove('max-zoomed');
+        header.style.animationPlayState = "running";
+    }, 3000); // 2000 milliseconds = 2 seconds
 
     // Function to toggle the zoomed class based on scroll direction
     function toggleZoom(direction) {
         if (direction === 'down') {
             if (!isZoomed) {
-                miniBook.classList.add('zoomed');
+                header.classList.add('zoomed');
                 isZoomed = true;
                 header.classList.add('no-zoom'); // Disable zoom on header
             }
         } else {
             if (isZoomed) {
-                miniBook.classList.remove('zoomed');
+                header.classList.remove('zoomed');
                 isZoomed = false;
                 header.classList.remove('no-zoom'); // Re-enable zoom on header
             }
@@ -34,11 +38,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to handle the click toggle
     function handleClick() {
         if (isZoomed) {
-            miniBook.classList.remove('zoomed');
+            header.classList.remove('zoomed');
             isZoomed = false;
             header.classList.remove('no-zoom'); // Re-enable zoom on header
         } else {
-            miniBook.classList.add('zoomed');
+            header.classList.add('zoomed');
             isZoomed = true;
             header.classList.add('no-zoom'); // Disable zoom on header
         }
@@ -95,10 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
         startX = event.clientX;
     });
 
-    miniBook.addEventListener('mousemove', function(event) {
-        detectScrollIntent(event);
-    });
-
+    
     // Click event to toggle zoom
     miniBook.addEventListener('click', function(event) {
         handleClick();
@@ -106,9 +107,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Click lose focus to revert zoom
     document.addEventListener('mousedown', function(event) {
-        if (!miniBook.contains(event.target)) {
+        if (!header.contains(event.target)) {
             if (isZoomed) {
-                miniBook.classList.remove('zoomed');
+                header.classList.remove('zoomed');
                 isZoomed = false;
                 header.classList.remove('no-zoom'); // Re-enable zoom on header
             }

@@ -4,12 +4,43 @@
     margin-top: 1rem;
     height: 2.5rem;
     width: auto;
-    border: 1px solid var(--silver-25);
+    border: 2px solid var(--silver-25);
 
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    opacity: 0;
     border-radius: 0.5rem;
+
+    transition: border-color 0.3s ease-in-out, opacity 1s ease-in-out;
+
+    animation: canviborde 10s infinite;
+
+    background: var(--black-dark);
+    box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.1);
 }
+
+.listenonspotify img {
+    height: 100%;
+    width: auto;
+}
+
+@keyframes canviborde {
+    0%, 100% {
+        border-color: var(--silver-25);
+    }
+    50% {
+        border-color: var(--silver-half);
+    }
+}
+
+
+.listenonspotify:hover {
+    background: var(--silver-25);
+}
+
+.listenonspotify.visible {
+    opacity: 1;
+}
+
+
 
 .spotify-icon {
     font-size: 1.4rem;
@@ -25,8 +56,8 @@
 }
 
 .signature-link {
+    color: var(--silver-25);
     text-decoration: underline; /* Remove underline from links */
-    color: inherit; /* Inherit text color */
 }
 
 .miquel-icon {

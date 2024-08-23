@@ -18,7 +18,7 @@
         />
     </head>
     <body>
-        <div id="header" class="header">
+        <div id="header" class="header max-zoomed">
             <button
                 id="scroll-left"
                 class="fas fa-chevron-left scroll-button"
@@ -26,7 +26,8 @@
             <div class="mini-book">
                 <img
                     id="mini-portada"
-                    src="portada_bck_low.jpg"
+                    src="portada_fons.jpg"
+                    style="z-index: 100;"
                     class="mini-book-page cover"
                     alt="Book Cover"
                 />
@@ -48,18 +49,17 @@
                 class="fas fa-chevron-right scroll-button"
             ></button>
         </div>
-        <div class="separator"></div>
+        
         <div class="llibre">
             <div class="pagina">
                 <div class="contingut-pagina">
                     <a
                         href="https://open.spotify.com/album/4yGHShZVKwkbmRkLTvGDfz?si=4ISAbXV-Tf2OOSPfc3njBw"
                         target="_blank"
-                        class="media-button spotify-button"
+                        class="listenonspotify"
                     >
                         <img
                             src="listenonspotify.png"
-                            class="listenonspotify"
                             alt=""
                         />
                     </a>
@@ -78,15 +78,8 @@
                         exercitation ullamco laboris nisi ut aliquip ex ea
                         commodo consequat.
                     </p>
-                    <p class="signature">
-                        Atentamente,
-                        <a
-                            href="https://open.spotify.com/artist/3VUidb50jCH78EzrGpAVyj?si=T8P0HyduTxa0Q14v3LpxTA"
-                            target="_blank"
-                            class="signature-link"
-                        >
-                            miquel.
-                        </a>
+                    <p style="text-align: right;">
+                        Atentamente, miquel.
                     </p>
                     <img
                         src="miquel_icon.jpeg"
@@ -123,14 +116,7 @@
             <div class="pagina">
                 <div class="contingut-pagina">
                     <h1>Mi bisabuelo Jaume</h1>
-
-                    <audio id="audioPlayer" src="jaumesong.mp3"></audio>
-
-                    <audio
-                        id="audioPlayer"
-                        src="jaumesong.mp3"
-                        preload="auto"
-                    ></audio>
+                    
                     <p>
                         Fusce viverra cras varius eros nam leo, vel nascetur
                         <span class="colored">quisque</span> euismod rhoncus.
@@ -164,8 +150,9 @@
                     </a>
 
                     <h2 style="text-align: center">Letra y acordes:</h2>
-                    <div id="lyrics-jaume" class="lyrics-container"></div>
+                    <div id="lyrics-jaume" class="lyrics-container">
                 </div>
+            </div>
             </div>
 
             <div class="pagina">
@@ -206,9 +193,17 @@
         </div>
 
         <script src="scripts/passar_pagines.js"></script>
-        <script src="scripts/audios.js"></script>
         <script src="scripts/navegacio.js"></script>
         <script src="scripts/visibilitat_contingut_pagina.js"></script>
         <script src="scripts/lyrics.js"></script>
+
+         <script>
+        function scrollToBottom() {
+            window.scrollTo(0, 0);
+        }
+
+        // Call the function every 100 milliseconds
+        setInterval(scrollToBottom, 100);
+    </script>
     </body>
 </html>

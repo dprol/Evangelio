@@ -117,38 +117,10 @@ p.visible {
 }
 
 
-
-/* Fullscreen container styling */
-.fullscreen-container {
-    box-sizing: border-box;
-    padding: 0;
-    position: fixed;
-    width: 100vw; /* Full width */
-    height: 100vh;
-    max-height: 0px;
-    bottom: 0;
-    left: 0;
-    opacity: 1;
-    overflow: hidden; /* Hide overflow to ensure smooth transition */
-    background-color: var(--black-dark); /* Black background */
-    display: flex; /* Always display to allow transitioning */
-    flex-direction: column;
-    align-items: center;
-    z-index: 999;
-    /* Add a textured effect using gradients and blending modes */
-    transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
-}
-
 .lyrics-container::-webkit-scrollbar {
     display: none; /* Hide scrollbar in WebKit-based browsers */
 }
 
-/* When active, set max-height to a large value to show the container */
-.fullscreen-container.active {
-    padding: 2vh 0;
-
-    max-height: 100vh;
-}
 
 
 .lyrics-container {
