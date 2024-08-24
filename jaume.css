@@ -11,11 +11,15 @@ p {
     word-wrap: break-word;
     overflow-wrap: break-word;
     white-space: normal;
+
+    padding-right: var(--padding-1);
+    padding-left: var(--padding-1);
+
+    box-sizing: border-box;
 }
 
 h1 {
-    
-    background-image: url('fons_gold.png');
+    background-image: url("fons_gold.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -32,9 +36,8 @@ h1 {
     transform: translateY(-50px); /* Start flipped and above */
 }
 
-
 h1.luis {
-        background-image: url('bckpuro.png');
+    background-image: url("bckpuro.png");
 }
 h2 {
     background: radial-gradient(
@@ -50,7 +53,6 @@ h2 {
     line-height: 1.2rem;
     margin-top: 1rem;
 }
-
 
 h3 {
     color: var(--silver);
@@ -74,11 +76,7 @@ p {
 }
 
 .colored {
-    background: radial-gradient(
-        ellipse at top right,
-        #ebe11fb4,
-        #6c1213
-    );
+    background: radial-gradient(ellipse at top right, #ebe11fb4, #6c1213);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
@@ -89,7 +87,8 @@ p {
     opacity: 0;
     width: min(20vw, 20vh);
     height: auto;
-    transition: opacity 0.5s ease-in-out, filter 1s ease-in-out, transform 1s ease-in-out;
+    transition: opacity 0.5s ease-in-out, filter 1s ease-in-out,
+        transform 1s ease-in-out;
     filter: blur(10px);
     transform: translateY(1rem);
 }
@@ -100,6 +99,20 @@ p {
     transform: translateY(0px);
 }
 
+.titol-song {
+    width: 90%;
+    height: auto;
+    opacity: 0;
+    transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
+    transform: translateY(-50px); /* Start flipped and above */
+}
+.titol-song.visible {
+    opacity: 1;
+    transform: translateY(0px);
+}
+img.titol-song {
+    filter: saturate(200%);
+}
 /* When the parent container has the 'visible' class */
 h1.visible {
     opacity: 1;
@@ -116,12 +129,9 @@ p.visible {
     transform: translateY(0px);
 }
 
-
 .lyrics-container::-webkit-scrollbar {
     display: none; /* Hide scrollbar in WebKit-based browsers */
 }
-
-
 
 .lyrics-container {
     position: relative;
@@ -129,7 +139,6 @@ p.visible {
     display: flex;
     flex-direction: column;
 }
-
 
 /* Style for paragraphs */
 .paragraph {
@@ -160,7 +169,12 @@ p.visible {
     background: transparent;
 
     color: var(--black-dark);
-    background: linear-gradient(to bottom left, var(--bronze), var(--silver), var(--silver-half));
+    background: linear-gradient(
+        to bottom left,
+        var(--bronze),
+        var(--silver),
+        var(--silver-half)
+    );
     border-radius: 5%;
     padding: 0.05rem 0.1rem;
 }
@@ -192,3 +206,24 @@ p.visible {
     margin-right: 0.3rem;
 }
 
+.videolyric-container {
+    opacity: 0; /* Initially hidden */
+    transition: opacity 1s ease-in-out; /* Smooth transition for visibility */
+}
+.videolyric-container.visible {
+    opacity: 1; /* Show when parent has 'visible' class */
+}
+.videolyric-container {
+    position: relative;
+    padding: 0; /* Remove padding if not needed */
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.videolyric-container iframe {
+    width: clamp(100px, 90vw, 1200px); /* Responsive width */
+    height: clamp(100px, 40vh, 600px); /* Responsive height to maintain aspect ratio */
+    border: none;
+}

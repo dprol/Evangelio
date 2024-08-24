@@ -2,6 +2,8 @@
 // controlador.js
 import { inici_passar_pagines } from './passar_pagines.js';
 import { inici_navegacio } from './navegacio.js';
+import { inici_reproductor_video } from './reproductor_video.js';
+
 
 function animarEntrada() {
     // Delay execution by 3 seconds
@@ -10,12 +12,12 @@ function animarEntrada() {
 
         pages.forEach((img, index) => {
             // Calculate delay based on the index (e.g., 0.2s delay per index)
-            const duration = 9 / pages.length; // Total duration divided by the number of pages
-            const delay = (pages.length - index) * 0.5; // Increase delay for each page
+            const duration = 1 / pages.length; // Total duration divided by the number of pages
+            const delay = (pages.length - index) * duration; // Increase delay for each page
 
             // Apply the transform and delay to each page
             img.style.transition = `transform ${duration}s ease-out ${delay}s, opacity ${duration/3}s ease-out ${delay}s`;
-            img.style.transform = `rotateY(0deg) translateZ(-${index * 10}px)`; // Final rotation
+            img.style.transform = `rotateY(0deg) translateZ(-${index * 5}px)`; // Final rotation
 
             img.style.zIndex = `${10 - index}`;
             img.style.opacity = "1"; // Ensure opacity is fully visible
@@ -23,7 +25,7 @@ function animarEntrada() {
         setTimeout(() => { 
             inici_passar_pagines();
             inici_navegacio();
-        }, 5000);
+        }, 1000);
 
 };
 // Funcion para esperar a que todas las imagenes se hayan cargado

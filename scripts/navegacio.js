@@ -1,70 +1,31 @@
 export function inici_navegacio() {
-    const miniBook = document.querySelector('.mini-book');
-    const scrollLeftButton = document.getElementById('scroll-left');
-    const scrollRightButton = document.getElementById('scroll-right');
-    const llibre = document.querySelector('.llibre');
-    const header = document.querySelector('.header');
+    const miniBook = document.querySelector(".mini-book");
+    const scrollLeftButton = document.getElementById("scroll-left");
+    const scrollRightButton = document.getElementById("scroll-right");
+    const llibre = document.querySelector(".llibre");
+    const header = document.querySelector(".header");
 
-    let startY, startX, isZoomed = false;
+    header.classList.remove("max-zoomed");
 
-    const scrollAmount = 100;
+    const scrollAmount = window.innerWidth;
+    const zoomedClass = "zoomed";
 
-    header.classList.remove('max-zoomed');
-    header.style.animationPlayState = "running";
-
-    // Function to toggle the zoomed class based on scroll direction
-    function toggleZoom(direction) {
-        if (direction === 'down') {
-            if (!isZoomed) {
-                header.classList.add('zoomed');
-                isZoomed = true;
-                header.classList.add('no-zoom'); // Disable zoom on header
-            }
-        } else {
-            if (isZoomed) {
-                header.classList.remove('zoomed');
-                isZoomed = false;
-                header.classList.remove('no-zoom'); // Re-enable zoom on header
-            }
-        }
+    // Function to handle header zoom
+    function toggleHeaderZoom() {
+        header.classList.toggle(zoomedClass);
     }
 
-    // Function to handle the click toggle
-    function handleClick() {
-        if (isZoomed) {
-            header.classList.remove('zoomed');
-            isZoomed = false;
-            header.classList.remove('no-zoom'); // Re-enable zoom on header
-        } else {
-            header.classList.add('zoomed');
-            isZoomed = true;
-            header.classList.add('no-zoom'); // Disable zoom on header
-        }
-    }
-
-    // Function to detect scroll intent direction
-    function detectScrollIntent(event) {
-        const deltaY = event.clientY - startY;
-        const deltaX = event.clientX - startX;
-
-        // Vertical scrolls in mini-book have no effect
-        if (Math.abs(deltaX) > Math.abs(deltaY)) {
-            if (Math.abs(deltaX) > 10) { // Change threshold if needed
-                if (deltaX > 0) { // Scrolling right
-                    scrollLeft();
-                } else { // Scrolling left
-                    scrollRight();
-                }
-            }
-        } else {
-            // Vertical scrolls do nothing in mini-book
-        }
-    }
+    // Handle click on .mini-book to toggle zoom
+    miniBook.addEventListener("click", function (event) {
+        toggleHeaderZoom();
+        // Prevent event from propagating to document
+        event.stopPropagation();
+    });
 
     // Scroll to the left
     function scrollLeft() {
         llibre.scrollBy({
-            left: -scrollAmount,
+            left: -window.innerWidth, // Scroll amount in pixels (1vw)
             behavior: "smooth",
         });
     }
@@ -72,56 +33,54 @@ export function inici_navegacio() {
     // Scroll to the right
     function scrollRight() {
         llibre.scrollBy({
-            left: scrollAmount,
+            left: window.innerWidth, // Scroll amount in pixels (1vw)
             behavior: "smooth",
         });
     }
+    // Handle swipe events to move the header
+    function handleSwipe(event) {
+        const deltaX = event.clientX - startX;
+
+        if (Math.abs(deltaX) > 10) {
+            // Change threshold if needed
+            if (deltaX > 0) {
+                // Swipe right
+                scrollLeft();
+            } else {
+                // Swipe left
+                scrollRight();
+            }
+        }
+    }
 
     // Handle touch events for mobile devices
-    miniBook.addEventListener('touchstart', function(event) {
-        startY = event.touches[0].clientY;
+    header.addEventListener("touchstart", function (event) {
         startX = event.touches[0].clientX;
+        startY = event.touches[0].clientY;
     });
 
-    miniBook.addEventListener('touchmove', function(event) {
-        detectScrollIntent(event.changedTouches[0]);
+    header.addEventListener("touchmove", function (event) {
+        handleSwipe(event.touches[0]);
     });
 
     // Handle mouse events for desktop devices
-    miniBook.addEventListener('mousedown', function(event) {
-        startY = event.clientY;
+    header.addEventListener("mousedown", function (event) {
         startX = event.clientX;
+        startY = event.clientY;
     });
 
-    
-    // Click event to toggle zoom
-    miniBook.addEventListener('click', function(event) {
-        handleClick();
-    });
-
-    // Click lose focus to revert zoom
-    document.addEventListener('mousedown', function(event) {
-        if (!header.contains(event.target)) {
-            if (isZoomed) {
-                header.classList.remove('zoomed');
-                isZoomed = false;
-                header.classList.remove('no-zoom'); // Re-enable zoom on header
-            }
+    header.addEventListener("mousemove", function (event) {
+        if (event.buttons > 0) {
+            // Ensure mouse button is held down
+            handleSwipe(event);
         }
     });
 
-    document.addEventListener('touchend', function(event) {
-        // Optionally, handle touch end if needed
-    });
-
-    // Optionally, reset zoom state on mouse up and touch end
-    document.addEventListener('mouseup', function() {
-        // If you want to handle any specific logic here, you can
+    header.addEventListener("mouseup", function () {
+        // Optionally handle mouse up if needed
     });
 
     // Scroll buttons functionality
-    scrollLeftButton.addEventListener('click', scrollLeft);
-    scrollRightButton.addEventListener('click', scrollRight);
-};
-
-
+    scrollLeftButton.addEventListener("click", scrollLeft);
+    scrollRightButton.addEventListener("click", scrollRight);
+}

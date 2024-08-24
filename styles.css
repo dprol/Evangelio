@@ -5,8 +5,8 @@
     font-style: normal; /* Optional: Define font styles */
 }
 
-
-html, body {
+html,
+body {
     display: flex;
     flex-direction: column;
     font-family: "Schibsted Grotesk", sans-serif;
@@ -19,7 +19,7 @@ html, body {
     overflow: hidden; /* Hide default llbars */
     align-items: center;
     user-select: none;
-    
+
     /* Add a textured effect using gradients and blending modes */
     background-image: radial-gradient(
         circle at top,
@@ -48,9 +48,17 @@ html, body {
 
     --altura-llibre: calc(100vh - var(--altura-header));
 
-
     font-size: min(3vh, 6vw); /* Responsive font size */
+
+    --padding-1: 30px;
 }
+
+@media (min-width: 1024px) {
+    :root {
+        --padding-1: 15vw;
+    }
+}
+
 
 .llibre {
     height: var(--altura-llibre);
@@ -60,7 +68,7 @@ html, body {
     display: flex;
     flex-direction: row;
 
-    overflow-x: scroll;
+    overflow-x: scroll; /* Prevent horizontal scrolling */
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     white-space: nowrap;
@@ -69,8 +77,7 @@ html, body {
     border: none;
 
     -webkit-transition: background-image 2s ease-in-out;
-transition: background-image 2s ease-in-out;
-
+    transition: background-image 2s ease-in-out;
 }
 
 .llibre::-webkit-scrollbar {
@@ -80,7 +87,7 @@ transition: background-image 2s ease-in-out;
 .pagina {
     position: relative;
     width: 100vw; /* Full viewport width */
-    height: var(--altura-   ); /* Full viewport height */
+    height: 100%; /* Full viewport height */
     background: none; /* Ensure background contrast */
     scroll-snap-align: start;
     display: flex;
@@ -91,16 +98,14 @@ transition: background-image 2s ease-in-out;
     border: none;
     flex-shrink: 0; /* Prevent shrinking */
     z-index: 0;
-
 }
-
 
 /* Main styles for .contingut-pagina */
 .contingut-pagina {
     position: absolute; /* Keeps it fixed relative to the containing block */
     height: 100%;
     width: 100%; /* Full width */
-    padding: 1vh 5vw;
+    padding: 1vh 0;
     padding-bottom: 10vh;
     gap: 1rem;
     overflow-y: auto; /* Enable vertical scrolling */
@@ -121,13 +126,6 @@ transition: background-image 2s ease-in-out;
     touch-action: pan-x pan-y; /* Permite un solo desplazamiento a la vez */
 }
 
-@media (min-width: 1024px) {
-    .contingut-pagina {
-        padding: 1vh 15vw;
-    }
-}
-
-
 .contingut-pagina::-webkit-scrollbar {
     display: none; /* Hide scrollbar in WebKit-based browsers (Chrome, Safari) */
 }
@@ -142,14 +140,16 @@ transition: background-image 2s ease-in-out;
     display: flex;
     flex-direction: row;
     margin: 0;
-    padding: 1vh;
+    padding: 4vh 2vw;
     width: 100vw; /* Full width */
     grid-template-columns: 15vw 70vw 15vw;
     align-items: center;
     background: transparent; /* Ensure background contrast */
     z-index: 10; /* Ensure it is above other content */
-    box-sizing: content-box;
-    transition: max-height 1s ease, opacity 1s ease, filter 1s ease-in-out, transform 1s ease;
+    box-sizing: border-box; /* Include padding in width/height calculations */
+
+    transition: max-height 1s ease, opacity 1s ease, filter 1s ease-in-out,
+        transform 1s ease;
     opacity: 0;
     filter: blur(10px);
 
@@ -169,7 +169,7 @@ transition: background-image 2s ease-in-out;
 
 /* Zoomed state */
 .header.zoomed {
-    --altura-header: 40vh; /* Height when zoomed */
+    --altura-header: 60vh; /* Height when zoomed */
 }
 
 /* Max-zoomed state */
@@ -182,15 +182,14 @@ transition: background-image 2s ease-in-out;
     filter: blur(0);
 }
 
-
 .mini-book {
-    height: min(60vw, var(--altura-header), 60vh);
-    width: min(60vw, var(--altura-header), 60vh);
+    height: min(60vw, calc(var(--altura-header) - 4vh), 60vh);
+    width: min(60vw, calc(var(--altura-header) - 4vh), 60vh);
 
     box-sizing: border-box;
 
     position: relative; /* Establishes positioning context for child elements */
-    
+
     transform-origin: center; /* Center rotation */
 
     transition: height 1s ease, width 1s ease, transform 1s ease; /* Smooth transition for the mini book */
@@ -199,7 +198,6 @@ transition: background-image 2s ease-in-out;
 
     align-self: center;
 
-
     transform: rotateX(0) rotateY(0);
     transform-style: preserve-3d; /* Maintain 3D context for children */
 }
@@ -207,7 +205,6 @@ transition: background-image 2s ease-in-out;
 .header.max-zoomed .mini-book {
     transform: rotateX(20deg) rotateZ(-10deg) rotateY(10deg);
 }
-
 
 /* Ensure images are correctly positioned */
 .mini-book-page {
@@ -227,127 +224,6 @@ transition: background-image 2s ease-in-out;
     transform-style: preserve-3d;
 }
 
-
-
-
-
-
-
-
-.player-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    gap: 2vw;
-    height: 5vh;
-    padding: 1rem;
-    background: transparent;
-    border-radius: 10px;
-}
-
-.play-button {
-    border: none;
-    background: transparent;
-    color: var(--silver);
-    font-weight: 600;
-    font-size: 1rem;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s;
-}
-
-
-.spectrum {
-    display: flex;
-    align-items: center;
-    gap: clamp(5px, 2vw, 10px);
-    padding: 1rem;
-}
-
-.bar {
-    width: 3px;
-    background-color: var(--silver);
-    border-radius: 5px;
-    animation: bounce 1s infinite paused;
-    height: 10px;
-}
-
-.bar:nth-child(2) {
-    animation-delay: 0.6s;
-}
-
-.bar:nth-child(3) {
-    animation-delay: 0.3s;
-}
-
-@keyframes bounce {
-    0%, 100% {
-        height: 1rem;
-    }
-    50% {
-        height: 1.5rem;
-    }
-}
-
-#seekBar {
-    width: 100%;
-    height: 5px;
-    background: var(--silver-half);
-    border-radius: 5px;
-    appearance: none;
-    outline: none;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-#seekBar::-webkit-slider-thumb {
-    appearance: none;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background: var(--silver);
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#seekBar::-moz-range-thumb {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background: var(--silver);
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-
-
-
-
-.pagina.portada.visible .header.player-container {
-    opacity: 0;
-}
-
-
-
-.separator {
-    width: 100vw;
-    min-height: 1px;
-    background: linear-gradient(to right, transparent, var(--bronze), transparent);
-}
-
-.separator-lyrics {
-    width: 70vw;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-a {
-    color: var(--silver);
-    text-decoration: underline var(--bronze);
-}
-
 .scroll-button {
     height: min(10vh, 10vw);
     width: min(10vh, 10vw);
@@ -358,7 +234,11 @@ a {
     border: none;
     justify-content: center;
     opacity: 1;
-    transition: opacity 0.8s ease;
+    transition: opacity 0.8s ease, color 0.8s ease;
+}
+
+.scroll-button:hover {
+    color: var(--silver);
 }
 
 .header.max-zoomed .scroll-button {
@@ -370,7 +250,8 @@ a {
 }
 
 @keyframes slide1 {
-    0%, 100% {
+    0%,
+    100% {
         transform: translateX(10%);
     }
     50% {
@@ -383,7 +264,8 @@ a {
 }
 
 @keyframes slide2 {
-    0%, 100% {
+    0%,
+    100% {
         transform: translateX(-10%);
     }
     50% {
@@ -391,9 +273,7 @@ a {
     }
 }
 
-
-
-  #loading-progress-bar {
+#loading-progress-bar {
     position: fixed;
     top: 50%;
     width: 50vw;
@@ -401,4 +281,4 @@ a {
     text-align: center;
     color: white;
     line-height: 30px; /* Centra el texto verticalmente */
-  }
+}
