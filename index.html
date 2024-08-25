@@ -4,9 +4,11 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>ñ</title>
-        <link rel="stylesheet" href="styles.css" />
-        <link rel="stylesheet" href="portada.css" />
-        <link rel="stylesheet" href="jaume.css" />
+        <link rel="stylesheet" href="css/base.css" />
+        <link rel="stylesheet" href="css/portada.css" />
+        <link rel="stylesheet" href="css/jaume.css" />
+        <link rel="stylesheet" href="css/1492.css" />
+
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -101,8 +103,11 @@
 
             <div class="pagina">
                 <div class="contingut-pagina">
-                    <img src="titols/01.png" class="titol-song" />
+                  
 
+                    <!--<img src="titols/01.png" class="titol-song" />-->
+                    <h1 class="t-jaume">Mi bisabuelo Jaume</h1>
+                    
                     <p>
                         Fusce viverra cras varius eros nam leo, vel nascetur
                         <span class="colored">quisque</span> euismod rhoncus.
@@ -139,17 +144,8 @@
                     >
                         <img src="listenonspotify.png" alt="" />
                     </a>
-                    <a
-                        href="https://open.spotify.com/album/4yGHShZVKwkbmRkLTvGDfz?si=4ISAbXV-Tf2OOSPfc3njBw"
-                        target="_blank"
-                        class="listenonspotify"
-                    >
-                        <img src="apple_music.svg" alt="" />
-                    </a>
-                    <details>
-                        <summary>Letra</summary>
+                    <div class="separator"></div>
                         <div id="lyrics-jaume" class="lyrics-container"></div>
-                    </details>
                 </div>
             </div>
 
@@ -252,14 +248,40 @@
                 </div>
             </div>
             <div class="pagina">
-                <div class="contingut-pagina">
-                    <h1>1492</h1>
+                <div class="contingut-pagina cp-1492">
+                    <h1 class="t-1492">1492</h1>
                     <p>
                         Fusce viverra cras varius eros nam leo, vel nascetur
                         <span class="colored">quisque</span> euismod rhoncus
                         aliquet feugiat <span class="colored">enim</span>.
                     </p>
-                    <img src="Luis_Puro_low.png" class="icono-contingut" />
+                    <div class="container-transicio t-1492 primera">
+                        <div class="triangle t1"></div>
+                        <div class="triangle t2"></div>
+                        <div class="triangle t3"></div>
+                        <div class="triangle t4"></div>
+                    </div>
+                    <script>document.addEventListener('DOMContentLoaded', function() {
+                        // Fetch all elements with the class '.container.transicio'
+                        const containers = document.querySelectorAll('.container-transicio');
+                    
+                        // Function to toggle classes
+                        function toggleClasses() {
+                            containers.forEach(container => {
+                                if (container.classList.contains('primera')) {
+                                    container.classList.remove('primera');
+                                    container.classList.add('segona');
+                                } else {
+                                    container.classList.remove('segona');
+                                    container.classList.add('primera');
+                                }
+                            });
+                        }
+                    
+                        // Set interval to toggle classes every 3 seconds
+                        setInterval(toggleClasses, 3000);
+                    });
+                    </script>
                     <p>
                         Fusce viverra cras varius eros nam leo, vel nascetur
                         <span class="colored">quisque</span> euismod rhoncus
@@ -317,7 +339,7 @@
             </div>
             <div class="pagina">
                 <div class="contingut-pagina">
-                    <h1>Mediterraneo</h1>
+                    <h1 class="t-mediterraneo">Mediterraneo</h1>
                     <p>
                         Fusce viverra cras varius eros nam leo, vel nascetur
                         <span class="colored">quisque</span> euismod rhoncus

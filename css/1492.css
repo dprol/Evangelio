@@ -1,0 +1,106 @@
+h1.t-jaume {
+    text-shadow: 5px 5px 30px rgba(255, 255, 255, 0.3);
+
+    background-image: url("../fons_gold.png");
+    font-size: 2rem;
+    line-height: 2rem;
+    width: fit-content;
+}
+
+h1.t-1492 {
+    text-shadow: 5px 5px 30px rgba(216, 192, 82, 0.3);
+
+    background-image: url("../wave.png");
+    font-size: 2rem;
+    line-height: 2rem;
+    width: fit-content;
+}
+
+h1.t-mediterraneo {
+    text-shadow: 5px 5px 30px rgba(216, 192, 82, 0.3);
+
+    background-image: url("../wave.png");
+    font-size: 2rem;
+    line-height: 2rem;
+    width: fit-content;
+}
+
+/* Container with a triangle clip-path */
+.container-transicio {
+    position: relative;
+    min-width: 15vh;
+    min-height: 15vh;
+    
+}
+
+.container-transicio.debug {
+    background-color: rgba(255, 255, 255, 0.3); 
+    background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.2) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 1px, transparent 1px);
+    background-size: 10% 10%;
+}
+
+.triangle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    transition:  clip-path 2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.container-transicio.t-1492.primera .triangle.t1 {
+    background-color: var(--silver-25);
+    clip-path: polygon(20% 70%, 45% 65%, 45% 35%, 20% 70%);
+}
+
+.container-transicio.t-1492.primera  .triangle.t2 {
+    background-color: var(--silver-half);
+    clip-path: polygon(50% 65%, 50% 20%, 75% 60%, 50% 65%);
+}
+
+.container-transicio.t-1492.primera  .triangle.t3 {
+    background-color: #2e629a;
+    clip-path: polygon(20% 90%, 10% 75%, 70% 90%, 20% 90%);
+}
+
+.container-transicio.t-1492.primera  .triangle.t4 {
+    background-color: #194574;
+    clip-path: polygon(10% 75%, 80% 70%, 70% 90%, 10% 75%);
+}
+
+.container-transicio.t-1492.segona  .triangle.t1 {
+
+    clip-path: polygon(80% 20%, 80% 40%, 45% 75%, 35% 65%);
+    background-color: var(--silver-25);
+}
+
+.container-transicio.t-1492.segona .triangle.t2 {
+
+    clip-path: polygon(60% 20%, 80% 20%, 35% 65%, 25% 55%);
+    background-color: var(--silver-half);
+
+
+}
+
+.container-transicio.t-1492.segona .triangle.t3 {
+
+    clip-path: polygon(20% 50%, 10% 60%, 40% 90%, 50% 80%);
+    background-color: #2e629a;
+}
+
+.container-transicio.t-1492.segona .triangle.t4 {
+
+    clip-path: polygon(20% 70%, 10% 80%, 20% 90%, 30% 80%);
+    background-color: #194574;
+}
+
+
+.cp-1492 .colored {
+    background: linear-gradient(45deg, #2e629a, #194574);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+} 

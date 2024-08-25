@@ -19,14 +19,12 @@ p {
 }
 
 h1 {
-    background-image: url("fons_gold.png");
-    background-size: cover;
+    background-size: 100% auto;
     background-position: center;
     background-repeat: no-repeat;
 
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
     font-weight: bold;
     font-size: 1.8rem;
     line-height: 2rem;
@@ -177,6 +175,8 @@ p.visible {
     );
     border-radius: 5%;
     padding: 0.05rem 0.1rem;
+
+    box-shadow: -2px -2px 10px rgba(255, 255, 255, 0.2);
 }
 
 .chord.empty {
@@ -187,14 +187,7 @@ p.visible {
 .text {
     flex: 1; /* Allow text to take remaining space */
 
-    background: radial-gradient(
-        ellipse at top right,
-        var(--silver),
-        var(--silver-half)
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    color: var(--silver-half);
     font-size: 1rem;
 }
 

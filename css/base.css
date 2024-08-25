@@ -282,3 +282,11 @@ body {
     color: white;
     line-height: 30px; /* Centra el texto verticalmente */
 }
+
+
+.separator {
+    min-height: 1px;
+    width: 80%;
+    background-color: var(--silver-half);
+    margin: 1vh 0;
+}
