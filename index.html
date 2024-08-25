@@ -46,6 +46,7 @@
         <div class="llibre">
             <div class="pagina">
                 <div class="contingut-pagina">
+
                     <a
                         href="https://open.spotify.com/album/4yGHShZVKwkbmRkLTvGDfz?si=4ISAbXV-Tf2OOSPfc3njBw"
                         target="_blank"
@@ -103,11 +104,9 @@
 
             <div class="pagina">
                 <div class="contingut-pagina">
-                  
-
                     <!--<img src="titols/01.png" class="titol-song" />-->
                     <h1 class="t-jaume">Mi bisabuelo Jaume</h1>
-                    
+
                     <p>
                         Fusce viverra cras varius eros nam leo, vel nascetur
                         <span class="colored">quisque</span> euismod rhoncus.
@@ -145,13 +144,13 @@
                         <img src="listenonspotify.png" alt="" />
                     </a>
                     <div class="separator"></div>
-                        <div id="lyrics-jaume" class="lyrics-container"></div>
+                    <div id="lyrics-jaume" class="lyrics-container"></div>
                 </div>
             </div>
 
             <div class="pagina">
                 <div class="contingut-pagina">
-                    <img src="titols/02.PNG" class="titol-song" />
+                    <h1 class="t-luis">Luis, se fuerte</h1>
 
                     <p>
                         Fusce viverra cras varius eros nam leo, vel nascetur
@@ -185,7 +184,7 @@
 
             <div class="pagina">
                 <div class="contingut-pagina">
-                    <img src="titols/03.PNG" class="titol-song" />
+                    <h1 class="t-toro">El toro ole</h1>
                     <p>
                         Fusce viverra cras varius eros nam leo, vel nascetur
                         <span class="colored">quisque</span> euismod rhoncus
@@ -250,38 +249,18 @@
             <div class="pagina">
                 <div class="contingut-pagina cp-1492">
                     <h1 class="t-1492">1492</h1>
+                    
                     <p>
                         Fusce viverra cras varius eros nam leo, vel nascetur
                         <span class="colored">quisque</span> euismod rhoncus
                         aliquet feugiat <span class="colored">enim</span>.
                     </p>
-                    <div class="container-transicio t-1492 primera">
+                    <div class="container-transicio t-1492 segona">
                         <div class="triangle t1"></div>
                         <div class="triangle t2"></div>
                         <div class="triangle t3"></div>
                         <div class="triangle t4"></div>
                     </div>
-                    <script>document.addEventListener('DOMContentLoaded', function() {
-                        // Fetch all elements with the class '.container.transicio'
-                        const containers = document.querySelectorAll('.container-transicio');
-                    
-                        // Function to toggle classes
-                        function toggleClasses() {
-                            containers.forEach(container => {
-                                if (container.classList.contains('primera')) {
-                                    container.classList.remove('primera');
-                                    container.classList.add('segona');
-                                } else {
-                                    container.classList.remove('segona');
-                                    container.classList.add('primera');
-                                }
-                            });
-                        }
-                    
-                        // Set interval to toggle classes every 3 seconds
-                        setInterval(toggleClasses, 3000);
-                    });
-                    </script>
                     <p>
                         Fusce viverra cras varius eros nam leo, vel nascetur
                         <span class="colored">quisque</span> euismod rhoncus
@@ -414,6 +393,26 @@
 
             // Call the function every 100 milliseconds
             setInterval(scrollToBottom, 100);
+        </script>
+
+        <script>
+            // Select the .container-transicio element
+const container = document.querySelector('.container-transicio');
+
+// Function to toggle the classes
+function toggleClasses() {
+    if (container.classList.contains('primera')) {
+        container.classList.remove('primera');
+        container.classList.add('segona');
+    } else {
+        container.classList.remove('segona');
+        container.classList.add('primera');
+    }
+}
+
+// Run the toggle function every 5 seconds (5000 milliseconds)
+setInterval(toggleClasses, 5000);
+
         </script>
     </body>
 </html>
