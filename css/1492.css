@@ -131,8 +131,9 @@ h1.t-mediterraneo {
 
 
 
-.cp-1492 .colored {
-    background: linear-gradient(45deg, #2e629a, #194574);
+.p-1492 .colored {
+    background-image: url("../wave.png");
+    background-size: cover 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);

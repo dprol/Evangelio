@@ -1,10 +1,5 @@
-document.addEventListener("DOMContentLoaded", () => {
-
-       
-
-    setTimeout(() => {
-        const pageContents =
-        document.querySelectorAll(".contingut-pagina");
+export function inici_visibilitat() {
+    const pageContents = document.querySelectorAll(".pagina");
 
     pageContents.forEach((content) => {
         const childElements = content.children;
@@ -27,6 +22,4 @@ document.addEventListener("DOMContentLoaded", () => {
             observer.observe(element);
         });
     });
-    }, 2000);
-    
-});
+}

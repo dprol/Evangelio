@@ -14,9 +14,10 @@ body {
     border: none;
     margin: 0;
     padding: 0;
-    height: 100%;
+    overflow-y: scroll; /* Hide default llbars */
+    overflow-x: hidden;
     width: 100%;
-    overflow: hidden; /* Hide default llbars */
+    height: 100%;
     align-items: center;
     user-select: none;
 
@@ -27,6 +28,12 @@ body {
         rgba(0, 0, 0, 0.1) var(--altura-header),
         rgba(0, 0, 0, 0.2) 100vh
     );
+
+    touch-action: pan-x pan-y; /* Permite un solo desplazamiento a la vez */
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }
 
 :root {
@@ -42,11 +49,8 @@ body {
 
     --white: #ffffff;
 
-    --altura-header: 20vh;
-    --max-altura-header: 50vh;
-    --full-altura-header: 100vh;
+    --altura-header: 40vh;
 
-    --altura-llibre: calc(100vh - var(--altura-header));
 
     font-size: min(3vh, 6vw); /* Responsive font size */
 
@@ -61,16 +65,14 @@ body {
 
 
 .llibre {
-    height: var(--altura-llibre);
-    width: 100vw;
+    width: 100%;
 
     position: relative;
     display: flex;
     flex-direction: row;
 
-    overflow-x: scroll; /* Prevent horizontal scrolling */
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
+    overflow: hidden;
+
     white-space: nowrap;
     padding: 0;
     margin: 0;
@@ -80,41 +82,28 @@ body {
     transition: background-image 2s ease-in-out;
 }
 
-.llibre::-webkit-scrollbar {
-    display: none; /* Hide scrollbar in WebKit-based browsers */
-}
 
+
+
+/* Main styles for .pagina */
 .pagina {
-    position: relative;
-    width: 100vw; /* Full viewport width */
-    height: 100%; /* Full viewport height */
-    background: none; /* Ensure background contrast */
-    scroll-snap-align: start;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden; /* Hide overflow on pagina itself */
-    padding: 0;
-    margin: 0;
-    border: none;
-    flex-shrink: 0; /* Prevent shrinking */
-    z-index: 0;
-}
-
-/* Main styles for .contingut-pagina */
-.contingut-pagina {
     position: absolute; /* Keeps it fixed relative to the containing block */
-    height: 100%;
+    top: 0;
+    left: 0;
+    height: fit-content;
     width: 100%; /* Full width */
-    padding: 1vh 0;
+    padding: 0;
+    padding-top: 1rem;
     padding-bottom: 10vh;
+    
     gap: 1rem;
-    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-y: hidden; /* Enable vertical scrolling */
     overflow-x: hidden; /* Prevent horizontal scrolling */
     box-sizing: border-box; /* Include padding in width/height calculations */
     z-index: 1;
     flex-shrink: 0; /* Prevent shrinking */
     scroll-behavior: smooth;
-
+    opacity: 0;
     background: none;
     /* Hide scrollbar in WebKit-based browsers */
     scrollbar-width: none; /* Hide scrollbar in Firefox */
@@ -123,11 +112,14 @@ body {
     flex-direction: column;
     align-items: center;
 
-    touch-action: pan-x pan-y; /* Permite un solo desplazamiento a la vez */
-}
+    transition: opacity 2s ease-out;
 
-.contingut-pagina::-webkit-scrollbar {
-    display: none; /* Hide scrollbar in WebKit-based browsers (Chrome, Safari) */
+    touch-action: pan-x pan-y; /* Permite un solo desplazamiento a la vez */
+    visibility: hidden;
+}
+.pagina.visible {
+    visibility: visible;
+    opacity: 1;
 }
 
 * {
@@ -148,28 +140,16 @@ body {
     z-index: 10; /* Ensure it is above other content */
     box-sizing: border-box; /* Include padding in width/height calculations */
 
-    transition: max-height 1s ease, opacity 1s ease, filter 1s ease-in-out,
-        transform 1s ease;
+    transition: height 1s ease, transform 1s ease;
     opacity: 0;
     filter: blur(10px);
 
     justify-content: space-evenly;
 
-    height: 100000vh;
-    max-height: var(--altura-header);
+    height: var(--altura-header);
 
     perspective: 1000px;
     transform-style: preserve-3d;
-}
-
-/* Normal state (default) */
-.header:not(.zoomed):not(.max-zoomed) {
-    --altura-header: 20vh; /* Height when not zoomed */
-}
-
-/* Zoomed state */
-.header.zoomed {
-    --altura-header: 60vh; /* Height when zoomed */
 }
 
 /* Max-zoomed state */
@@ -241,6 +221,36 @@ body {
     color: var(--silver);
 }
 
+.scroll-top {
+    position: absolute;
+    right: auto;
+    bottom: 0.5rem;
+    font-size: 1.5rem;
+    background: none;
+    color: var(--silver-half);
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    z-index: 1;
+    border: none;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    20% {
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+}
+
+.scroll-top.appear {
+    opacity: 1;
+}
 .header.max-zoomed .scroll-button {
     opacity: 0;
 }

@@ -6,7 +6,6 @@
     width: auto;
     border: 2px solid var(--silver-25);
 
-    opacity: 0;
     border-radius: 0.5rem;
 
     transition: border-color 0.3s ease-in-out, opacity 1s ease-in-out;
@@ -36,9 +35,6 @@
     background: var(--silver-25);
 }
 
-.listenonspotify.visible {
-    opacity: 1;
-}
 
 
 
@@ -66,15 +62,10 @@
     border-radius: 50%;
     vertical-align: middle;
     transform-origin: center; /* Center rotation */
-    transform-style: preserve-3d; /* Maintain 3D context for children */
-    transform: rotateX(-90deg);
     transition: transform 1.5s ease-in-out; /* Smooth transition for the icon */
     margin: 3vh 0;
 }
 
-.miquel-icon.visible {
-    transform: rotateX(0deg);
-}
 
 /* General styling for the scroll indicator */
 .scroll-indicator {
