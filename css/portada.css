@@ -1,19 +1,34 @@
 /* Define gradient backgrounds */
 
 .listenonspotify {
+    position: relative;
+    display: flex;
     margin-top: 1rem;
     height: 2.5rem;
     width: auto;
-    border: 2px solid var(--silver-25);
+    box-sizing: border-box;
+    border: none;
 
     border-radius: 0.5rem;
 
     transition: border-color 0.3s ease-in-out, opacity 1s ease-in-out;
 
-    animation: canviborde 10s infinite;
-
-    background:none;
+    background: var(--black-dark);
     box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.1);
+}
+
+.listenonspotify::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: var(--silver-25);
+    border-radius: inherit;
+    border: none;
+    margin: -2px;
+    z-index: -1;
 }
 
 .listenonspotify img {
@@ -21,26 +36,13 @@
     width: auto;
 }
 
-@keyframes canviborde {
-    0%, 100% {
-        border-color: var(--silver-25);
-    }
-    50% {
-        border-color: var(--silver-half);
-    }
-}
-
-
 .listenonspotify:hover {
     background: var(--silver-25);
 }
 
-
-
-
 .spotify-icon {
     font-size: 1.4rem;
-    color: 	#1DB954;
+    color: #1db954;
     margin-right: 0.5rem;
 }
 
@@ -66,7 +68,6 @@
     margin: 3vh 0;
 }
 
-
 /* General styling for the scroll indicator */
 .scroll-indicator {
     display: flex;
@@ -76,9 +77,9 @@
     padding: 10px 20px;
     border-radius: 0.5em;
     width: fit-content;
-    
+
     animation: move 2s infinite; /* Pulse animation for the entire indicator */
-    
+
     cursor: pointer; /* Indicate that the element is interactive */
 }
 
@@ -92,17 +93,16 @@
     word-wrap: break-word;
 }
 
-
 /* Icon styling */
 .scroll-icon {
     font-size: 2em;
     color: var(--silver-half); /* Adjust to match your design */
 }
 
-
 /* Pulse animation for the entire indicator */
 @keyframes move {
-    0%, 100% {
+    0%,
+    100% {
         transform: translateX(-5%);
     }
     50% {
@@ -110,34 +110,32 @@
     }
 }
 
-
 .social-media {
     border-top: 1px solid var(--silver-25); /* Top border for separation */
     width: 100vw;
     display: flex;
     justify-content: space-evenly; /* Center icons horizontally */
-    align-items: center;     /* Center icons vertically */
+    align-items: center; /* Center icons vertically */
     padding: 4vw;
-    gap: 2vw;                /* Space between icons, responsive to viewport width */
+    gap: 2vw; /* Space between icons, responsive to viewport width */
 }
 
 .social-media a {
-    width: auto;          /* Icon size relative to viewport width */
+    width: auto; /* Icon size relative to viewport width */
     font-size: 2rem;
-    color: #555;             /* Icon color */
-    transition: color 0.3s;  /* Smooth color transition on hover */
+    color: #555; /* Icon color */
+    transition: color 0.3s; /* Smooth color transition on hover */
     text-align: center;
 }
 
 .social-media a:hover {
-    color: #1da1f2;          /* Hover color for Twitter */
+    color: #1da1f2; /* Hover color for Twitter */
 }
 
 .social-media a.instagram:hover {
-    color: #e4405f;          /* Hover color for Instagram */
+    color: #e4405f; /* Hover color for Instagram */
 }
 
 .social-media a.youtube:hover {
-    color: #ff0000;          /* Hover color for YouTube */
+    color: #ff0000; /* Hover color for YouTube */
 }
-

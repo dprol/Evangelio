@@ -1,22 +1,23 @@
-.pagina.toro .colored {
-    background: radial-gradient(
-        circle,
-        var(--rosewood),
-        var(--bronze)
+.pagina.jaume .colored {
+    background: linear-gradient(
+        to bottom left,
+        var(--drab-dark-brown),
+        var(--tan),
+        var(--rosewood)
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: bold;
 }
 
-.pagina.toro .listenonspotify {
+.pagina.jaume .listenonspotify {
     position: relative;
     border: none;
     background: var(--black-dark);
     box-shadow: none;
 }
 
-.pagina.toro .listenonspotify::before {
+.pagina.jaume .listenonspotify::before {
     content: "";
     position: absolute;
     top: 0;
@@ -25,7 +26,7 @@
     right: 0;
     background: conic-gradient(
         var(--tan),
-        var(--bronze),
+        var(--drab-dark-brown),
         var(--rosewood),
         var(--tan)
     );
@@ -35,11 +36,11 @@
     z-index: -1;
 }
 
-.pagina.toro .separator {
+.pagina.jaume .separator {
     background: linear-gradient(
         to right,
         var(--rosewood),
         var(--tan),
-        var(--bronze)
+        var(--drab-dark-brown)
     );
 }

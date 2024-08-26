@@ -1,22 +1,23 @@
-.pagina.toro .colored {
-    background: radial-gradient(
-        circle,
-        var(--rosewood),
-        var(--bronze)
+.pagina.mediterraneo .colored {
+    background: linear-gradient(
+        to right,
+        var(--cerulean),
+        var(--ash-gray),
+        var(--persian-orange)
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: bold;
 }
 
-.pagina.toro .listenonspotify {
+.pagina.mediterraneo .listenonspotify {
     position: relative;
     border: none;
     background: var(--black-dark);
     box-shadow: none;
 }
 
-.pagina.toro .listenonspotify::before {
+.pagina.mediterraneo .listenonspotify::before {
     content: "";
     position: absolute;
     top: 0;
@@ -25,8 +26,8 @@
     right: 0;
     background: conic-gradient(
         var(--tan),
-        var(--bronze),
-        var(--rosewood),
+        var(--cerulean),
+        var(--persian-orange),
         var(--tan)
     );
     border-radius: inherit;
@@ -35,11 +36,10 @@
     z-index: -1;
 }
 
-.pagina.toro .separator {
+.pagina.mediterraneo .separator {
     background: linear-gradient(
         to right,
-        var(--rosewood),
-        var(--tan),
-        var(--bronze)
+        var(--cerulean),
+        var(--persian-orange)
     );
 }
