@@ -75,54 +75,54 @@ const data = [
 
 // Function to create HTML elements
 function createLyricsHTML(data) {
-    const container = document.getElementById("lyrics-jaume");
-    container.innerHTML = ""; // Clear any existing content
+    const containers = document.querySelectorAll(".lyrics-container"); // Select all containers with the class "lyrics-jaume"
 
-    data.forEach((paragraphData) => {
-        // Create a new paragraph container
-        const paragraph = document.createElement("div");
-        paragraph.classList.add("paragraph");
+    containers.forEach((container) => { // Corrected arrow function syntax
+        container.innerHTML = ""; // Clear any existing content
 
-        paragraphData.paragraph.forEach((lineData) => {
-            // Create a new line container
-            const line = document.createElement("div");
-            line.classList.add("line");
+        data.forEach((paragraphData) => {
+            // Create a new paragraph container
+            const paragraph = document.createElement("div");
+            paragraph.classList.add("paragraph");
 
-            let previousChord = ""; // Track the previous chord
+            paragraphData.paragraph.forEach((lineData) => {
+                // Create a new line container
+                const line = document.createElement("div");
+                line.classList.add("line");
 
-            lineData.forEach((item) => {
-                const textWithChord = document.createElement("div");
-                textWithChord.classList.add("text-with-chord");
+                let previousChord = ""; // Track the previous chord
 
-                const chord = document.createElement("div");
-                chord.classList.add("chord");
-                chord.textContent = item.chord;
+                lineData.forEach((item) => {
+                    const textWithChord = document.createElement("div");
+                    textWithChord.classList.add("text-with-chord");
 
-                const text = document.createElement("div");
-                text.classList.add("text");
-                text.textContent = item.text;
+                    const chord = document.createElement("div");
+                    chord.classList.add("chord");
+                    chord.textContent = item.chord;
 
-                // Check if chord is empty or same as previous chord
-                if (
-                    item.chord === "" ||
-                    item.chord === previousChord
-                ) {
-                    chord.classList.add("empty");
-                } else {
-                    chord.classList.remove("empty");
-                }
+                    const text = document.createElement("div");
+                    text.classList.add("text");
+                    text.textContent = item.text;
 
-                textWithChord.appendChild(chord);
-                textWithChord.appendChild(text);
-                line.appendChild(textWithChord);
+                    // Check if chord is empty or same as previous chord
+                    if (item.chord === "" || item.chord === previousChord) {
+                        chord.classList.add("empty");
+                    } else {
+                        chord.classList.remove("empty");
+                    }
 
-                previousChord = item.chord; // Update the previous chord
+                    textWithChord.appendChild(chord);
+                    textWithChord.appendChild(text);
+                    line.appendChild(textWithChord);
+
+                    previousChord = item.chord; // Update the previous chord
+                });
+
+                paragraph.appendChild(line);
             });
 
-            paragraph.appendChild(line);
+            container.appendChild(paragraph);
         });
-
-        container.appendChild(paragraph);
     });
 }
 

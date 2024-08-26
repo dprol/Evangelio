@@ -61,12 +61,16 @@ export function inici_pagines_amb_animacio() {
     // Function to handle navigation by direction
     function scrollByDirection(direction) {
         const maxPageIndex = pages.length - 1;
+        const slideInvite = document.getElementById("slide-invite");
+        slideInvite.style.animationPlayState = "paused";
+        slideInvite.style.opacity = "0";
+
 
         if (direction === "left" && currentPageIndex > 0) {
             currentPageIndex--;
         } else if (direction === "right" && currentPageIndex < maxPageIndex) {
             currentPageIndex++;
-        }
+        } else if (currentPageIndex == maxPageIndex) currentPageIndex = 0;
 
         // Scroll to the top before updating page visibility
         scrollToTop();
@@ -156,4 +160,31 @@ export function inici_pagines_amb_animacio() {
     updatePageVisibility();
     updateMiniBookImages();
     updateLlibreHeight(); // Ensure the initial height is set correctly
+
+    // Check if the device is touch-enabled
+    if (!("ontouchstart" in window)) {
+        document.addEventListener("mousemove", (event) => {
+            const miniBook = document.querySelector(".mini-book");
+            const rect = miniBook.getBoundingClientRect();
+
+            // Get the center of the mini-book
+            const miniBookCenterX = rect.left + rect.width / 2;
+            const miniBookCenterY = rect.top + rect.height / 2;
+
+            // Calculate the distance from the mouse to the center of the mini-book
+            const deltaX = event.clientX - miniBookCenterX;
+            const deltaY = event.clientY - miniBookCenterY;
+
+            // Map these distances to rotations with sensitivity adjustment
+            let rotateY = (deltaX / rect.width) * 20;
+            let rotateX = (-deltaY / rect.height) * 20;
+
+            // Limit the rotations to a maximum of 45 degrees
+            rotateY = Math.max(-45, Math.min(45, rotateY));
+            rotateX = Math.max(-45, Math.min(45, rotateX));
+
+            // Apply the rotation
+            miniBook.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+    }
 }
