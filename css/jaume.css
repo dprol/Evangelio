@@ -7,6 +7,17 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: bold;
+    animation: glow 3s infinite;
+    transition: text-shadow 3s ease;
+}
+
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
+    }
+    50% {
+        text-shadow: 0 0 1px rgba(255, 255, 255, 0);
+    }
 }
 
 .pagina.toro .listenonspotify {

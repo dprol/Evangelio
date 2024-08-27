@@ -4,8 +4,8 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>ñ</title>
-        <link rel="stylesheet" href="css/base.css" />
         <link rel="stylesheet" href="css/colors.css" />
+        <link rel="stylesheet" href="css/base.css" />
         <link rel="stylesheet" href="css/styles.css" />
         <link rel="stylesheet" href="css/portada.css" />
         <link rel="stylesheet" href="css/jaume.css" />
@@ -13,7 +13,6 @@
         <link rel="stylesheet" href="css/1492.css" />
         <link rel="stylesheet" href="css/mediterraneo.css" />
 
-        
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -31,9 +30,11 @@
                 id="scroll-left"
                 class="fas fa-chevron-left scroll-button"
             ></button>
-            <i id="slide-invite" class="fa-solid fa-hand"></i> <!-- Slide invitation icon -->
-    
+
             <div class="mini-book">
+                <i id="slide-invite" class="fa-solid fa-hand"></i>
+                <!-- Slide invitation icon -->
+
                 <img src="covers/00_500.jpg" class="mini-book-page" />
                 <img src="covers/01_500.png" class="mini-book-page" />
                 <img
@@ -53,11 +54,22 @@
                 class="fas fa-chevron-right scroll-button"
             ></button>
         </div>
+        
+        <div class="fondo f0 top"></div>
+        <div class="fondo f1 bottom"></div>
+        <div class="fondo f2 top"></div>
+        <div class="fondo f3 bottom"></div>
+        <div class="fondo f4 top"></div>
+        <div class="fondo f5 bottom"></div>
+        <div class="fondo f6 top"></div>
+        <div class="fondo f7 bottom"></div>
+        <div class="fondo f8 top"></div>
+
 
         <!-- Llibre amb les pagines -->
         <div class="llibre">
             <!-- Pagina: Portada -->
-            <div id="pagina-0" class="pagina portada">
+            <div class="pagina portada">
                 <!-- Spotify link -->
                 <a
                     href="https://open.spotify.com/album/4yGHShZVKwkbmRkLTvGDfz?si=4ISAbXV-Tf2OOSPfc3njBw"
@@ -67,12 +79,12 @@
                     <img src="listenonspotify.png" alt="" />
                 </a>
                 <h2>Bienvenido lector,</h2>
-                <p>
+                <p class="from-left">
                     Welcome to this collection. We hope you find the insights
                     shared here useful and enriching. Take your time to explore
                     and enjoy the journey.
                 </p>
-                <p>
+                <p class="from-rigth">
                     Remember, each page tells a different story, and we're glad
                     to have you along for the ride. Dive in and let the words
                     inspire you.
@@ -111,8 +123,8 @@
             </div>
 
             <!-- Pagina: Jaume -->
-            <div id="pagina-1" class="pagina jaume">
-                <p>
+            <div id="pagina" class="pagina jaume">
+                <p class="from-left">
                     The winds of change sweep through every corner of the world,
                     carrying with them the promise of something new and
                     profound.
@@ -120,13 +132,13 @@
                     leads to places unknown, yet always worth the adventure.
                 </p>
                 <img src="Marco_Creu_low.PNG" class="icono-contingut" />
-                <p>
+                <p class="from-rigth">
                     Like the tides that rise and fall, we too must adapt,
                     finding strength in the ebb and flow. The path ahead is
                     <span class="colored">yours</span> to discover.
                 </p>
                 <img src="Marco_Flor02_low.PNG" class="icono-contingut" />
-                <p>
+                <p class="from-left">
                     As the sun sets and rises again, so do our opportunities,
                     waiting for us to seize them with both hands. Trust the
                     process, and
@@ -153,11 +165,11 @@
                     <img src="listenonspotify.png" alt="" />
                 </a>
                 <div class="separator"></div>
-                <div  class="lyrics-container"></div>
+                <div class="lyrics-container"></div>
             </div>
 
             <!-- Pagina: Luis -->
-            <div id="pagina-2" class="pagina luis">
+            <div class="pagina luis">
                 <p class="visible">
                     Onward we go, guided by stars that shine in the night sky,
                     illuminating the path for those who dare to
@@ -185,11 +197,11 @@
                     <img src="listenonspotify.png" alt="" />
                 </a>
                 <h2 style="text-align: center">Letra y acordes:</h2>
-                <div  class="lyrics-container"></div>
+                <div class="lyrics-container"></div>
             </div>
 
             <!-- Pagina: Toro -->
-            <div id="pagina-3" class="pagina toro">
+            <div class="pagina toro">
                 <p>
                     The winds of change sweep through every corner of the world,
                     carrying with them the promise of something new and
@@ -219,11 +231,11 @@
                 </a>
                 <div class="separator"></div>
                 <h2 style="text-align: center">Letra y acordes:</h2>
-                <div  class="lyrics-container"></div>
+                <div class="lyrics-container"></div>
             </div>
 
             <!-- Pagina: Adan -->
-            <div id="pagina-4" class="pagina">
+            <div class="pagina">
                 <p>
                     The winds of change sweep through every corner of the world,
                     carrying with them the promise of something new and
@@ -252,11 +264,11 @@
                     <img src="listenonspotify.png" alt="" />
                 </a>
                 <h2 style="text-align: center">Letra y acordes:</h2>
-                <div  class="lyrics-container"></div>
+                <div class="lyrics-container"></div>
             </div>
 
             <!-- Pagina: 1492 -->
-            <div id="pagina-5" class="pagina _1492">
+            <div class="pagina _1492">
                 <p>
                     The winds of change sweep through every corner of the world,
                     carrying with them the promise of something new and
@@ -290,11 +302,11 @@
                     <img src="listenonspotify.png" alt="" />
                 </a>
                 <h2 style="text-align: center">Letra y acordes:</h2>
-                <div  class="lyrics-container"></div>
+                <div class="lyrics-container"></div>
             </div>
 
             <!-- Page 6 -->
-            <div id="pagina-6" class="pagina">
+            <div class="pagina">
                 <p>
                     The winds of change sweep through every corner of the world,
                     carrying with them the promise of something new and
@@ -323,11 +335,11 @@
                     <img src="listenonspotify.png" alt="" />
                 </a>
                 <h2 style="text-align: center">Letra y acordes:</h2>
-                <div  class="lyrics-container"></div>
+                <div class="lyrics-container"></div>
             </div>
 
             <!-- Page 7 -->
-            <div id="pagina-7" class="pagina mediterraneo">
+            <div class="pagina mediterraneo">
                 <p>
                     The winds of change sweep through every corner of the world,
                     carrying with them the promise of something new and
@@ -357,11 +369,11 @@
                 </a>
                 <div class="separator"></div>
                 <h2 style="text-align: center">Letra y acordes:</h2>
-                <div  class="lyrics-container"></div>
+                <div class="lyrics-container"></div>
             </div>
 
             <!-- Page 8 -->
-            <div id="pagina-8" class="pagina">
+            <div class="pagina">
                 <p>
                     The winds of change sweep through every corner of the world,
                     carrying with them the promise of something new and
@@ -390,16 +402,13 @@
                     <img src="listenonspotify.png" alt="" />
                 </a>
                 <h2 style="text-align: center">Letra y acordes:</h2>
-                <div  class="lyrics-container"></div>
+                <div class="lyrics-container"></div>
             </div>
-
-            
         </div>
         <button id="bt-scroll-top" class="scroll-top">
             <i class="fas fa-circle-up"></i>
         </button>
 
-        
         <script src="scripts/lyrics.js"></script>
 
         <script type="module" src="scripts/controlador.js"></script>

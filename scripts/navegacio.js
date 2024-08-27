@@ -1,5 +1,7 @@
 export function inici_pagines_amb_animacio() {
     const pages = document.querySelectorAll(".pagina");
+    const fondos = document.querySelectorAll(".fondo");
+
     const miniBookImages = document.querySelectorAll(".mini-book img");
     const llibre = document.querySelector(".llibre");
     const scrollLeftButton = document.getElementById("scroll-left");
@@ -28,6 +30,13 @@ export function inici_pagines_amb_animacio() {
                 page.classList.remove("visible");
             }
         });
+        fondos.forEach((fondo, index) => {
+            if (index === currentPageIndex) {
+                fondo.classList.add("visible");
+            } else {
+                fondo.classList.remove("visible");
+            }
+        });
 
         // Update the height of the llibre to match the current page
         updateLlibreHeight();
@@ -38,13 +47,13 @@ export function inici_pagines_amb_animacio() {
         miniBookImages.forEach((img, index) => {
             if (index < currentPageIndex) {
                 img.style.transform = `rotateY(-140deg) translateZ(-${
-                    index * 10
+                    index * 5
                 }px)`;
                 img.style.opacity = "0";
                 img.style.transition = `transform 1s ease, opacity 0s ease 3s`;
             } else {
-                img.style.transform = `rotateY(0deg) translateZ(-${
-                    index * 10
+                img.style.transform = `rotateY(${0}deg) translateZ(-${
+                    index * 5
                 }px)`;
                 img.style.opacity = "1";
                 img.style.transition = `transform 1s ease, opacity 0s ease`;
@@ -64,7 +73,6 @@ export function inici_pagines_amb_animacio() {
         const slideInvite = document.getElementById("slide-invite");
         slideInvite.style.animationPlayState = "paused";
         slideInvite.style.opacity = "0";
-
 
         if (direction === "left" && currentPageIndex > 0) {
             currentPageIndex--;

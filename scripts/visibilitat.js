@@ -8,13 +8,13 @@ export function inici_visibilitat() {
             (entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add("visible");
+                        entry.target.classList.add("on-screen");
                     }
                 });
             },
             {
                 root: null, // Use the viewport as the root
-                threshold: 0.2, // Trigger when 30% of the element is in view
+                threshold: 1, // Trigger when 30% of the element is in view
             }
         );
 

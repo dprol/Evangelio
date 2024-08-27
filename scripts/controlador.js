@@ -27,6 +27,7 @@ function animarEntrada() {
         header.classList.remove('max-zoomed');
         setTimeout(() => {
           inici_pagines_amb_animacio();
+          inici_visibilitat();
         }, 1010);
     }, 3000);
 }
