@@ -1,16 +1,22 @@
-.pagina.jaume .colored {
-    text-shadow: 0 0 4px var(--silver-25);
+.pagina.adan .colored {
+
+    color: var(--moss-green);
     font-weight: bold;
 }
 
-.pagina.jaume .listenonspotify {
+.pagina.adan p {
+    color: var(--chinese-violet);
+}
+
+
+.pagina.adan .listenonspotify {
     position: relative;
     border: none;
     background: var(--black-dark);
     box-shadow: none;
 }
 
-.pagina.jaume .listenonspotify::before {
+.pagina.adan .listenonspotify::before {
     content: "";
     position: absolute;
     top: 0;
@@ -19,7 +25,7 @@
     right: 0;
     background: conic-gradient(
         var(--tan),
-        var(--drab-dark-brown),
+        var(--bronze),
         var(--rosewood),
         var(--tan)
     );
@@ -29,15 +35,11 @@
     z-index: -1;
 }
 
-.pagina.jaume .separator {
+.pagina.adan .separator {
     background: linear-gradient(
         to right,
         var(--rosewood),
         var(--tan),
-        var(--drab-dark-brown)
+        var(--bronze)
     );
-}
-
-.pagina.jaume p {
-    color: var(--navajo-white);
 }

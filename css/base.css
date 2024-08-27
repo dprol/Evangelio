@@ -118,43 +118,42 @@ body::-webkit-scrollbar {
     max-height: 0;
     width: 100%;
 
-    opacity: 0.4;
+    opacity: 1;
 
-    transition: max-height 0.7s ease;
+    transition: max-height 0.7s ease, opacity 0.7s ease;
 
 }
 .fondo.top {
     top:0;
-    box-shadow: 0px -100px 20px rgba(0, 0, 0, 0.5);
 }
 .fondo.bottom {
     bottom: 0;
 }
 .fondo.visible {
-    opacity: 0.4;
+    opacity: 0.8;
     max-height: 100%;
 }
 
 .fondo.f0 {
-    background: var(--black-dark);
+    background: var(--black-dark)
 }
 .fondo.f1 {
-    background: linear-gradient(var(--silver), var(--drab-dark-brown));;
+    background: var(--drab-dark-brown);
 }
 .fondo.f2 {
-    background: linear-gradient(var(--persian-orange), var(--tan));
+    background: var(--tan);
 }
 .fondo.f3 {
-    background: linear-gradient(var(--rosewood), var(--bronze));
+    background: var(--eerie-black);
 }
 .fondo.f4 {
-    background: linear-gradient(var(--chinese-violet), var(--violet-jtc));
+    background: var(--violet-jtc);
 }
 .fondo.f5 {
-    background: linear-gradient(var(--cerulean), var(--ash-gray));
+    background: var(--indigo-dye);
 }
 .fondo.f6 {
-    background-color: pink;
+    background: linear-gradient(var(--tan), var(--champagne));
 }
 .fondo.f7 {
     background-color: brown;
@@ -206,6 +205,7 @@ body::-webkit-scrollbar {
     animation: slideInvite 1.5s infinite ease-in; /* Sliding animation */
     transition: opacity 1s ease;
     pointer-events: none; /* Prevent interactions with the icon */
+    background: none;
 }
 
 /* Sliding animation */
@@ -255,10 +255,10 @@ body::-webkit-scrollbar {
 
 @keyframes rotation {
     0%, 100% {
-        transform: rotateY(-20deg);
+        transform: rotateY(-20deg) rotateX(10deg);
     }
     50% {
-        transform: rotateY(20deg);
+        transform: rotateY(20deg) rotateX(10deg);
     }
     
 }
@@ -281,7 +281,7 @@ body::-webkit-scrollbar {
     transform: rotateY(-120deg);
     opacity: 0;
 
-    border-radius: 5%;
+    border-radius: 0;
     border: none;
     transform-style: preserve-3d;
 }

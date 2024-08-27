@@ -1,23 +1,21 @@
-.pagina.jaume .colored {
-    background: linear-gradient(
-        to bottom left,
-        var(--drab-dark-brown),
-        var(--tan),
-        var(--rosewood)
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.pagina.toro .colored {
+
+    color: var(--caput-mortuum);
     font-weight: bold;
 }
 
-.pagina.jaume .listenonspotify {
+.pagina.toro p {
+    color: var(--copper);
+}
+
+.pagina.toro .listenonspotify {
     position: relative;
     border: none;
     background: var(--black-dark);
     box-shadow: none;
 }
 
-.pagina.jaume .listenonspotify::before {
+.pagina.toro .listenonspotify::before {
     content: "";
     position: absolute;
     top: 0;
@@ -26,7 +24,7 @@
     right: 0;
     background: conic-gradient(
         var(--tan),
-        var(--drab-dark-brown),
+        var(--bronze),
         var(--rosewood),
         var(--tan)
     );
@@ -36,11 +34,11 @@
     z-index: -1;
 }
 
-.pagina.jaume .separator {
+.pagina.toro .separator {
     background: linear-gradient(
         to right,
         var(--rosewood),
         var(--tan),
-        var(--drab-dark-brown)
+        var(--bronze)
     );
 }

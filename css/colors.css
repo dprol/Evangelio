@@ -8,6 +8,7 @@
     --bronze: #c38944ff;
 
     --drab-dark-brown: #424521ff;
+    --drab-dark-brown-light: rgb(107, 112, 56);
 
     --persian-orange: #df7f49ff;
     --cerulean: #1c7a93ff;
@@ -16,4 +17,49 @@
     --violet-jtc: #522b55ff;
 
     --chinese-violet: #7c657eff;
+
+    /* Portada */
+    --licorice: #281310ff;
+    --satin-sheen-gold: #ca9c3dff;
+    --black-bean-2: #3b1915ff;
+    --saffron: #e6bd50ff;
+
+    /* Jaume */
+    --drab-dark-brown: #4a482cff;
+    --navajo-white: #fbdbaeff;
+    --rosewood: #580b0cff;
+
+    /* Luis*/
+    --tan: #e2c090ff;
+    --dark-moss-green: #4f5d20ff;
+    --silver: #bbb5a8ff;
+    --navajo-white: #fcdbacff;
+    --brown: #964416ff;
+
+    /*Toro*/
+    --caput-mortuum: #692a1bff;
+    --copper: #b67739ff;
+    --eerie-black: #1f1a16ff;
+    --van-dyke: #362c28ff;
+
+    /* Adan */
+    --english-violet: #5a3a5cff;
+    --violet-jtc: rgb(49, 22, 51);
+    --moss-green: #8d9878ff;
+    --sunset: #eacda2ff;
+    --chinese-violet: #78577eff;
+
+    /* 1492 */
+
+    --ecru: #e0c282ff;
+    --davys-gray: #595353ff;
+    --pearl: #e8d8bdff;
+    --chamoisee: #a17545ff;
+    --indigo-dye: #273e5cff;
+    /* Rey */
+    --champagne: #f2e5cfff;
+    --jet: #373431ff;
+    --khaki: #b89f80ff;
+    --sunset: #e9cb91ff;
+    --raw-umber: #9b5a35ff;
 }

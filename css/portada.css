@@ -139,3 +139,8 @@
 .social-media a.youtube:hover {
     color: #ff0000; /* Hover color for YouTube */
 }
+
+
+.pagina.portada p {
+    color: var(--silver-half);
+}

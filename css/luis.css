@@ -1,16 +1,20 @@
-.pagina.jaume .colored {
-    text-shadow: 0 0 4px var(--silver-25);
+.pagina.luis .colored {
     font-weight: bold;
 }
 
-.pagina.jaume .listenonspotify {
+.pagina.luis p {
+    color: var(--brown);
+}
+
+
+.pagina.luis .listenonspotify {
     position: relative;
     border: none;
     background: var(--black-dark);
     box-shadow: none;
 }
 
-.pagina.jaume .listenonspotify::before {
+.pagina.luis .listenonspotify::before {
     content: "";
     position: absolute;
     top: 0;
@@ -19,7 +23,7 @@
     right: 0;
     background: conic-gradient(
         var(--tan),
-        var(--drab-dark-brown),
+        var(--bronze),
         var(--rosewood),
         var(--tan)
     );
@@ -29,15 +33,11 @@
     z-index: -1;
 }
 
-.pagina.jaume .separator {
+.pagina.luis .separator {
     background: linear-gradient(
         to right,
         var(--rosewood),
         var(--tan),
-        var(--drab-dark-brown)
+        var(--bronze)
     );
-}
-
-.pagina.jaume p {
-    color: var(--navajo-white);
 }
