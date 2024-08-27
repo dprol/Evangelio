@@ -17,13 +17,6 @@ p {
     font-weight: 400;
     text-align: left;
 
-
-    transition: opacity 1s ease-in;
-    opacity: 0.2;
-}
-p.on-screen {
-    opacity: 1;
-    transform: translateX(0);
 }
 
 h1 {
@@ -74,8 +67,20 @@ h3 {
 /* Specialized classes */
 
 .icono-contingut {
-    width: min(20vw, 20vh);
+    transform: scale(0);
+    transition: transform 1s ease;
+    width: min(15vw, 15vh);
     height: auto;
+    box-sizing: border-box;
+}
+.icono-contingut.on-screen {
+    transform: scale(1);
+    animation: spin;
+}
+
+.icono-contingut img {
+    height: 100%;
+    width: 100%;
 }
 
 /* Container styles */

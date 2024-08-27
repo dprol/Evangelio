@@ -14,7 +14,7 @@ export function inici_visibilitat() {
             },
             {
                 root: null, // Use the viewport as the root
-                threshold: 1, // Trigger when 30% of the element is in view
+                threshold: 0.3, // Trigger when 30% of the element is in view
             }
         );
 

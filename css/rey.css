@@ -1,0 +1,44 @@
+.pagina.rey .colored {
+    color: var(--charcoal-bistre-dark);
+    font-weight: bold;
+}
+
+.pagina.rey p {
+    color: var(--deep-rosewood);
+}
+
+
+.pagina.rey .listenonspotify {
+    position: relative;
+    border: none;
+    background: var(--black-dark);
+    box-shadow: none;
+}
+
+.pagina.rey .listenonspotify::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: conic-gradient(
+        var(--tan),
+        var(--bronze),
+        var(--rosewood),
+        var(--tan)
+    );
+    border-radius: inherit;
+    border: none;
+    margin: -2px;
+    z-index: -1;
+}
+
+.pagina.rey .separator {
+    background: linear-gradient(
+        to right,
+        var(--rosewood),
+        var(--tan),
+        var(--bronze)
+    );
+}

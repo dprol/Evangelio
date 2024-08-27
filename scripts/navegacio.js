@@ -46,15 +46,11 @@ export function inici_pagines_amb_animacio() {
     function updateMiniBookImages() {
         miniBookImages.forEach((img, index) => {
             if (index < currentPageIndex) {
-                img.style.transform = `rotateY(-140deg) translateZ(-${
-                    index * 5
-                }px)`;
+                img.style.transform = `rotateY(-140deg)`;
                 img.style.opacity = "0";
                 img.style.transition = `transform 1s ease, opacity 0s ease 3s`;
             } else {
-                img.style.transform = `rotateY(${0}deg) translateZ(-${
-                    index * 5
-                }px)`;
+                img.style.transform = `rotateY(${0}deg`;
                 img.style.opacity = "1";
                 img.style.transition = `transform 1s ease, opacity 0s ease`;
             }

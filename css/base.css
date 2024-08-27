@@ -9,7 +9,7 @@ html,
 body {
     display: flex;
     flex-direction: column;
-    font-family: "Schibsted Grotesk", sans-serif;
+    font-family: 'Libre Baskerville', "Schibsted Grotesk", sans-serif;
     background-color: var(--black-dark);
     border: none;
     margin: 0;
@@ -22,7 +22,6 @@ body {
     user-select: none;
 
     touch-action: pan-x pan-y; /* Permite un solo desplazamiento a la vez */
-
 
     transition: background-color 1s ease;
 }
@@ -42,7 +41,6 @@ body::-webkit-scrollbar {
     --silver-half: #c0c0c081;
     --silver-25: #c0c0c033;
     --silver-5: #c0c0c010;
-
 
     --white: #ffffff;
 
@@ -106,9 +104,11 @@ body::-webkit-scrollbar {
     transition: opacity 0.7s ease;
 
     touch-action: pan-x pan-y; /* Permite un solo desplazamiento a la vez */
+    display: none;
 }
 .pagina.visible {
     opacity: 1;
+    display: flex;
 }
 
 .fondo {
@@ -121,45 +121,80 @@ body::-webkit-scrollbar {
     opacity: 1;
 
     transition: max-height 0.7s ease, opacity 0.7s ease;
-
 }
 .fondo.top {
-    top:0;
+    top: 0;
 }
 .fondo.bottom {
     bottom: 0;
 }
 .fondo.visible {
-    opacity: 0.8;
+    opacity: 1;
     max-height: 100%;
 }
 
 .fondo.f0 {
-    background: var(--black-dark)
+    background: linear-gradient(
+        45deg,
+        var(--charcoal-bistre-dark),
+        var(--charcoal-bistre)
+    );
 }
 .fondo.f1 {
-    background: var(--drab-dark-brown);
+    background: linear-gradient(
+        to bottom right,
+        var(--moss-green-dark),
+        var(--moss-green)
+    );
 }
 .fondo.f2 {
-    background: var(--tan);
+    background: linear-gradient(
+        to bottom left,
+        var(--warm-tan-dark),
+        var(--warm-tan)
+    );
 }
 .fondo.f3 {
-    background: var(--eerie-black);
+    background: linear-gradient(
+        to bottom right,
+        var(--charcoal-bistre-dark),
+        var(--charcoal-bistre)
+    );
 }
 .fondo.f4 {
-    background: var(--violet-jtc);
+    background: linear-gradient(
+        to bottom left,
+        var(--english-violet-dark),
+        var(--english-violet)
+    );
 }
 .fondo.f5 {
-    background: var(--indigo-dye);
+    background: linear-gradient(
+        to bottom right,
+        var(--soft-cerulean-dark),
+        var(--soft-cerulean)
+    );
 }
 .fondo.f6 {
-    background: linear-gradient(var(--tan), var(--champagne));
+    background: linear-gradient(
+        to bottom left,
+        var(--sunset-dark),
+        var(--sunset)
+    );
 }
 .fondo.f7 {
-    background-color: brown;
+    background: linear-gradient(
+        to bottom right,
+        var(--persian-orange-dark),
+        var(--persian-orange)
+    );
 }
 .fondo.f8 {
-    background-color: gray;
+    background: linear-gradient(
+        to bottom left,
+        var(--moss-green-dark),
+        var(--moss-green)
+    );
 }
 
 * {
@@ -200,7 +235,7 @@ body::-webkit-scrollbar {
     transform: translate(-50%, -50%);
     font-size: 1.5rem; /* Adjust size as needed */
     color: white; /* Color of the icon */
-    opacity: 0.8;
+    opacity: 0;
     z-index: 20; /* Ensure it appears above other elements */
     animation: slideInvite 1.5s infinite ease-in; /* Sliding animation */
     transition: opacity 1s ease;
@@ -235,7 +270,7 @@ body::-webkit-scrollbar {
 
     box-sizing: border-box;
 
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* Add shadow */
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.6); /* Add shadow */
 
     position: relative; /* Establishes positioning context for child elements */
 
@@ -247,25 +282,12 @@ body::-webkit-scrollbar {
 
     align-self: center;
 
-    transform: rotateY(10deg);
-    animation: rotation 10s infinite;
-    
-    transform-style: preserve-3d; 
+    transform-style: preserve-3d;
 }
 
-@keyframes rotation {
-    0%, 100% {
-        transform: rotateY(-20deg) rotateX(10deg);
-    }
-    50% {
-        transform: rotateY(20deg) rotateX(10deg);
-    }
-    
-}
 .header.max-zoomed .mini-book {
     transform: rotateX(20deg) rotateZ(-10deg) rotateY(10deg);
 }
-
 
 /* Ensure images are correctly positioned */
 .mini-book-page {
@@ -281,9 +303,13 @@ body::-webkit-scrollbar {
     transform: rotateY(-120deg);
     opacity: 0;
 
-    border-radius: 0;
-    border: none;
+    border-radius: 5%;
+    border: 2px solid var(--tan);
+
     transform-style: preserve-3d;
+}
+.mini-book-page.cover {
+    border-color: var(--licorice);
 }
 
 .scroll-button {
@@ -337,10 +363,6 @@ body::-webkit-scrollbar {
     opacity: 1;
 }
 .header.max-zoomed .scroll-button,
-.header.max-zoomed #slide-invite {
-    opacity: 0;
-}
-
 #scroll-left {
     animation: slide1 3s infinite;
 }

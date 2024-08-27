@@ -1,11 +1,12 @@
 .pagina.adan .colored {
-
     color: var(--moss-green);
     font-weight: bold;
 }
 
 .pagina.adan p {
-    color: var(--chinese-violet);
+
+    text-shadow: 0 0 1 var(--english-muted-dark);
+    color: var(--muted-violet);
 }
 
 

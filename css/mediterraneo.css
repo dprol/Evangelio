@@ -1,15 +1,10 @@
 .pagina.mediterraneo .colored {
-    background: linear-gradient(
-        to right,
-        var(--cerulean),
-        var(--ash-gray),
-        var(--persian-orange)
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     font-weight: bold;
 }
-
+.pagina.mediterraneo p {
+    text-shadow: 0 0 1px var(--persian-orange-dark);
+    color: var(--soft-cerulean-dark);
+}
 .pagina.mediterraneo .listenonspotify {
     position: relative;
     border: none;

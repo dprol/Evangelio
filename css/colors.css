@@ -1,65 +1,25 @@
 :root {
-    --tan: #dfbd91ff;
-    --tan-half: rgba(223, 189, 145, 0.5);
-    --van-dyke: #3d302cff;
-    --rosewood: #67090dff;
-    --sunset: #f0cfa4ff;
-    --bistre: #302722ff;
-    --bronze: #c38944ff;
-
-    --drab-dark-brown: #424521ff;
-    --drab-dark-brown-light: rgb(107, 112, 56);
-
+    /* Original Colors */
+    --warm-tan: #d8b892ff;
+    --deep-rosewood: #5a0b0cff;
+    --sunset: #f2c48cff;
+    --dark-van-dyke: #3a2d28ff;
+    --soft-cerulean: #1b768bff;
+    --charcoal-bistre: #2d2523ff;
     --persian-orange: #df7f49ff;
-    --cerulean: #1c7a93ff;
-    --ash-gray: #ced8ccff;
+    --muted-violet: #7b5f78ff;
+    --english-violet: #553755ff;
+    --moss-green: #879370ff;
 
-    --violet-jtc: #522b55ff;
-
-    --chinese-violet: #7c657eff;
-
-    /* Portada */
-    --licorice: #281310ff;
-    --satin-sheen-gold: #ca9c3dff;
-    --black-bean-2: #3b1915ff;
-    --saffron: #e6bd50ff;
-
-    /* Jaume */
-    --drab-dark-brown: #4a482cff;
-    --navajo-white: #fbdbaeff;
-    --rosewood: #580b0cff;
-
-    /* Luis*/
-    --tan: #e2c090ff;
-    --dark-moss-green: #4f5d20ff;
-    --silver: #bbb5a8ff;
-    --navajo-white: #fcdbacff;
-    --brown: #964416ff;
-
-    /*Toro*/
-    --caput-mortuum: #692a1bff;
-    --copper: #b67739ff;
-    --eerie-black: #1f1a16ff;
-    --van-dyke: #362c28ff;
-
-    /* Adan */
-    --english-violet: #5a3a5cff;
-    --violet-jtc: rgb(49, 22, 51);
-    --moss-green: #8d9878ff;
-    --sunset: #eacda2ff;
-    --chinese-violet: #78577eff;
-
-    /* 1492 */
-
-    --ecru: #e0c282ff;
-    --davys-gray: #595353ff;
-    --pearl: #e8d8bdff;
-    --chamoisee: #a17545ff;
-    --indigo-dye: #273e5cff;
-    /* Rey */
-    --champagne: #f2e5cfff;
-    --jet: #373431ff;
-    --khaki: #b89f80ff;
-    --sunset: #e9cb91ff;
-    --raw-umber: #9b5a35ff;
+    /* Darker Shades */
+    --warm-tan-dark: #8f6e56ff; /* Darkened tan */
+    --deep-rosewood-dark: #300506ff; /* Darkened rosewood */
+    --sunset-dark: #8c6b4fff; /* Darkened sunset */
+    --dark-van-dyke-dark: #1b1412ff; /* Darkened van dyke */
+    --soft-cerulean-dark: #0f404cff; /* Darkened cerulean */
+    --charcoal-bistre-dark: #0f0b09ff; /* Darkened charcoal bistre */
+    --persian-orange-dark: #863e2bff; /* Darkened persian orange */
+    --muted-violet-dark: #3f303eff; /* Darkened muted violet */
+    --english-violet-dark: #2c1d2bff; /* Darkened english violet */
+    --moss-green-dark: #434c35ff; /* Darkened moss green */
 }

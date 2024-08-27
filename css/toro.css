@@ -1,11 +1,13 @@
 .pagina.toro .colored {
 
-    color: var(--caput-mortuum);
+    color: var(--silver);
     font-weight: bold;
 }
 
 .pagina.toro p {
-    color: var(--copper);
+
+    text-shadow: 0 0 1px var(--chacoal-bistre-dark);
+    color: var(--warm-tan-dark);
 }
 
 .pagina.toro .listenonspotify {

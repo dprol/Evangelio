@@ -1,9 +1,12 @@
 .pagina.luis .colored {
+    color: var(--moss-green-dark);
     font-weight: bold;
 }
 
 .pagina.luis p {
-    color: var(--brown);
+
+    text-shadow: 0 0 1px var(--warm-tan-dark);
+    color: var(--dark-van-dyke);
 }
 
 
