@@ -77,13 +77,6 @@
         var(--moss-green-dark)
     );
 }
-.pagina.luis {
-    background: linear-gradient(
-        to bottom left,
-        var(--warm-tan-dark),
-        var(--warm-tan)
-    );
-}
 .pagina.toro {
     background: linear-gradient(
         to bottom right,
@@ -91,11 +84,11 @@
         var(--charcoal-bistre)
     );
 }
-.pagina.adan {
+.pagina.luis {
     background: linear-gradient(
         to bottom left,
-        var(--english-violet-dark),
-        var(--english-violet)
+        var(--warm-tan-dark),
+        var(--warm-tan)
     );
 }
 .pagina._1492 {
@@ -105,7 +98,6 @@
         var(--soft-cerulean)
     );
 }
-
 .pagina.mediterraneo {
     background: linear-gradient(
         to bottom right,
@@ -113,6 +105,29 @@
         var(--persian-orange)
     );
 }
+.pagina.adan {
+    background: linear-gradient(
+        to bottom left,
+        var(--english-violet-dark),
+        var(--english-violet)
+    );
+}
+.pagina.bruja {
+    background: linear-gradient(
+        45deg,
+        var(--black-dark-dark),
+        var(--black-dark)
+    );
+}
+.pagina.francisco {
+    background: linear-gradient(
+        to bottom right,
+        var(--moss-green-dark),
+        var(--moss-green),
+        var(--moss-green-dark)
+    );
+}
+
 .pagina.machomen {
     background: linear-gradient(
         to bottom left,
@@ -120,7 +135,14 @@
         var(--moss-green)
     );
 }
-
+.pagina.isabel {
+    background: linear-gradient(
+        to bottom right,
+        var(--sunset-dark),
+        var(--sunset),
+        var(--sunset-dark)
+    );
+}
 /* Colors per pagina */
 .pagina.portada .special {
     background-color: var(--silver);

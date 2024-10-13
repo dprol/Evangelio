@@ -61,6 +61,7 @@ function esperarImagenesCargadas(callback) {
 
         // Ocultar la barra de progreso después de un breve retraso
         setTimeout(() => {
+            document.body.classList.remove("loading-body");
             paginaCarga.classList.add("loaded");
             callback();
         }, 1500); // Puedes ajustar el retraso si lo deseas
