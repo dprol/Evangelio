@@ -98,7 +98,6 @@ body::-webkit-scrollbar {
     flex-shrink: 0; /* Prevent shrinking */
     scroll-behavior: smooth;
     opacity: 0;
-    background: none;
     /* Hide scrollbar in WebKit-based browsers */
     scrollbar-width: none; /* Hide scrollbar in Firefox */
     -ms-overflow-style: none; /* Hide scrollbar in Internet Explorer and Edge */
@@ -184,7 +183,9 @@ body::-webkit-scrollbar {
 
 /* Base styles for header */
 .header {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     display: flex;
     flex-direction: row;
     margin: 0;
@@ -193,12 +194,11 @@ body::-webkit-scrollbar {
     grid-template-columns: 15vw 70vw 15vw;
     align-items: center;
     background: transparent; /* Ensure background contrast */
-    z-index: 20; /* Ensure it is above other content */
+    z-index: 80; /* Ensure it is above other content */
     box-sizing: border-box; /* Include padding in width/height calculations */
 
     transition: height 1s ease, transform 1s ease;
-    opacity: 0;
-    filter: blur(10px);
+    opacity: 1;
 
     justify-content: space-evenly;
 
@@ -206,6 +206,7 @@ body::-webkit-scrollbar {
 
     perspective: 1000px;
     transform-style: preserve-3d;
+    overflow: visible;
 }
 
 
@@ -220,16 +221,6 @@ body::-webkit-scrollbar {
     }
 }
 
-/* Max-zoomed state */
-.header.max-zoomed {
-    --altura-header: 100vh; /* Height when max-zoomed */
-}
-
-.header.visible {
-    opacity: 1;
-    filter: blur(0);
-}
-
 .mini-book {
     position: relative; /* Establishes positioning context for child elements */
     will-change: transform, height, width;
@@ -242,11 +233,12 @@ body::-webkit-scrollbar {
 
     transition: height 1s ease, width 1s ease, transform 1s ease; /* Smooth transition for the mini book */
 
-    z-index: 11;
+    z-index: 500;
 
     align-self: center;
 
     transform-style: preserve-3d;
+    overflow: visible;
 }
 
 
@@ -274,22 +266,18 @@ body::-webkit-scrollbar {
 @keyframes entrada-img {
     0% {
         transform: rotateY(-140deg);
-        opacity: 1;
     }
     100% {
         transform: rotateY(0deg);
-        opacity: 1;
     }
 }
 
 @keyframes sortida-img {
     0% {
         transform: rotateY(0deg);
-        opacity: 1;
     }
     100% {
         transform: rotateY(-120deg);
-        opacity: 1;
     }
 }
 
@@ -343,21 +331,32 @@ body::-webkit-scrollbar {
     }
 }
 
+.loading-centered {
+    position: absolute; /* Cambia de relative a absolute */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .loading-page {
     position: absolute;
     top: 0;
     left: 0;
     height: 100vh;
     width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+   
     overflow: hidden;
 
     background: linear-gradient(
-        45deg,
-        var(--black-dark-dark),
-        var(--black-dark)
+        to bottom,
+        #ba2123 33.33%,
+        #e8b930 33.33%,
+        #e8b930 66.66%,
+        #ba2123 66.66%
     );
     z-index: 1000;
     pointer-events: none;
@@ -367,36 +366,29 @@ body::-webkit-scrollbar {
 }
 @keyframes iniciar {
     0% {
-        opacity: 1;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
     100% {
-        opacity: 0;
+        clip-path: polygon(0 100%, 100% 100%,100% 100%, 0 100%);
         display: none;
     }
 }
 
-
-.loading-page-text {
-    position: absolute; /* Cambia de relative a absolute */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.loading-page-title {
     font-size: 10rem;
-    color: var(--silver);
+    color: var(--black-dark);
+    font-weight: 900;
+    text-align: center;
+}
+.loading-page-text {
+    font-size: 10rem;
+    color: var(--black-dark);
     font-weight: 900;
     text-align: center;
     animation: color-canviant 2s ease infinite;
 }
 .loading-page.loaded .loading-page-text {
-    animation: ampliar 2s ease forwards;
-}
-@keyframes ampliar {
-    0% {
-        transform: translate(-50%, -50%) scale(1);
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(10);
-    }
+    animation: none;
 }
 @keyframes color-canviant {
     0%, 100% {
@@ -404,41 +396,6 @@ body::-webkit-scrollbar {
     }
     50% {
         opacity: 1;
-    }
-}
-@keyframes all-colors {
-    0% {
-        color: var(--tan);
-    }
-    10% {
-        color: var(--deep-rosewood);
-    }
-    20% {
-        color: var(--moss-green);
-    }
-    30% {
-        color: var(--charcoal-bistre);
-    }
-    40% {
-        color: var(--persian-orange-dark);
-    }
-    50% {
-        color: var(--soft-cerulean);
-    }
-    60% {
-        color: var(--persian-orange);
-    }
-    70% {
-        color: var(--muted-violet);
-    }
-    80% {
-        color: var(--moss-green);
-    }
-    90% {
-        color: var(--deep-rosewood);
-    }
-    100% {
-        color: var(--silver);
     }
 }
 

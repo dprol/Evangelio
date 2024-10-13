@@ -23,7 +23,9 @@
     --persian-orange: #df7f49ff;
     --muted-violet: #7b5f78ff;
     --english-violet: #553755ff;
-    --moss-green: #879370ff;
+    --moss-green: rgb(110, 120, 91);
+
+    --mantis: #79B473;
 
     --plum: #E59ED5;
     --sky-magenta: #DD7EC7;
@@ -42,172 +44,115 @@
 
 
     /* Portada */
-    --silver: #c0c0c081;
+    --silver: #c0c0c0;
 
 }
 
-
+/* Definición de variables por página */
 .pagina.portada {
-    background: linear-gradient(
-        45deg,
-        var(--black-dark-dark),
-        var(--black-dark)
-    );
+    --clr: var(--silver);
+    --bck: var(--black-dark);
+    --bck-dark: var(--black-dark-dark);
 }
+
 .pagina.miss {
-    background: linear-gradient(
-        to bottom right,
-        var(--sky-magenta),
-        var(--plum)
-    );
+    --clr: var(--deep-rosewood);
+    --bck: var(--plum);
+    --bck-dark: var(--sky-magenta);
 }
+
 .pagina.rey {
-    background: linear-gradient(
-        to bottom right,
-        var(--sunset-dark),
-        var(--sunset),
-        var(--sunset-dark)
-    );
+    --clr: var(--deep-rosewood);
+    --bck: var(--sunset);
+    --bck-dark: var(--sunset-dark);
 }
+
 .pagina.jaume {
-    background: linear-gradient(
-        to bottom right,
-        var(--moss-green-dark),
-        var(--moss-green),
-        var(--moss-green-dark)
-    );
+    --clr: var(--sunset);
+    --bck: var(--moss-green);
+    --bck-dark: var(--moss-green-dark);
 }
+
 .pagina.toro {
-    background: linear-gradient(
-        to bottom right,
-        var(--charcoal-bistre-dark),
-        var(--charcoal-bistre)
-    );
+    --clr: var(--warm-tan-dark);
+    --bck: var(--charcoal-bistre);
+    --bck-dark: var(--charcoal-bistre-dark);
 }
+
 .pagina.luis {
-    background: linear-gradient(
-        to bottom left,
-        var(--warm-tan-dark),
-        var(--warm-tan)
-    );
+    --clr: var(--persian-orange-dark);
+    --bck: var(--warm-tan);
+    --bck-dark: var(--warm-tan-dark);
 }
+
 .pagina._1492 {
-    background: linear-gradient(
-        to bottom right,
-        var(--soft-cerulean-dark),
-        var(--soft-cerulean)
-    );
+    --clr: var(--warm-tan);
+    --bck: var(--soft-cerulean);
+    --bck-dark: var(--soft-cerulean-dark);
 }
+
 .pagina.mediterraneo {
-    background: linear-gradient(
-        to bottom right,
-        var(--persian-orange-dark),
-        var(--persian-orange)
-    );
+    --clr: var(--soft-cerulean-dark);
+    --bck: var(--persian-orange);
+    --bck-dark: var(--persian-orange-dark);
 }
+
 .pagina.adan {
-    background: linear-gradient(
-        to bottom left,
-        var(--english-violet-dark),
-        var(--english-violet)
-    );
+    --clr: var(--mantis);
+    --bck: var(--english-violet);
+    --bck-dark: var(--english-violet-dark);
 }
+
 .pagina.bruja {
-    background: linear-gradient(
-        45deg,
-        var(--black-dark-dark),
-        var(--black-dark)
-    );
+    --clr: var(--persian-orange);
+    --bck: var(--black-dark);
+    --bck-dark: var(--black-dark-dark);
 }
+
 .pagina.francisco {
-    background: linear-gradient(
-        to bottom right,
-        var(--moss-green-dark),
-        var(--moss-green),
-        var(--moss-green-dark)
-    );
+    --clr: var(--moss-green-dark);
+    --bck: var(--silver);
+    --bck-dark: var(--moss-green);
 }
 
 .pagina.machomen {
-    background: linear-gradient(
-        to bottom left,
-        var(--moss-green-dark),
-        var(--moss-green)
-    );
+    --clr: var(--sunset);
+    --bck: var(--moss-green);
+    --bck-dark: var(--moss-green-dark);
 }
+
 .pagina.isabel {
-    background: linear-gradient(
-        to bottom right,
-        var(--sunset-dark),
-        var(--sunset),
-        var(--sunset-dark)
+    --clr: var(--deep-rosewood);
+    --bck: var(--sunset);
+    --bck-dark: var(--sunset-dark);
+}
+
+/* Estilos generales para las páginas */
+.pagina {
+    background: radial-gradient(
+        ellipse at top,
+        var(--bck),
+        var(--bck-dark)
     );
 }
-/* Colors per pagina */
-.pagina.portada .special {
-    background-color: var(--silver);
-    color: var(--black-dark);
-}
-.pagina.portada p {
-    color: var(--silver);
-}
-.pagina.portada .separator {
-    background-color: var(--silver);
-}
-.pagina.portada .link-icon {
-    color: var(--silver);
-}
-.pagina.portada .multimedia {
-    background-color: var(--silver);
+
+.pagina .special {
+    background-color: var(--clr);
+    color: var(--bck);
 }
 
-
-.pagina.miss .special {
-    background-color: var(--deep-rosewood);
-    color: var(--sky-magenta);
-}
-.pagina.miss p {
-    color: var(--deep-rosewood);
-}
-.pagina.miss .separator {
-    background-color: var(--deep-rosewood);
-}
-.pagina.miss .link-icon {
-    color: var(--sky-magenta);
-}
-.pagina.miss .multimedia {
-    background-color: var(--deep-rosewood);
+.pagina p {
+    color: var(--clr);
 }
 
-
-
-.pagina.rey .special {
-    background-color: var(--deep-rosewood);
-    color: var(--sunset);
-}
-.pagina.rey p {
-    color: var(--deep-rosewood);
-}
-.pagina.rey .separator {
-    background-color: var(--deep-rosewood);
-}
-.pagina.rey .link-icon {
-    color: var(--sunset);
-}
-.pagina.rey .multimedia {
-    background-color: var(--deep-rosewood);
+.pagina .separator {
+    background-color: var(--clr);
 }
 
-
-
-.pagina.jaume .special {
-    background-color: var(--sunset);
-    color: var(--moss-green-dark);
-}
-.pagina.jaume p {
-    color: var(--sunset);
-}
-.pagina.jaume .separator {
-    background-color: var(--sunset);
+.pagina .link-icon {
+    color: var(--bck);
 }
 
+.pagina .multimedia {
+    background-color: var(--clr);
+}

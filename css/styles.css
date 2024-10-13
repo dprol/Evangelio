@@ -149,9 +149,10 @@ h3 {
 .chord {
     flex-shrink: 0; /* Prevent shrinking */
     position: relative;
-    padding: 0.2rem 0.4rem;
+    padding: 0.1rem 0.4rem;
     text-align: center;
     margin: 0;
+    font-size: 0.8rem;
 }
 
 .chord.empty {
@@ -164,11 +165,12 @@ h3 {
     font-size: 1rem;
     padding: 0;
     margin: 0;
+    white-space: pre-wrap;
 }
 
 .text-with-chord {
     display: flex;
     flex-direction: column;
     align-items: start;
-    margin-right: 0.3rem;
+    margin-right: 0;
 }

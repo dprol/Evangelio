@@ -1,77 +1,4 @@
-// Example data structure
-const data = [
-    {
-        paragraph: [
-            [{ text: "Mi bisabuelo Jaume", chord: "E" }],
-            [
-                { text: "fue a la guerra", chord: "" },
-                { text: "civil", chord: "Fm#" },
-            ],
-            [
-                { text: "y no empuño ni un", chord: "" },
-                { text: "arma", chord: "B7" },
-            ],
-            [
-                { text: "a nadie quiso", chord: "" },
-                { text: "herir", chord: "E" },
-            ],
-        ],
-    },
-    {
-        paragraph: [
-            [{ text: "Sirvió de camillero", chord: "E" }],
-            [
-                { text: "y balas", chord: "" },
-                { text: "empuño unas mil", chord: "Fm#" },
-            ],
-            [
-                { text: "sirviendo a los", chord: "" },
-                { text: "maltrechos", chord: "B7" },
-            ],
-            [{ text: "en la batalla del ebro", chord: "" }],
-            [
-                { text: "la mas cruel y la mas", chord: "" },
-                { text: "vil.", chord: "E" },
-            ],
-        ],
-    },
-    {
-        paragraph: [
-            [{ text: "Sirvió de camillero", chord: "E" }],
-            [
-                { text: "y balas", chord: "" },
-                { text: "empuño unas mil", chord: "Fm#" },
-            ],
-            [
-                { text: "sirviendo a los", chord: "" },
-                { text: "maltrechos", chord: "B7" },
-            ],
-            [{ text: "en la batalla del ebro", chord: "" }],
-            [
-                { text: "la mas cruel y la mas", chord: "" },
-                { text: "vil.", chord: "E" },
-            ],
-        ],
-    },
-    {
-        paragraph: [
-            [{ text: "Sirvió de camillero", chord: "E" }],
-            [
-                { text: "y balas", chord: "" },
-                { text: "empuño unas mil", chord: "Fm#" },
-            ],
-            [
-                { text: "sirviendo a los", chord: "" },
-                { text: "maltrechos", chord: "B7" },
-            ],
-            [{ text: "en la batalla del ebro", chord: "" }],
-            [
-                { text: "la mas cruel y la mas", chord: "" },
-                { text: "vil.", chord: "E" },
-            ],
-        ],
-    },
-];
+
 
 // Function to create HTML elements
 function createLyricsHTML(data) {
@@ -129,5 +56,14 @@ function createLyricsHTML(data) {
     });
 }
 
-// Create the HTML from the data
-createLyricsHTML(data);
+async function loadDataAndCreateHTML() {
+    try {
+        const response = await fetch('acords/data.json');
+        const data = await response.json();
+        createLyricsHTML(data); // Tu función para crear el HTML
+    } catch (error) {
+        console.error('Error al cargar los datos:', error);
+    }
+}
+
+loadDataAndCreateHTML();
