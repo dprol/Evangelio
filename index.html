@@ -25,8 +25,12 @@
             rel="stylesheet"
         />
     </head>
-    <div id="loading-progress-bar">0%</div>
     <body>
+        <div id="loading-page" class="loading-page">
+            <!-- Ejemplo de elemento para mostrar el porcentaje -->
+            <div id="loading-progress-text" class="loading-page-text">00</div>
+        </div>
+
         <div id="header" class="header visible">
             <button
                 id="scroll-left"
@@ -35,19 +39,19 @@
 
             <div class="mini-book">
 
-                <img src="covers/resized/00_500.PNG" class="mini-book-page cover" /> <!-- Portada -->
-                <img src="covers/resized/06_500.PNG" class="mini-book-page" /> <!-- Miss -->
-                <img src="covers/resized/07_500.PNG" class="mini-book-page" /> <!-- Rey -->
-                <img src="covers/resized/01_500.PNG" class="mini-book-page" /> <!-- Jaume -->
-                <img src="covers/resized/03_500.PNG" class="mini-book-page" /> <!-- Toro -->
-                <img src="covers/resized/02_500.PNG" class="mini-book-page" /> <!-- Luis -->
-                <img src="covers/resized/05_500.PNG" class="mini-book-page" /> <!-- 1942 -->
-                <img src="covers/resized/08_500.PNG" class="mini-book-page" /> <!-- Mediterraneo -->
-                <img src="covers/resized/04_500.PNG" class="mini-book-page" /> <!-- Adan -->
-                <img src="covers/resized/010_500.PNG" class="mini-book-page" /> <!-- La bruja -->
-                <img src="covers/resized/011_500.PNG" class="mini-book-page" /> <!-- Francisco -->
-                <img src="covers/resized/09_500.PNG" class="mini-book-page" /> <!-- Machomen -->
-                <img src="covers/resized/012_500.PNG" class="mini-book-page" /> <!-- Isabel -->
+                <img src="covers/resized/00_500.PNG" class="mini-book-page"  style="z-index: 112;"/> <!-- Portada -->
+                <img src="covers/resized/06_500.PNG" class="mini-book-page"  style="z-index: 111;"/> <!-- Miss -->
+                <img src="covers/resized/07_500.PNG" class="mini-book-page"  style="z-index: 110;"/> <!-- Rey -->
+                <img src="covers/resized/01_500.PNG" class="mini-book-page"  style="z-index: 109;"/> <!-- Jaume -->
+                <img src="covers/resized/03_500.PNG" class="mini-book-page"  style="z-index: 108;"/> <!-- Toro -->
+                <img src="covers/resized/02_500.PNG" class="mini-book-page"  style="z-index: 107;"/> <!-- Luis -->
+                <img src="covers/resized/05_500.PNG" class="mini-book-page"  style="z-index: 106;"/> <!-- 1942 -->
+                <img src="covers/resized/08_500.PNG" class="mini-book-page"  style="z-index: 105;"/> <!-- Mediterraneo -->
+                <img src="covers/resized/04_500.PNG" class="mini-book-page"  style="z-index: 104;"/> <!-- Adan -->
+                <img src="covers/resized/010_500.PNG" class="mini-book-page" style="z-index: 103;"/> <!-- La bruja -->
+                <img src="covers/resized/011_500.PNG" class="mini-book-page" style="z-index: 102;"/> <!-- Francisco -->
+                <img src="covers/resized/09_500.PNG" class="mini-book-page"  style="z-index: 101;"/> <!-- Machomen -->
+                <img src="covers/resized/012_500.PNG" class="mini-book-page" style="z-index: 100;"/> <!-- Isabel -->
 
 
             </div>
@@ -61,7 +65,7 @@
         <!-- Llibre amb les pagines -->
         <div class="llibre">
             <!-- Pagina: Portada -->
-            <div class="pagina portada">
+            <div class="pagina portada" style="z-index: 12">
                 <p class="plain-text centered " style="font-weight: bold;">
                     <span class="special">¡Bienvenid@s</span> a la web oficial de ñ, un disco MUY español!
                 </p>
@@ -76,15 +80,43 @@
                     Cada canción es un cuento y trata un tema distinto. <span class="special"><i class="fas fa-chevron-left deslizad" style="animation-delay: 1s;"></i>¡Explora<i class="fa-solid fa-chevron-right deslizad"></i></span> para ver las portadas, letras, acordes y explicación de cada cuento!
                 </p>
 
+                <div style="margin-top: 2rem;">
+                    <div class="link-icon-container">
+                        <!-- Spotify link -->
+                        <a
+                            href="https://open.spotify.com/album/4yGHShZVKwkbmRkLTvGDfz?si=4ISAbXV-Tf2OOSPfc3njBw"
+                            target="_blank"
+                        >
+                            <i class="fa-brands fa-youtube link-icon"></i>
+                        </a>
+                        <a
+                            href="https://open.spotify.com/album/4yGHShZVKwkbmRkLTvGDfz?si=4ISAbXV-Tf2OOSPfc3njBw"
+                            target="_blank"
+                        >
+                            <i class="fa-brands fa-itunes-note link-icon"></i>
+                        </a>
+                        <a
+                            href="https://open.spotify.com/album/4yGHShZVKwkbmRkLTvGDfz?si=4ISAbXV-Tf2OOSPfc3njBw"
+                            target="_blank"
+                        >
+                            <i class="fa-brands fa-spotify link-icon"></i>
+                        <a
+                            href="https://open.spotify.com/album/4yGHShZVKwkbmRkLTvGDfz?si=4ISAbXV-Tf2OOSPfc3njBw"
+                            target="_blank"
+                        >
+                            <i class="fa-brands fa-instagram link-icon"></i>
+                        </a>
+                        <a
+                            href="https://open.spotify.com/album/4yGHShZVKwkbmRkLTvGDfz?si=4ISAbXV-Tf2OOSPfc3njBw"
+                            target="_blank"
+                        >
+                            <i class="fa-brands fa-twitter link-icon"></i>
+                        </a>
+                    </div>
+                </div>
                 
-                <!-- Spotify link -->
-                <a
-                    href="https://open.spotify.com/album/4yGHShZVKwkbmRkLTvGDfz?si=4ISAbXV-Tf2OOSPfc3njBw"
-                    target="_blank"
-                    class="listenonspotify"
-                >
-                    <img src="listenonspotify.png" alt="" />
-                </a>
+                
+
             <!-- Social media links 
              <img
                     src="miquel_icon.jpeg"
@@ -118,7 +150,7 @@
             </div>
 
             <!-- Pagina: Miss España -->
-            <div class="pagina miss">
+            <div class="pagina miss" style="z-index: 11">
                 <p class="plain-text">
                     <span class="special">“Miss España”</span> pone letra al himno de España. Es la única canción del disco que reinterpreta una melodía no original. En este caso, en forma de bolero-trap.
                 </p>
@@ -168,7 +200,7 @@
             </div>
 
             <!-- Pagina: Rey -->
-            <div class="pagina rey">
+            <div class="pagina rey" style="z-index: 10">
                 <p class="plain-text">
                     <span class="special">“¡Es el rey!”</span> es una canción funky sobre un rey que no querría haberlo sido. Más que una crítica a la monarquía, es como un “roast” (un brindis cómico) a un rey sin especificar, pues se hace desde el respeto.
                 </p>
@@ -222,7 +254,7 @@
             </div>
 
             <!-- Pagina: Jaume -->
-            <div  class="pagina jaume">
+            <div  class="pagina jaume" style="z-index: 9">
                 <p class="plain-text">
                     <span class="special">“Mi bisabuelo Jaume”</span> es la historia familiar
                      de nuestro bisabuelo en la guerra civil española,
@@ -270,267 +302,48 @@
             </div>
 
             <!-- Pagina: Toro -->
-            <div class="pagina toro">
-                <p class="plain-text">
-                    The winds of change sweep through every corner of the world,
-                    carrying with them the promise of something new and
-                    profound.
-                    <span class="special">Embrace</span> the journey, for it
-                    leads to places unknown, yet always worth the adventure.
-                </p>
-                <div class="icono-contingut">
-                    <img src="img/Marco_Bala.PNG" />
-                </div>
-                <p class="plain-text">
-                    Like the tides that rise and fall, we too must adapt,
-                    finding strength in the ebb and flow. The path ahead is
-                    <span class="special">yours</span> to discover.
-                </p>
-                <div class="icono-contingut">
-                    <img src="img/Marco_Bala.PNG" />
-                </div>
-                <p class="plain-text">
-                    As the sun sets and rises again, so do our opportunities,
-                    waiting for us to seize them with both hands. Trust the
-                    process, and
-                    <span class="special">shine</span>.
-                </p>
-                <a
-                    href="https://open.spotify.com/album/4yGHShZVKwkbmRkLTvGDfz?si=4ISAbXV-Tf2OOSPfc3njBw"
-                    target="_blank"
-                    class="listenonspotify"
-                >
-                    <img src="listenonspotify.png" alt="" />
-                </a>
-                <div class="separator"></div>
-                <h2 style="text-align: center">Letra y acordes:</h2>
+            <div class="pagina toro" style="z-index: 8">
                 <div class="lyrics-container"></div>
             </div>
 
             <!-- Pagina: Luis -->
-            <div class="pagina luis">
-                <p class="plain-text">
-                    Onward we go, guided by stars that shine in the night sky,
-                    illuminating the path for those who dare to
-                    <span class="special">dream</span>.
-                </p>
-                <div class="icono-contingut">
-                    <img src="img/Luis_Copa.png" />
-                </div>
-                <p class="plain-text">
-                    The future is not set in stone, but molded by the hands of
-                    those who seek to make their mark. Carve your path with
-                    determination and
-                    <span class="special">courage</span>.
-                </p>
-                <div class="icono-contingut">
-                    <img src="img/Luis_Billetes.png" />
-                </div>
-                <p class="plain-text">
-                    Each step taken brings us closer to our goals, even if the
-                    road is long. Stay the course, for perseverance is key to
-                    achieving
-                    <span class="special">greatness</span>.
-                </p>
-                <a
-                    href="https://open.spotify.com/album/4yGHShZVKwkbmRkLTvGDfz?si=4ISAbXV-Tf2OOSPfc3njBw"
-                    target="_blank"
-                    class="listenonspotify"
-                >
-                    <img src="listenonspotify.png" alt="" />
-                </a>
-                <h2 style="text-align: center">Letra y acordes:</h2>
-                <div style="width: 100%;">
-                    <div class="separator-container"></div>
-
-                    <div class="lyrics-container"></div>
-                </div>
-            </div>
-
-            <!-- Pagina: 1492 -->
-            <div class="pagina _1492">
-                <p class="plain-text">
-                    The winds of change sweep through every corner of the world,
-                    carrying with them the promise of something new and
-                    profound.
-                    <span class="special">Embrace</span> the journey, for it
-                    leads to places unknown, yet always worth the adventure.
-                </p>
-                <div class="container-transicio">
-                    <div class="triangle t1"></div>
-                    <div class="triangle t2"></div>
-                    <div class="triangle t3"></div>
-                    <div class="triangle t4"></div>
-                </div>
-                <p class="plain-text">
-                    Like the tides that rise and fall, we too must adapt,
-                    finding strength in the ebb and flow. The path ahead is
-                    <span class="special">yours</span> to discover.
-                </p>
-                <div class="icono-contingut">
-                    <img src="img/Marco_Bala.PNG" />
-                </div>
-                <p class="plain-text">
-                    As the sun sets and rises again, so do our opportunities,
-                    waiting for us to seize them with both hands. Trust the
-                    process, and
-                    <span class="special">shine</span>.
-                </p>
-                <a
-                    href="https://open.spotify.com/album/4yGHShZVKwkbmRkLTvGDfz?si=4ISAbXV-Tf2OOSPfc3njBw"
-                    target="_blank"
-                    class="listenonspotify"
-                >
-                    <img src="listenonspotify.png" alt="" />
-                </a>
-                <h2 style="text-align: center">Letra y acordes:</h2>
+            <div class="pagina luis" style="z-index: 7">
                 <div class="lyrics-container"></div>
             </div>
 
+            <!-- Pagina: 1492 -->
+            <div class="pagina _1492" style="z-index: 6">
+                <div class="lyrics-container"></div>
+            </div>
 
             <!-- Pagina: Mediterraneo -->
-            <div class="pagina mediterraneo">
-                <p class="plain-text">
-                    The winds of change sweep through every corner of the world,
-                    carrying with them the promise of something new and
-                    profound.
-                    <span class="special">Embrace</span> the journey, for it
-                    leads to places unknown, yet always worth the adventure.
-                </p>
-                <div class="icono-contingut">
-                    <img src="img/Marco_Bala.PNG" />
-                </div>
-                <p class="plain-text">
-                    Like the tides that rise and fall, we too must adapt,
-                    finding strength in the ebb and flow. The path ahead is
-                    <span class="special">yours</span> to discover.
-                </p>
-                <div class="icono-contingut">
-                    <img src="img/Marco_Bala.PNG" />
-                </div>
-                <p class="plain-text">
-                    As the sun sets and rises again, so do our opportunities,
-                    waiting for us to seize them with both hands. Trust the
-                    process, and
-                    <span class="special">shine</span>.
-                </p>
-                <a
-                    href="https://open.spotify.com/album/4yGHShZVKwkbmRkLTvGDfz?si=4ISAbXV-Tf2OOSPfc3njBw"
-                    target="_blank"
-                    class="listenonspotify"
-                >
-                    <img src="listenonspotify.png" alt="" />
-                </a>
-                <div class="separator"></div>
-                <h2 style="text-align: center">Letra y acordes:</h2>
+            <div class="pagina mediterraneo" style="z-index: 5">
                 <div class="lyrics-container"></div>
             </div>
 
             <!-- Pagina: Adan -->
-            <div class="pagina adan">
-                <p class="plain-text">
-                    The winds of change sweep through every corner of the world,
-                    carrying with them the promise of something new and
-                    profound.
-                    <span class="special">Embrace</span> the journey, for it
-                    leads to places unknown, yet always worth the adventure.
-                </p>
-                <div class="icono-contingut">
-                    <img src="img/Marco_Bala.PNG" />
-                </div>
-                <p class="plain-text">
-                    Like the tides that rise and fall, we too must adapt,
-                    finding strength in the ebb and flow. The path ahead is
-                    <span class="special">yours</span> to discover.
-                </p>
-                <div class="icono-contingut">
-                    <img src="img/Marco_Bala.PNG" />
-                </div>
-                <p class="plain-text">
-                    As the sun sets and rises again, so do our opportunities,
-                    waiting for us to seize them with both hands. Trust the
-                    process, and
-                    <span class="special">shine</span>.
-                </p>
-                <a
-                    href="https://open.spotify.com/album/4yGHShZVKwkbmRkLTvGDfz?si=4ISAbXV-Tf2OOSPfc3njBw"
-                    target="_blank"
-                    class="listenonspotify"
-                >
-                    <img src="listenonspotify.png" alt="" />
-                </a>
-                <h2 style="text-align: center">Letra y acordes:</h2>
+            <div class="pagina adan" style="z-index: 4">
                 <div class="lyrics-container"></div>
             </div>
 
             <!-- Pagina: La bruja -->
-            <div class="pagina bruja">
-                <p class="plain-text">
-                    “Miss España” pone letra al himno de España. Es la única canción del disco que reinterpreta una melodía no original. En este caso, en forma de bolero-trap.
-                </p>
-
-                <p class="plain-text">
-                    La letra es una reflexión sobre la autenticidad, mezclando la identidad nacional con la identidad de género e invitando a autodeterminarse y a ser fiel a uno mismo.
-                </p>
+            <div class="pagina bruja" style="z-index: 3">
+                <div class="lyrics-container"></div>
             </div>
 
              <!-- Pagina: Francisco -->
-             <div class="pagina francisco">
-                <p class="plain-text">
-                    “Miss España” pone letra al himno de España. Es la única canción del disco que reinterpreta una melodía no original. En este caso, en forma de bolero-trap.
-                </p>
-
-                <p class="plain-text">
-                    La letra es una reflexión sobre la autenticidad, mezclando la identidad nacional con la identidad de género e invitando a autodeterminarse y a ser fiel a uno mismo.
-                </p>
+             <div class="pagina francisco" style="z-index: 2">
+                <div class="lyrics-container"></div>
             </div>
 
             <!-- Pagina: Machomen -->
-            <div class="pagina machomen">
-                <p class="plain-text">
-                    The winds of change sweep through every corner of the world,
-                    carrying with them the promise of something new and
-                    profound.
-                    <span class="special">Embrace</span> the journey, for it
-                    leads to places unknown, yet always worth the adventure.
-                </p>
-                <div class="icono-contingut">
-                    <img src="img/Marco_Bala.PNG" />
-                </div>
-                <p class="plain-text">
-                    Like the tides that rise and fall, we too must adapt,
-                    finding strength in the ebb and flow. The path ahead is
-                    <span class="special">yours</span> to discover.
-                </p>
-                <div class="icono-contingut">
-                    <img src="img/Marco_Bala.PNG" />
-                </div>
-                <p class="plain-text">
-                    As the sun sets and rises again, so do our opportunities,
-                    waiting for us to seize them with both hands. Trust the
-                    process, and
-                    <span class="special">shine</span>.
-                </p>
-                <a
-                    href="https://open.spotify.com/album/4yGHShZVKwkbmRkLTvGDfz?si=4ISAbXV-Tf2OOSPfc3njBw"
-                    target="_blank"
-                    class="listenonspotify"
-                >
-                    <img src="listenonspotify.png" alt="" />
-                </a>
-                <h2 style="text-align: center">Letra y acordes:</h2>
+            <div class="pagina machomen" style="z-index: 1">
                 <div class="lyrics-container"></div>
             </div>
             
              <!-- Pagina: Isabel -->
-             <div class="pagina isabel">
-                <p class="plain-text">
-                    “Miss España” pone letra al himno de España. Es la única canción del disco que reinterpreta una melodía no original. En este caso, en forma de bolero-trap.
-                </p>
-
-                <p class="plain-text">
-                    La letra es una reflexión sobre la autenticidad, mezclando la identidad nacional con la identidad de género e invitando a autodeterminarse y a ser fiel a uno mismo.
-                </p>
+             <div class="pagina isabel" style="z-index: 0">
+                <div class="lyrics-container"></div>
             </div>
         
         </div>

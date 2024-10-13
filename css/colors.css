@@ -129,7 +129,15 @@
 .pagina.portada p {
     color: var(--silver);
 }
-
+.pagina.portada .separator {
+    background-color: var(--silver);
+}
+.pagina.portada .link-icon {
+    color: var(--silver);
+}
+.pagina.portada .multimedia {
+    background-color: var(--silver);
+}
 
 
 .pagina.miss .special {

@@ -19,31 +19,27 @@ export function inici_pagines_amb_animacio() {
     // Function to update page visibility based on the current index
     function updatePageVisibility() {
         pages.forEach((page, index) => {
-            if (index === currentPageIndex) {
+            if (index == currentPageIndex) {
                 page.classList.add("visible");
             } else {
                 page.classList.remove("visible");
             }
         });
-
-        // Update the height of the llibre to match the current page
-        updateLlibreHeight();
     }
 
     // Function to update the mini-book images based on the current page index
     function updateMiniBookImages() {
-        miniBookImages.forEach((img, index) => {
-            if (index < currentPageIndex) {
-                img.style.transform = `rotateY(-140deg)`;
-                img.style.opacity = "0";
-                img.style.transition = `transform 1s ease, opacity 0s ease 3s`;
-            } else {
-                img.style.transform = `rotateY(${0}deg) translateX(${(index - currentPageIndex)}px)`;
-                img.style.opacity = "1";
-                img.style.transition = `transform 1s ease, opacity 0s ease`;
+        // Add 'pasada' to the image before the current index, if it exists
+        if (currentPageIndex > 0) {
+            if (!miniBookImages[currentPageIndex - 1].classList.contains('pasada')) {
+                miniBookImages[currentPageIndex - 1].classList.add('pasada');
             }
-            img.style.zIndex = `${13 - index}`;
-        });
+        }
+    
+        // Remove 'pasada' from the current image
+        if (miniBookImages[currentPageIndex].classList.contains('pasada')) {
+            miniBookImages[currentPageIndex].classList.remove('pasada');
+        }
     }
 
     // Function to scroll the body to the top
@@ -59,16 +55,15 @@ export function inici_pagines_amb_animacio() {
             currentPageIndex--;
         } else if (direction === "right" && currentPageIndex < maxPageIndex) {
             currentPageIndex++;
-        } else if (currentPageIndex == maxPageIndex) currentPageIndex = 0;
+        };
 
         
-        // Scroll to the top before updating page visibility
-        scrollToTop();
-        
-        // Update the visibility of pages
-        updatePageVisibility();
         // Update the mini-book images
         updateMiniBookImages();
+        // Update the visibility of pages
+        updatePageVisibility();
+        // Update the height of the llibre to match the current page
+        updateLlibreHeight();
     }
 
     // Scroll left (previous page)
