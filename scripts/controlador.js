@@ -7,7 +7,7 @@ function animarEntrada() {
     const transitionDuration = 1; // Duration of each transition in seconds
     const circleRadius = 1000; // Radius for the circular motion
 
-    pages.forEach((img, index) => {
+    /*pages.forEach((img, index) => {
         // Calculate delay based on the index
         const duration = 3 / pages.length; // Total duration divided by the number of pages
         const delay = (pages.length - index) * duration; // Increase delay for each page
@@ -24,7 +24,6 @@ function animarEntrada() {
         const endY = 0; // Centered in Y
 
         // Apply the initial transform for starting positions
-        img.style.transform = `translate(0, 1000px) scale(0.2)`; // Initial transform (off-screen)
 
         // Trigger the animation with a transition
         setTimeout(() => {
@@ -35,15 +34,12 @@ function animarEntrada() {
             img.style.opacity = "1"; // Ensure opacity is fully visible
             img.style.zIndex = `${10 - index}`;
         }, 100); // Add slight delay to ensure initial transform applies
-    });
+    });*/
 
 
-    setTimeout(() => {
+    
         inici_pagines_amb_animacio();
         inici_visibilitat();
-        const slideInvite = document.getElementById('slide-invite');
-        slideInvite.style.opacity='0.8';
-    }, 3000);
 }
 
 // Funcion para esperar a que todas las imagenes se hayan cargado
@@ -95,12 +91,6 @@ function esperarImagenesCargadas(callback) {
         }
     });
 }
-
-// Ejemplo de uso
-esperarImagenesCargadas(() => {
-    console.log("Todas las imagenes estan cargadas");
-    // Aqui puedes ejecutar el codigo que quieras despues de que todas las imagenes esten cargadas
-});
 
 // Wait for the DOM content to load before initializing
 document.addEventListener("DOMContentLoaded", () => {

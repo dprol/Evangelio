@@ -1,3 +1,9 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 @font-face {
     font-family: "MyFont"; /* Choose a name for your font family */
     src: url("Cristone.ttf") format("truetype"); /* Path to your TTF file */
@@ -9,7 +15,7 @@ html,
 body {
     display: flex;
     flex-direction: column;
-    font-family: 'Libre Baskerville', "Schibsted Grotesk", sans-serif;
+    font-family: "Schibsted Grotesk", sans-serif;
     background-color: var(--black-dark);
     border: none;
     margin: 0;
@@ -17,7 +23,7 @@ body {
     overflow-y: scroll; /* Hide default llbars */
     overflow-x: hidden;
     width: 100%;
-    height: 100%;
+    height: fit-content;
     align-items: center;
     user-select: none;
 
@@ -26,27 +32,16 @@ body {
     transition: background-color 1s ease;
 }
 
+
 body::-webkit-scrollbar {
     display: none;
 }
 
 :root {
-    --black-dark-dark: #000306;
-    --black-dark: #000a14;
-    --black: #001021;
-    --bronze: #665d47;
-    --silver: #c0c0c0;
-    --gold: #ebe11fb4;
-    --red: #ff0000;
-    --silver-half: #c0c0c081;
-    --silver-25: #c0c0c033;
-    --silver-5: #c0c0c010;
-
-    --white: #ffffff;
 
     --altura-header: 40vh;
 
-    font-size: min(3vh, 6vw); /* Responsive font size */
+    font-size: min(2rem, 4vw); /* Scales based on viewport width, but never larger than 1.2rem */
 
     --padding-1: 30px;
 }
@@ -60,7 +55,8 @@ body::-webkit-scrollbar {
 .llibre {
     width: 100%;
 
-    position: relative;
+    position: absolute;
+    top: 0;
     display: flex;
     flex-direction: row;
 
@@ -81,9 +77,9 @@ body::-webkit-scrollbar {
     top: 0;
     left: 0;
     height: fit-content;
-    width: 100%; /* Full width */
+    width: 100vw; /* Full width */
     padding: 0;
-    padding-bottom: 10vh;
+    padding-bottom: 0;
 
     gap: 1rem;
     overflow-y: hidden; /* Enable vertical scrolling */
@@ -100,106 +96,82 @@ body::-webkit-scrollbar {
     display: flex;
     flex-direction: column;
     align-items: center;
-
     transition: opacity 0.7s ease;
 
     touch-action: pan-x pan-y; /* Permite un solo desplazamiento a la vez */
-    display: none;
-}
-.pagina.visible {
-    opacity: 1;
     display: flex;
+
+    padding-top: calc(min(60vw, calc(var(--altura-header) - 4vh), 60vh) + 8vh);
+    padding-bottom: 20px;
+
+   
+    animation: desapareixer 0.7s ease forwards;
+    
+    min-height: 100vh;
+
+    
+}
+.pagina > * {
+    margin-right: var(--padding-1);
+    margin-left: var(--padding-1);
 }
 
-.fondo {
-    position: absolute;
-
-    height: 100%;
-    max-height: 0;
-    width: 100%;
-
-    opacity: 1;
-
-    transition: max-height 0.7s ease, opacity 0.7s ease;
-}
-.fondo.top {
-    top: 0;
-}
-.fondo.bottom {
-    bottom: 0;
-}
-.fondo.visible {
-    opacity: 1;
-    max-height: 100%;
+.pagina > * {
+    animation: desapareixer-elements 0.7s ease forwards;
 }
 
-.fondo.f0 {
-    background: linear-gradient(
-        45deg,
-        var(--charcoal-bistre-dark),
-        var(--charcoal-bistre)
-    );
-}
-.fondo.f1 {
-    background: linear-gradient(
-        to bottom right,
-        var(--moss-green-dark),
-        var(--moss-green)
-    );
-}
-.fondo.f2 {
-    background: linear-gradient(
-        to bottom left,
-        var(--warm-tan-dark),
-        var(--warm-tan)
-    );
-}
-.fondo.f3 {
-    background: linear-gradient(
-        to bottom right,
-        var(--charcoal-bistre-dark),
-        var(--charcoal-bistre)
-    );
-}
-.fondo.f4 {
-    background: linear-gradient(
-        to bottom left,
-        var(--english-violet-dark),
-        var(--english-violet)
-    );
-}
-.fondo.f5 {
-    background: linear-gradient(
-        to bottom right,
-        var(--soft-cerulean-dark),
-        var(--soft-cerulean)
-    );
-}
-.fondo.f6 {
-    background: linear-gradient(
-        to bottom left,
-        var(--sunset-dark),
-        var(--sunset)
-    );
-}
-.fondo.f7 {
-    background: linear-gradient(
-        to bottom right,
-        var(--persian-orange-dark),
-        var(--persian-orange)
-    );
-}
-.fondo.f8 {
-    background: linear-gradient(
-        to bottom left,
-        var(--moss-green-dark),
-        var(--moss-green)
-    );
+.pagina.visible {
+    animation: apareixer 0.7s ease forwards;
+    
 }
 
-* {
-    user-select: none; /* Standard syntax */
+.pagina.visible > * {
+    animation: apareixer-elements 0.7s ease forwards;
+    
+    
 }
+
+@keyframes apareixer {
+    0% {
+        opacity: 0;
+        display: flex;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes apareixer-elements {
+    0% {
+        transform: translateY(20px);
+        filter: blur(10px);
+    }
+    100% {
+        transform: translateY(0px);
+        filter: blur(0px);
+    }
+}
+
+@keyframes desapareixer {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+@keyframes desapareixer-elements {
+    0% {
+        transform: translateY(0);
+        filter: blur(0);
+    }
+    100% {
+        filter: blur(10px);
+        transform:  translateY(20px);
+    }
+}
+
 
 /* Base styles for header */
 .header {
@@ -227,21 +199,6 @@ body::-webkit-scrollbar {
     transform-style: preserve-3d;
 }
 
-/* Position and style the sliding invitation icon */
-#slide-invite {
-    position: absolute;
-    top: 50%;
-    left: 50%; /* Adjust based on mini-book width */
-    transform: translate(-50%, -50%);
-    font-size: 1.5rem; /* Adjust size as needed */
-    color: white; /* Color of the icon */
-    opacity: 0;
-    z-index: 20; /* Ensure it appears above other elements */
-    animation: slideInvite 1.5s infinite ease-in; /* Sliding animation */
-    transition: opacity 1s ease;
-    pointer-events: none; /* Prevent interactions with the icon */
-    background: none;
-}
 
 /* Sliding animation */
 @keyframes slideInvite {
@@ -269,9 +226,7 @@ body::-webkit-scrollbar {
     width: min(60vw, calc(var(--altura-header) - 4vh), 60vh);
 
     box-sizing: border-box;
-
-    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.6); /* Add shadow */
-
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add shadow */
     position: relative; /* Establishes positioning context for child elements */
 
     transform-origin: center; /* Center rotation */
@@ -303,7 +258,7 @@ body::-webkit-scrollbar {
     transform: rotateY(-120deg);
     opacity: 0;
 
-    border-radius: 5%;
+    border: none;
     border: 2px solid var(--tan);
 
     transform-style: preserve-3d;
@@ -404,6 +359,62 @@ body::-webkit-scrollbar {
 .separator {
     min-height: 1px;
     width: 80%;
-    background-color: var(--silver-half);
     margin: 1vh 0;
+}
+
+
+.plain-text {
+    font-weight: 700;
+    text-align: justify;
+}
+
+.centered {
+    text-align: center;
+}
+
+.special {
+    font-weight: 900;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0;
+}
+
+
+.deslizad {
+    padding: 10px;
+    animation: deslizando 2s ease infinite;
+}
+
+@keyframes deslizando {
+    0%, 100% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+}
+
+
+.link-icon-container {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+.link-icon {
+    font-size: 2rem;
+    background-color: none;
+    transition: transform 0.7s ease;
+}
+.link-icon:hover{
+    transform: scale(1.2);
+}
+
+.multimedia {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 1rem 0px;
+    padding-bottom: 3rem;
+    gap: 1rem;
+    width: 100%;
+    align-items: center;
 }

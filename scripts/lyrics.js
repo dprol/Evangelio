@@ -96,12 +96,15 @@ function createLyricsHTML(data) {
                     const textWithChord = document.createElement("div");
                     textWithChord.classList.add("text-with-chord");
 
-                    const chord = document.createElement("div");
+                    const chord = document.createElement("p");
+                    chord.classList.add("special");
                     chord.classList.add("chord");
                     chord.textContent = item.chord;
 
-                    const text = document.createElement("div");
-                    text.classList.add("text");
+                    const text = document.createElement("p");
+                    text.classList.add("plain-text");
+                    text.classList.add("chord-text");
+
                     text.textContent = item.text;
 
                     // Check if chord is empty or same as previous chord

@@ -1,4 +1,18 @@
 :root {
+
+    --black-dark-dark: #000306;
+    --black-dark: #000a14;
+    --black: #001021;
+    --bronze: #665d47;
+    --silver: #c0c0c081;
+    --gold: #ebe11fb4;
+    --red: #ff0000;
+    --silver-half: #c0c0c081;
+    --silver-25: #c0c0c033;
+    --silver-5: #c0c0c010;
+
+    --white: #ffffff;
+
     /* Original Colors */
     --warm-tan: #d8b892ff;
     --deep-rosewood: #5a0b0cff;
@@ -11,6 +25,9 @@
     --english-violet: #553755ff;
     --moss-green: #879370ff;
 
+    --plum: #E59ED5;
+    --sky-magenta: #DD7EC7;
+
     /* Darker Shades */
     --warm-tan-dark: #8f6e56ff; /* Darkened tan */
     --deep-rosewood-dark: #300506ff; /* Darkened rosewood */
@@ -22,4 +39,145 @@
     --muted-violet-dark: #3f303eff; /* Darkened muted violet */
     --english-violet-dark: #2c1d2bff; /* Darkened english violet */
     --moss-green-dark: #434c35ff; /* Darkened moss green */
+
+
+    /* Portada */
+    --silver: #c0c0c081;
+
 }
+
+
+.pagina.portada {
+    background: linear-gradient(
+        45deg,
+        var(--black-dark-dark),
+        var(--black-dark)
+    );
+}
+.pagina.miss {
+    background: linear-gradient(
+        to bottom right,
+        var(--sky-magenta),
+        var(--plum)
+    );
+}
+.pagina.rey {
+    background: linear-gradient(
+        to bottom right,
+        var(--sunset-dark),
+        var(--sunset),
+        var(--sunset-dark)
+    );
+}
+.pagina.jaume {
+    background: linear-gradient(
+        to bottom right,
+        var(--moss-green-dark),
+        var(--moss-green),
+        var(--moss-green-dark)
+    );
+}
+.pagina.luis {
+    background: linear-gradient(
+        to bottom left,
+        var(--warm-tan-dark),
+        var(--warm-tan)
+    );
+}
+.pagina.toro {
+    background: linear-gradient(
+        to bottom right,
+        var(--charcoal-bistre-dark),
+        var(--charcoal-bistre)
+    );
+}
+.pagina.adan {
+    background: linear-gradient(
+        to bottom left,
+        var(--english-violet-dark),
+        var(--english-violet)
+    );
+}
+.pagina._1492 {
+    background: linear-gradient(
+        to bottom right,
+        var(--soft-cerulean-dark),
+        var(--soft-cerulean)
+    );
+}
+
+.pagina.mediterraneo {
+    background: linear-gradient(
+        to bottom right,
+        var(--persian-orange-dark),
+        var(--persian-orange)
+    );
+}
+.pagina.machomen {
+    background: linear-gradient(
+        to bottom left,
+        var(--moss-green-dark),
+        var(--moss-green)
+    );
+}
+
+/* Colors per pagina */
+.pagina.portada .special {
+    background-color: var(--silver);
+    color: var(--black-dark);
+}
+.pagina.portada p {
+    color: var(--silver);
+}
+
+
+
+.pagina.miss .special {
+    background-color: var(--deep-rosewood);
+    color: var(--sky-magenta);
+}
+.pagina.miss p {
+    color: var(--deep-rosewood);
+}
+.pagina.miss .separator {
+    background-color: var(--deep-rosewood);
+}
+.pagina.miss .link-icon {
+    color: var(--sky-magenta);
+}
+.pagina.miss .multimedia {
+    background-color: var(--deep-rosewood);
+}
+
+
+
+.pagina.rey .special {
+    background-color: var(--deep-rosewood);
+    color: var(--sunset);
+}
+.pagina.rey p {
+    color: var(--deep-rosewood);
+}
+.pagina.rey .separator {
+    background-color: var(--deep-rosewood);
+}
+.pagina.rey .link-icon {
+    color: var(--sunset);
+}
+.pagina.rey .multimedia {
+    background-color: var(--deep-rosewood);
+}
+
+
+
+.pagina.jaume .special {
+    background-color: var(--sunset);
+    color: var(--moss-green-dark);
+}
+.pagina.jaume p {
+    color: var(--sunset);
+}
+.pagina.jaume .separator {
+    background-color: var(--sunset);
+}
+

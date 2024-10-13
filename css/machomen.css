@@ -1,9 +1,0 @@
-.pagina.machomen p {
-    text-shadow: 0 0 1px var(--moss-green-dark);
-    color: var(--sunset);
-}
-
-.pagina.machomen .colored {
-    color: var(--silver);
-    font-weight: bold;
-}

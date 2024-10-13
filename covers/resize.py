@@ -32,7 +32,7 @@ def resize_images(directory_path, sizes=[(300, 300), (400, 400), (500, 500), (60
                     # Generate new file path
                     base_name, ext = os.path.splitext(file_name)
                     new_file_name = f"{base_name}_{size[0]}{ext}"
-                    new_file_path = os.path.join(directory_path, new_file_name)
+                    new_file_path = os.path.join(directory_path, "resized", new_file_name)
                     
                     # Save the resized image
                     resized_img.save(new_file_path)
