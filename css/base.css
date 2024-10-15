@@ -86,15 +86,16 @@ body {
   box-sizing: border-box;
   z-index: 1;
   opacity: 0;
-  animation: fade-out 1s ease forwards;
+  
 }
 
-.pagina > * {
+.pagina.visible > * {
   margin: 0 var(--padding-1);
+  animation: blur-in-elements 1.5s ease forwards;
 }
 .pagina.visible {
   display: flex;
-  animation: fade-in 1s ease forwards;
+  opacity: 1;
 }
 
 /* Keyframes for blur-in */
@@ -120,27 +121,6 @@ body {
     opacity: 0;
   }
 }
-
-/* Keyframes for fade-out (removed display) */
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* Keyframes for fade-out (removed display) */
-@keyframes fade-out {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
 
 
 
