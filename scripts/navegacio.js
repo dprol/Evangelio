@@ -9,12 +9,6 @@ export function inici_pagines_amb_animacio() {
     let currentPageIndex = 0; // Track the current page index
 
 
-    // Function to update the height of the llibre container based on the current page
-    function updateLlibreHeight() {
-        const currentPage = pages[currentPageIndex];
-        const newHeight = currentPage.offsetHeight;
-        llibre.style.minHeight = `${newHeight}px`;
-    }
 
     // Function to update page visibility based on the current index
     function updatePageVisibility() {
@@ -62,8 +56,6 @@ export function inici_pagines_amb_animacio() {
         updateMiniBookImages();
         // Update the visibility of pages
         updatePageVisibility();
-        // Update the height of the llibre to match the current page
-        updateLlibreHeight();
     }
 
     // Scroll left (previous page)
@@ -86,8 +78,9 @@ export function inici_pagines_amb_animacio() {
         scrollRightButton.addEventListener("click", scrollRight);
     }
 
+
+
     // Initialize by showing the first page, updating mini-book images, and adjusting the height
     updatePageVisibility();
     updateMiniBookImages();
-    updateLlibreHeight(); // Ensure the initial height is set correctly
 }

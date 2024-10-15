@@ -1,10 +1,9 @@
 
 
 // Function to create HTML elements
-function createLyricsHTML(data) {
-    const containers = document.querySelectorAll(".lyrics-container"); // Select all containers with the class "lyrics-jaume"
+function createLyricsHTML(data, index) {
+    const container = document.getElementById(`lyrics-${index}`); // Select all containers with the class "lyrics-jaume"
 
-    containers.forEach((container) => { // Corrected arrow function syntax
         container.innerHTML = ""; // Clear any existing content
 
         data.forEach((paragraphData) => {
@@ -53,17 +52,22 @@ function createLyricsHTML(data) {
 
             container.appendChild(paragraph);
         });
-    });
 }
 
 async function loadDataAndCreateHTML() {
     try {
-        const response = await fetch('acords/data.json');
-        const data = await response.json();
-        createLyricsHTML(data); // Tu función para crear el HTML
+        // Assuming indexData contains the range or list of files to load
+        for (let i = 1; i <= 12; i++) {
+            // Create the filename with leading zero if necessary (e.g., "01.json", "02.json", ...)
+            const filename = i.toString().padStart(2, '0') + '.json';
+            const response = await fetch(`acords/${filename}`);
+            const data = await response.json();
+
+            // Call your function to create HTML, passing the data and the index (i)
+            createLyricsHTML(data, i);
+        }
     } catch (error) {
-        console.error('Error al cargar los datos:', error);
+        console.error('Error loading data:', error);
     }
 }
-
 loadDataAndCreateHTML();

@@ -13,6 +13,10 @@
 
     --white: #ffffff;
 
+    --raisin-black: #252230ff;
+    --cinnabar: #D25936ff;
+    --english-violet: #413B53ff;
+
     /* Original Colors */
     --warm-tan: #d8b892ff;
     --deep-rosewood: #5a0b0cff;
@@ -27,8 +31,8 @@
 
     --mantis: #79B473;
 
-    --plum: #E59ED5;
-    --sky-magenta: #DD7EC7;
+    --plum: #F094DC;
+    --sky-magenta: #C969AB;
 
     /* Darker Shades */
     --warm-tan-dark: #8f6e56ff; /* Darkened tan */
@@ -42,6 +46,8 @@
     --english-violet-dark: #2c1d2bff; /* Darkened english violet */
     --moss-green-dark: #434c35ff; /* Darkened moss green */
 
+    --hunyadi-yellow: #F3BC61ff;
+    --cardinal: #AD2F3Eff;
 
     /* Portada */
     --silver: #c0c0c0;
@@ -51,12 +57,12 @@
 /* Definición de variables por página */
 .pagina.portada {
     --clr: var(--silver);
-    --bck: var(--black-dark);
-    --bck-dark: var(--black-dark-dark);
+    --bck: var(--black);
+    --bck-dark: var(--black-dark);
 }
 
 .pagina.miss {
-    --clr: var(--deep-rosewood);
+    --clr: #2274A5;
     --bck: var(--plum);
     --bck-dark: var(--sky-magenta);
 }
@@ -104,9 +110,9 @@
 }
 
 .pagina.bruja {
-    --clr: var(--persian-orange);
-    --bck: var(--black-dark);
-    --bck-dark: var(--black-dark-dark);
+    --clr: var(--cinnabar);
+    --bck: var(--raisin-black);
+    --bck-dark: var(--black);
 }
 
 .pagina.francisco {

@@ -2,7 +2,7 @@
 import { inici_pagines_amb_animacio } from "./navegacio.js";
 import { inici_visibilitat } from "./visibilitat.js";
 
-function animarEntrada() {
+function iniciarWeb() {
     inici_pagines_amb_animacio();
     inici_visibilitat();
 }
@@ -65,6 +65,12 @@ function esperarImagenesCargadas(callback) {
             const header = document.getElementById("header");
             header.classList.add("visble");
             paginaCarga.classList.add("loaded");
+
+            setTimeout(() => {
+                paginaCarga.remove();
+            }, 1000
+        );
+
             callback();
         }, 1500); // Puedes ajustar el retraso si lo deseas
     }
@@ -91,5 +97,7 @@ function esperarImagenesCargadas(callback) {
 
 // Esperar a que el contenido del DOM se cargue antes de inicializar
 document.addEventListener("DOMContentLoaded", () => {
-    esperarImagenesCargadas(animarEntrada);
+    setTimeout(() => {
+        iniciarWeb();
+    }, 1000);
 });
