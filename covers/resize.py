@@ -1,50 +1,64 @@
 from PIL import Image
 import os
 
-def resize_images(directory_path, sizes=[(300, 300), (400, 400), (500, 500), (600, 600)]):
+def resize_and_convert_images(directory_path, sizes=[(300, 300), (400, 400), (500, 500)]):
     """
-    Resize all images in the specified directory to the given sizes and save them with new filenames.
+    Redimensiona todas las imágenes PNG en el directorio especificado a los tamaños dados,
+    las convierte a JPG y las guarda con nuevos nombres de archivo.
 
-    :param directory_path: Directory containing the image files.
-    :param sizes: List of tuples containing the new sizes (width, height).
+    :param directory_path: Directorio que contiene los archivos de imagen.
+    :param sizes: Lista de tuplas que contienen los nuevos tamaños (ancho, alto).
     """
-    # Ensure the directory exists
+    # Verifica que el directorio existe
     if not os.path.isdir(directory_path):
-        print(f"Directory does not exist: {directory_path}")
+        print(f"El directorio no existe: {directory_path}")
         return
 
-    # Iterate over all files in the directory
+    # Crea un directorio para las imágenes redimensionadas si no existe
+    output_dir = os.path.join(directory_path, "resized")
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    # Itera sobre todos los archivos en el directorio
     for file_name in os.listdir(directory_path):
         file_path = os.path.join(directory_path, file_name)
 
-        # Ensure it's a file
-        if not os.path.isfile(file_path):
+        # Asegura que es un archivo y tiene extensión PNG
+        if not os.path.isfile(file_path) or not file_name.lower().endswith('.png'):
             continue
 
         try:
-            # Open the image file
+            # Abre el archivo de imagen
             with Image.open(file_path) as img:
-                # Process each size
-                for size in sizes:
-                    # Resize the image
-                    resized_img = img.resize(size, Image.LANCZOS)
-                    
-                    # Generate new file path
-                    base_name, ext = os.path.splitext(file_name)
-                    new_file_name = f"{base_name}_{size[0]}{ext}"
-                    new_file_path = os.path.join(directory_path, "resized", new_file_name)
-                    
-                    # Save the resized image
-                    resized_img.save(new_file_path)
+                # Convierte la imagen a RGB para eliminar el canal alfa
+                if img.mode in ("RGBA", "LA") or (img.mode == "P" and 'transparency' in img.info):
+                    background = Image.new("RGB", img.size, (255, 255, 255))
+                    background.paste(img, mask=img.split()[-1])  # Pega con la máscara alfa
+                    img = background
+                else:
+                    img = img.convert("RGB")
 
-                    print(f"Resized and saved: {new_file_path}")
+                # Procesa cada tamaño
+                for size in sizes:
+                    # Redimensiona la imagen
+                    resized_img = img.resize(size, Image.LANCZOS)
+
+                    # Genera el nuevo nombre de archivo
+                    base_name, _ = os.path.splitext(file_name)
+                    new_file_name = f"{base_name}_{size[0]}.jpg"
+                    new_file_path = os.path.join(output_dir, new_file_name)
+
+                    # Guarda la imagen redimensionada en formato JPG
+                    resized_img.save(new_file_path, "JPEG", quality=95)
+
+                    print(f"Redimensionado y guardado: {new_file_path}")
 
         except Exception as e:
-            print(f"Could not process {file_path}. Error: {e}")
+            print(f"No se pudo procesar {file_path}. Error: {e}")
 
 if __name__ == "__main__":
-    # Path to the directory containing images
+    # Ruta al directorio que contiene las imágenes
     directory_path = "/home/marc-nafria/Documents/GitHub/marc-nafria.github.io/covers"
 
-    # Resize all images in the directory to the specified sizes
-    resize_images(directory_path)
+    # Redimensiona y convierte todas las imágenes PNG en el directorio a los tamaños especificados
+    resize_and_convert_images(directory_path)

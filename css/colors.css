@@ -1,5 +1,4 @@
 :root {
-
     --black-dark-dark: #000306;
     --black-dark: #000a14;
     --black: #001021;
@@ -14,8 +13,8 @@
     --white: #ffffff;
 
     --raisin-black: #252230ff;
-    --cinnabar: #D25936ff;
-    --english-violet: #413B53ff;
+    --cinnabar: #d25936ff;
+    --english-violet: #413b53ff;
 
     /* Original Colors */
     --warm-tan: #d8b892ff;
@@ -29,10 +28,10 @@
     --english-violet: #553755ff;
     --moss-green: rgb(110, 120, 91);
 
-    --mantis: #79B473;
+    --mantis: #79b473;
 
-    --plum: #F094DC;
-    --sky-magenta: #C969AB;
+    --plum: #f094dc;
+    --sky-magenta: #c969ab;
 
     /* Darker Shades */
     --warm-tan-dark: #8f6e56ff; /* Darkened tan */
@@ -46,23 +45,23 @@
     --english-violet-dark: #2c1d2bff; /* Darkened english violet */
     --moss-green-dark: #434c35ff; /* Darkened moss green */
 
-    --hunyadi-yellow: #F3BC61ff;
-    --cardinal: #AD2F3Eff;
+    --hunyadi-yellow: #f3bc61ff;
+    --cardinal: #ad2f3eff;
 
     /* Portada */
     --silver: #c0c0c0;
-
 }
 
 /* Definición de variables por página */
 .pagina.portada {
+    --brillo: #f3bc6120;
     --clr: var(--silver);
     --bck: var(--black);
     --bck-dark: var(--black-dark);
 }
 
 .pagina.miss {
-    --clr: #2274A5;
+    --clr: #2274a5;
     --bck: var(--plum);
     --bck-dark: var(--sky-magenta);
 }
@@ -135,11 +134,7 @@
 
 /* Estilos generales para las páginas */
 .pagina {
-    background: radial-gradient(
-        ellipse at top,
-        var(--bck),
-        var(--bck-dark)
-    );
+    background: radial-gradient(ellipse at top, var(--bck), var(--bck-dark));
 }
 
 .pagina .special {
@@ -161,4 +156,8 @@
 
 .pagina .multimedia {
     background-color: var(--clr);
+}
+
+.pagina.portada {
+    background: radial-gradient(circle at top, var(--brillo), var(--bck), var(--bck-dark));
 }

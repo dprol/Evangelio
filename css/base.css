@@ -3,56 +3,77 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-  }
-  
-  /* Fuentes personalizadas */
-  @font-face {
+}
+
+/* Fuentes personalizadas */
+@font-face {
     font-family: "MyFont";
     src: url("Cristone.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
-  }
-  
-  /* Variables CSS */
-  :root {
+}
+
+/* Variables CSS */
+:root {
     --black-dark: #000000;
-    --silver: #C0C0C0;
+    --silver: #c0c0c0;
     --silver-half: rgba(192, 192, 192, 0.5);
     --altura-header: 40vh;
     --padding-1: 30px;
     font-size: min(2rem, 4vw);
-  }
-  
-  @media (min-width: 1024px) {
+}
+
+@media (min-width: 1024px) {
     :root {
-      --padding-1: 15vw;
+        --padding-1: 15vw;
     }
-  }
-  
-  /* Estilos para html y body */
-  html,
-  body {
+}
+
+/* Estilos para html y body */
+html,
+body {
     font-family: "Schibsted Grotesk", sans-serif;
-    background: var(--black);
+    background: black;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
     width: 100%;
     height: auto;
-  }
-  
-  body {
+}
+
+body {
     display: flex;
     flex-direction: column;
-  }
-  
-  
-  body::-webkit-scrollbar {
+}
+
+body::-webkit-scrollbar {
     display: none;
-  }
-  
-  /* Estilos para .llibre */
-  .llibre {
+}
+
+.loading-page {
+    display: flex;
+    z-index: 1000000;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--black);
+    opacity: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    animation: loading-gone 2s ease forwards;
+    animation-delay: 2s;
+}
+@keyframes loading-gone {
+    0% {
+    }
+    100% {
+      background-color: transparent;
+    }
+}
+
+/* Estilos para .llibre */
+.llibre {
     width: 100%;
     position: absolute;
     top: 0;
@@ -62,15 +83,15 @@
     padding: 0;
     margin: 0;
     transition: background-image 2s ease-in-out;
-  }
-  
-  /* Estilos para .pagina */
-  .pagina {
+}
+
+/* Estilos para .pagina */
+.pagina {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    padding-top: calc(var(--altura-header));
+    padding-top: calc(var(--altura-header) + 50px);
     padding-bottom: 40px;
     flex-direction: column;
     align-items: center;
@@ -79,76 +100,76 @@
     z-index: 1;
     opacity: 0;
     overflow: visible;
-    transition: opacity 1s ease;
+
     animation: desapareixer 1s ease forwards;
-  }
-  .pagina > * {
+}
+
+.pagina > * {
     margin: 0 var(--padding-1);
-  }
-  .pagina > * {
+}
+.pagina > * {
     animation: desapareixer-elements 1s ease forwards;
-  }
-  
-  .pagina.visible {
+}
+
+.pagina.visible {
     display: flex;
     animation: apareixer 1s ease forwards;
-  }
-  
-  .pagina.visible > * {
+}
+
+.pagina.visible > * {
     animation: apareixer-elements 1s ease forwards;
-  }
-  
-  @keyframes apareixer-blur {
+}
+
+@keyframes apareixer-blur {
     from {
-      filter: blur(20px);
+        filter: blur(20px);
     }
     to {
         filter: blur(0);
     }
-  }
-  
-  
-  /* Keyframes para animaciones */
-  @keyframes apareixer {
+}
+
+/* Keyframes para animaciones */
+@keyframes apareixer {
     from {
-      opacity: 0;
+        opacity: 0;
     }
     to {
-      opacity: 1;
+        opacity: 1;
     }
-  }
-  
-  @keyframes apareixer-elements {
+}
+
+@keyframes apareixer-elements {
     from {
-      filter: blur(20px);
+        filter: blur(20px);
     }
     to {
-      filter: blur(0);
+        filter: blur(0);
     }
-  }
-  
-  @keyframes desapareixer {
+}
+
+@keyframes desapareixer {
     from {
-      display: flex;
-      opacity: 1;
+        display: flex;
+        opacity: 1;
     }
     to {
-      opacity: 0;
-      display: none;
+        opacity: 0;
+        display: none;
     }
-  }
-  
-  @keyframes desapareixer-elements {
+}
+
+@keyframes desapareixer-elements {
     from {
-      filter: blur(0);
+        filter: blur(0);
     }
     to {
-      filter: blur(20px);
+        filter: blur(20px);
     }
-  }
-  
-  /* Estilos para .header */
-  .header {
+}
+
+/* Estilos para .header */
+.header {
     position: absolute;
     top: 0;
     left: 0;
@@ -165,10 +186,10 @@
     height: var(--altura-header);
     perspective: 1500px;
     overflow: visible;
-  }
-  
-  /* Estilos para .mini-book */
-  .mini-book {
+}
+
+/* Estilos para .mini-book */
+.mini-book {
     position: relative;
     height: min(60vw, var(--altura-header) - 4vh, 60vh);
     width: min(60vw, var(--altura-header) - 4vh, 60vh);
@@ -179,10 +200,10 @@
     align-self: center;
     overflow: visible;
     transform-style: preserve-3d;
-  }
-  
-  /* Estilos para .mini-book-page */
-  .mini-book-page {
+}
+
+/* Estilos para .mini-book-page */
+.mini-book-page {
     position: absolute;
     top: 0;
     left: 0;
@@ -193,33 +214,33 @@
     opacity: 1;
     backface-visibility: hidden;
     animation: entrada-img 1s ease forwards;
-  }
-  
-  .mini-book-page.pasada {
+}
+
+.mini-book-page.pasada {
     animation: sortida-img 1s ease forwards;
-  }
-  
-  /* Keyframes para .mini-book-page */
-  @keyframes entrada-img {
+}
+
+/* Keyframes para .mini-book-page */
+@keyframes entrada-img {
     from {
-      transform: rotateY(-140deg);
+        transform: rotateY(-140deg);
     }
     to {
-      transform: rotateY(0deg);
+        transform: rotateY(0deg);
     }
-  }
-  
-  @keyframes sortida-img {
+}
+
+@keyframes sortida-img {
     from {
-      transform: rotateY(0deg);
+        transform: rotateY(0deg);
     }
     to {
-      transform: rotateY(-120deg);
+        transform: rotateY(-120deg);
     }
-  }
-  
-  /* Estilos para botones de scroll */
-  .scroll-button {
+}
+
+/* Estilos para botones de scroll */
+.scroll-button {
     height: min(10vh, 10vw);
     width: min(10vh, 10vw);
     font-size: 1rem;
@@ -232,93 +253,46 @@
     align-items: center;
     opacity: 1;
     transition: opacity 0.8s ease, color 0.8s ease;
-  }
-  
-  .scroll-button:hover {
-    color: var(--silver);
-  }
-  
-  .scroll-top.appear {
-    opacity: 1;
-  }
-  
-  .header.max-zoomed .scroll-button,
-  #scroll-left {
-    animation: slide1 3s infinite;
-  }
-  
-  #scroll-right {
-    animation: slide2 3s infinite;
-  }
-  
-  @keyframes slide1 {
-    0%,
-    100% {
-      transform: translateX(10%);
-    }
-    50% {
-      transform: translateX(-10%);
-    }
-  }
-  
-  @keyframes slide2 {
-    0%,
-    100% {
-      transform: translateX(-10%);
-    }
-    50% {
-      transform: translateX(10%);
-    }
-  }
-  
-  /* Estilos para la página de carga */
-  .loading-page {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100%;
-    overflow: hidden;
-    background: linear-gradient(
-      to bottom,
-        var(--black),
-        var(--black-dark)
-    );
-    z-index: 1000;
-    pointer-events: none;
-  }
-  .loading-page img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50%;
-    height: auto;
-  }
-  .loading-page.loaded {
-    animation: iniciar-blur 1s ease forwards;
-  }
-  
-  @keyframes inicar-blur {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
+}
 
-  @keyframes iniciar-clip {
-    from {
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+.scroll-button:hover {
+    color: var(--silver);
+}
+
+.scroll-top.appear {
+    opacity: 1;
+}
+
+.header.max-zoomed .scroll-button,
+#scroll-left {
+    animation: slide1 3s infinite;
+}
+
+#scroll-right {
+    animation: slide2 3s infinite;
+}
+
+@keyframes slide1 {
+    0%,
+    100% {
+        transform: translateX(10%);
     }
-    to {
-      clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
-      display: none;
+    50% {
+        transform: translateX(-10%);
     }
-  }
-  
-  .loading-centered {
+}
+
+@keyframes slide2 {
+    0%,
+    100% {
+        transform: translateX(-10%);
+    }
+    50% {
+        transform: translateX(10%);
+    }
+}
+
+.loading-centered {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -328,94 +302,93 @@
     align-items: center;
     justify-content: center;
     z-index: 10001;
-  }
-  
-  .loading-page-title,
-  .loading-page-text {
+}
+
+.loading-page-title,
+.loading-page-text {
     font-size: 10rem;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    
+
     background-image: linear-gradient(
-      to bottom right,
-      var(--charcoal-bistre),
-      var(--sunset),
-      var(--deep-rosewood)
+        to bottom right,
+        var(--charcoal-bistre),
+        var(--sunset),
+        var(--deep-rosewood)
     );
     background-clip: text;
     color: transparent;
-    
+
     font-weight: 900;
     text-align: center;
-  }
-  
-  
-  .loading-page.loaded .loading-page-text {
+}
+
+.loading-page.loaded .loading-page-text {
     animation: none;
-  }
-  
-  @keyframes color-canviant {
+}
+
+@keyframes color-canviant {
     0%,
     100% {
-      opacity: 0.5;
+        opacity: 0.5;
     }
     50% {
-      opacity: 1;
+        opacity: 1;
     }
-  }
-  
-  /* Otros estilos generales */
-  .separator {
+}
+
+/* Otros estilos generales */
+.separator {
     min-height: 1px;
     width: 80%;
     margin: 1vh 0;
-  }
-  
-  .plain-text {
+}
+
+.plain-text {
     font-weight: 700;
     text-align: justify;
-  }
-  
-  .centered {
+}
+
+.centered {
     text-align: center;
-  }
-  
-  .special {
+}
+
+.special {
     font-weight: 900;
     padding: 0.2rem 0.4rem;
-  }
-  
-  .deslizad {
+}
+
+.deslizad {
     padding: 10px;
     animation: deslizando 2s ease infinite;
-  }
-  
-  @keyframes deslizando {
+}
+
+@keyframes deslizando {
     0%,
     100% {
-      transform: translateX(-5px);
+        transform: translateX(-5px);
     }
     50% {
-      transform: translateX(5px);
+        transform: translateX(5px);
     }
-  }
-  
-  .link-icon-container {
+}
+
+.link-icon-container {
     display: flex;
     flex-direction: row;
     gap: 2rem;
-  }
-  
-  .link-icon {
+}
+
+.link-icon {
     font-size: 2rem;
     transition: transform 0.7s ease;
-  }
-  
-  .link-icon:hover {
+}
+
+.link-icon:hover {
     transform: scale(1.2);
-  }
-  
-  .multimedia {
+}
+
+.multimedia {
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -425,6 +398,4 @@
     gap: 1rem;
     width: 100%;
     align-items: center;
-
-  }
-  
+}
