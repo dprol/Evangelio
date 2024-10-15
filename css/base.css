@@ -32,22 +32,21 @@
 /* Estilos para html y body */
 html,
 body {
-    font-family: "Schibsted Grotesk", sans-serif;
-    background: black;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    width: 100%;
-    height: auto;
+  font-family: "Schibsted Grotesk", sans-serif;
+  background: var(--black-dark);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-}
-
-body::-webkit-scrollbar {
-    display: none;
+#wrapper {
+  width: 100%;
+  min-height: 100vh; /* Ensure it covers the viewport */
+  position: relative;
+  transition: height 0.5s ease; /* Smooth height adjustment */
 }
 
 .loading-page {
@@ -71,108 +70,84 @@ body::-webkit-scrollbar {
       background-color: transparent;
     }
 }
-
-/* Estilos para .llibre */
-.llibre {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    display: flex;
-    flex-direction: row;
-    overflow: visible;
-    padding: 0;
-    margin: 0;
-    transition: background-image 2s ease-in-out;
-}
-
 /* Estilos para .pagina */
 .pagina {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding-top: calc(var(--altura-header) + 50px);
-    padding-bottom: 40px;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    box-sizing: border-box;
-    z-index: 1;
-    opacity: 0;
-    overflow: visible;
-
-    animation: desapareixer 1s ease forwards;
+  /* Cambiar de absolute a relative */
+  display: none;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: calc(var(--altura-header) + 50px);
+  padding-bottom: 40px;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  box-sizing: border-box;
+  z-index: 1;
+  opacity: 0;
+  animation: fade-out 1s ease forwards;
 }
 
 .pagina > * {
-    margin: 0 var(--padding-1);
+  margin: 0 var(--padding-1);
 }
-.pagina > * {
-    animation: desapareixer-elements 1s ease forwards;
-}
-
 .pagina.visible {
-    display: flex;
-    animation: apareixer 1s ease forwards;
+  display: flex;
+  animation: fade-in 1s ease forwards;
 }
 
-.pagina.visible > * {
-    animation: apareixer-elements 1s ease forwards;
+/* Keyframes for blur-in */
+@keyframes blur-in-elements {
+  from {
+    filter: blur(10px);
+    opacity: 0;
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+  }
 }
 
-@keyframes apareixer-blur {
-    from {
-        filter: blur(20px);
-    }
-    to {
-        filter: blur(0);
-    }
+/* Keyframes for blur-out */
+@keyframes blur-out-elements {
+  from {
+    filter: blur(0px);
+    opacity: 1;
+  }
+  to {
+    filter: blur(10px);
+    opacity: 0;
+  }
 }
 
-/* Keyframes para animaciones */
-@keyframes apareixer {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+/* Keyframes for fade-out (removed display) */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-@keyframes apareixer-elements {
-    from {
-        filter: blur(20px);
-    }
-    to {
-        filter: blur(0);
-    }
+/* Keyframes for fade-out (removed display) */
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
-@keyframes desapareixer {
-    from {
-        display: flex;
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-        display: none;
-    }
-}
 
-@keyframes desapareixer-elements {
-    from {
-        filter: blur(0);
-    }
-    to {
-        filter: blur(20px);
-    }
-}
+
 
 /* Estilos para .header */
 .header {
     position: absolute;
     top: 0;
-    left: 0;
     width: 100%;
     margin: 0;
     padding: 0 2vw;

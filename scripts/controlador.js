@@ -1,10 +1,8 @@
 // controlador.js
 import { inici_pagines_amb_animacio } from "./navegacio.js";
-import { inici_visibilitat } from "./visibilitat.js";
 
 function iniciarWeb() {
     inici_pagines_amb_animacio();
-    inici_visibilitat();
     setTimeout(() => {
         document.getElementById("loading-page").remove();
     }, 4000);
