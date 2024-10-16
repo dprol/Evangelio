@@ -76,17 +76,5 @@ export function inici_pagines_amb_animacio() {
     });
 
 
-    // Function to set the --vh CSS variable
-    function setVh() {
-        let vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
-    }
 
-    // Initial setting
-    setVh();
-
-    // Update on resize and orientation change
-    window.addEventListener('resize', setVh);
-    window.addEventListener('orientationchange', setVh);
-    
 }
