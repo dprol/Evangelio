@@ -73,19 +73,16 @@ body, html {
   opacity: 0;
   overflow: hidden;
   overflow-y: scroll;
-  animation: sortida-pagina 1s ease forwards;
   transform-origin: left;
+  opacity: 0;
 }
 .pagina > * {
   margin: 0 var(--padding-1);
 }
 
-.pagina.visible > * {
-  animation: blur-in-elements 1s ease forwards;
-}
 .pagina.visible {
   z-index: 10;
-  animation: entrada-pagina 1s ease forwards;
+  opacity: 1;
 }
 
 @keyframes entrada-pagina {
