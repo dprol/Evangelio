@@ -10,39 +10,78 @@ export function inici_pagines_amb_animacio() {
     let isHorizontalSwipe = false; // Declare at the top of the function
 
     // Function to handle navigation
+    // Function to handle navigation
     function scrollByDirection(direction) {
         if (isTransitioning) return; // Prevent new transitions if one is in progress
-
+    
         const maxPageIndex = pages.length - 1;
-
+    
+        // Function to calculate the necessary scroll duration based on distance
+        function calculateScrollDuration(scrollDistance) {
+            const maxDuration = 1000; // Set maximum duration to 1 second
+            const minDuration = 300; // Set minimum duration to 300ms for short distances
+            const scrollSpeed = 2; // Adjust scroll speed factor (higher values make it slower)
+    
+            // Calculate the duration based on the scroll distance
+            const duration = Math.min(maxDuration, Math.max(minDuration, scrollDistance * scrollSpeed));
+            return duration;
+        }
+    
         if (direction === 'left' && currentPageIndex > 0) {
             isTransitioning = true;
             const lastPageIndex = currentPageIndex;
             currentPageIndex--;
-            pages[currentPageIndex].classList.add('visible');
-            pages[lastPageIndex].classList.add('fading-out');
-            
-            // Wait for the transition to complete before resetting classes
+    
+            const scrollDistance = pages[lastPageIndex].scrollTop;
+            const scrollDuration = calculateScrollDuration(scrollDistance);
+    
+            // Scroll to top before making the page invisible
+            pages[lastPageIndex].scrollTo({
+                top: 0,
+                behavior: 'smooth' // Enable smooth scrolling to the top
+            });
+    
+            // After scrolling to the top, proceed with hiding and showing pages
             setTimeout(() => {
-                pages[lastPageIndex].classList.remove('fading-out');
-                pages[lastPageIndex].classList.remove('visible');
-                isTransitioning = false;
-            }, 1000); // Match the CSS animation duration (1s)
+                pages[currentPageIndex].classList.add('visible');
+                pages[lastPageIndex].classList.add('fading-out');
+                
+                // Wait for the transition to complete before resetting classes
+                setTimeout(() => {
+                    pages[lastPageIndex].classList.remove('fading-out');
+                    pages[lastPageIndex].classList.remove('visible');
+                    isTransitioning = false;
+                }, 1000); // Match the CSS animation duration (1s)
+            }, scrollDuration); // Delay to allow the smooth scroll to top
         } else if (direction === 'right' && currentPageIndex < maxPageIndex) {
             isTransitioning = true;
             const lastPageIndex = currentPageIndex;
             currentPageIndex++;
-            pages[currentPageIndex].classList.add('visible');
-            pages[lastPageIndex].classList.add('fading-out');
-            
-            // Wait for the transition to complete before resetting classes
+    
+            const scrollDistance = pages[lastPageIndex].scrollTop;
+            const scrollDuration = calculateScrollDuration(scrollDistance);
+    
+            // Scroll to top before making the page invisible
+            pages[lastPageIndex].scrollTo({
+                top: 0,
+                behavior: 'smooth' // Enable smooth scrolling to the top
+            });
+    
+            // After scrolling to the top, proceed with hiding and showing pages
             setTimeout(() => {
-                pages[lastPageIndex].classList.remove('fading-out');
-                pages[lastPageIndex].classList.remove('visible');
-                isTransitioning = false;
-            }, 1000); // Match the CSS animation duration (1s)
+                pages[currentPageIndex].classList.add('visible');
+                pages[lastPageIndex].classList.add('fading-out');
+                
+                // Wait for the transition to complete before resetting classes
+                setTimeout(() => {
+                    pages[lastPageIndex].classList.remove('fading-out');
+                    pages[lastPageIndex].classList.remove('visible');
+                    isTransitioning = false;
+                }, 1000); // Match the CSS animation duration (1s)
+            }, scrollDuration); // Delay to allow the smooth scroll to top
         }
     }
+    
 
     // Scroll left
     function scrollLeft() {
