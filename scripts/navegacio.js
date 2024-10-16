@@ -141,4 +141,26 @@ export function inici_pagines_amb_animacio() {
                 break;
         }
     });
+
+    pages.forEach((page, index) => {
+        let isScrolling; // Variable to track the scroll timeout
+    
+        page.addEventListener('scroll', () => {
+            // Clear the timeout if a scroll event occurs again
+            window.clearTimeout(isScrolling);
+    
+            // Set a timeout to detect when scrolling has stopped
+            isScrolling = setTimeout(() => {
+                // Check if the scroll position is within 200px of the top
+                if (page.scrollTop <= 80) {
+                    // Smoothly scroll to the top
+                    page.scrollTo({
+                        top: 0,
+                        behavior: 'smooth' // Enable smooth scrolling
+                    });
+                }
+            }, 150); // Adjust the delay (150ms) based on your preference
+        });
+    });
+
 }
