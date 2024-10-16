@@ -20,7 +20,7 @@
   --silver-half: rgba(192, 192, 192, 0.5);
   --altura-header: 40vh;
   --padding-1: 30px;
-  font-size: clamp(1.5rem, 2.5vw); /* Controlled scaling */
+  font-size: min(2rem, 4vw);
 }
 
 @media (min-width: 1024px) {
