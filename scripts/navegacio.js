@@ -2,31 +2,42 @@ export function inici_pagines_amb_animacio() {
     const pages = document.querySelectorAll(".pagina");
 
     let currentPageIndex = 0;
-    pages[0].classList.add('visible');
+    pages[currentPageIndex].classList.add('visible');
+
+    let isTransitioning = false; // Flag to prevent overlapping transitions
 
     // Function to handle navigation
     function scrollByDirection(direction) {
+        if (isTransitioning) return; // Prevent new transitions if one is in progress
+
         const maxPageIndex = pages.length - 1;
 
         if (direction === 'left' && currentPageIndex > 0) {
+            isTransitioning = true;
             const lastPageIndex = currentPageIndex;
             currentPageIndex--;
             pages[currentPageIndex].classList.add('visible');
             pages[lastPageIndex].classList.add('fading-out');
+            
+            // Wait for the transition to complete before resetting classes
             setTimeout(() => {
                 pages[lastPageIndex].classList.remove('fading-out');
                 pages[lastPageIndex].classList.remove('visible');
-            }, 1000);
-
+                isTransitioning = false;
+            }, 500); // Match the CSS transition duration
         } else if (direction === 'right' && currentPageIndex < maxPageIndex) {
+            isTransitioning = true;
             const lastPageIndex = currentPageIndex;
             currentPageIndex++;
             pages[currentPageIndex].classList.add('visible');
             pages[lastPageIndex].classList.add('fading-out');
+            
+            // Wait for the transition to complete before resetting classes
             setTimeout(() => {
                 pages[lastPageIndex].classList.remove('fading-out');
                 pages[lastPageIndex].classList.remove('visible');
-            }, 1000);
+                isTransitioning = false;
+            }, 500); // Match the CSS transition duration
         }
     }
 
@@ -40,26 +51,28 @@ export function inici_pagines_amb_animacio() {
         scrollByDirection('right');
     }
 
-    pages.forEach(pagina => {
+    // Optimize event listeners using event delegation
+    const wrapper = document.getElementById('wrapper');
+    if (wrapper) {
         let touchStartX = 0;
         let touchEndX = 0;
         const swipeThreshold = 150; // Minimum distance in pixels to qualify as a swipe
-    
-        // Listen for touchstart event to record the starting X position
-        pagina.addEventListener('touchstart', (e) => {
+
+        // Listen for touchstart event on the wrapper
+        wrapper.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
-        }, false);
-    
-        // Listen for touchend event to record the ending X position and determine swipe direction
-        pagina.addEventListener('touchend', (e) => {
+        }, { passive: true });
+
+        // Listen for touchend event on the wrapper
+        wrapper.addEventListener('touchend', (e) => {
             touchEndX = e.changedTouches[0].screenX;
             handleSwipe();
-        }, false);
-    
+        }, { passive: true });
+
         // Function to handle the swipe logic
         function handleSwipe() {
             const deltaX = touchEndX - touchStartX;
-    
+
             if (deltaX > swipeThreshold) {
                 // Swipe Right
                 scrollLeft();
@@ -69,10 +82,12 @@ export function inici_pagines_amb_animacio() {
             }
             // If the swipe distance is less than the threshold, do nothing
         }
-    });
-    
+    }
+
     // Keyboard Arrow Keys Event Handler
     document.addEventListener('keydown', (e) => {
+        if (isTransitioning) return; // Prevent navigation during transition
+
         switch (e.key) {
             case 'ArrowLeft':
                 scrollLeft();
@@ -85,7 +100,4 @@ export function inici_pagines_amb_animacio() {
                 break;
         }
     });
-
-
-
 }

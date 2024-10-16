@@ -85,8 +85,14 @@ body {
   z-index: 10;
   animation: fadeIn 1s ease forwards;
 }
+.pagina.visible > * {
+  animation: blurIn 1s ease forwards;
+}
 .pagina.visible.fading-out {
   animation: fadeOut 1s ease forwards;
+}
+.pagina.visible.fading-out > * {
+  animation: blurOut 1s ease forwards;
 }
 
 @keyframes fadeIn {
@@ -107,6 +113,23 @@ body {
   }
 }
 
+@keyframes blurIn {
+  0% {
+      filter: blur(10px);
+  }
+  100% {
+      filter: blur(0);
+  }
+}
+
+@keyframes blurOut {
+  0% {
+      filter: blur(0);
+  }
+  100% {
+      filter: blur(10px);
+  }
+}
 /* Estilos para .mini-book-page */
 .mini-book-page {
   position: relative;
