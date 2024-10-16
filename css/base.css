@@ -44,20 +44,33 @@ body {
 
 #wrapper {
   width: 100%;
-  min-height: 100vh; /* Ensure it covers the viewport */
-  height: 100vh;
-  position: relative;
-  transform-style: preserve-3d;
-  perspective: 1500px;
+    min-height: calc(var(--vh, 1vh) * 100); /* Dynamic viewport height */
+    position: relative;
+
+    /* 3D Transform Properties */
+    -webkit-transform-style: preserve-3d; /* Safari */
+    -moz-transform-style: preserve-3d;    /* Firefox */
+    transform-style: preserve-3d;
+
+    -webkit-perspective: 1500px;          /* Safari */
+    -moz-perspective: 1500px;             /* Firefox */
+    perspective: 1500px;
+
+    /* Smooth Rendering */
+    -webkit-backface-visibility: hidden;   /* Safari */
+    backface-visibility: hidden;
+
+    /* Optional Styling */
+    background-color: var(--black-dark);
+    overflow: hidden; /* Prevents content from overflowing wrapper */
 }
 
 /* Estilos para .pagina */
 .pagina {
-  /* Cambiar de absolute a relative */
   display: flex;
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: fixed; /* If fixed positioning is essential */
+  top: 0; /* Ensure it starts from the top */
+  left: 0; /* Ensure it starts from the left */
   width: 100%;
   height: 100%;
   padding-top: 20px;
@@ -81,8 +94,6 @@ body {
   animation: blur-in-elements 1s ease forwards;
 }
 .pagina.visible {
-  display: flex;
-  opacity: 1;
   z-index: 10;
   animation: entrada-pagina 1s ease forwards;
 }

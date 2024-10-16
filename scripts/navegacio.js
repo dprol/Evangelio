@@ -1,18 +1,8 @@
 export function inici_pagines_amb_animacio() {
     const pages = document.querySelectorAll(".pagina");
-    const miniBookImages = document.querySelectorAll(".mini-book img");
-    const wrapper = document.getElementById("wrapper");
-    const scrollLeftButton = document.getElementById("scroll-left");
-    const scrollRightButton = document.getElementById("scroll-right");
 
     let currentPageIndex = 0;
     pages[0].classList.add('visible');
-
-    
-    // Function to scroll to the top
-    function scrollToTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
 
     // Function to handle navigation
     function scrollByDirection(direction) {
@@ -27,9 +17,6 @@ export function inici_pagines_amb_animacio() {
             currentPageIndex++;
             pages[currentPageIndex].classList.add('visible');
         }
-
-        // Smooth scroll back to the top of the new page
-        scrollToTop();
     }
 
     // Scroll left
@@ -88,6 +75,18 @@ export function inici_pagines_amb_animacio() {
         }
     });
 
-    // Initialize
-    updateMiniBookImages();
+
+    // Function to set the --vh CSS variable
+    function setVh() {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+
+    // Initial setting
+    setVh();
+
+    // Update on resize and orientation change
+    window.addEventListener('resize', setVh);
+    window.addEventListener('orientationchange', setVh);
+    
 }
