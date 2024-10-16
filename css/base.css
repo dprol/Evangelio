@@ -45,57 +45,64 @@ body {
 #wrapper {
   width: 100%;
   min-height: 100vh; /* Ensure it covers the viewport */
+  height: 100vh;
   position: relative;
-  transition: height 0.5s ease; /* Smooth height adjustment */
+  transform-style: preserve-3d;
+  perspective: 1500px;
 }
 
-.loading-page {
-    display: flex;
-    z-index: 1000000;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    background-color: var(--black);
-    opacity: 1;
-    position: fixed;
-    top: 0;
-    left: 0;
-    animation: loading-gone 2s ease forwards;
-    animation-delay: 2s;
-}
-@keyframes loading-gone {
-    0% {
-    }
-    100% {
-      background-color: transparent;
-    }
-}
 /* Estilos para .pagina */
 .pagina {
   /* Cambiar de absolute a relative */
-  display: none;
-  position: relative;
+  display: flex;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  padding-top: calc(var(--altura-header) + 50px);
+  height: 100%;
+  padding-top: 20px;
   padding-bottom: 40px;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
   box-sizing: border-box;
-  z-index: 1;
+  z-index: 0;
   opacity: 0;
-  
+  overflow: hidden;
+  overflow-y: scroll;
+  animation: sortida-pagina 1s ease forwards;
+  transform-origin: left;
+}
+.pagina > * {
+  margin: 0 var(--padding-1);
 }
 
 .pagina.visible > * {
-  margin: 0 var(--padding-1);
-  animation: blur-in-elements 1.5s ease forwards;
+  animation: blur-in-elements 1s ease forwards;
 }
 .pagina.visible {
   display: flex;
   opacity: 1;
+  z-index: 10;
+  animation: entrada-pagina 1s ease forwards;
+}
+
+@keyframes entrada-pagina {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes sortida-pagina {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 /* Keyframes for blur-in */
@@ -121,176 +128,17 @@ body {
     opacity: 0;
   }
 }
-
-
-
-/* Estilos para .header */
-.header {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    margin: 0;
-    padding: 0 2vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    background: transparent;
-    z-index: 80;
-    box-sizing: border-box;
-    transition: height 1s ease, transform 1s ease;
-    height: var(--altura-header);
-    perspective: 1500px;
-    overflow: visible;
-}
-
-/* Estilos para .mini-book */
-.mini-book {
-    position: relative;
-    height: min(60vw, var(--altura-header) - 4vh, 60vh);
-    width: min(60vw, var(--altura-header) - 4vh, 60vh);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    transform-origin: center;
-    transition: height 1s ease, width 1s ease, transform 1s ease;
-    z-index: 500;
-    align-self: center;
-    overflow: visible;
-    transform-style: preserve-3d;
-}
-
 /* Estilos para .mini-book-page */
 .mini-book-page {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    position: relative;
+    margin: 0 var(--padding-1);
+    width: min(80%, 400px);
+    height: auto;
     object-fit: cover;
-    transform-origin: left;
     opacity: 1;
-    backface-visibility: hidden;
-    animation: entrada-img 1s ease forwards;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-.mini-book-page.pasada {
-    animation: sortida-img 1s ease forwards;
-}
-
-/* Keyframes para .mini-book-page */
-@keyframes entrada-img {
-    from {
-        transform: rotateY(-140deg);
-    }
-    to {
-        transform: rotateY(0deg);
-    }
-}
-
-@keyframes sortida-img {
-    from {
-        transform: rotateY(0deg);
-    }
-    to {
-        transform: rotateY(-120deg);
-    }
-}
-
-/* Estilos para botones de scroll */
-.scroll-button {
-    height: min(10vh, 10vw);
-    width: min(10vh, 10vw);
-    font-size: 1rem;
-    background-color: transparent;
-    color: var(--silver-half);
-    border-radius: 50%;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 1;
-    transition: opacity 0.8s ease, color 0.8s ease;
-}
-
-.scroll-button:hover {
-    color: var(--silver);
-}
-
-.scroll-top.appear {
-    opacity: 1;
-}
-
-.header.max-zoomed .scroll-button,
-#scroll-left {
-    animation: slide1 3s infinite;
-}
-
-#scroll-right {
-    animation: slide2 3s infinite;
-}
-
-@keyframes slide1 {
-    0%,
-    100% {
-        transform: translateX(10%);
-    }
-    50% {
-        transform: translateX(-10%);
-    }
-}
-
-@keyframes slide2 {
-    0%,
-    100% {
-        transform: translateX(-10%);
-    }
-    50% {
-        transform: translateX(10%);
-    }
-}
-
-.loading-centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 10001;
-}
-
-.loading-page-title,
-.loading-page-text {
-    font-size: 10rem;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    background-image: linear-gradient(
-        to bottom right,
-        var(--charcoal-bistre),
-        var(--sunset),
-        var(--deep-rosewood)
-    );
-    background-clip: text;
-    color: transparent;
-
-    font-weight: 900;
-    text-align: center;
-}
-
-.loading-page.loaded .loading-page-text {
-    animation: none;
-}
-
-@keyframes color-canviant {
-    0%,
-    100% {
-        opacity: 0.5;
-    }
-    50% {
-        opacity: 1;
-    }
-}
 
 /* Otros estilos generales */
 .separator {
@@ -323,9 +171,24 @@ body {
     100% {
         transform: translateX(-5px);
     }
-    50% {
+    75% {
         transform: translateX(5px);
     }
+}
+
+.flechas {
+  padding: 10px;
+  animation: flecheando 2s ease infinite;
+}
+
+@keyframes flecheando {
+  0%,
+  100% {
+      transform: scale(1);
+  }
+  25% {
+      transform: scale(1.2);
+  }
 }
 
 .link-icon-container {

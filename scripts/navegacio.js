@@ -8,14 +8,7 @@ export function inici_pagines_amb_animacio() {
     let currentPageIndex = 0;
     pages[0].classList.add('visible');
 
-    // Function to update mini-book images
-    function updateMiniBookImages() {
-        if (currentPageIndex > 0) {
-            miniBookImages[currentPageIndex - 1].classList.add('pasada');
-        }
-        miniBookImages[currentPageIndex].classList.remove('pasada');
-    }
-
+    
     // Function to scroll to the top
     function scrollToTop() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -37,9 +30,6 @@ export function inici_pagines_amb_animacio() {
 
         // Smooth scroll back to the top of the new page
         scrollToTop();
-
-        // Update the mini-book images
-        updateMiniBookImages();
     }
 
     // Scroll left
@@ -52,17 +42,50 @@ export function inici_pagines_amb_animacio() {
         scrollByDirection('right');
     }
 
-    // Attach event listeners to the scroll buttons
-    if (scrollLeftButton) {
-        scrollLeftButton.addEventListener('click', scrollLeft);
-    }
-    if (scrollRightButton) {
-        scrollRightButton.addEventListener('click', scrollRight);
-    }
-
-    // Adjust height when the window is resized
-    window.addEventListener('resize', () => {
-        wrapper.style.height = pages[currentPageIndex].clientHeight + 'px';
+    pages.forEach(pagina => {
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const swipeThreshold = 50; // Minimum distance in pixels to qualify as a swipe
+    
+        // Listen for touchstart event to record the starting X position
+        pagina.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+    
+        // Listen for touchend event to record the ending X position and determine swipe direction
+        pagina.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+    
+        // Function to handle the swipe logic
+        function handleSwipe() {
+            const deltaX = touchEndX - touchStartX;
+    
+            if (deltaX > swipeThreshold) {
+                // Swipe Right
+                scrollLeft();
+            } else if (deltaX < -swipeThreshold) {
+                // Swipe Left
+                scrollRight();
+            }
+            // If the swipe distance is less than the threshold, do nothing
+        }
+    });
+    
+    // Keyboard Arrow Keys Event Handler
+    document.addEventListener('keydown', (e) => {
+        switch (e.key) {
+            case 'ArrowLeft':
+                scrollLeft();
+                break;
+            case 'ArrowRight':
+                scrollRight();
+                break;
+            default:
+                // Do nothing for other keys
+                break;
+        }
     });
 
     // Initialize
