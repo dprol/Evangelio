@@ -9,13 +9,24 @@ export function inici_pagines_amb_animacio() {
         const maxPageIndex = pages.length - 1;
 
         if (direction === 'left' && currentPageIndex > 0) {
-            pages[currentPageIndex].classList.remove('visible');
+            const lastPageIndex = currentPageIndex;
             currentPageIndex--;
             pages[currentPageIndex].classList.add('visible');
+            pages[lastPageIndex].classList.add('fading-out');
+            setTimeout(() => {
+                pages[lastPageIndex].classList.remove('fading-out');
+                pages[lastPageIndex].classList.remove('visible');
+            }, 1000);
+
         } else if (direction === 'right' && currentPageIndex < maxPageIndex) {
-            pages[currentPageIndex].classList.remove('visible');
+            const lastPageIndex = currentPageIndex;
             currentPageIndex++;
             pages[currentPageIndex].classList.add('visible');
+            pages[lastPageIndex].classList.add('fading-out');
+            setTimeout(() => {
+                pages[lastPageIndex].classList.remove('fading-out');
+                pages[lastPageIndex].classList.remove('visible');
+            }, 1000);
         }
     }
 
