@@ -43,6 +43,16 @@ body {
   position: relative;
 }
 
+body {
+  min-height: 100vh;
+  /* mobile viewport bug fix */
+  min-height: -webkit-fill-available;
+}
+
+html {
+  height: -webkit-fill-available;
+}
+
 /* Wrapper */
 .wrapper {
   display: flex;
@@ -52,6 +62,7 @@ body {
   margin: 0; /* Removed auto */
   padding: 0; /* Removed auto */
   position: relative;
+  overflow: hidden;
 }
 
 /* Estilos para .pagina */
