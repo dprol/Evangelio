@@ -32,7 +32,7 @@ export function inici_pagines_amb_animacio() {
     pages.forEach(pagina => {
         let touchStartX = 0;
         let touchEndX = 0;
-        const swipeThreshold = 50; // Minimum distance in pixels to qualify as a swipe
+        const swipeThreshold = 150; // Minimum distance in pixels to qualify as a swipe
     
         // Listen for touchstart event to record the starting X position
         pagina.addEventListener('touchstart', (e) => {
