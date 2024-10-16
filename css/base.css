@@ -56,9 +56,10 @@ body {
 
 /* Estilos para .pagina */
 .pagina {
-  display: none;
-  position: fixed; /* Changed from absolute to fixed */
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed positioning to occupy the viewport */
   top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   padding-top: 20px;
@@ -71,10 +72,14 @@ body {
   opacity: 0;
   overflow-x: hidden; /* Explicitly hide horizontal overflow */
   overflow-y: scroll; /* Enable vertical scrolling */
+  /* Removed transition to avoid conflicts with animation */
+  /* transition: opacity 1s ease; */
   will-change: opacity; /* Hint for performance */
-  transition: opacity 1s ease; /* Smooth fade in/out */
+  /* Define animations without transition */
+  animation-fill-mode: forwards;
 }
 
+/* Children elements margin */
 .pagina > * {
   margin: 0 var(--padding-1);
 }
@@ -85,12 +90,16 @@ body {
   z-index: 10;
   animation: fadeIn 1s ease forwards;
 }
+
 .pagina.visible > * {
   animation: blurIn 1s ease forwards;
 }
+
+/* Fading-out page styles */
 .pagina.visible.fading-out {
   animation: fadeOut 1s ease forwards;
 }
+
 .pagina.visible.fading-out > * {
   animation: blurOut 1s ease forwards;
 }
@@ -115,7 +124,7 @@ body {
 
 @keyframes blurIn {
   0% {
-      filter: blur(10px);
+      filter: blur(20px);
   }
   100% {
       filter: blur(0);
@@ -127,9 +136,10 @@ body {
       filter: blur(0);
   }
   100% {
-      filter: blur(10px);
+      filter: blur(20px);
   }
 }
+
 /* Estilos para .mini-book-page */
 .mini-book-page {
   position: relative;
