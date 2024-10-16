@@ -141,13 +141,4 @@ export function inici_pagines_amb_animacio() {
                 break;
         }
     });
-
-    pages.forEach((page, index) => {
-        page.addEventListener('scroll', () => {
-            // Check if the scroll position is within 40px of the top
-            if (page.scrollTop <= 200) {
-                page.scrollTop = 0; // Snap to the top
-            }
-        });
-    });
 }
