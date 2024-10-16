@@ -43,7 +43,8 @@ body {
 }
 
 #wrapper {
-  position: relative;
+  position: fixed;
+  top: 0;
   width: 100%;
   height: 100vh;
   background-color: var(--black-dark);
@@ -55,7 +56,6 @@ body {
   display: flex;
   position: absolute; /* If fixed positioning is essential */
   top: 0; /* Ensure it starts from the top */
-  left: 0; /* Ensure it starts from the left */
   width: 100%;
   height: 100%;
   padding-top: 20px;
