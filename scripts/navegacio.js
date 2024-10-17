@@ -1,6 +1,6 @@
 export function inici_pagines_amb_animacio() {
     const pages = document.querySelectorAll(".pagina");
-    const wrapper = document.getElementById('wrapper');
+    const miniBookWrapper = document.getElementById('miniBookWrapper');
     const miniBook = document.getElementById('mini-book');
 
     const miniBookImages = document.querySelectorAll(".mini-book-img");
@@ -105,15 +105,15 @@ export function inici_pagines_amb_animacio() {
         const swipeThreshold = 50; // Minimum distance in pixels to qualify as a swipe
         const swipeAngleThreshold = 45; // Maximum angle to consider swipe as horizontal
 
-        // Listen for touchstart event on the wrapper
-        wrapper.addEventListener('touchstart', (e) => {
+        // Listen for touchstart event on the miniBookWrapper
+        document.body.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].clientX;
             touchStartY = e.changedTouches[0].clientY;
             isHorizontalSwipe = false;
         }, { passive: true });
 
         // Listen for touchmove event to determine swipe direction early
-        wrapper.addEventListener('touchmove', (e) => {
+        document.body.addEventListener('touchmove', (e) => {
             const touchMoveX = e.changedTouches[0].clientX;
             const touchMoveY = e.changedTouches[0].clientY;
             const deltaX = touchMoveX - touchStartX;
@@ -127,8 +127,8 @@ export function inici_pagines_amb_animacio() {
             }
         }, { passive: false });
 
-        // Listen for touchend event on the wrapper
-        wrapper.addEventListener('touchend', (e) => {
+        // Listen for touchend event on the miniBookWrapper
+        document.body.addEventListener('touchend', (e) => {
             touchEndX = e.changedTouches[0].clientX;
             touchEndY = e.changedTouches[0].clientY;
             handleSwipe();
@@ -165,19 +165,6 @@ export function inici_pagines_amb_animacio() {
         }
     });
 
-    // Scroll behavior for opacity control
-    pages.forEach((page, index) => {
-        page.addEventListener('scroll', () => {
-            const scrollPosition = page.scrollTop;
-            const pageHeight = page.offsetHeight;
-            const opacity = 1 - scrollPosition / 100;
-
-            // Ensure opacity stays between 0 and 1
-            const clampedOpacity = Math.max(0, Math.min(1, opacity));
-
-            miniBook.style.opacity = clampedOpacity;
-        });
-    });
 
     // Initial setup
     function initializeMiniBook() {

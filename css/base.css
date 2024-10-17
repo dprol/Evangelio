@@ -21,37 +21,32 @@
   --altura-header: 40vh;
   --padding-1: 30px;
   font-size: min(2rem, 4vw);
-}
-
-:root {
   touch-action: pan-x pan-y;
-  height: 100% 
+  height: 100%; 
 }
 
 @media (min-width: 1024px) {
   :root {
-      --padding-1: 15vw;
+    --padding-1: 15vw;
   }
 }
 
 /* Estilos para html y body */
-html,
-body {
+html, body {
   font-family: "Schibsted Grotesk", sans-serif;
   background: var(--black-dark);
   height: 100%;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  overflow-y: auto; /* Body is scrollable */
   width: 100%;
   min-height: 100vh;
   position: relative;
 }
 
 body {
-  min-height: 100vh;
-  /* mobile viewport bug fix */
-  min-height: -webkit-fill-available;
+  background: radial-gradient(circle at top, var(--brillo), var(--bck), var(--bck-dark));
 }
 
 html {
@@ -62,49 +57,46 @@ html {
 .wrapper {
   display: flex;
   flex-direction: column;
-  height: auto;
-  min-height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* Allows flexibility but does not enforce scrolling */
 }
 
 .mini-book-wrapper {
   display: flex;
   flex-direction: column;
-  height: 40vh;
   width: 100%;
-  padding: 5vh 2vh;
-  position: relative;
-  overflow: hidden;
+  min-height: 50vh;
+  margin: 0;
+  padding: 0;
   align-items: center;
   justify-content: center;
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
 /* Mini-Book Styles */
 .mini-book {
-  position: relative;
-  top: 0;
-  height: 100%;
+  display: flex;
+  width: clamp(20vh, 80vw, 40vh);
   aspect-ratio: 1/1;
-  left: auto;
   z-index: 100;
-  transform-style: preserve-3d;
-  perspective: 1000px;
   pointer-events: none;
-  transition: transform 0.3s ease; /* Smooth transition for top position */
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
+  transform-style: preserve-3d;
+  overflow: visible;
 }
 
 .mini-book-img {
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
   height: 100%;
-  width: auto;
-  display: none; /* Hidden by default */
+  display: none;
   transform-origin: left;
   backface-visibility: hidden;
   opacity: 1;
@@ -124,7 +116,7 @@ html {
 
 .flipping-out {
   display: block;
-  z-index: 200; /* Above other images during animation */
+  z-index: 200;
   animation: flip-out 1s forwards;
 }
 
@@ -146,26 +138,22 @@ html {
   }
 }
 
-
 /* Estilos para .pagina */
 .pagina {
-  display: none; /* Hidden by default */
-  position: fixed; /* Fixed positioning to occupy the viewport */
+  display: none;
+  position: absolute; /* Keep relative positioning */
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  padding-top: 50vh;
+  padding-top: 10vh;
   padding-bottom: 100px;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
   box-sizing: border-box;
   opacity: 0;
-  overflow-x: hidden; /* Explicitly hide horizontal overflow */
-  scroll-snap-type: y mandatory; /* Snap scrolling on the Y-axis */
-  scroll-behavior: smooth; /* Smooth scrolling effect */
-  will-change: opacity; /* Hint for performance */
+  overflow-x: hidden;
+  will-change: opacity;
   animation-fill-mode: forwards;
 }
 .pagina > * {
@@ -272,8 +260,7 @@ html {
 }
 
 @keyframes deslizando {
-  0%,
-  100% {
+  0%, 100% {
       transform: translateX(-5px);
   }
   75% {
@@ -287,8 +274,7 @@ html {
 }
 
 @keyframes flecheando {
-  0%,
-  100% {
+  0%, 100% {
       transform: scale(1);
   }
   25% {

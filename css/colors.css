@@ -52,6 +52,13 @@
     --silver: #c0c0c0;
 }
 
+body {
+    --brillo: #f3bc6120;
+    --clr: var(--silver);
+    --bck: var(--black);
+    --bck-dark: var(--black-dark);
+}
+
 /* Definición de variables por página */
 .pagina.portada {
     --brillo: #f3bc6120;
@@ -132,10 +139,7 @@
     --bck-dark: var(--sunset-dark);
 }
 
-/* Estilos generales para las páginas */
-.pagina {
-    background: radial-gradient(ellipse at top, var(--bck), var(--bck-dark));
-}
+
 
 .pagina .special {
     background-color: var(--clr);
@@ -158,6 +162,6 @@
     background-color: var(--clr);
 }
 
-.pagina.portada {
-    background: radial-gradient(circle at top, var(--brillo), var(--bck), var(--bck-dark));
+.pagina {
+    background: linear-gradient(to bottom , transparent 0%,var(--bck) 10vh, var(--bck) 10vh,  var(--bck-dark));
 }
