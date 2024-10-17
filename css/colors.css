@@ -163,5 +163,71 @@ body {
 }
 
 .pagina {
-    background: linear-gradient(to bottom , transparent 0%,var(--bck) 10vh, var(--bck) 10vh,  var(--bck-dark));
+    background: linear-gradient(to bottom , var(--bck) 10vh,  var(--bck-dark));
+}
+
+#miniBookWrapper.c0 {
+    --bck: var(--black); /* Portada */
+    --bck-dark: var(--black-dark);
+    --clr: var(--silver);
+}
+#miniBookWrapper.c1 {
+    --bck: var(--plum); /* Miss */
+    --bck-dark: var(--sky-magenta);
+    --clr: #2274a5;
+}
+#miniBookWrapper.c2 {
+    --bck: var(--sunset); /* Rey */
+    --bck-dark: var(--sunset-dark);
+    --clr: var(--deep-rosewood);
+}
+#miniBookWrapper.c3 {
+    --bck: var(--moss-green); /* Jaume */
+    --bck-dark: var(--moss-green-dark);
+    --clr: var(--sunset);
+}
+#miniBookWrapper.c4 {
+    --bck: var(--charcoal-bistre); /* Toro */
+    --bck-dark: var(--charcoal-bistre-dark);
+    --clr: var(--warm-tan-dark);
+}
+#miniBookWrapper.c5 {
+    --bck: var(--warm-tan); /* Luis */
+    --bck-dark: var(--warm-tan-dark);
+    --clr: var(--persian-orange-dark);
+}
+#miniBookWrapper.c6 {
+    --bck: var(--soft-cerulean); /* 1492 */
+    --bck-dark: var(--soft-cerulean-dark);
+    --clr: var(--warm-tan);
+}
+#miniBookWrapper.c7 {
+    --bck: var(--persian-orange); /* Mediterraneo */
+    --bck-dark: var(--persian-orange-dark);
+    --clr: var(--soft-cerulean-dark);
+}
+#miniBookWrapper.c8 {
+    --bck: var(--english-violet); /* Adan */
+    --bck-dark: var(--english-violet-dark);
+    --clr: var(--mantis);
+}
+#miniBookWrapper.c9 {
+    --bck: var(--raisin-black); /* Bruja */
+    --bck-dark: var(--black);
+    --clr: var(--cinnabar);
+}
+#miniBookWrapper.c10 {
+    --bck: var(--silver); /* Francisco */
+    --bck-dark: var(--moss-green);
+    --clr: var(--moss-green-dark);
+}
+#miniBookWrapper.c11 {
+    --bck: var(--moss-green); /* Machomen */
+    --bck-dark: var(--moss-green-dark);
+    --clr: var(--sunset);
+}
+#miniBookWrapper.c12 {
+    --bck: var(--sunset); /* Isabel */
+    --bck-dark: var(--sunset-dark);
+    --clr: var(--deep-rosewood);
 }

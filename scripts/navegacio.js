@@ -17,7 +17,7 @@ export function inici_pagines_amb_animacio() {
         if (isTransitioning) return; // Prevent new transitions if one is in progress
 
         const maxPageIndex = pages.length - 1;
-
+        
         if (direction === 'left' && currentPageIndex > 0) {
             isTransitioning = true;
             const outgoingPageIndex = currentPageIndex;
@@ -37,7 +37,8 @@ export function inici_pagines_amb_animacio() {
                 pages[incomingPageIndex].classList.add('visible');
                 pages[incomingPageIndex].classList.add('fading-in');
                 pages[outgoingPageIndex].classList.add('fading-out');
-
+                miniBookWrapper.classList = `c${currentPageIndex}`;
+                
                 // Listen for the flip-out animation to end
                 setTimeout(() => {
                     // Start flipping in the incoming image
@@ -69,6 +70,8 @@ export function inici_pagines_amb_animacio() {
                 pages[incomingPageIndex].classList.add('visible');
                 pages[incomingPageIndex].classList.add('fading-in');
                 pages[outgoingPageIndex].classList.add('fading-out');
+                miniBookWrapper.classList = `c${currentPageIndex}`;
+
 
                 // Listen for the flip-out animation to end
                 setTimeout(() => {
