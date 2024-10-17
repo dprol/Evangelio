@@ -67,7 +67,7 @@ html {
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-height: 40vh;
+  height: 30vh;
   margin: 0;
   padding: 0;
   align-items: center;
@@ -75,16 +75,18 @@ html {
   transform-style: preserve-3d;
   perspective: 1000px;
   background-color: var(--clr);
-  transition: background-color 1s ease;
-  -webkit-transition : background-color 1s ease;
-  -moz-transition : background-color 1s ease;
-  -o-transition : background-color 1s ease;
+  transition: background-color 1s ease, height 1s ease;
+  -webkit-transition : background-color 1s ease, height 1s ease;
+  -moz-transition : background-color 1s ease, height 1s ease;
+  -o-transition : background-color 1s ease, height 1s ease;
 }
+
 
 /* Mini-Book Styles */
 .mini-book {
   display: flex;
-  width: clamp(20vh, 80vw, 30vh);
+  position: relative;
+  height: clamp(5vh, 80%, 30vh);
   aspect-ratio: 1/1;
   pointer-events: none;
   transition: transform 0.3s ease;

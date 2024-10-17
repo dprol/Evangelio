@@ -159,7 +159,7 @@ body {
 }
 
 .pagina .multimedia {
-    background-color: var(--clr);
+    background: none;
 }
 
 .pagina {
