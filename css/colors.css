@@ -59,88 +59,6 @@ body {
     --bck-dark: var(--black-dark);
 }
 
-/* Definición de variables por página */
-.pagina.portada {
-    --brillo: #f3bc6120;
-    --clr: var(--silver);
-    --bck: var(--black);
-    --bck-dark: var(--black-dark);
-}
-
-.pagina.miss {
-    --clr: #2274a5;
-    --bck: var(--plum);
-    --bck-dark: var(--sky-magenta);
-}
-
-.pagina.rey {
-    --clr: var(--deep-rosewood);
-    --bck: var(--sunset);
-    --bck-dark: var(--sunset-dark);
-}
-
-.pagina.jaume {
-    --clr: var(--sunset);
-    --bck: var(--moss-green);
-    --bck-dark: var(--moss-green-dark);
-}
-
-.pagina.toro {
-    --clr: var(--warm-tan-dark);
-    --bck: var(--charcoal-bistre);
-    --bck-dark: var(--charcoal-bistre-dark);
-}
-
-.pagina.luis {
-    --clr: var(--persian-orange-dark);
-    --bck: var(--warm-tan);
-    --bck-dark: var(--warm-tan-dark);
-}
-
-.pagina._1492 {
-    --clr: var(--warm-tan);
-    --bck: var(--soft-cerulean);
-    --bck-dark: var(--soft-cerulean-dark);
-}
-
-.pagina.mediterraneo {
-    --clr: var(--soft-cerulean-dark);
-    --bck: var(--persian-orange);
-    --bck-dark: var(--persian-orange-dark);
-}
-
-.pagina.adan {
-    --clr: var(--mantis);
-    --bck: var(--english-violet);
-    --bck-dark: var(--english-violet-dark);
-}
-
-.pagina.bruja {
-    --clr: var(--cinnabar);
-    --bck: var(--raisin-black);
-    --bck-dark: var(--black);
-}
-
-.pagina.francisco {
-    --clr: var(--moss-green-dark);
-    --bck: var(--silver);
-    --bck-dark: var(--moss-green);
-}
-
-.pagina.machomen {
-    --clr: var(--sunset);
-    --bck: var(--moss-green);
-    --bck-dark: var(--moss-green-dark);
-}
-
-.pagina.isabel {
-    --clr: var(--deep-rosewood);
-    --bck: var(--sunset);
-    --bck-dark: var(--sunset-dark);
-}
-
-
-
 .pagina .special {
     background-color: var(--clr);
     color: var(--bck);
@@ -162,71 +80,67 @@ body {
     background: none;
 }
 
-.pagina {
-    background: linear-gradient(to bottom , var(--bck) 10vh,  var(--bck-dark));
-}
-
-#miniBookWrapper.c0 {
+.c0 {
     --bck: var(--black); /* Portada */
     --bck-dark: var(--black-dark);
     --clr: var(--silver);
 }
-#miniBookWrapper.c1 {
-    --bck: var(--plum); /* Miss */
-    --bck-dark: var(--sky-magenta);
-    --clr: #2274a5;
+.c1 {
+    --bck-dark: var(--deep-rosewood); /* Miss */
+    --bck: var(--cardinal);
+    --clr: var(--hunyadi-yellow);
 }
-#miniBookWrapper.c2 {
+.c2 {
     --bck: var(--sunset); /* Rey */
     --bck-dark: var(--sunset-dark);
     --clr: var(--deep-rosewood);
 }
-#miniBookWrapper.c3 {
+.c3 {
     --bck: var(--moss-green); /* Jaume */
     --bck-dark: var(--moss-green-dark);
     --clr: var(--sunset);
 }
-#miniBookWrapper.c4 {
-    --bck: var(--charcoal-bistre); /* Toro */
-    --bck-dark: var(--charcoal-bistre-dark);
+.c4 {
+    --bck-dark: var(--charcoal-bistre); /* Toro */
+    --bck: var(--charcoal-bistre-dark);
     --clr: var(--warm-tan-dark);
 }
-#miniBookWrapper.c5 {
+.c5 {
     --bck: var(--warm-tan); /* Luis */
     --bck-dark: var(--warm-tan-dark);
     --clr: var(--persian-orange-dark);
 }
-#miniBookWrapper.c6 {
+.c6 {
     --bck: var(--soft-cerulean); /* 1492 */
     --bck-dark: var(--soft-cerulean-dark);
     --clr: var(--warm-tan);
 }
-#miniBookWrapper.c7 {
+.c7 {
     --bck: var(--persian-orange); /* Mediterraneo */
     --bck-dark: var(--persian-orange-dark);
     --clr: var(--soft-cerulean-dark);
 }
-#miniBookWrapper.c8 {
+.c8 {
     --bck: var(--english-violet); /* Adan */
     --bck-dark: var(--english-violet-dark);
     --clr: var(--mantis);
 }
-#miniBookWrapper.c9 {
-    --bck: var(--raisin-black); /* Bruja */
+.c9 {
+    --bck: var(--black); /* Bruja */
     --bck-dark: var(--black);
     --clr: var(--cinnabar);
 }
-#miniBookWrapper.c10 {
+.c10 {
     --bck: var(--silver); /* Francisco */
     --bck-dark: var(--moss-green);
     --clr: var(--moss-green-dark);
 }
-#miniBookWrapper.c11 {
+.c11 {
     --bck: var(--moss-green); /* Machomen */
     --bck-dark: var(--moss-green-dark);
     --clr: var(--sunset);
 }
-#miniBookWrapper.c12 {
+.c12 {
     --bck: var(--sunset); /* Isabel */
     --bck-dark: var(--sunset-dark);
     --clr: var(--deep-rosewood);

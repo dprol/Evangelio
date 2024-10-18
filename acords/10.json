@@ -3,14 +3,26 @@
     "paragraph": [
       [
         {
-          "text": "Hoy cuando ha caído el sol en toda la ciudad",
+          "text": "Hoy cuando ha caído el sol",
           "chord": "C"
         }
       ],
       [
         {
-          "text": "El espectro de Francisco ha vuelto a despertar",
+          "text": "en toda la ciudad",
+          "chord": ""
+        }
+      ],
+      [
+        {
+          "text": "El espectro de Francisco",
           "chord": "F"
+        }
+      ],
+      [
+        {
+          "text": "ha vuelto a despertar",
+          "chord": ""
         }
       ]
     ]
@@ -19,8 +31,14 @@
     "paragraph": [
       [
         {
-          "text": "Dicen que lo han visto cerca de la catedral",
+          "text": "Dicen que lo han visto",
           "chord": "C"
+        }
+      ],
+      [
+        {
+          "text": "cerca de la catedral",
+          "chord": ""
         }
       ],
       [
@@ -29,8 +47,14 @@
           "chord": ""
         },
         {
-          "text": "el Palacio de las Cortes, propagando el mal",
+          "text": "el Palacio de las Cortes,",
           "chord": "F"
+        }
+      ],
+      [
+        {
+          "text": "propagando el mal",
+          "chord": ""
         }
       ]
     ]
@@ -99,13 +123,13 @@
           "chord": ""
         },
         {
-          "text": "ha dao’ cuenta que su España",
+          "text": "ha dao’ cuenta ",
           "chord": "C"
         }
       ],
       [
         {
-          "text": "No es la que soñó",
+          "text": "que su España no es la que soñó",
           "chord": ""
         }
       ],
@@ -115,8 +139,14 @@
           "chord": ""
         },
         {
-          "text": "hora hay rojos, lilas y arcoiris como yo",
+          "text": "hora hay rojos, lilas ",
           "chord": "F"
+        }
+      ],
+      [
+        {
+          "text": "y arcoiris como yo",
+          "chord": ""
         }
       ]
     ]
@@ -153,14 +183,26 @@
     "paragraph": [
       [
         {
-          "text": "Ya casi es de día y Paco vuelve a su ataúd",
+          "text": "Ya casi es de día ",
           "chord": "C"
         }
       ],
       [
         {
-          "text": "Dormirá 600 días y volverá a la luz.",
+          "text": "y Paco vuelve a su ataúd",
+          "chord": ""
+        }
+      ],
+      [
+        {
+          "text": "Dormirá 600 días ",
           "chord": "F"
+        }
+      ],
+      [
+        {
+          "text": "y volverá a la luz.",
+          "chord": ""
         }
       ]
     ]
@@ -169,8 +211,14 @@
     "paragraph": [
       [
         {
-          "text": "Y cae en un sueño agridulce de sabor",
+          "text": "Y cae en un sueño ",
           "chord": "C"
+        }
+      ],
+      [
+        {
+          "text": "agridulce de sabor",
+          "chord": ""
         }
       ],
       [

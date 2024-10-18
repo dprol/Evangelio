@@ -67,8 +67,12 @@
       ],
       [
         {
-          "text": "Peleando",
+          "text": "Pele",
           "chord": ""
+        },
+        {
+          "text": "ando",
+          "chord": "G"
         }
       ],
       [
@@ -169,7 +173,11 @@
       ],
       [
         {
-          "text": "Está can",
+          "text": "Es",
+          "chord": ""
+        },
+        {
+          "text": "tá can",
           "chord": "F"
         },
         {
@@ -379,11 +387,11 @@
       ],
       [
         {
-          "text": "Y por su ",
+          "text": "Y por su haz",
           "chord": ""
         },
         {
-          "text": "hazaña",
+          "text": "aña",
           "chord": "C"
         }
       ]

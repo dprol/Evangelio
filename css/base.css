@@ -1,11 +1,11 @@
-/* Reset básico */
+/* Reset */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Fuentes personalizadas */
+/* Custom Font */
 @font-face {
   font-family: "MyFont";
   src: url("Cristone.ttf") format("truetype");
@@ -13,7 +13,7 @@
   font-style: normal;
 }
 
-/* Variables CSS */
+/* CSS Variables */
 :root {
   --black-dark: #000000;
   --silver: #c0c0c0;
@@ -31,84 +31,126 @@
   }
 }
 
-/* Estilos para html y body */
+/* Global Styles */
 html, body {
   font-family: "Schibsted Grotesk", sans-serif;
-  background: var(--black-dark);
+  background-color: var(--black-dark);
   height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  overflow-y: auto; /* Body is scrollable */
   width: 100%;
-  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto; 
   position: relative;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
 }
 
 body {
-  background: radial-gradient(circle at top, var(--brillo), var(--bck), var(--bck-dark));
+  transition: background-color 1s, height 1s;
+  background: var(--bck);
 }
 
-html {
-  height: -webkit-fill-available;
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allows interaction with elements below */
+  z-index: 9999; /* Ensure it sits on top */
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0.3) 100%);  /* Two gradients: one for left-right and another for top-bottom */
 }
 
-/* Wrapper */
 #wrapper {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin: 0;
-  padding: 0;
   position: relative;
 }
 
-#miniBookWrapper {
+/* Book Wrapper */
+#bookWrapper {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 30vh;
-  margin: 0;
-  padding: 0;
-  align-items: center;
+  height: 50vh;
   justify-content: center;
-  transform-style: preserve-3d;
+  align-items: center;
   perspective: 1000px;
-  background-color: var(--clr);
-  transition: background-color 1s ease, height 1s ease;
-  -webkit-transition : background-color 1s ease, height 1s ease;
-  -moz-transition : background-color 1s ease, height 1s ease;
-  -o-transition : background-color 1s ease, height 1s ease;
+  background-color: var(--bck);
+  transition: background-color 1s;
 }
 
+/* Arrows */
+.arrow {
+  position: absolute;
+  top: 50%;
+  font-size: 2rem;
+  color: var(--bck-dark);
+  cursor: pointer;
+  opacity: 0.7;
+  z-index: 999;
+  user-select: none;
+  transition: color 1s;
+}
 
-/* Mini-Book Styles */
-.mini-book {
+.arrow-left {
+  left: 2%;
+  animation: arrowBounceLeft 1.5s infinite;
+}
+
+.arrow-right {
+  right: 2%;
+  animation: arrowBounceRight 1.5s infinite;
+}
+
+@media (min-width: 1024px) {
+  .arrow {
+    font-size: 2rem;
+  }
+}
+
+/* Arrow Bounce Animations */
+@keyframes arrowBounceLeft {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+}
+
+@keyframes arrowBounceRight {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-4px);
+  }
+}
+
+/* Book Styles */
+.book {
   display: flex;
   position: relative;
-  height: clamp(5vh, 80%, 30vh);
+  height: clamp(20vh, 80%, 40vh);
   aspect-ratio: 1/1;
-  pointer-events: none;
-  transition: transform 0.3s ease;
-  box-shadow: 0 0 3vh rgba(255, 255, 255, 0.2);
   transform-style: preserve-3d;
-  overflow: visible;
+  box-shadow: 0 0 5vh rgba(255, 255, 255, 0.3);
+  transition: box-shadow 1s;
 }
 
-.mini-book-img {
+.book-img {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: none;
-  transform-origin: left;
   backface-visibility: hidden;
+  transform-origin: left;
   opacity: 1;
+  display: none;
 }
 
-/* State Classes */
-.mini-book-img.visible {
+.book-img.visible {
   display: block;
   transform: rotateY(0deg);
 }
@@ -116,13 +158,13 @@ html {
 /* Flip Animations */
 .flipping-in {
   display: block;
-  animation: flip-in 1s ease forwards;
+  animation: flip-in 1s forwards;
 }
 
 .flipping-out {
   display: block;
   z-index: 200;
-  animation: flip-out 1s ease forwards;
+  animation: flip-out 1s forwards;
 }
 
 @keyframes flip-in {
@@ -143,103 +185,93 @@ html {
   }
 }
 
-
-
-/* Estilos para .pagina */
+/* Page Styles */
 .pagina {
-  display: none;
-  position: absolute; /* Keep relative positioning */
+  position: absolute;
   top: 0;
   width: 100%;
-  padding-top: 5vh;
-  padding-bottom: 100px;
+  padding: 5vh 0 100px;
+  display: none;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
   box-sizing: border-box;
-  opacity: 0;
-  overflow-x: hidden;
-  will-change: opacity;
   animation-fill-mode: forwards;
+  opacity: 0;
 }
 
-/* Children elements margin */
 .pagina > * {
   margin: 0 var(--padding-1);
 }
 
-/* Visible page styles */
 .pagina.visible {
   display: flex;
   z-index: 10;
-  animation: fadeIn 1s ease forwards;
+  animation: fadeIn 1s forwards;
 }
 
 .pagina.visible > * {
-  animation: blurIn 1s ease forwards;
+  animation: blurIn 1s forwards;
 }
 
-/* Fading-out page styles */
 .pagina.visible.fading-out {
-  animation: fadeOut 1s ease forwards;
+  animation: fadeOut 1s forwards;
 }
 
 .pagina.visible.fading-out > * {
-  animation: blurOut 1s ease forwards;
+  animation: blurOut 1s forwards;
 }
 
 @keyframes fadeIn {
   0% {
-      opacity: 0;
+    opacity: 0;
   }
   100% {
-      opacity: 1;
+    opacity: 1;
   }
 }
 
 @keyframes fadeOut {
   0% {
-      opacity: 1;
+    opacity: 1;
   }
   100% {
-      opacity: 0;
+    opacity: 0;
   }
 }
 
 @keyframes blurIn {
   0% {
-      filter: blur(40px);
+    filter: blur(20px);
   }
   100% {
-      filter: blur(0);
+    filter: blur(0);
   }
 }
 
 @keyframes blurOut {
   0% {
-      filter: blur(0);
+    filter: blur(0);
   }
   100% {
-      filter: blur(40px);
+    filter: blur(20px);
   }
 }
 
-/* Estilos para .mini-book-page */
-.mini-book-page {
+/* Book Page */
+.book-page {
   position: relative;
-  margin: 0 var(--padding-1);
   width: min(80%, 400px);
   height: auto;
   object-fit: cover;
-  opacity: 1;
+  margin: 0 var(--padding-1) 4rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  margin-bottom: 4rem;
 }
 
-/* Otros estilos generales */
+/* General Styles */
 .separator {
-  min-height: 1px;
   width: 80%;
+  min-height: 1px;
   margin: 1vh 0;
 }
 
@@ -257,43 +289,45 @@ html {
   padding: 0.2rem 0.4rem;
 }
 
+/* Animations */
 .deslizad {
   padding: 10px;
-  animation: deslizando 2s ease infinite;
+  animation: deslizando 2s infinite;
 }
 
 @keyframes deslizando {
   0%, 100% {
-      transform: translateX(-5px);
+    transform: translateX(-5px);
   }
   75% {
-      transform: translateX(5px);
+    transform: translateX(5px);
   }
 }
 
 .flechas {
   padding: 10px;
-  animation: flecheando 2s ease infinite;
+  animation: flecheando 2s infinite;
 }
 
 @keyframes flecheando {
   0%, 100% {
-      transform: scale(1);
+    transform: scale(1);
   }
   25% {
-      transform: scale(1.2);
+    transform: scale(1.2);
   }
 }
 
+
+/* Links and Multimedia */
 .link-icon-container {
   display: flex;
-  flex-direction: row;
   gap: 2rem;
 }
 
 .link-icon {
   font-size: 2rem;
-  transition: transform 0.7s ease;
+  transition: transform 0.7s;
 }
 
 .link-icon:hover {
@@ -303,12 +337,10 @@ html {
 .multimedia {
   display: flex;
   flex-direction: column;
-  margin: 0;
-  padding: 0;
+  align-items: center;
+  padding: 2rem 0;
   margin-top: 2vh;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
   gap: 1rem;
   width: 100%;
-  align-items: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }

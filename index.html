@@ -11,7 +11,6 @@
         <link rel="stylesheet" href="css/colors.css" />
         <link rel="stylesheet" href="css/base.css" />
         <link rel="stylesheet" href="css/styles.css" />
-        <link rel="stylesheet" href="css/portada.css" />
 
         <link
             href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=New+Amsterdam&display=swap"
@@ -37,91 +36,99 @@
     </head>
     <body>
         <!-- Your content goes here (pages, header, etc.) -->
-        <div id="miniBookWrapper" class="mini-book-wrapper">
-            <div id="mini-book" class="mini-book">
+        <div id="bookWrapper" class="book-wrapper">
+            <div id="arrowLeft" class="fas fa-chevron-left arrow arrow-left arrow-deslizando"></div>
+            <div id="arrowRight" class="fas fa-chevron-right arrow arrow-right arrow-deslizando"></div>
+            <div id="book" class="book">
                 <img
                     src="covers/resized/00_500.jpg"
                     alt="Portada"
-                    class="mini-book-img visible"
+                    class="book-img visible"
                     style="z-index: 112"
                 />
                 <img
                     src="covers/resized/06_500.jpg"
                     alt="Miss España"
-                    class="mini-book-img"
+                    class="book-img"
                     style="z-index: 111"
                 />
                 <img
                     src="covers/resized/07_500.jpg"
                     alt="Rey"
-                    class="mini-book-img"
+                    class="book-img"
                     style="z-index: 110"
                 />
                 <img
                     src="covers/resized/01_500.jpg"
                     alt="Jaume"
-                    class="mini-book-img"
+                    class="book-img"
                     style="z-index: 109"
                 />
                 <img
                     src="covers/resized/03_500.jpg"
                     alt="Toro"
-                    class="mini-book-img"
+                    class="book-img"
                     style="z-index: 108"
                 />
                 <img
                     src="covers/resized/02_500.jpg"
                     alt="Luis"
-                    class="mini-book-img"
+                    class="book-img"
                     style="z-index: 107"
                 />
                 <img
                     src="covers/resized/05_500.jpg"
                     alt="1492"
-                    class="mini-book-img"
+                    class="book-img"
                     style="z-index: 106"
                 />
                 <img
                     src="covers/resized/08_500.jpg"
                     alt="Mediterraneo"
-                    class="mini-book-img"
+                    class="book-img"
                     style="z-index: 105"
                 />
                 <img
                     src="covers/resized/04_500.jpg"
                     alt="Adan"
-                    class="mini-book-img"
+                    class="book-img"
                     style="z-index: 104"
                 />
                 <img
                     src="covers/resized/010_500.jpg"
                     alt="La bruja"
-                    class="mini-book-img"
+                    class="book-img"
                     style="z-index: 103"
                 />
                 <img
                     src="covers/resized/011_500.jpg"
                     alt="Francisco"
-                    class="mini-book-img"
+                    class="book-img"
                     style="z-index: 102"
                 />
                 <img
                     src="covers/resized/09_500.jpg"
                     alt="Machomen"
-                    class="mini-book-img"
+                    class="book-img"
                     style="z-index: 101"
                 />
                 <img
                     src="covers/resized/012_500.jpg"
                     alt="Isabel"
-                    class="mini-book-img"
+                    class="book-img"
+                    style="z-index: 100"
+                />
+                <img
+                    src="miquel.jpeg"
+                    alt="Isabel"
+                    class="book-img"
                     style="z-index: 100"
                 />
             </div>
         </div>
         <div id="wrapper" class="wrapper">
             <!-- Pagina: Portada -->
-            <div class="pagina portada">
+            <div class="pagina c0">
                 <p class="plain-text centered" style="font-weight: bold">
                     ¡Bienvenid@s a la web oficial de ñ!
                 </p>
@@ -155,18 +162,13 @@
             </div>
 
             <!-- Pagina: Miss España -->
-            <div class="pagina miss">
+            <div class="pagina c1">
                 <p class="plain-text">
-                    <span class="special">“Miss España”</span> pone letra al
-                    himno de España. Es la única canción del disco que
-                    reinterpreta una melodía no original. En este caso, en forma
-                    de bolero-trap.
+                    <span class="special">“Miss España”</span> “Miss España” pone letra al himno de España. Es la única canción del disco que reinterpreta una melodía no original. En este caso, en forma de bolero-trap.
                 </p>
 
                 <p class="plain-text">
-                    La letra es una reflexión sobre la autenticidad, mezclando
-                    la identidad nacional con la identidad de género e invitando
-                    a autodeterminarse y a ser fiel a uno mismo.
+                    La letra es una reflexión sobre la autenticidad, mezclando la identidad nacional con la identidad de género, exaltando la autodeterminación y el ser fiel a uno mismo.
                 </p>
                 <div class="multimedia">
                     <div class="videolyric-container">
@@ -185,7 +187,7 @@
             </div>
 
             <!-- Pagina: Rey -->
-            <div class="pagina rey">
+            <div class="pagina c2">
                 <p class="plain-text">
                     <span class="special">“¡Es el rey!”</span> es una canción
                     funky sobre un rey que no querría haberlo sido. Más que una
@@ -211,7 +213,7 @@
                     <div class="videolyric-container">
                         <iframe
                             loading="lazy"
-                            src="https://www.youtube.com/embed/s6KNvW4fGBk"
+                            src="https://www.youtube.com/embed/TJvywxg-eeI"
                             frameborder="0"
                             allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture"
                             allowfullscreen
@@ -224,21 +226,13 @@
             </div>
 
             <!-- Pagina: Jaume -->
-            <div class="pagina jaume">
+            <div class="pagina c3">
                 <p class="plain-text">
-                    <span class="special">“Mi bisabuelo Jaume”</span> es la
-                    historia de Jaume Mitjans (bisabuelo de Miquel), quién fue
-                    dado por muerto en la guerra civil española para luego
-                    reaparecer. Miquel se la escribió a su abuela para que
-                    recordase la historia de su padre, pues ya se olvida de las
-                    cosas.
+                    <span class="special">“Mi bisabuelo Jaume”</span> es la historia de Jaume Mitjans (bisabuelo de Miquel), quién fue dado por muerto en la guerra civil española para luego reaparecer. Miquel escribió esa canción a su abuela para que recordase la historia de su padre, pues ya se olvida de las cosas.
                 </p>
 
                 <p class="plain-text">
-                    La canción es un swing alegre que celebra cómo el amor todo
-                    lo vence, a pesar de la guerra o la polarización de los
-                    bandos, y que anima a preservar la memoria histórica,
-                    también la de aquellos que jamás volvieron a casa.
+                    La canción es un swing alegre que celebra cómo el amor todo lo vence, a pesar de la guerra o la polarización de los bandos, y que anima a preservar la memoria histórica, también la de aquellos que jamás volvieron a casa.
                 </p>
                 <div class="multimedia">
                     <!-- Embedded YouTube video -->
@@ -258,7 +252,7 @@
             </div>
 
             <!-- Pagina: Toro -->
-            <div class="pagina toro">
+            <div class="pagina c4">
                 <p class="plain-text">
                     <span class="special">“El toro Olé”</span> es una balada
                     triste sobre un toro que se llama Olé. Cuando lo torean en
@@ -290,7 +284,7 @@
             </div>
 
             <!-- Pagina: Luis -->
-            <div class="pagina luis">
+            <div class="pagina c5">
                 <p class="plain-text">
                     <span class="special">“Luis, sé fuerte”</span> es una suerte
                     de canción rumbera que critica la hipocresía de la
@@ -324,7 +318,7 @@
             </div>
 
             <!-- Pagina: 1492 -->
-            <div class="pagina _1492">
+            <div class="pagina c6">
                 <p class="plain-text">
                     <span class="special">“1492”</span> narra al toque de
                     trompetas caribeñas, ritmos latinos y acordeones marineros
@@ -357,7 +351,7 @@
             </div>
 
             <!-- Pagina: Mediterraneo -->
-            <div class="pagina mediterraneo">
+            <div class="pagina c7">
                 <p class="plain-text">
                     <span class="special">“Mediterráneo”</span> aparenta ser una
                     canción pintoresca y costumbrista sobre un chico que nada en
@@ -390,20 +384,13 @@
             </div>
 
             <!-- Pagina: Adan -->
-            <div class="pagina adan">
+            <div class="pagina c8">
                 <p class="plain-text">
-                    <span class="special">“Adán y Esteban”</span> es un regetón,
-                    y no es arbitrario, pues es la canción más sexual del disco.
-                    En ella Miquel reinterpreta el génesis bíblico y la culpa
-                    judeocristiana, dos hechos que lo han marcado como
-                    no-heterosexual en una familia católica del Opus Dei.
+                    <span class="special">“Adán y Esteban”</span> es un regetón, y no es arbitrario, pues es la canción más sexual del disco. En ella Miquel reinterpreta el génesis bíblico y la culpa judeocristiana, dos hechos que lo han marcado como no-heterosexual en un entorno religioso y conservador.
                 </p>
 
                 <p class="plain-text">
-                    Miquel insiste en que no es ninguna burla a la religión ni
-                    una canción de mal gusto, sino una forma de reivindicar
-                    referentes, reinterpretar las creencias y tratar la
-                    sexualidad sin tapujos.
+                    Miquel insiste en que no es ninguna burla a la religión ni una canción de mal gusto, sino una forma de reivindicar referentes, reinterpretar las creencias y tratar la sexualidad sin tapujos.
                 </p>
                 <div class="multimedia">
                     <!-- Embedded YouTube video -->
@@ -423,20 +410,13 @@
             </div>
 
             <!-- Pagina: La bruja -->
-            <div class="pagina bruja">
+            <div class="pagina c9">
                 <p class="plain-text">
-                    <span class="special">“La bruja”</span> es como una banda
-                    sonora de película. Es la única canción del disco que Miquel
-                    no ha autoproducido. La co-produjo junto con su David
-                    Panades, quien hizo toda la orquestación.
+                    <span class="special">“La bruja”</span> es como una banda sonora de película. Es la única canción del disco que Miquel no ha autoproducido. La co-produjo junto con David Panades, quien hizo toda la orquestación.
                 </p>
 
                 <p class="plain-text">
-                    La letra nos presenta a una mujer a la que queman en la edad
-                    media, acusada de abortar con magia negra. Pero en realidad,
-                    el aborto fue natural. La reflexión indaga en los límites de
-                    juzgar a los demás y sentenciar según nuestras creencias
-                    morales.
+                    La letra nos presenta a una mujer a la que queman en la edad media, acusada de abortar con magia negra. Pero en realidad, el aborto fue natural. La reflexión indaga en los límites de juzgar a los demás y sentenciar según nuestras creencias morales.
                 </p>
                 <div class="multimedia">
                     <!-- Embedded YouTube video -->
@@ -456,7 +436,7 @@
             </div>
 
             <!-- Pagina: Francisco -->
-            <div class="pagina francisco">
+            <div class="pagina c10">
                 <p class="plain-text">
                     <span class="special">“El espectro de Francisco”</span> es
                     una canción tecno y algo psicodélica que contrasta el pasado
@@ -489,7 +469,7 @@
             </div>
 
             <!-- Pagina: Machomen -->
-            <div class="pagina machomen">
+            <div class="pagina c11">
                 <p class="plain-text">
                     <span class="special">“Machomén”</span> está entre el
                     country y el jazz, dos géneros para expresar la tensión de
@@ -521,7 +501,7 @@
             </div>
 
             <!-- Pagina: Isabel -->
-            <div class="pagina isabel" style="z-index: 0">
+            <div class="pagina c12" style="z-index: 0">
                 <p class="plain-text">
                     <span class="special">“Isabel y Fernando”</span> pone fin al
                     disco con un vals lleno de contrastes en la producción y
@@ -553,9 +533,17 @@
 
                 <div id="lyrics-12" class="lyrics-container"></div>
             </div>
-        </div>
-        <script src="scripts/lyrics.js"></script>
+            <div class="pagina c0" style="z-index: 0">
+                <p class="plain-text">
+                    <span class="special">“Gracias”</span> por llegar hasta aqui, porque estoy hasta la polla de hacer la web.
+                </p>
 
-        <script type="module" src="scripts/controlador.js"></script>
+                
+            </div>
+        </div>
+
+        <script src="scripts/lyrics.js"></script>
+        <script src="scripts/navegacio.js"></script>
+
     </body>
 </html>
