@@ -179,12 +179,12 @@
           "chord": "C"
         },
         {
-          "text": "mueve los pies ",
+          "text": "mueve los ",
           "chord": "E"
         },
         {
-          "text": "Am",
-          "chord": "E"
+          "text": "pies ",
+          "chord": "Am"
         }
       ],
       [
@@ -197,8 +197,12 @@
           "chord": "C"
         },
         {
-          "text": "trarse como es",
+          "text": "trarse como ",
           "chord": "G"
+        },
+        {
+          "text": "es",
+          "chord": "C"
         }
       ]
     ]
@@ -513,12 +517,12 @@
           "chord": "F"
         },
         {
-          "text": "mo es ",
+          "text": "mo ",
           "chord": "C"
         },
         {
-          "text": "G",
-          "chord": "C"
+          "text": "es ",
+          "chord": "G"
         }
       ],
       [
