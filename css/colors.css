@@ -77,18 +77,18 @@ body {
 }
 
 .pagina .multimedia {
-    background: none;
+    background: var(--clr);
 }
 
 .c0 {
-    --bck: var(--black); /* Portada */
+    --bck: var(--warm-tan); /* Portada */
     --bck-dark: var(--black-dark);
-    --clr: var(--silver);
+    --clr: var(--dark-van-dyke);
 }
 .c1 {
-    --bck-dark: var(--deep-rosewood); /* Miss */
-    --bck: var(--cardinal);
-    --clr: var(--hunyadi-yellow);
+    --bck-dark: #004777; /* Miss */
+    --bck: #E6B2DD;
+    --clr: #004777;
 }
 .c2 {
     --bck: var(--sunset); /* Rey */

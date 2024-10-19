@@ -84,12 +84,16 @@ body::before {
   position: absolute;
   top: 50%;
   font-size: 2rem;
-  color: var(--bck-dark);
+  color: var(--clr);
   cursor: pointer;
   opacity: 0.7;
   z-index: 999;
   user-select: none;
   transition: color 1s;
+  -webkit-tap-highlight-color: transparent; /* Remove tap highlight on iOS */
+  outline: none; /* Remove focus outline */
+  -webkit-touch-callout: none; /* Disable long press menu */
+  user-select: none; /* Disable text selection */
 }
 
 .arrow-left {
@@ -131,10 +135,13 @@ body::before {
 .book {
   display: flex;
   position: relative;
-  height: clamp(20vh, 80%, 40vh);
+  height: clamp(20vh, 70%, 40vh);
   aspect-ratio: 1/1;
   transform-style: preserve-3d;
-  box-shadow: 0 0 5vh rgba(255, 255, 255, 0.3);
+  animation: come-in 1s forwards;
+  box-shadow: 
+  0 5vh 10vh rgba(0, 0, 0, 0.5),   /* Deep shadow for floating effect */
+  0 0 5vh rgba(255, 255, 255, 0.4); /* Softer glow around the object */
   transition: box-shadow 1s;
 }
 
@@ -222,6 +229,10 @@ body::before {
   animation: blurOut 1s forwards;
 }
 
+.pagina.portada {
+  padding-top: 0;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -291,13 +302,13 @@ body::before {
 
 /* Animations */
 .deslizad {
-  padding: 10px;
+  padding: 0 10px;
   animation: deslizando 2s infinite;
 }
 
 @keyframes deslizando {
   0%, 100% {
-    transform: translateX(-5px);
+    transform: translateX(-2px);
   }
   75% {
     transform: translateX(5px);
@@ -305,8 +316,9 @@ body::before {
 }
 
 .flechas {
-  padding: 10px;
+  padding: 0 10px;
   animation: flecheando 2s infinite;
+
 }
 
 @keyframes flecheando {
