@@ -96,13 +96,18 @@ body::before {
   user-select: none; /* Disable text selection */
 }
 
+.arrow.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
 .arrow-left {
-  left: 2%;
+  left: 1rem;
   animation: arrowBounceLeft 1.5s infinite;
 }
 
 .arrow-right {
-  right: 2%;
+  right: 1rem;
   animation: arrowBounceRight 1.5s infinite;
 }
 

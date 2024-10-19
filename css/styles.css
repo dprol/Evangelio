@@ -176,3 +176,19 @@ h3 {
     align-items: start;
     margin-right: 0;
 }
+
+.acords-amagats .chord {
+    display: none;
+}
+
+.bt-acords {
+    appearance: none;
+    font-family: "Schibsted Grotesk", sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--bck);
+    background-color: var(--clr);
+    border: none;
+    box-shadow: 0 0 5vh rgba(0, 0, 0, 0.5);
+    padding: 0.5rem 1rem;
+}

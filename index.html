@@ -37,7 +37,7 @@
     <body class="c0">
         <!-- Your content goes here (pages, header, etc.) -->
         <div id="bookWrapper" class="book-wrapper">
-            <div id="arrowLeft" class="fas fa-chevron-left arrow arrow-left arrow-deslizando"></div>
+            <div id="arrowLeft" class="fas fa-chevron-left arrow arrow-left arrow-deslizando disabled"></div>
             <div id="arrowRight" class="fas fa-chevron-right arrow arrow-right arrow-deslizando"></div>
             <div id="book" class="book">
                 <img
@@ -145,11 +145,11 @@
 
                 <p class="plain-text">
                     Cada canción es un cuento y trata un tema distinto.
-                    Desliza<i class="fa-solid fa-hand deslizad"></i> la portada
+                    <span style="font-weight: 900;">Desliza<i class="fa-solid fa-hand deslizad"></i> la portada
                      o usa las flechas del teclado
                     <i class="fa-solid fa-arrow-left flechas"></i
                     ><i class="fa-solid fa-arrow-right flechas"></i> para
-                    descrubrirlos.
+                    descrubrirlos.</span>
                 </p>
                 <div
                     class="multimedia"
@@ -164,7 +164,7 @@
             <!-- Pagina: Miss España -->
             <div class="pagina c1">
                 <p class="plain-text">
-                    <span class="special">“Miss España”</span> “Miss España” pone letra al himno de España. Es la única canción del disco que reinterpreta una melodía no original. En este caso, en forma de bolero-trap.
+                    <span class="special">“Miss España”</span> pone letra al himno de España. Es la única canción del disco que reinterpreta una melodía no original. En este caso, en forma de bolero-trap.
                 </p>
 
                 <p class="plain-text">
@@ -174,7 +174,7 @@
                     <div class="videolyric-container">
                         <iframe
                             loading="lazy"
-                            src="https://www.youtube.com/embed/s6KNvW4fGBk"
+                            src="https://www.youtube.com/embed/Ghto2b1km2c"
                             frameborder="0"
                             allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture"
                             allowfullscreen
@@ -182,8 +182,8 @@
                         ></iframe>
                     </div>
                 </div>
-
-                <div id="lyrics-1" class="lyrics-container"></div>
+                <button class="bt-acords" data-id="1">Mostrar acordes</button>
+                <div id="lyrics-1" class="lyrics-container acords-amagats"></div>
             </div>
 
             <!-- Pagina: Rey -->
@@ -501,7 +501,7 @@
             </div>
 
             <!-- Pagina: Isabel -->
-            <div class="pagina c12" style="z-index: 0">
+            <div class="pagina c12">
                 <p class="plain-text">
                     <span class="special">“Isabel y Fernando”</span> pone fin al
                     disco con un vals lleno de contrastes en la producción y
@@ -533,7 +533,7 @@
 
                 <div id="lyrics-12" class="lyrics-container"></div>
             </div>
-            <div class="pagina c0" style="z-index: 0">
+            <div class="pagina c13">
                 <p class="plain-text">
                     <span class="special">“Gracias”</span> por llegar hasta aqui, porque estoy hasta la polla de hacer la web.
                 </p>

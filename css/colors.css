@@ -145,3 +145,8 @@ body {
     --bck-dark: var(--sunset-dark);
     --clr: var(--deep-rosewood);
 }
+.c13 {
+    --bck: var(--warm-tan); /* Portada */
+    --bck-dark: var(--black-dark);
+    --clr: var(--dark-van-dyke);
+}

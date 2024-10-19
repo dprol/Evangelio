@@ -10,6 +10,9 @@ const arrowRight = document.getElementById('arrowRight');
 
 const header = document.getElementById('header');
 
+const botonsAcords = document.querySelectorAll('.bt-acords');
+
+
 let currentPageIndex = 0;
 pages[currentPageIndex].classList.add('visible');
 bookImages[currentPageIndex].classList.add('visible');
@@ -81,6 +84,40 @@ function scrollByDirection(direction) {
             isTransitioning = false;
 
             }, 900);
+    }
+    else if (direction === 'right' && currentPageIndex === maxPageIndex) {
+        isTransitioning = true;
+        const outgoingPageIndex = currentPageIndex;
+        const incomingPageIndex = 0;
+        currentPageIndex = incomingPageIndex;
+
+            const outgoingImage = bookImages[outgoingPageIndex];
+            const incomingImage = bookImages[incomingPageIndex];
+
+            // Start flipping out the outgoing image
+            incomingImage.classList.add('visible');
+            incomingImage.classList.add('flipping-in');
+            pages[incomingPageIndex].classList.add('visible');
+            pages[incomingPageIndex].classList.add('fading-in');
+            pages[outgoingPageIndex].classList.add('fading-out');
+
+            document.body.classList.remove(`c${outgoingPageIndex}`);
+            document.body.classList.add(`c${incomingPageIndex}`);
+            
+            // Listen for the flip-out animation to end
+            setTimeout(() => {
+                // Start flipping in the incoming image
+                outgoingImage.classList.remove('visible');
+                incomingImage.classList.remove('flipping-in');
+                pages[outgoingPageIndex].classList.remove('visible', 'fading-out');
+                isTransitioning = false;
+            }, 900);
+    }
+    if (currentPageIndex === 0) {
+        arrowLeft.classList.add('disabled');
+    }
+    else {
+        arrowLeft.classList.remove('disabled');
     }
 }
 
@@ -191,6 +228,14 @@ function initializeMiniBook() {
         }
     });
 }
+
+
+botonsAcords.forEach((bt) => {
+    bt.addEventListener('click', (e) => {
+        document.getElementById(`lyrics-${bt.getAttribute("data-id")}`).classList.toggle('acords-amagats');
+    });
+});
+
 
 initializeMiniBook();
 handleSwipeGestures();
