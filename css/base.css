@@ -5,14 +5,6 @@
   padding: 0;
 }
 
-/* Custom Font */
-@font-face {
-  font-family: "MyFont";
-  src: url("Cristone.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
 /* CSS Variables */
 :root {
   --black-dark: #000000;
@@ -69,8 +61,8 @@ body::before {
 
 /* Book Wrapper */
 #bookWrapper {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 2rem 1fr 2rem;
   height: 50vh;
   justify-content: center;
   align-items: center;
@@ -84,8 +76,7 @@ body::before {
 
 /* Arrows */
 .arrow {
-  position: absolute;
-  top: 50%;
+  position: relative;
   font-size: 2rem;
   color: var(--clr);
   cursor: pointer;
@@ -151,6 +142,8 @@ body::before {
   width: clamp(20vh, 70vw, 40vh);
   aspect-ratio: 1/1;
   transform-style: preserve-3d;
+  align-self: center;
+  justify-self: center;
   animation: come-in 1s forwards;
   box-shadow: 
   0 5vh 10vh rgba(0, 0, 0, 0.5),   /* Deep shadow for floating effect */
@@ -217,8 +210,7 @@ body::before {
 
 /* Page Styles */
 .pagina {
-  position: absolute;
-  top: 0;
+  position: relative;
   width: 100%;
   padding: 5vh 0 100px;
   display: none;
@@ -237,19 +229,19 @@ body::before {
 .pagina.visible {
   display: flex;
   z-index: 10;
-  animation: fadeIn 1s forwards;
+  animation: fadeIn 0.5s forwards;
 }
 
 .pagina.visible > * {
-  animation: blurIn 1s forwards;
+  animation: blurIn 0.5s forwards;
 }
 
 .pagina.visible.fading-out {
-  animation: fadeOut 1s forwards;
+  animation: fadeOut 0.5s forwards;
 }
 
 .pagina.visible.fading-out > * {
-  animation: blurOut 1s forwards;
+  animation: blurOut 0.5s forwards;
 }
 
 .pagina.portada {
@@ -325,16 +317,16 @@ body::before {
 
 /* Animations */
 .deslizad {
-  padding: 0 10px;
+  padding: 0 16px;
   animation: deslizando 2s infinite;
 }
 
 @keyframes deslizando {
   0%, 100% {
-    transform: translateX(-2px);
+    transform: translateX(-6px);
   }
   75% {
-    transform: translateX(5px);
+    transform: translateX(10px);
   }
 }
 
@@ -380,26 +372,234 @@ body::before {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.header {
-  position: sticky;
+.header-indicator {
+  position: relative;
   top: 0;
   left: 0;
+  width: 0;
+  height: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  transition: width 1s ease;
+}
+
+/* Base styles for h1, h2, h3, and p */
+h1, h2, h3, p {
+  width: auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  box-sizing: border-box;
+}
+
+p {
+  color: var(--silver-half);
+  font-size: 1rem;
+  line-height: 1.6rem;
+  font-weight: 400;
+  text-align: left;
+  margin-top: 0;
+  margin-bottom: 0;
+
+}
+
+h1 {
+  background: radial-gradient(ellipse at top right, var(--silver-half), var(--silver));
+  background-size: 100% auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  font-size: 1.8rem;
+  line-height: 2rem;
+  margin-top: 1rem;
+  text-align: center;
+
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+h1.on-screen {
+  opacity: 1;
+}
+
+h2 {
+  background: radial-gradient(ellipse at top right, var(--silver-half), var(--silver));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  margin-top: 1rem;
+
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+h2.on-screen {
+  opacity: 1;
+}
+
+h3 {
+  color: var(--silver);
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1.4rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+/* Specialized classes */
+
+.icono-contingut {
+  transform: scale(0);
+  transition: transform 1s ease;
+  width: min(15vw, 15vh);
+  height: auto;
+  box-sizing: border-box;
+}
+.icono-contingut.on-screen {
+  transform: scale(1);
+  animation: spin;
+}
+
+.icono-contingut img {
+  height: 100%;
   width: 100%;
-  height: 4rem;
-  background-color: var(--bck-dark);
-  color: var(--clr);
-  z-index: 2;
+}
+
+.separator-container {
+  width: 100%;
+  height: 200px; /* Ajusta la altura según lo que necesites */
+  background: var(--black-dark);
+  margin: 0;
+  padding: 0;
+  position: relative;
+  clip-path: polygon(
+      0% 100%, 5% 90%, 10% 100%, 15% 90%, 20% 100%, 25% 90%, 30% 100%, 
+      35% 90%, 40% 100%, 45% 90%, 50% 100%, 55% 90%, 60% 100%, 
+      65% 90%, 70% 100%, 75% 90%, 80% 100%, 85% 90%, 90% 100%, 95% 90%, 100% 100%
+  );
+}
+/* Container styles */
+.lyrics-container {
+  position: relative;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transition: backgpropund-color 1s ease, color 1s ease;
+  padding-top: 1rem;
+  
 }
-.header .bars {
-  font-size: 2rem;
-  cursor: pointer;
+
+.lyrics-container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in WebKit-based browsers */
+  
 }
-.header .menu {
+
+.videolyric-container {
+  position: relative;
+  padding: 0; /* Remove padding if not needed */
+  box-sizing: border-box;
   display: flex;
-  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  opacity: 1; /* Initially visible */
+  transition: opacity 1s ease-in-out; /* Smooth transition for visibility */
+  width: 100%;
 }
+
+.videolyric-container iframe {
+  width: 100%; /* Responsive width */
+  height: clamp(100px, 40vh, 600px); /* Responsive height */
+}
+
+/* Paragraph and line styles */
+.paragraph {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  padding: 0;
+  align-items: center;
+}
+
+.line {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping */
+  width: fit-content;
+  margin-bottom: 0.5rem;
+  gap: 0;
+  align-items: end;
+}
+
+/* Chord styles */
+.chord {
+  flex-shrink: 0; /* Prevent shrinking */
+  position: relative;
+  padding: 0.2rem 0.4rem;
+  text-align: center;
+  margin: 0;
+  line-height: 1rem;
+  font-size: 0.8rem;
+}
+
+.chord.empty {
+  visibility: hidden;
+}
+
+/* Text and chord container */
+.chord-text {
+  flex: 1; /* Allow text to take remaining space */
+  font-size: 1rem;
+  padding: 0;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.text-with-chord {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-right: 0;
+}
+
+.acords-amagats .chord {
+  display: none;
+}
+
+.bt-acords {
+  appearance: none;
+  font-family: "Schibsted Grotesk", sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--clr);
+  background: none;
+  border: 2px solid var(--clr);
+  box-shadow: 0 0 5vh rgba(255, 255, 255, 0.3);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background 0.5s, color 0.5s;
+}
+.bt-acords.activat {
+  background: var(--clr);
+  color: var(--bck);
+}
+
+.icons-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4rem;
+}
+
+.icons-container .icon {
+  font-size: 2rem;
+  text-decoration: none;
+  color: var(--bck);
+  background: none;
+}
+
+.multimedia-text {
+  font-weight: 900;
+  color: var(--bck) !important;
+}
+
