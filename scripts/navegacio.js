@@ -18,10 +18,10 @@ function initialize() {
     pages[currentPageIndex].classList.add("visible");
     bookImages[currentPageIndex].classList.add("visible");
 
+    // Track page visit event with Umami
+    umami.trackEvent('pagina_visitada', 0);
     let isTransitioning = false;
     let isHorizontalSwipe = false;
-
-    let pageEnterTime = Date.now();
     
     // Function to handle navigation
     function scrollByDirection(direction) {
@@ -146,6 +146,8 @@ function initialize() {
         } else {
             arrowLeft.classList.remove("disabled");
         }
+        // Track page visit event with Umami
+        umami.trackEvent('pagina_visitada', currentPageIndex);
     }
 
     // Scroll left
@@ -271,6 +273,8 @@ function initialize() {
             } else {
                 bt.innerHTML = "Mostrar acordes";
             }
+            // Track page visit event with Umami
+            umami.trackEvent('acords', bt.getAttribute("data-id"));
         });
     });
 
