@@ -1,63 +1,3 @@
-:root {
-    --black-dark-dark: #000306;
-    --black-dark: #000a14;
-    --black: #001021;
-    --bronze: #665d47;
-    --silver: #c0c0c081;
-    --gold: #ebe11fb4;
-    --red: #ff0000;
-    --silver-half: #c0c0c081;
-    --silver-25: #c0c0c033;
-    --silver-5: #c0c0c010;
-
-    --white: #ffffff;
-
-    --raisin-black: #252230ff;
-    --cinnabar: #d25936ff;
-    --english-violet: #413b53ff;
-
-    /* Original Colors */
-    --warm-tan: #d8b892ff;
-    --deep-rosewood: #5a0b0cff;
-    --sunset: #f2c48cff;
-    --dark-van-dyke: #3a2d28ff;
-    --soft-cerulean: #1b768bff;
-    --charcoal-bistre: #2d2523ff;
-    --persian-orange: #df7f49ff;
-    --muted-violet: #7b5f78ff;
-    --english-violet: #553755ff;
-    --moss-green: rgb(110, 120, 91);
-
-    --mantis: #79b473;
-
-    --plum: #f094dc;
-    --sky-magenta: #c969ab;
-
-    /* Darker Shades */
-    --warm-tan-dark: #8f6e56ff; /* Darkened tan */
-    --deep-rosewood-dark: #300506ff; /* Darkened rosewood */
-    --sunset-dark: #8c6b4fff; /* Darkened sunset */
-    --dark-van-dyke-dark: #1b1412ff; /* Darkened van dyke */
-    --soft-cerulean-dark: #0f404cff; /* Darkened cerulean */
-    --charcoal-bistre-dark: #0f0b09ff; /* Darkened charcoal bistre */
-    --persian-orange-dark: #863e2bff; /* Darkened persian orange */
-    --muted-violet-dark: #3f303eff; /* Darkened muted violet */
-    --english-violet-dark: #2c1d2bff; /* Darkened english violet */
-    --moss-green-dark: #434c35ff; /* Darkened moss green */
-
-    --hunyadi-yellow: #f3bc61ff;
-    --cardinal: #ad2f3eff;
-
-    /* Portada */
-    --silver: #c0c0c0;
-}
-
-body {
-    --brillo: #f3bc6120;
-    --clr: var(--silver);
-    --bck: var(--black);
-    --bck-dark: var(--black-dark);
-}
 
 .pagina .special {
     background-color: var(--clr);
@@ -68,85 +8,63 @@ body {
     color: var(--clr);
 }
 
-.pagina .separator {
-    background-color: var(--clr);
-}
-
-.pagina .link-icon {
-    color: var(--bck);
-}
-
-.pagina .multimedia {
+.multimedia {
     background: var(--clr);
 }
 
 .c0 {
-    --bck: var(--warm-tan); /* Portada */
-    --bck-dark: var(--black-dark);
-    --clr: var(--dark-van-dyke);
+    --bck: #d8b892; /* Portada */
+    --clr: #3a2d28;
 }
 .c1 {
-    --bck-dark: #c380b8; /* Miss */
-    --bck: #E6B2DD;
+    --bck: #E6B2DD; /* Miss */
     --clr: #004777;
 }
 .c2 {
-    --bck: var(--sunset); /* Rey */
-    --bck-dark: var(--sunset-dark);
-    --clr: var(--deep-rosewood);
+    --bck: #f2c48c; /* Rey */
+    --clr: #5a0b0c;
 }
 .c3 {
-    --bck: var(--moss-green); /* Jaume */
-    --bck-dark: var(--moss-green-dark);
-    --clr: var(--sunset);
+    --bck: #6e785b; /* Jaume */
+    --clr: #f2c48c;
 }
 .c4 {
-    --bck-dark: var(--charcoal-bistre); /* Toro */
-    --bck: var(--charcoal-bistre-dark);
-    --clr: var(--warm-tan-dark);
+    --bck: #0f0b09; /* Toro */
+    --clr: #8f6e56;
 }
 .c5 {
-    --bck: var(--warm-tan); /* Luis */
-    --bck-dark: var(--warm-tan-dark);
-    --clr: var(--persian-orange-dark);
+    --bck: #d8b892; /* Luis */
+    --clr: #863e2b;
 }
 .c6 {
-    --bck: var(--soft-cerulean); /* 1492 */
-    --bck-dark: var(--soft-cerulean-dark);
-    --clr: var(--warm-tan);
+    --bck: #1b768b; /* 1492 */
+    --clr: #d8b892;
 }
 .c7 {
-    --bck: var(--persian-orange); /* Mediterraneo */
-    --bck-dark: var(--persian-orange-dark);
-    --clr: var(--soft-cerulean-dark);
+    --bck: #df7f49; /* Mediterraneo */
+    --clr: #0f404c;
 }
 .c8 {
-    --bck: var(--english-violet); /* Adan */
-    --bck-dark: var(--english-violet-dark);
-    --clr: var(--mantis);
+    --bck: #553755; /* Adan */
+    --clr: #79b473;
 }
 .c9 {
-    --bck: var(--black); /* Bruja */
-    --bck-dark: var(--black);
-    --clr: var(--cinnabar);
+    --bck: #001021; /* Bruja */
+    --clr: #d25936;
 }
 .c10 {
-    --bck: var(--silver); /* Francisco */
-    --bck-dark: var(--moss-green);
-    --clr: var(--moss-green-dark);
+    --bck: #c0c0c0; /* Francisco */
+    --clr: #434c35;
 }
 .c11 {
-    --bck: var(--moss-green); /* Machomen */
-    --bck-dark: var(--moss-green-dark);
-    --clr: var(--sunset);
+    --bck: #6e785b; /* Machomen */
+    --clr: #f2c48c;
 }
 .c12 {
-    --bck: var(--sunset); /* Isabel */
-    --bck-dark: var(--sunset-dark);
-    --clr: var(--deep-rosewood);
+    --bck: #f2c48c; /* Isabel */
+    --clr: #5a0b0c;
 }
 .c13 {
-    --bck: var(--warm-tan); /* Portada */
-    --bck-dark: var(--black-dark);
-    --clr: var(--dark-van-dyke);
+    --bck: #d8b892; /* Portada */
+    --clr: #3a2d28;
 }

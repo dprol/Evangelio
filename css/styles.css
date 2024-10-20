@@ -1,0 +1,480 @@
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+
+.pagina .special {
+    background-color: var(--clr);
+    color: var(--bck);
+}
+
+.pagina p {
+    color: var(--clr);
+}
+
+.multimedia {
+    background: var(--clr);
+}
+
+.c0 {
+    --bck: #d8b892; /* Portada */
+    --clr: #3a2d28;
+}
+.c1 {
+    --bck: #E6B2DD; /* Miss */
+    --clr: #004777;
+}
+.c2 {
+    --bck: #f2c48c; /* Rey */
+    --clr: #5a0b0c;
+}
+.c3 {
+    --bck: #6e785b; /* Jaume */
+    --clr: #f2c48c;
+}
+.c4 {
+    --bck: #0f0b09; /* Toro */
+    --clr: #8f6e56;
+}
+.c5 {
+    --bck: #d8b892; /* Luis */
+    --clr: #863e2b;
+}
+.c6 {
+    --bck: #1b768b; /* 1492 */
+    --clr: #d8b892;
+}
+.c7 {
+    --bck: #df7f49; /* Mediterraneo */
+    --clr: #0f404c;
+}
+.c8 {
+    --bck: #553755; /* Adan */
+    --clr: #79b473;
+}
+.c9 {
+    --bck: #001021; /* Bruja */
+    --clr: #d25936;
+}
+.c10 {
+    --bck: #c0c0c0; /* Francisco */
+    --clr: #434c35;
+}
+.c11 {
+    --bck: #6e785b; /* Machomen */
+    --clr: #f2c48c;
+}
+.c12 {
+    --bck: #f2c48c; /* Isabel */
+    --clr: #5a0b0c;
+}
+.c13 {
+    --bck: #d8b892; /* Portada */
+    --clr: #3a2d28;
+}
+
+
+  /* CSS Variables */
+  :root {
+    font-size: min(2rem, 4vw);
+  }
+  
+  /* Global Styles */
+  html, body {
+    font-family: "Schibsted Grotesk", sans-serif;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
+  }
+  
+  body {
+    transition: background-color 1s, height 1s;
+    background: var(--bck);
+  }
+  
+  #wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+  }
+  
+  /* Book Wrapper */
+  #bookWrapper {
+    display: grid;
+    grid-template-columns: 4rem 1fr 4rem;
+    height: 50vh;
+    perspective: 1500px;
+    background-color: var(--bck);
+    transition: background-color 1s ease, height 1s ease, width 1s ease;
+    -moz-transition: background-color 1s ease, height 1s ease, width 1s ease;
+    -webkit-transition: background-color 1s ease, height 1s ease, width 1s ease;
+    -o-transition: background-color 1s ease, height 1s ease, width 1s ease;
+  }
+  #bookWrapper.fullscreen {
+    height: calc(100vh - 1rem);
+  }
+  
+  /* Arrows */
+  .arrow {
+    font-size: 2rem;
+    color: var(--clr);
+    opacity: 0.7;
+    z-index: 2;
+    transition: color 1s ease, opacity 1s ease;
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on iOS */
+    outline: none; /* Remove focus outline */
+    -webkit-touch-callout: none; /* Disable long press menu */
+    user-select: none; /* Disable text selection */
+    justify-self: center;
+    align-self: center;
+  }
+  
+  .arrow.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+  
+  .arrow.hidden {
+    opacity: 0;
+  }
+  
+  .arrow-left {
+    animation: arrowBounceLeft 1.5s infinite;
+  }
+  
+  .arrow-right {
+    animation: arrowBounceRight 1.5s infinite;
+  }
+  
+  @media (min-width: 1024px) {
+    .arrow {
+      font-size: 2rem;
+    }
+  }
+  
+  /* Arrow Bounce Animations */
+  @keyframes arrowBounceLeft {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(4px);
+    }
+  }
+  
+  @keyframes arrowBounceRight {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-4px);
+    }
+  }
+  
+  /* Book Styles */
+  .book {
+    height: clamp(20vh, 70vw, 40vh);
+    width: clamp(20vh, 70vw, 40vh);
+    transform-style: preserve-3d;
+    align-self: center;
+    justify-self: center;
+    box-shadow: 
+    0 5vh 10vh rgba(0, 0, 0, 0.5),   /* Deep shadow for floating effect */
+    0 0 5vh rgba(255, 255, 255, 0.4); /* Softer glow around the object */
+    animation: scaleIn 2s forwards;
+    opacity: 0;
+  }
+  .book.visible {
+    opacity: 1;
+  }
+  
+  @keyframes scaleIn {
+    0% {
+      transform: scale(0.5);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .book-img {
+
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transform-origin: left;
+  }
+  
+  .book-img.visible {
+    display: block;
+    transform: rotateY(0deg);
+  }
+  
+  /* Flip Animations */
+  .flipping-in {
+    transform: rotateY(-140deg);
+    display: block;
+    animation: flip-in 1s forwards;
+  }
+  
+  .flipping-out {
+    display: block;
+    z-index: 200;
+    animation: flip-out 1s forwards;
+  }
+  
+  @keyframes flip-in {
+    0% {
+      transform: rotateY(-140deg);
+    }
+    100% {
+      transform: rotateY(0deg);
+    }
+  }
+  
+  @keyframes flip-out {
+    0% {
+      transform: rotateY(0deg);
+    }
+    100% {
+      transform: rotateY(-140deg);
+    }
+  }
+  
+  /* Page Styles */
+  .pagina {
+    position: relative;
+    width: 100%;
+    padding: 5vh 0 100px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    box-sizing: border-box;
+    opacity: 0;
+  }
+  
+  .pagina.visible {
+    display: flex;
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  
+  .pagina.visible.fading-out {
+    animation: fadeOut 0.5s ease-in forwards;
+  }
+  
+  
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      filter: blur(10px)
+    }
+    100% {
+      opacity: 1;
+      filter: blur(0)
+    }
+  }
+  
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+      filter: blur(0)
+    }
+    100% {
+      opacity: 0;
+      filter: blur(10px)
+    }
+  }
+  
+  .plain-text {
+    font-weight: 700;
+    width: min(80%, 1200px);
+    text-align: justify;
+    font-size: 1rem;
+    line-height: 1.8rem;
+    flex-shrink: 0;
+  }
+  
+  .centered {
+    text-align: center;
+  }
+  
+  .special {
+    font-weight: 900;
+    padding: 0.2rem 0.4rem;
+    width: auto;
+  }
+  
+  /* Animations */
+  .deslizad {
+    padding: 0 16px;
+    animation: deslizando 2s infinite;
+  }
+  
+  @keyframes deslizando {
+    0%, 100% {
+      transform: translateX(-6px);
+    }
+    75% {
+      transform: translateX(10px);
+    }
+  }
+  
+  .flechas {
+    padding: 0 10px;
+    animation: flecheando 2s infinite;
+  
+  }
+  
+  @keyframes flecheando {
+    0%, 100% {
+      transform: scale(1);
+    }
+    25% {
+      transform: scale(1.2);
+    }
+  }
+  
+  
+  /* Links and Multimedia */
+  .link-icon-container {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .link-icon {
+    font-size: 2rem;
+    transition: transform 0.7s;
+  }
+  
+  .link-icon:hover {
+    transform: scale(1.2);
+  }
+  
+  .multimedia {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+    margin-top: 2vh;
+    gap: 1rem;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  
+  /* Container styles */
+  .lyrics-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+  
+  .videolyric-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .videolyric-container iframe {
+    width: 100%; /* Responsive width */
+    aspect-ratio: 16 / 9; /* Responsive height */
+  }
+  
+  /* Paragraph and line styles */
+  .paragraph {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    padding: 0;
+    align-items: center;
+  }
+  
+  .line {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping */
+    width: fit-content;
+    margin-bottom: 0.5rem;
+    align-items: end;
+  }
+  
+  /* Chord styles */
+  .chord {
+    flex-shrink: 0; /* Prevent shrinking */
+    position: relative;
+    padding: 0.2rem 0.4rem;
+    text-align: center;
+    margin: 0;
+    line-height: 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .chord.empty {
+    visibility: hidden;
+  }
+  
+  /* Text and chord container */
+  .chord-text {
+    flex: 1; /* Allow text to take remaining space */
+    font-size: 1rem;
+    font-weight: 700;
+    white-space: pre-wrap;
+  }
+  
+  .text-with-chord {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+  
+  .acords-amagats .chord {
+    display: none;
+  }
+  
+  .bt-acords {
+    appearance: none;
+    font-family: "Schibsted Grotesk", sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--bck);
+    background: var(--clr);
+    border: 2px solid var(--clr);
+    box-shadow: 0 0 5vh rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background 0.5s, color 0.5s;
+    margin-top: 2rem;
+  }
+  .bt-acords.activat {
+    background: var(--bck);
+    color: var(--clr);
+  }
+  
+  .icons-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
+  }
+  
+  .icons-container .icon {
+    font-size: 2rem;
+    text-decoration: none;
+    color: var(--bck);
+    background: none;
+  }
+  
+  .multimedia-text {
+    font-weight: 900;
+    color: var(--bck) !important;
+  }
+  
+  

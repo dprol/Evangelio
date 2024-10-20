@@ -8,9 +8,8 @@
         />
 
         <title>ñ</title>
-        <link rel="stylesheet" href="css/colors.css" />
-        <link rel="stylesheet" href="css/base.css" />
-        
+        <link rel="stylesheet" href="css/styles.css" />
+
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -21,11 +20,14 @@
             rel="stylesheet"
         />
 
-        <script async defer src="https://cloud.umami.is/script.js" data-website-id="f1b3e610-1dd5-4f96-8d18-8a64a06acd57"></script>
-
+        <script
+            async
+            defer
+            src="https://cloud.umami.is/script.js"
+            data-website-id="f1b3e610-1dd5-4f96-8d18-8a64a06acd57"
+        ></script>
     </head>
     <body class="c0">
-        <div class="header-indicator"></div>
         <!-- Your content goes here (pages, header, etc.) -->
         <div id="bookWrapper" class="book-wrapper fullscreen">
             <div
@@ -34,6 +36,7 @@
             ></div>
             <div id="book" class="book">
                 <img
+                    id="bookCover"
                     src="covers/resized/00_500.jpg"
                     alt="Portada"
                     class="book-img visible"
@@ -125,30 +128,30 @@
         </div>
         <!-- Pagina: Portada -->
         <div class="pagina portada c0">
-            <p class="plain-text centered special" style="font-weight: bold">
-                ¡Bienvenid@s a la web oficial de ñ!
+            <p class="plain-text" style="font-weight: bold">
+                <span class="special">Érase una vez… “ñ”</span> El cuarto disco
+                de Miquel y su primero en español. Una mirada satírica pero
+                sensible a la historia, cultura y problemas sociales de España.
             </p>
             <p class="plain-text">
-                “ñ” es el 4º disco de Miquel y su primero en español. Es una
-                mirada satírica pero sensible a la historia, cultura y problemas
-                sociales de España.
+                Miquel ha escrito y producido este disco en su habitación,
+                motivado por expresarse en su segunda lengua materna y
+                reconciliar algunas de sus tensiones identitarias nacionales,
+                políticas, culturales o lingüísticas como catalán y/o español ;)
             </p>
-            <p class="plain-text">
-                Miquel lo ha escrito y producido en su habitación, motivado por
-                reconciliar sus tensiones como catalán y español, pero también
-                las de una sociedad cada vez más polarizada.
-            </p>
+            
 
             <p class="plain-text">
                 Cada canción es un cuento y trata un tema distinto.
                 <span style="font-weight: 900"
                     >Desliza<i class="fa-solid fa-hand deslizad"></i> la portada
-                    o usa las flechas
+                    o pulsa las flechas
                     <i class="fa-solid fa-arrow-left flechas"></i
                     ><i class="fa-solid fa-arrow-right flechas"></i> para
                     descrubrirlos.</span
                 >
             </p>
+
             <div
                 class="multimedia"
                 style="
@@ -157,11 +160,25 @@
                     margin-bottom: 10hv;
                 "
             >
-                <p class="multimedia-text">Escucha el álbum en</p>
+                <p class="multimedia-text">Escucha el disco en</p>
                 <div class="icons-container">
-                        <a href="" class="fa-brands fa-youtube icon"></a>
-                        <a href="" class="fa-brands fa-spotify icon"></a>
-                        <a href="" class="fa-brands fa-itunes-note icon"></a>
+                    <a
+                        href="https://youtube.com/playlist?list=PLG8ucN7_7YROFgofRK1DTGM1EDY02QVHW&si=rxpkbeSNDdnAE9O5"
+                        target="_blank"
+                        class="fa-brands fa-youtube icon"
+                    ></a>
+                    <a
+                        href="https://open.spotify.com/album/0KD4JuePd6WLdcSsR3OQ3a"
+                        target="_blank"
+
+                        class="fa-brands fa-spotify icon"
+                    ></a>
+                    <a
+                        href="https://music.apple.com/es/album/%C3%B1/1768631742?l=ca"
+                        target="_blank"
+
+                        class="fa-brands fa-itunes-note icon"
+                    ></a>
                 </div>
             </div>
         </div>
@@ -169,9 +186,10 @@
         <!-- Pagina: Miss España -->
         <div class="pagina c1">
             <p class="plain-text">
-                <span class="special">“Miss España”</span> pone letra al himno
-                de España. Es la única canción del disco que reinterpreta una
-                melodía no original. En este caso, en forma de bolero-trap.
+                <span class="special">“Miss España”</span> abre el disco
+                poniendo letra al himno de España. Es la única canción del disco
+                que reinterpreta una melodía no original. En este caso, en forma
+                de bolero-trap.
             </p>
 
             <p class="plain-text">
@@ -191,7 +209,7 @@
                     ></iframe>
                 </div>
             </div>
-            <button class="bt-acords" data-id="1">Mostrar acordes</button>
+            <button class="bt-acords" data-id="1">Ver acordes</button>
             <div
                 id="lyrics-1"
                 class="lyrics-container acords-amagats acords-amagats"
@@ -231,7 +249,7 @@
                     ></iframe>
                 </div>
             </div>
-            <button class="bt-acords" data-id="2">Mostrar acordes</button>
+            <button class="bt-acords" data-id="2">Ver acordes</button>
 
             <div id="lyrics-2" class="lyrics-container acords-amagats"></div>
         </div>
@@ -265,7 +283,7 @@
                     ></iframe>
                 </div>
             </div>
-            <button class="bt-acords" data-id="3">Mostrar acordes</button>
+            <button class="bt-acords" data-id="3">Ver acordes</button>
 
             <div id="lyrics-3" class="lyrics-container acords-amagats"></div>
         </div>
@@ -298,7 +316,7 @@
                     ></iframe>
                 </div>
             </div>
-            <button class="bt-acords" data-id="4">Mostrar acordes</button>
+            <button class="bt-acords" data-id="4">Ver acordes</button>
 
             <div id="lyrics-4" class="lyrics-container acords-amagats"></div>
         </div>
@@ -331,7 +349,7 @@
                     ></iframe>
                 </div>
             </div>
-            <button class="bt-acords" data-id="5">Mostrar acordes</button>
+            <button class="bt-acords" data-id="5">Ver acordes</button>
             <div id="lyrics-5" class="lyrics-container acords-amagats"></div>
         </div>
 
@@ -362,7 +380,7 @@
                     ></iframe>
                 </div>
             </div>
-            <button class="bt-acords" data-id="6">Mostrar acordes</button>
+            <button class="bt-acords" data-id="6">Ver acordes</button>
 
             <div id="lyrics-6" class="lyrics-container acords-amagats"></div>
         </div>
@@ -396,7 +414,7 @@
                     ></iframe>
                 </div>
             </div>
-            <button class="bt-acords" data-id="7">Mostrar acordes</button>
+            <button class="bt-acords" data-id="7">Ver acordes</button>
             <div id="lyrics-7" class="lyrics-container acords-amagats"></div>
         </div>
 
@@ -428,7 +446,7 @@
                     ></iframe>
                 </div>
             </div>
-            <button class="bt-acords" data-id="8">Mostrar acordes</button>
+            <button class="bt-acords" data-id="8">Ver acordes</button>
             <div id="lyrics-8" class="lyrics-container acords-amagats"></div>
         </div>
 
@@ -460,7 +478,7 @@
                     ></iframe>
                 </div>
             </div>
-            <button class="bt-acords" data-id="9">Mostrar acordes</button>
+            <button class="bt-acords" data-id="9">Ver acordes</button>
             <div id="lyrics-9" class="lyrics-container acords-amagats"></div>
         </div>
 
@@ -493,7 +511,7 @@
                     ></iframe>
                 </div>
             </div>
-            <button class="bt-acords" data-id="10">Mostrar acordes</button>
+            <button class="bt-acords" data-id="10">Ver acordes</button>
             <div id="lyrics-10" class="lyrics-container acords-amagats"></div>
         </div>
 
@@ -525,7 +543,7 @@
                     ></iframe>
                 </div>
             </div>
-            <button class="bt-acords" data-id="11">Mostrar acordes</button>
+            <button class="bt-acords" data-id="11">Ver acordes</button>
             <div id="lyrics-11" class="lyrics-container acords-amagats"></div>
         </div>
 
@@ -559,18 +577,55 @@
                     ></iframe>
                 </div>
             </div>
-            <button class="bt-acords" data-id="12">Mostrar acordes</button>
+            <button class="bt-acords" data-id="12">Ver acordes</button>
             <div id="lyrics-12" class="lyrics-container acords-amagats"></div>
         </div>
         <div class="pagina c13">
             <p class="plain-text">
-                <span class="special">“Gracias”</span> por llegar hasta aqui,
-                porque estoy hasta la polla de hacer la web.
+                <span class="special">“Muchas gracias ”</span> por llegar hasta
+                aquí. Esperamos que os guste mucho el disco. Miquel es un
+                artista emergente sin discográfica, por lo que la difusión de su
+                música se basa principalmente en el boca-oreja. Así que si
+                creéis que merece la pena, ¡compartidla! ¡Un saludo!
             </p>
+            <div
+                class="multimedia"
+                style="
+                    margin-top: 2rem;
+                    padding: 2rem 0rem;
+                    margin-bottom: 10hv;
+                "
+            >
+                <p class="multimedia-text">Escucha el disco en</p>
+                <div class="icons-container">
+                    <a
+                        href="https://youtube.com/playlist?list=PLG8ucN7_7YROFgofRK1DTGM1EDY02QVHW&si=rxpkbeSNDdnAE9O5"
+                        target="_blank"
+                        
+                        class="fa-brands fa-youtube icon"
+                    ></a>
+                    <a
+                        href="https://open.spotify.com/album/0KD4JuePd6WLdcSsR3OQ3a"
+                        target="_blank"
+                        
+                        class="fa-brands fa-spotify icon"
+                    ></a>
+                    <a
+                        href="https://music.apple.com/es/album/%C3%B1/1768631742?l=ca"
+                        target="_blank"
+                        
+                        class="fa-brands fa-itunes-note icon"
+                    ></a>
+                </div>
+            </div>
+            <p class="plain-text special centered" style="margin-top: 4rem">
+                Créditos
+            </p>
+            <p class="plain-text centered">Diseño web: Marc Nafría</p>
+            <p class="plain-text centered">Visuales: Jose Gallostra</p>
         </div>
 
         <script src="scripts/lyrics.js"></script>
         <script src="scripts/navegacio.js"></script>
-
     </body>
 </html>

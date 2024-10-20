@@ -7,11 +7,8 @@ const bookImages = document.querySelectorAll(".book-img");
 const arrowLeft = document.getElementById("arrowLeft");
 const arrowRight = document.getElementById("arrowRight");
 
-const header = document.getElementById("header");
 
 const botonsAcords = document.querySelectorAll(".bt-acords");
-
-const headerIndicator = document.querySelector(".header-indicator");
 
 function initialize() {
     let currentPageIndex = 0;
@@ -32,9 +29,7 @@ function initialize() {
             const outgoingPageIndex = currentPageIndex;
             const incomingPageIndex = currentPageIndex - 1;
             currentPageIndex = incomingPageIndex;
-            headerIndicator.style.width = `${Math.round(
-                (currentPageIndex / maxPageIndex) * 100
-            )}%`;
+            
             const outgoingImage = bookImages[outgoingPageIndex];
             const incomingImage = bookImages[incomingPageIndex];
 
@@ -67,9 +62,7 @@ function initialize() {
             const outgoingPageIndex = currentPageIndex;
             const incomingPageIndex = currentPageIndex + 1;
             currentPageIndex = incomingPageIndex;
-            headerIndicator.style.width = `${Math.round(
-                (currentPageIndex / maxPageIndex) * 100
-            )}%`;
+            
             const outgoingImage = bookImages[outgoingPageIndex];
             const incomingImage = bookImages[incomingPageIndex];
 
@@ -99,48 +92,16 @@ function initialize() {
 
                 isTransitioning = false;
             }, 1000);
-        } else if (direction === "right" && currentPageIndex === maxPageIndex) {
-            isTransitioning = true;
-            const outgoingPageIndex = currentPageIndex;
-            const incomingPageIndex = 0;
-            currentPageIndex = incomingPageIndex;
-            headerIndicator.style.width = `${Math.round(
-                (currentPageIndex / maxPageIndex) * 100
-            )}%`;
-            const outgoingImage = bookImages[outgoingPageIndex];
-            const incomingImage = bookImages[incomingPageIndex];
-
-            // Start flipping out the outgoing image
-            incomingImage.classList.add("visible");
-            outgoingImage.classList.add("flipping-out");
-
-            pages[outgoingPageIndex].classList.add("fading-out");
-
-            document.body.classList.remove(`c${outgoingPageIndex}`);
-            document.body.classList.add(`c${incomingPageIndex}`);
-
-            setTimeout(() => {
-                pages[outgoingPageIndex].classList.remove(
-                    "visible",
-                    "fading-out"
-                );
-                pages[incomingPageIndex].classList.add("visible");
-                pages[incomingPageIndex].classList.add("fading-in");
-            }, 500);
-            // Listen for the flip-out animation to end
-            setTimeout(() => {
-                // Start flipping in the incoming image
-                outgoingImage.classList.remove("visible", "flipping-out");
-                // Update page visibility
-                pages[incomingPageIndex].classList.remove("fading-in");
-
-                isTransitioning = false;
-            }, 1000);
-        }
+        } 
         if (currentPageIndex === 0) {
             arrowLeft.classList.add("disabled");
         } else {
             arrowLeft.classList.remove("disabled");
+        }
+        if (currentPageIndex === maxPageIndex) {
+            arrowRight.classList.add("disabled");
+        } else {
+            arrowRight.classList.remove("disabled");
         }
     }
 
@@ -265,7 +226,7 @@ function initialize() {
             if (bt.classList.contains("activat")) {
                 bt.innerHTML = "Ocultar acordes";
             } else {
-                bt.innerHTML = "Mostrar acordes";
+                bt.innerHTML = "Ver acordes";
             }
         });
     });
@@ -275,10 +236,45 @@ function initialize() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(() => {
-        bookWrapper.classList.remove("fullscreen");
-        arrowLeft.classList.remove("hidden");
-        arrowRight.classList.remove("hidden");
-        initialize();
-    }, 2000);
+    const bookCover = document.getElementById('bookCover');
+    
+    if (bookCover.complete) {
+        // If the image is already loaded (e.g., from cache), execute the following
+        handleImageLoad();
+    } else {
+        // Wait for the image to finish loading
+        bookCover.addEventListener('load', handleImageLoad);
+    }
+
+    function handleImageLoad() {
+        // 1. Make the book visible by adding a class (assumes "visible" class is defined in CSS)
+        book.classList.add('visible');
+        
+        // 2. Wait 2 seconds, then remove fullscreen and hidden classes
+        setTimeout(() => {
+            bookWrapper.classList.remove("fullscreen");
+            arrowLeft.classList.remove("hidden");
+            arrowRight.classList.remove("hidden");
+            
+            // 3. Continue with the rest of your logic, like calling initialize
+            initialize();
+        }, 2000);
+    }
+});
+
+document.getElementById('shareButton').addEventListener('click', async () => {
+    if (navigator.share) {
+        try {
+            await navigator.share({
+                title: document.title, // Título de la página
+                text: 'Mira esta página interesante:', // Texto opcional
+                url: window.location.href // URL de la página actual
+            });
+            console.log('¡Contenido compartido exitosamente!');
+        } catch (error) {
+            console.error('Error al intentar compartir:', error);
+        }
+    } else {
+        alert('La función de compartir no está disponible en este navegador.');
+    }
 });

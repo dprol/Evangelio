@@ -28,7 +28,6 @@ function createLyricsHTML(data, index) {
                     chord.textContent = item.chord;
 
                     const text = document.createElement("p");
-                    text.classList.add("plain-text");
                     text.classList.add("chord-text");
 
                     text.textContent = item.text;
