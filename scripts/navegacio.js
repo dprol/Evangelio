@@ -18,8 +18,6 @@ function initialize() {
     pages[currentPageIndex].classList.add("visible");
     bookImages[currentPageIndex].classList.add("visible");
 
-    // Track page visit event with Umami
-    umami.trackEvent('pagina_visitada', 0);
     let isTransitioning = false;
     let isHorizontalSwipe = false;
     
