@@ -20,7 +20,7 @@ function initialize() {
 
     let isTransitioning = false;
     let isHorizontalSwipe = false;
-    
+
     // Function to handle navigation
     function scrollByDirection(direction) {
         if (isTransitioning) return; // Prevent new transitions if one is in progress
@@ -45,7 +45,7 @@ function initialize() {
 
             document.body.classList.remove(`c${outgoingPageIndex}`);
             document.body.classList.add(`c${incomingPageIndex}`);
-            
+
             setTimeout(() => {
                 pages[outgoingPageIndex].classList.remove(
                     "visible",
@@ -76,7 +76,7 @@ function initialize() {
             // Start flipping out the outgoing image
             incomingImage.classList.add("visible");
             outgoingImage.classList.add("flipping-out");
-            
+
             pages[outgoingPageIndex].classList.add("fading-out");
 
             document.body.classList.remove(`c${outgoingPageIndex}`);
@@ -97,7 +97,6 @@ function initialize() {
                 // Update page visibility
                 pages[incomingPageIndex].classList.remove("fading-in");
 
-                
                 isTransitioning = false;
             }, 1000);
         } else if (direction === "right" && currentPageIndex === maxPageIndex) {
@@ -114,7 +113,7 @@ function initialize() {
             // Start flipping out the outgoing image
             incomingImage.classList.add("visible");
             outgoingImage.classList.add("flipping-out");
-            
+
             pages[outgoingPageIndex].classList.add("fading-out");
 
             document.body.classList.remove(`c${outgoingPageIndex}`);
@@ -135,7 +134,6 @@ function initialize() {
                 // Update page visibility
                 pages[incomingPageIndex].classList.remove("fading-in");
 
-                
                 isTransitioning = false;
             }, 1000);
         }
@@ -144,8 +142,6 @@ function initialize() {
         } else {
             arrowLeft.classList.remove("disabled");
         }
-        // Track page visit event with Umami
-        umami.trackEvent('pagina_visitada', currentPageIndex);
     }
 
     // Scroll left
@@ -271,8 +267,6 @@ function initialize() {
             } else {
                 bt.innerHTML = "Mostrar acordes";
             }
-            // Track page visit event with Umami
-            umami.trackEvent('acords', bt.getAttribute("data-id"));
         });
     });
 
