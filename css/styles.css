@@ -186,9 +186,15 @@ h3 {
     font-family: "Schibsted Grotesk", sans-serif;
     font-size: 1rem;
     font-weight: bold;
-    color: var(--bck);
-    background-color: var(--clr);
-    border: none;
-    box-shadow: 0 0 5vh rgba(0, 0, 0, 0.5);
+    color: var(--clr);
+    background: none;
+    border: 2px solid var(--clr);
+    box-shadow: 0 0 5vh rgba(255, 255, 255, 0.3);
     padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background 0.5s, color 0.5s;
+}
+.bt-acords.activat {
+    background: var(--clr);
+    color: var(--bck);
 }
