@@ -22,22 +22,6 @@ function initialize() {
     let isHorizontalSwipe = false;
 
     let pageEnterTime = Date.now();
-    function sendPageViewEvent(pageIndex) {
-        gtag('event', 'page_view', {
-            'event_category': 'Navegación',
-            'event_label': `Página ${pageIndex + 1}`, // Página actual (index empieza en 0)
-            'page_index': pageIndex,
-            'non_interaction': true
-        });
-        const timeSpent = Math.round((Date.now() - pageEnterTime) / 1000); // Tiempo en segundos
-        gtag('event', 'time_on_page', {
-            'event_category': 'Tiempo en página',
-            'event_label': `Página ${pageIndex + 1}`,
-            'value': timeSpent
-        });
-        pageEnterTime = Date.now(); // Reiniciar el tiempo para la nueva página
-    }
-    
     
     // Function to handle navigation
     function scrollByDirection(direction) {
@@ -162,8 +146,6 @@ function initialize() {
         } else {
             arrowLeft.classList.remove("disabled");
         }
-         // Enviar el evento de visualización de página
-        sendPageViewEvent(currentPageIndex);
     }
 
     // Scroll left
@@ -289,12 +271,6 @@ function initialize() {
             } else {
                 bt.innerHTML = "Mostrar acordes";
             }
-             // Enviar evento a Google Analytics
-        gtag('event', 'boton_acordes', {
-            'event_category': 'Interacción',
-            'event_label': `Canción ${songId}`,
-            'value': 1
-        });
         });
     });
 
