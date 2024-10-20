@@ -261,20 +261,3 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 2000);
     }
 });
-
-document.getElementById('shareButton').addEventListener('click', async () => {
-    if (navigator.share) {
-        try {
-            await navigator.share({
-                title: document.title, // Título de la página
-                text: 'Mira esta página interesante:', // Texto opcional
-                url: window.location.href // URL de la página actual
-            });
-            console.log('¡Contenido compartido exitosamente!');
-        } catch (error) {
-            console.error('Error al intentar compartir:', error);
-        }
-    } else {
-        alert('La función de compartir no está disponible en este navegador.');
-    }
-});
