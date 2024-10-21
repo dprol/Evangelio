@@ -7,6 +7,8 @@ const bookImages = document.querySelectorAll(".book-img");
 const arrowLeft = document.getElementById("arrowLeft");
 const arrowRight = document.getElementById("arrowRight");
 
+const hamburger = document.getElementById('hamburger');
+const menu = document.getElementById('menu');
 
 const botonsAcords = document.querySelectorAll(".bt-acords");
 
@@ -17,17 +19,47 @@ function initialize() {
 
     let isTransitioning = false;
     let isHorizontalSwipe = false;
+    
+    const menuItems = document.querySelectorAll('.menu-item');
+
+// Add a click listener to each menu-item
+menuItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+        menu.classList.remove('open');
+        setTimeout(() => {
+         navigateToPageFromMenu(index);
+        }, 500);
+    });
+});
+
+// Function to navigate to the selected page based on direction
+function navigateToPageFromMenu(pageIndex) {
+    if (isTransitioning) return; // Prevent transition if already in progress
+
+    if (pageIndex > currentPageIndex) {
+        // If the target page is after the current page, scroll right
+        scrollByDirection("right", pageIndex);
+    } else if (pageIndex < currentPageIndex) {
+        // If the target page is before the current page, scroll left
+        scrollByDirection("left", pageIndex);
+    }
+}
+
 
     // Function to handle navigation
-    function scrollByDirection(direction) {
+    function scrollByDirection(direction, pageIndex=null) {
         if (isTransitioning) return; // Prevent new transitions if one is in progress
 
         const maxPageIndex = pages.length - 1;
-
+        let incomingPageIndex = 0;
         if (direction === "left" && currentPageIndex > 0) {
             isTransitioning = true;
             const outgoingPageIndex = currentPageIndex;
-            const incomingPageIndex = currentPageIndex - 1;
+            if (pageIndex !== null) {
+                incomingPageIndex = pageIndex;
+            } else {
+                incomingPageIndex = currentPageIndex - 1;
+            }
             currentPageIndex = incomingPageIndex;
             
             const outgoingImage = bookImages[outgoingPageIndex];
@@ -60,7 +92,11 @@ function initialize() {
         } else if (direction === "right" && currentPageIndex < maxPageIndex) {
             isTransitioning = true;
             const outgoingPageIndex = currentPageIndex;
-            const incomingPageIndex = currentPageIndex + 1;
+            if (pageIndex !== null) {
+                incomingPageIndex = pageIndex;
+            } else {
+                incomingPageIndex = currentPageIndex + 1;
+            }
             currentPageIndex = incomingPageIndex;
             
             const outgoingImage = bookImages[outgoingPageIndex];
@@ -231,6 +267,16 @@ function initialize() {
         });
     });
 
+
+    
+
+    hamburger.addEventListener('click', () => {
+    menu.classList.toggle('open');
+    });
+
+
+
+
     initializeMiniBook();
     handleSwipeGestures();
 }
@@ -253,8 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // 2. Wait 2 seconds, then remove fullscreen and hidden classes
         setTimeout(() => {
             bookWrapper.classList.remove("fullscreen");
-            arrowLeft.classList.remove("hidden");
-            arrowRight.classList.remove("hidden");
+            menu.classList.remove("hidden");
             
             // 3. Continue with the rest of your logic, like calling initialize
             initialize();

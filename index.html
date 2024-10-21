@@ -28,12 +28,57 @@
         ></script>
     </head>
     <body class="c0">
+        <div id="menu" class="menu hidden">
+            <div class="menu-bar">
+                <div
+                    id="arrowLeft"
+                    class="fas fa-arrow-left arrow arrow-left arrow-deslizando disabled hidden"
+                ></div>
+                <svg
+                    id="hamburger"
+                    class="Header__toggle-svg"
+                    viewBox="0 0 60 40"
+                    width="3rem"
+                    height="3rem"
+                >
+                    <g
+                        id="hamburger-lines"
+                        stroke-width="4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path id="top-line" d="M10,10 L50,10 Z"></path>
+                        <path id="middle-line" d="M10,20 L50,20 Z"></path>
+                        <path id="bottom-line" d="M10,30 L50,30 Z"></path>
+                    </g>
+                </svg>
+                <div
+                id="arrowRight"
+                class="fas fa-arrow-right arrow arrow-right arrow-deslizando hidden"
+            ></div>
+            </div>
+            <div id="menuContainer" class="menu-container">
+                <img class="menu-item" src="covers/resized/00_500.jpg" alt="" />
+                <img class="menu-item" src="covers/resized/06_500.jpg" alt="" />
+                <img class="menu-item" src="covers/resized/07_500.jpg" alt="" />
+                <img class="menu-item" src="covers/resized/01_500.jpg" alt="" />
+                <img class="menu-item" src="covers/resized/03_500.jpg" alt="" />
+                <img class="menu-item" src="covers/resized/02_500.jpg" alt="" />
+                <img class="menu-item" src="covers/resized/05_500.jpg" alt="" />
+                <img class="menu-item" src="covers/resized/08_500.jpg" alt="" />
+                <img class="menu-item" src="covers/resized/04_500.jpg" alt="" />
+                <img class="menu-item" src="covers/resized/010_500.jpg" alt="" />
+                <img class="menu-item" src="covers/resized/011_500.jpg" alt="" />
+                <img class="menu-item" src="covers/resized/09_500.jpg" alt="" />
+                <img class="menu-item" src="covers/resized/012_500.jpg" alt="" />
+                <img class="menu-item" src="miquel.jpeg" alt="" />
+
+            </div>
+            
+        </div>
+
         <!-- Your content goes here (pages, header, etc.) -->
         <div id="bookWrapper" class="book-wrapper fullscreen">
-            <div
-                id="arrowLeft"
-                class="fas fa-arrow-left arrow arrow-left arrow-deslizando disabled hidden"
-            ></div>
             <div id="book" class="book">
                 <img
                     id="bookCover"
@@ -116,15 +161,10 @@
                 />
                 <img
                     src="miquel.jpeg"
-                    alt="Isabel"
                     class="book-img"
-                    style="z-index: 100"
+                    style="z-index: 99"
                 />
             </div>
-            <div
-                id="arrowRight"
-                class="fas fa-arrow-right arrow arrow-right arrow-deslizando hidden"
-            ></div>
         </div>
         <!-- Pagina: Portada -->
         <div class="pagina portada c0">
@@ -139,7 +179,6 @@
                 reconciliar algunas de sus tensiones identitarias nacionales,
                 políticas, culturales o lingüísticas como catalán y/o español ;)
             </p>
-            
 
             <p class="plain-text">
                 Cada canción es un cuento y trata un tema distinto.
@@ -170,13 +209,11 @@
                     <a
                         href="https://open.spotify.com/album/0KD4JuePd6WLdcSsR3OQ3a"
                         target="_blank"
-
                         class="fa-brands fa-spotify icon"
                     ></a>
                     <a
                         href="https://music.apple.com/es/album/%C3%B1/1768631742?l=ca"
                         target="_blank"
-
                         class="fa-brands fa-itunes-note icon"
                     ></a>
                 </div>
@@ -582,7 +619,7 @@
         </div>
         <div class="pagina c13">
             <p class="plain-text">
-                <span class="special">“Muchas gracias ”</span> por llegar hasta
+                <span class="special">Muchas gracias</span> por llegar hasta
                 aquí. Esperamos que os guste mucho el disco. Miquel es un
                 artista emergente sin discográfica, por lo que la difusión de su
                 música se basa principalmente en el boca-oreja. Así que si
@@ -601,19 +638,16 @@
                     <a
                         href="https://youtube.com/playlist?list=PLG8ucN7_7YROFgofRK1DTGM1EDY02QVHW&si=rxpkbeSNDdnAE9O5"
                         target="_blank"
-                        
                         class="fa-brands fa-youtube icon"
                     ></a>
                     <a
                         href="https://open.spotify.com/album/0KD4JuePd6WLdcSsR3OQ3a"
                         target="_blank"
-                        
                         class="fa-brands fa-spotify icon"
                     ></a>
                     <a
                         href="https://music.apple.com/es/album/%C3%B1/1768631742?l=ca"
                         target="_blank"
-                        
                         class="fa-brands fa-itunes-note icon"
                     ></a>
                 </div>
@@ -624,6 +658,7 @@
             <p class="plain-text centered">Diseño web: Marc Nafría</p>
             <p class="plain-text centered">Visuales: Jose Gallostra</p>
         </div>
+        
 
         <script src="scripts/lyrics.js"></script>
         <script src="scripts/navegacio.js"></script>

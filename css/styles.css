@@ -5,7 +5,10 @@
     padding: 0;
   }
   
-
+:root {
+    --background: #0f0b09;
+    --color: #d8b892;
+}
 .pagina .special {
     background-color: var(--clr);
     color: var(--bck);
@@ -103,7 +106,7 @@
   /* Book Wrapper */
   #bookWrapper {
     display: grid;
-    grid-template-columns: 4rem 1fr 4rem;
+    grid-template-columns: 1fr;
     height: 50vh;
     perspective: 1500px;
     background-color: var(--bck);
@@ -118,9 +121,8 @@
   
   /* Arrows */
   .arrow {
-    font-size: 2rem;
+    font-size: 1.2rem;
     color: var(--clr);
-    opacity: 0.7;
     z-index: 2;
     transition: color 1s ease, opacity 1s ease;
     -webkit-tap-highlight-color: transparent; /* Remove tap highlight on iOS */
@@ -134,10 +136,6 @@
   .arrow.disabled {
     opacity: 0.3;
     cursor: not-allowed;
-  }
-  
-  .arrow.hidden {
-    opacity: 0;
   }
   
   .arrow-left {
@@ -476,5 +474,106 @@
     font-weight: 900;
     color: var(--bck) !important;
   }
-  
-  
+  .menu {
+    position: relative;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.5);
+    transition: opacity 1s ease;
+}
+
+.menu-bar {
+    height: 10vh;
+    padding: 0 1rem ;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0.7;
+}
+
+/* Ensure the menu container starts with height 0 and allows for horizontal scrolling */
+.menu-container {
+    height: 0vh;
+    overflow-x: auto; /* Allow horizontal scrolling */
+    z-index: 1000;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 1rem;
+    transition: height 0.5s ease;
+    scroll-behavior: smooth; /* Smooth scroll behavior */
+}
+
+/* When the menu is open, expand the height */
+.open .menu-container {
+    height: 20vh;
+}
+
+/* Menu items (images) with aspect ratio */
+.menu-item {
+    height: 15vh;
+    aspect-ratio: 1/1;
+    flex-shrink: 0; /* Prevent items from shrinking */
+    box-shadow: 0 0 2vh rgba(0, 0, 0, 0.5);
+}
+
+/* Ensure the SVG lines smoothly transition */
+#top-line,
+#bottom-line,
+#middle-line {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: all 0.5s ease;
+}
+
+/* Animate to 'X' on open */
+.open #top-line {
+  transform: translateY(10px) rotate(-45deg);
+}
+
+.open #bottom-line {
+  transform: translateY(-10px) rotate(45deg);
+}
+
+.open #middle-line {
+  opacity: 0;
+}
+
+/* Animate back to hamburger */
+#top-line {
+  transform: translateY(0) rotate(0deg);
+}
+
+#bottom-line {
+  transform: translateY(0) rotate(0deg);
+}
+
+#middle-line {
+  opacity: 1;
+}
+
+/* Stroke color transition */
+#hamburger-lines {
+    stroke: var(--clr); /* Default stroke color */
+    transition: stroke 0.5s ease; /* Transition the stroke color smoothly */
+}
+
+/* Menu text animation (optional) */
+.menu-text {
+    width: 0;
+    overflow: hidden;
+    transition: width 1s ease;
+}
+
+.open .menu-text {
+    width: fit-content;
+}
+
+
+.menu.hidden {
+    opacity: 0;
+}
