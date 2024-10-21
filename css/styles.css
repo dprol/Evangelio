@@ -115,9 +115,6 @@
     -webkit-transition: background-color 1s ease, height 1s ease, width 1s ease;
     -o-transition: background-color 1s ease, height 1s ease, width 1s ease;
   }
-  #bookWrapper.fullscreen {
-    height: calc(100vh - 1rem);
-  }
   
   /* Arrows */
   .arrow {

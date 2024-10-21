@@ -298,7 +298,6 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // 2. Wait 2 seconds, then remove fullscreen and hidden classes
         setTimeout(() => {
-            bookWrapper.classList.remove("fullscreen");
             menu.classList.remove("hidden");
             
             // 3. Continue with the rest of your logic, like calling initialize
