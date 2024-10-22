@@ -30,10 +30,7 @@
     <body class="c0">
         <div id="menu" class="menu hidden">
             <div class="menu-bar">
-                <div
-                    id="arrowLeft"
-                    class="fas fa-arrow-left arrow arrow-left arrow-deslizando disabled hidden"
-                ></div>
+                <div class="n" onclick="location.reload();"></div>
                 <svg
                     id="hamburger"
                     class="Header__toggle-svg"
@@ -43,21 +40,17 @@
                 >
                     <g
                         id="hamburger-lines"
-                        stroke-width="4"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        stroke-width="3"
                     >
                         <path id="top-line" d="M10,10 L50,10 Z"></path>
                         <path id="middle-line" d="M10,20 L50,20 Z"></path>
                         <path id="bottom-line" d="M10,30 L50,30 Z"></path>
                     </g>
                 </svg>
-                <div
-                id="arrowRight"
-                class="fas fa-arrow-right arrow arrow-right arrow-deslizando hidden"
-            ></div>
+                
             </div>
             <div id="menuContainer" class="menu-container">
+                <!-- Add your custom code here 
                 <img class="menu-item" src="covers/resized/00_500.jpg" alt="" />
                 <img class="menu-item" src="covers/resized/06_500.jpg" alt="" />
                 <img class="menu-item" src="covers/resized/07_500.jpg" alt="" />
@@ -72,6 +65,21 @@
                 <img class="menu-item" src="covers/resized/09_500.jpg" alt="" />
                 <img class="menu-item" src="covers/resized/012_500.jpg" alt="" />
                 <img class="menu-item" src="miquel.jpeg" alt="" />
+                -->
+                <button class="menu-text-item bolder">Inicio</button>
+                <button class="menu-text-item">Miss España</button>
+                <button class="menu-text-item">Es el Rey</button>
+                <button class="menu-text-item">Mi bisabuelo Jaume</button>
+                <button class="menu-text-item">El Toro Olé</button>
+                <button class="menu-text-item">Luis, sé fuerte</button>
+                <button class="menu-text-item">1492</button>
+                <button class="menu-text-item">Mediterráneo</button>
+                <button class="menu-text-item">Adán y Esteban</button>
+                <button class="menu-text-item">La bruja</button>
+                <button class="menu-text-item">El espectro de Francisco</button>
+                <button class="menu-text-item">Machomén</button>
+                <button class="menu-text-item">Isabel y Fernando</button>
+                <button class="menu-text-item">Fin</button>
 
             </div>
             
@@ -79,6 +87,10 @@
 
         <!-- Your content goes here (pages, header, etc.) -->
         <div id="bookWrapper" class="book-wrapper fullscreen">
+            <div
+                    id="arrowLeft"
+                    class="fas fa-arrow-left arrow arrow-left arrow-deslizando disabled hidden"
+                ></div>
             <div id="book" class="book">
                 <img
                     id="bookCover"
@@ -160,16 +172,20 @@
                     style="z-index: 100"
                 />
                 <img
-                    src="miquel.jpeg"
+                    src="covers/013.png"
                     class="book-img"
                     style="z-index: 99"
                 />
             </div>
+            <div
+                id="arrowRight"
+                class="fas fa-arrow-right arrow arrow-right arrow-deslizando hidden"
+            ></div>
         </div>
         <!-- Pagina: Portada -->
         <div class="pagina portada c0">
             <p class="plain-text" style="font-weight: bold">
-                <span class="special">Érase una vez… “ñ”</span> El cuarto disco
+                <span class="special">Érase una vez… “ñ”.</span> El cuarto disco
                 de Miquel y su primero en español. Una mirada satírica pero
                 sensible a la historia, cultura y problemas sociales de España.
             </p>

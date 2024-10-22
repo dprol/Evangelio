@@ -20,7 +20,7 @@ function initialize() {
     let isTransitioning = false;
     let isHorizontalSwipe = false;
     
-    const menuItems = document.querySelectorAll('.menu-item');
+    const menuItems = document.querySelectorAll('.menu-text-item');
 
 // Add a click listener to each menu-item
 menuItems.forEach((item, index) => {
@@ -299,7 +299,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // 2. Wait 2 seconds, then remove fullscreen and hidden classes
         setTimeout(() => {
             menu.classList.remove("hidden");
-            
+            arrowLeft.classList.remove("hidden");
+            arrowRight.classList.remove("hidden");
             // 3. Continue with the rest of your logic, like calling initialize
             initialize();
         }, 2000);
