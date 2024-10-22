@@ -573,10 +573,6 @@ body {
     white-space: nowrap;
 }
 
-.menu-text-item.bolder {
-    font-weight: 500;
-}
-
 
 .menu-bar-text {
     font-size: 2rem;
@@ -599,13 +595,13 @@ body {
     background-color: var(--clr); /* El color que deseas aplicar */
     
     /* Para navegadores basados en WebKit */
-    -webkit-mask-image: url('../covers/n.png');
+    -webkit-mask-image: url('../img/n_100.png');
     -webkit-mask-size: contain;
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-position: center;
     
     /* Estándar */
-    mask-image: url('../covers/n.png');
+    mask-image: url('../img/n_100.png');
     mask-size: contain;
     mask-repeat: no-repeat;
     mask-position: center;
