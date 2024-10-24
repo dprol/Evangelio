@@ -80,7 +80,7 @@ function navigateToPageFromMenu(pageIndex) {
                 );
                 pages[incomingPageIndex].classList.add("visible");
                 pages[incomingPageIndex].classList.add("fading-in");
-            }, 500);
+            }, 400);
             // Listen for the flip-out animation to end
             setTimeout(() => {
                 // Start flipping in the incoming image
@@ -88,7 +88,7 @@ function navigateToPageFromMenu(pageIndex) {
                 outgoingImage.classList.remove("visible");
                 incomingImage.classList.remove("flipping-in");
                 isTransitioning = false;
-            }, 900);
+            }, 1000);
         } else if (direction === "right" && currentPageIndex < maxPageIndex) {
             isTransitioning = true;
             const outgoingPageIndex = currentPageIndex;
@@ -118,7 +118,7 @@ function navigateToPageFromMenu(pageIndex) {
                 );
                 pages[incomingPageIndex].classList.add("visible");
                 pages[incomingPageIndex].classList.add("fading-in");
-            }, 500);
+            }, 400);
             // Listen for the flip-out animation to end
             setTimeout(() => {
                 // Start flipping in the incoming image
