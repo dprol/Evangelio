@@ -28,20 +28,62 @@ body {
     color: var(--bck) !important;
 }
 
-.c0 { --bck: #d8b892; --clr: #3a2d28; }
-.c1 { --bck: #e6b2dd; --clr: #004777; }
-.c2 { --bck: #f2c48c; --clr: #5a0b0c; }
-.c3 { --bck: #434c35; --clr: #f2c48c; }
-.c4 { --bck: #0f0b09; --clr: #8f6e56; }
-.c5 { --bck: #d8b892; --clr: #863e2b; }
-.c6 { --bck: #1b768b; --clr: #FCE4BD; }
-.c7 { --bck: #df7f49; --clr: #0c2f38; }
-.c8 { --bck: #FCE4BD; --clr: #5D3E5D; }
-.c9 { --bck: #001021; --clr: #d25936; }
-.c10 { --bck: #c0c0c0; --clr: #434c35; }
-.c11 { --bck: #434c35; --clr: #EFB26C; }
-.c12 { --bck: #f2c48c; --clr: #5a0b0c; }
-.c13 { --bck: #d8b892; --clr: #3a2d28; }
+.c0 { 
+    --bck: #2B1810;
+    --clr: #E6D5A7;
+}
+.c1 { 
+    --bck: #006D77;
+    --clr: #83DDE0; 
+}
+.c2 { 
+    --bck: #4A154B;
+    --clr: #FF4B2B;
+}
+.c3 { 
+    --bck: #FFFFFF;
+    --clr: #E8D5C4;
+}
+.c4 { 
+    --bck: #000000;
+    --clr: #00FF66;
+}
+.c5 { 
+    --bck: #FFFFFF;
+    --clr: #003E7E;
+}
+.c6 { 
+    --bck: #0093AB;
+    --clr: #FFFFFF;
+}
+.c7 { 
+    --bck: #E5E7EB;
+    --clr: #D4A373;
+}
+.c8 { 
+    --bck: #000000;
+    --clr: #FFFFFF;
+}
+.c9 { 
+    --bck: #001F3F;
+    --clr: #00BFFF;
+}
+.c10 { 
+    --bck: #2B3A67;
+    --clr: #E6E6E6;
+}
+.c11 { 
+    --bck: #0099FF;
+    --clr: #FFFFFF;
+}
+.c12 { 
+    --bck: #2C3E50;
+    --clr: #FFD700;
+}
+.c13 { 
+    --bck: #DAA520; 
+    --clr: #8B0000;
+}
 
 /* Book Wrapper */
 #bookWrapper {
