@@ -85,6 +85,11 @@ body {
     --clr: #8B0000;
 }
 
+.c14 { 
+    --bck: #E4A76F; 
+    --clr: #1B2A3A;
+}
+
 /* Book Wrapper */
 #bookWrapper {
     display: flex;
